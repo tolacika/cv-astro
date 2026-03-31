@@ -1,0 +1,14 @@
+---
+import type { Content } from "../lib/content";
+import Hero from "./Hero.astro";
+import Intro from "./Intro.astro";
+
+const { content } = Astro.props as { content: Content };
+
+
+---
+<main>
+  <Hero content={content} />
+
+  <Intro content={content} />
+</main>

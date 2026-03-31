@@ -1,0 +1,33 @@
+---
+import MainHead from "../components/MainHead.astro";
+import type { MainHeadProps } from "../types";
+import "../styles/global.css";
+
+const { title, description } = Astro.props as MainHeadProps;
+---
+
+<html lang="en">
+  <head>
+    <MainHead title={title} description={description} />
+  </head>
+  <body class="antialiased">
+    <div class="relative">
+      <slot />
+    </div>
+
+    <script>
+      document.addEventListener("click", (e) => {
+        if (!(e.target instanceof HTMLElement)) return;
+
+        const el = e.target.closest("[data-scroll]");
+        if (!(el instanceof HTMLElement)) return;
+
+        const id = el.dataset.scroll;
+        if (!id) return;
+
+        const target = document.querySelector(id);
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>

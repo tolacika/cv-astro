@@ -1,0 +1,52 @@
+---
+import type { Content } from "../lib/content";
+
+const { content } = Astro.props as { content: Content };
+
+const langs = content.intro.langs.items;
+---
+
+<section id="languages">
+  <h3 class="text-left font-header text-2xl font-semibold uppercase mb-4 text-primary pt-10 sm:text-3xl lg:text-4xl">
+    {content.intro.langs.title}
+  </h3>
+
+  <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
+    {langs.map((lang) => {
+      const level = lang.proficiency;
+      const extra = lang.learning && level < 80;
+      const extraWidth = 80 - level;
+
+      return (
+        <div class="mb-2">
+          <div class="flex items-end justify-between">
+            <h4
+              class="font-body font-semibold text-lg md:text-xl text-black whitespace-pre-wrap"
+              title={lang.label}
+            >
+              <span class={`fi fi-${lang.icon} mr-2`}></span>
+              {lang.greeting}
+            </h4>
+            <h3 class="font-body text-lg md:text-2xl font-bold text-primary">
+              {lang.proficiency}%
+            </h3>
+          </div>
+
+          <div class="flex mt-2 h-3 w-full rounded-full bg-lila">
+            <div
+              class="h-3 rounded-full bg-primary"
+              style={`width: ${lang.proficiency}%`}
+            ></div>
+
+            {extra && (
+              <div
+                class="h-3 rounded-r bg-striped bg-2828 animate-move-stripe"
+                style={`width: ${extraWidth}%`}
+              ></div>
+            )}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>

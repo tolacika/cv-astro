@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "items": [
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Work",
+        "href": "#work"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ]
+  },
+  "hero": {
+    "preTitle": "Hello, my name is",
+    "fullName": "Marshall Laszlo Toth",
+    "subTitle": "I build scalable software systems and real-world machines."
+  },
+  "socialLinks": {
+    "actionText": "Let's connect",
+    "followText": "Follow me on",
+    "links": [
+      {
+        "icon": "bxl-github",
+        "link": "https://github.com/tolacika",
+        "followable": true
+      },
+      {
+        "icon": "bxl-linkedin-square",
+        "link": "https://www.linkedin.com/in/tolacika/",
+        "followable": true
+      },
+      {
+        "icon": "bxl-facebook-square",
+        "link": "https://www.facebook.com/marshall.things",
+        "followable": true
+      },
+      {
+        "icon": "bx-envelope",
+        "scrollTo": "#contact"
+      },
+      {
+        "icon": "bxs-map-pin",
+        "scrollTo": "#contact"
+      }
+    ]
+  },
+  "intro": {
+    "title": "Who am I?",
+    "subTitle": "I'm Laszlo Toth, a dedicated Software Engineer",
+    "paragraph": "Passionate Software Engineer with a decade of experience in various programming languages and technologies. I have deep expertise in PHP, especially Laravel, along with broad experience across multiple platforms. I focus on building efficient systems, improving processes, and delivering real-world solutions.",
+    "skills": [
+      {
+        "name": "PHP / Laravel",
+        "proficiency": 90
+      },
+      {
+        "name": "HTML / CSS",
+        "proficiency": 75
+      },
+      {
+        "name": "JavaScript / TypeScript",
+        "proficiency": 80
+      },
+      {
+        "name": "SQL / NoSQL / GraphQL",
+        "proficiency": 70
+      },
+      {
+        "name": "React / Vue / Node.js",
+        "proficiency": 70
+      },
+      {
+        "name": "System Administration",
+        "proficiency": 50
+      },
+      {
+        "name": "IoT / Embedded / Electrical Engineering",
+        "proficiency": 20,
+        "learning": true
+      }
+    ],
+    "langs": {
+      "title": "Spoken Languages",
+      "items": [
+        {
+          "code": "hu",
+          "icon": "hu",
+          "label": "Hungarian",
+          "greeting": "Szia! 👋",
+          "proficiency": 99
+        },
+        {
+          "code": "en",
+          "icon": "gb",
+          "label": "English",
+          "greeting": "Hello! 👋",
+          "proficiency": 75
+        },
+        {
+          "code": "de",
+          "icon": "de",
+          "label": "German",
+          "greeting": "Hallo! 👋",
+          "proficiency": 5,
+          "learning": true
+        }
+      ]
+    }
+  }
+}

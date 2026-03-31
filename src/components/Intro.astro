@@ -1,0 +1,50 @@
+---
+import type { Content } from "../lib/content";
+
+import LetsConnect from "./LetsConnect.astro";
+import SkillsBar from "./SkillsBar.astro";
+import LanguageSection from "./LanguageSection.astro";
+
+const { content } = Astro.props as { content: Content };
+const { title, subTitle, paragraph } = content.intro;
+---
+
+<section id="about" class="bg-grey-50">
+  <div class="container-fluid md:container">
+    <div
+      class="mx-6 md:mx-0 flex flex-col items-center py-8 md:py-12 lg:py-20 lg:flex-row"
+    >
+      <!-- Left -->
+      <div class="w-full text-center md:w-3/4 lg:w-3/5 lg:text-left">
+        <h2
+          class="font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl"
+        >
+          {title}
+        </h2>
+
+        <h4
+          class="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl"
+        >
+          {subTitle}
+        </h4>
+
+        <p class="pt-6 font-body leading-relaxed text-grey-20">
+          {paragraph}
+        </p>
+
+        <LetsConnect
+          content={content}
+          class="pt-6 lg:justify-start"
+          scheme="primary"
+        />
+
+        <LanguageSection content={content} />
+      </div>
+
+      <!-- Right -->
+      <div class="w-full pl-0 pt-10 md:w-3/4 lg:w-2/5 lg:pl-12 lg:pt-0">
+        <SkillsBar content={content} />
+      </div>
+    </div>
+  </div>
+</section>

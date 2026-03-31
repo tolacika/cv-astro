@@ -1,0 +1,106 @@
+---
+import logo from "../assets/img/logo.svg";
+import iconClose from "../assets/img/icon-close.svg";
+
+import type { Content } from "../lib/content";
+
+const { content } = Astro.props as { content: Content };
+---
+
+<header>
+  <nav class="w-full z-50 top-0 py-3 sm:py-5 absolute no-print">
+    <div class="container flex items-center justify-between">
+      <!-- Logo -->
+      <div>
+        <a href="/">
+          <img src={logo.src} class="w-24 lg:w-48" alt="logo" />
+        </a>
+      </div>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:block">
+        <ul class="flex items-center">
+          {
+            content.nav.items.map((item) => (
+              <li class="group">
+                <span
+                  class="cursor-pointer px-3 pt-0.5 font-header font-semibold uppercase text-white"
+                  data-scroll={item.href}
+                >
+                  {item.label}
+                </span>
+                <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow" />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Mobile button -->
+      <div class="block lg:hidden">
+        <button id="menu-open">
+          <i class="bx bx-menu text-4xl text-white"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Overlay -->
+  <div
+    id="mobile-menu"
+    class="pointer-events-none fixed inset-0 z-70 min-h-screen bg-black bg-opacity-70 opacity-0 transition-opacity lg:hidden"
+  >
+    <div
+      class="absolute right-0 min-h-screen w-2/3 bg-primary py-4 px-8 shadow md:w-1/3"
+    >
+      <button id="menu-close" class="absolute top-0 right-0 mt-4 mr-4">
+        <img src={iconClose.src} class="h-10 w-auto" alt="close" />
+      </button>
+
+      <ul class="mt-8 flex flex-col">
+        {
+          content.nav.items.map((item) => (
+            <li class="py-2">
+              <span
+                class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+                data-scroll={item.href}
+                data-close
+              >
+                {item.label}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Interactivity -->
+<script>
+  const menu = document.getElementById("mobile-menu");
+  const openBtn = document.getElementById("menu-open");
+  const closeBtn = document.getElementById("menu-close");
+
+  function openMenu() {
+    menu?.classList.remove("opacity-0", "pointer-events-none");
+    menu?.classList.add("opacity-100", "pointer-events-auto");
+    document.body.classList.add("overflow-hidden", "max-h-screen");
+  }
+
+  function closeMenu() {
+    menu?.classList.add("opacity-0", "pointer-events-none");
+    menu?.classList.remove("opacity-100", "pointer-events-auto");
+    document.body.classList.remove("overflow-hidden", "max-h-screen");
+  }
+
+  openBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+
+  // Handle close
+  document.querySelectorAll("[data-close]").forEach((el) => {
+    el.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+</script>

@@ -1,0 +1,49 @@
+---
+import type { Content } from "../lib/content";
+import SocialLinks from "./SocialLinks.astro";
+
+export type LetsConnectProps = {
+  content: Content;
+  class?: string;
+  scheme?: "white" | "primary";
+  followMe?: boolean;
+};
+
+const {
+  content,
+  class: className = '',
+  scheme = 'white',
+  followMe = false
+} = Astro.props as LetsConnectProps
+
+const colorScheme = {
+  white: {
+    title: 'text-white',
+    arrow: 'text-yellow',
+  },
+  primary: {
+    title: 'text-grey-2',
+    arrow: 'text-primary',
+  },
+};
+---
+
+<div class={`flex flex-col justify-center sm:flex-row sm:pt-5 ${className}`}>
+  
+  <div class="flex items-center justify-center pl-0 sm:justify-start">
+    <p class={`font-body text-lg uppercase ${colorScheme[scheme].title}`}>
+      {followMe ? content.socialLinks.followText : content.socialLinks.actionText}
+    </p>
+
+    <div class="hidden sm:block">
+      <i class={`bx bx-chevron-right text-3xl ${colorScheme[scheme].arrow}`}></i>
+    </div>
+  </div>
+
+  <SocialLinks
+    content={content}
+    class="pl-2"
+    scheme={scheme}
+    followMe={followMe}
+  />
+</div>

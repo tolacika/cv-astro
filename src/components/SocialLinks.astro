@@ -1,0 +1,52 @@
+---
+import type { Content, SocialLink } from "../lib/content";
+
+export type SocialLinksProps = {
+  content: Content;
+  class?: string;
+  scheme?: 'white' | 'primary';
+  followMe?: boolean;
+};
+
+const {
+  content,
+  class: className = '',
+  scheme = 'white',
+  followMe = false
+} = Astro.props as SocialLinksProps;
+
+const colorScheme = {
+  white: {
+    base: 'text-white',
+    hover: 'hover:text-yellow'
+  },
+  primary: {
+    base: 'text-primary',
+    hover: 'hover:text-yellow'
+  }
+};
+
+const links = content.socialLinks.links
+  .filter(({followable = false}: SocialLink) => followMe ? followable : true);
+---
+
+<div class={`flex items-center justify-center pt-5 sm:justify-start sm:pt-0 ${className}`}>
+  {links.map(({link, icon, target = "_blank", scrollTo}: SocialLink) => (
+    link ? (
+      <a
+        href={link}
+        target={target || "_blank"}
+        class={`px-2 ${colorScheme[scheme].base} ${colorScheme[scheme].hover}`}
+      >
+        <i class={`bx ${icon} text-2xl`}></i>
+      </a>
+    ) : (
+      <span
+        data-scroll={scrollTo}
+        class={`cursor-pointer px-2 ${colorScheme[scheme].base} ${colorScheme[scheme].hover}`}
+      >
+        <i class={`bx ${icon} text-2xl`}></i>
+      </span>
+    )
+  ))}
+</div>

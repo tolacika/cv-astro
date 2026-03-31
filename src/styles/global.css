@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/aspect-ratio";
+
+@theme {
+  /* Fonts */
+  --font-header: "Raleway", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+
+  /* Colors */
+  --color-transparent: transparent;
+  --color-primary: #5540af;
+  --color-primary-light: #d0cce3;
+  --color-secondary: #252426;
+
+  --color-yellow: #f9e71c;
+  --color-lila: #e6e5ec;
+
+  --color-grey-10: #6c6b6d;
+  --color-grey-20: #7c7c7c;
+  --color-grey-30: #919091;
+  --color-grey-40: #929293;
+  --color-grey-50: #f4f3f8;
+  --color-grey-60: #edebf6;
+  --color-grey-70: #d8d8d8;
+
+  --color-hero-gradient-from: rgba(85, 64, 174, 0.95);
+  --color-hero-gradient-to: rgba(65, 47, 144, 0.93);
+
+  --color-blog-gradient-from: #8f9098;
+  --color-blog-gradient-to: #222222;
+
+  /* Breakpoint */
+  --breakpoint-xs: 375px;
+
+  /* Spacing (trimmed essentials) */
+  --spacing-13: 3.25rem;
+  --spacing-15: 3.75rem;
+  --spacing-17: 4.25rem;
+  --spacing-18: 4.5rem;
+  --spacing-19: 4.75rem;
+  --spacing-42: 10.5rem;
+
+  /* Z-index */
+  --z--1: -1;
+  --z-60: 60;
+  --z-70: 70;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-header);
+  }
+}
+
+/* Container */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Custom inset */
+@utility inset-2\/5 {
+  inset: 40%;
+}
+
+/* Background pattern */
+@utility bg-striped {
+  background-image: linear-gradient(
+    45deg,
+    #d0cce3 25%,
+    #b9b5c9 25%,
+    #b9b5c9 50%,
+    #d0cce3 50%,
+    #d0cce3 75%,
+    #b9b5c9 75%,
+    #b9b5c9 100%
+  );
+  background-size: 28.28px 28.28px;
+}
+
+
+/* Animation */
+@keyframes move-stripe {
+  0% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 100%;
+  }
+}
+
+@utility animate-move-stripe {
+  animation: move-stripe 10s linear infinite;
+}
