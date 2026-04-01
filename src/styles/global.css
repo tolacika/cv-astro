@@ -65,9 +65,9 @@
 }
 
 /* Custom inset */
-@utility inset-2\/5 {
+/*@utility inset-2\/5 {
   inset: 40%;
-}
+}*/
 
 /* Background pattern */
 @utility bg-striped {

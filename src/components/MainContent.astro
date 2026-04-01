@@ -2,13 +2,24 @@
 import type { Content } from "../lib/content";
 import Hero from "./Hero.astro";
 import Intro from "./Intro.astro";
+import WorkExperience from "./WorkExperience.astro";
+import Services from "./Services.astro";
+import ContactDetails from "./ContactDetails.astro";
+import FollowMe from "./FollowMe.astro";
 
 const { content } = Astro.props as { content: Content };
-
 
 ---
 <main>
   <Hero content={content} />
 
   <Intro content={content} />
+
+  <WorkExperience content={content} />
+
+  <Services content={content} />
+
+  <ContactDetails content={content} />
+
+  <FollowMe content={content} />
 </main>

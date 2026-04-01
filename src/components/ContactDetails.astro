@@ -1,0 +1,56 @@
+---
+import type { Content } from "../lib/content";
+
+const { content } = Astro.props as { content: Content };
+
+const items = content.contactDetails.items;
+---
+
+<section class="container py-16 md:py-20" id="contact">
+  
+  <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+    {content.contactDetails.title}
+  </h2>
+
+  <h4 class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+    {content.contactDetails.subTitle}
+  </h4>
+
+  <div class="mx-auto w-full pt-5 text-center sm:w-2/3 lg:pt-6">
+    <p class="font-body text-grey-10">
+      {content.contactDetails.description}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 pt-16 gap-4 whitespace-nowrap">
+    
+    {items.map((item) => (
+      <div class="w-full shadow-lg p-4 sm:py-4">
+
+        <div class="flex items-center">
+          <i class={`bx ${item.icon} text-2xl text-grey-40`}></i>
+          <p class="pl-2 font-body font-bold uppercase text-grey-40 lg:text-lg">
+            {item.head}
+          </p>
+        </div>
+
+        {item.link ? (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+            class="pt-2 text-left font-body font-bold text-primary lg:text-lg block"
+          >
+            {item.text}
+          </a>
+        ) : (
+          <p class="pt-2 text-left font-body font-bold text-primary lg:text-lg">
+            {item.text}
+          </p>
+        )}
+
+      </div>
+    ))}
+
+  </div>
+</section>

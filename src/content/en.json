@@ -115,5 +115,158 @@
         }
       ]
     }
+  },
+  "workExperience": {
+    "title": "My work experience",
+    "subTitle": "What I’ve built, improved, and explored over the years",
+    "jobs": [
+      {
+        "company": "Archbau GmbH",
+        "dates": "Jun 2025 – Mar 2026",
+        "position": "Field Assistant (Archaeology – Side Project)",
+        "description": "Explored archaeological fieldwork and documentation both on-site and in-office, contributing to excavation processes and data handling. Gained hands-on experience outside software, while observing how heavy bureaucracy can slow down innovation and digital adoption."
+      },
+      {
+        "company": "NextTuesday &\nAdMetrics GmbH",
+        "dates": "Sept 2024 – Mar 2025",
+        "position": "Senior PHP Engineer",
+        "description": "Delivered custom solutions for multiple clients, working across Laravel, React, and Neos CMS. Contributed to building scalable systems from concept to production, translating complex business ideas into working software."
+      },
+      {
+        "company": "Ordio GmbH",
+        "dates": "Feb 2024 – Jun 2024",
+        "position": "Senior Full-stack Developer",
+        "description": "Integrated multiple third-party systems into the core platform using Symfony, TypeScript, and React, improving interoperability and streamlining operational workflows.",
+        "logo": "ordio"
+      },
+      {
+        "company": "Diligent Corp.",
+        "dates": "Jun 2022 – Apr 2023",
+        "position": "Senior Backend Developer",
+        "description": "Built and maintained governance and board management systems used in enterprise environments, working with Laravel, React, TypeScript, and AWS to ensure reliability, scalability, and compliance.",
+        "logo": "diligent"
+      },
+      {
+        "company": "Future Property Trade Kft",
+        "dates": "May 2021 – May 2022",
+        "position": "Senior Full-stack Lead Developer (Freelance)",
+        "description": "Led development of a full-scale e-commerce platform and internal back-office tools, designing architecture and delivering features using Laravel, Vue.js, and AWS."
+      },
+      {
+        "company": "Risskov Autoferien AG",
+        "dates": "Jan 2020 – Apr 2021",
+        "position": "Senior Full-stack Developer",
+        "description": "Developed and maintained multiple systems including booking, partner management, and public APIs, contributing to a complex ecosystem built with Laravel, Vue.js, GraphQL, and Azure.",
+        "logo": "risskov"
+      },
+      {
+        "company": "TechTeamer Kft &\nMikroCredit Zrt",
+        "dates": "2018 – 2019",
+        "position": "Backend Developer",
+        "description": "Developed CRM and financial systems using a microservices approach, focusing on reporting, data integrity, and scalable backend architecture."
+      },
+      {
+        "company": "WebShippy Kft",
+        "dates": "2018",
+        "position": "Full-stack Developer",
+        "description": "Enhanced warehouse management systems and built integrations with major e-commerce platforms, improving logistics automation and system connectivity.",
+        "logo": "webshippy"
+      },
+      {
+        "company": "Manna Kreatív Zrt.",
+        "dates": "2017",
+        "position": "Junior Full-stack Developer, Service Desk",
+        "description": "Worked on a wide range of systems including CRM, order management, and marketing tools, while supporting internal operations through service desk responsibilities.",
+        "logo": "manna"
+      },
+      {
+        "company": "Érték-Rendszerház Kft &\nWore Hungary Kft",
+        "dates": "2014 – 2016",
+        "position": "Junior Full-stack Developer, System Admin",
+        "description": "Developed webshops, CMS, CRM and factory management systems, as well as internal tools and Android applications, gaining broad experience across full-stack development and system administration."
+      }
+    ]
+  },
+  "services": {
+    "title": "Building systems across software and the real world",
+    "subTitle": "I work across backend, frontend, infrastructure, and hardware - connecting ideas, systems, and teams into working solutions.",
+    "services": [
+      {
+        "title": "System Architecture",
+        "subTitle": "Designing scalable systems from idea to production - balancing business needs, technical constraints, and long-term maintainability.",
+        "icon": "content"
+      },
+      {
+        "title": "Full-stack Development",
+        "subTitle": "Building reliable applications across backend and frontend using modern frameworks, with a strong focus on performance and clarity.",
+        "icon": "development"
+      },
+      {
+        "title": "Integration & Automation",
+        "subTitle": "Connecting services, APIs, and external systems into cohesive workflows that reduce manual work and improve efficiency.",
+        "icon": "email"
+      },
+      {
+        "title": "IoT & Hardware Systems",
+        "subTitle": "Bridging software with the physical world - working with embedded systems, sensors, and real-world constraints.",
+        "icon": "mobile"
+      },
+      {
+        "title": "System Improvement",
+        "subTitle": "Refactoring, optimizing, and stabilizing existing systems - making them faster, cleaner, and easier to work with.",
+        "icon": "graphics"
+      },
+      {
+        "title": "Collaboration & Delivery",
+        "subTitle": "Working closely with teams, stakeholders, and clients to turn ideas into delivered, working solutions.",
+        "icon": "design"
+      }
+    ]
+  },
+  "contactDetails": {
+    "title": "Get in Touch",
+    "subTitle": "Let’s build something, fix something, or explore something",
+    "description": "Whether you have an idea, a problem to solve, or just want to connect - feel free to reach out. I’m always open to meaningful conversations and interesting challenges.",
+    "items": [
+      {
+        "icon": "bxl-github",
+        "head": "GitHub",
+        "text": "github.com/tolacika",
+        "link": "https://github.com/tolacika"
+      },
+      {
+        "icon": "bxl-linkedin-square",
+        "head": "LinkedIn",
+        "text": "linkedin.com/in/tolacika",
+        "link": "https://www.linkedin.com/in/tolacika/"
+      },
+      {
+        "icon": "bxl-facebook-square",
+        "head": "Facebook",
+        "text": "fb/marshall.things",
+        "link": "https://www.facebook.com/marshall.things"
+      },
+      {
+        "icon": "bx-phone",
+        "head": "Phone",
+        "text": "(+36) 30 8751419",
+        "link": "tel:+36308751419"
+      },
+      {
+        "icon": "bx-envelope",
+        "head": "Email",
+        "text": "inbox@tolacika.xyz",
+        "link": "mailto:inbox@tolacika.xyz"
+      },
+      {
+        "icon": "bxs-map-pin",
+        "head": "Location",
+        "text": "Offenbach, Germany"
+      }
+    ]
+  },
+
+  "followMe": {
+    "title": "Follow what I build,\nexplore, and improve"
   }
 }

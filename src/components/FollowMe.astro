@@ -1,0 +1,26 @@
+---
+import type { Content } from "../lib/content";
+
+import bgCta from '../assets/img/bg-cta.jpg';
+import LetsConnect from './LetsConnect.astro';
+
+const { content } = Astro.props as { content: Content };
+---
+
+<section
+  id="followMe"
+  class="relative bg-primary bg-cover bg-center bg-no-repeat py-16 bg-blend-multiply lg:py-24"
+  style={`background-image: url(${bgCta.src})`}
+>
+  <div class="container relative z-30">
+    
+    <h3 class="text-center font-header text-3xl uppercase leading-tight tracking-wide text-white sm:text-4xl lg:text-5xl whitespace-pre-wrap">
+      {content.followMe.title}
+    </h3>
+
+    <div class="pt-6 text-center">
+      <LetsConnect content={content} class="pt-6" followMe={true} />
+    </div>
+
+  </div>
+</section>

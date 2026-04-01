@@ -1,0 +1,79 @@
+---
+import type { Content, Job } from "../lib/content";
+import { logoSet } from "../lib/content";
+
+const { content } = Astro.props as { content: Content };
+const { title, subTitle } = content.workExperience;
+const jobs = content.workExperience.jobs as Job[];
+
+---
+
+<section class="container py-16 md:py-20" id="work">
+  <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+    {title}
+  </h2>
+
+  <h3 class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+    {subTitle}
+  </h3>
+
+  <div class="relative mx-auto mt-12 flex w-full flex-col 2xl:w-3/4">
+
+    <!-- Timeline line -->
+    <span class="left-1/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>
+
+    {jobs.map((job) => (
+      <div class="mt-4 flex flex-col text-center md:flex-row md:text-left">
+
+        <!-- Left (company + logo) -->
+        <div class="md:w-1/5">
+          <div class="flex justify-center md:justify-start">
+            <span class="shrink-0 h-14">
+              {job.logo ? (
+                <img
+                  src={logoSet[job.logo].src}
+                  class="w-auto h-full grayscale"
+                  alt={job.company}
+                  title={job.company}
+                />
+              ) : (
+                job.company
+              )}
+            </span>
+
+            <div class="relative ml-3 hidden w-full md:block">
+              <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-grey-70"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right (details) -->
+        <div class="md:w-4/5">
+          <div class="relative flex md:pl-18">
+            <span class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
+
+            <div class="mt-1 flex">
+              <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
+
+              <div class="md:-mt-1 md:pl-8">
+                <span class="block font-body font-bold text-grey-40">
+                  {job.dates}
+                </span>
+
+                <span class="block pt-2 font-header text-xl font-bold text-primary">
+                  {job.position}
+                </span>
+
+                <p class="pt-3 font-body text-black leading-relaxed">
+                  {job.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    ))}
+
+  </div>
+</section>
