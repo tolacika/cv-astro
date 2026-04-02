@@ -6,6 +6,8 @@ import WorkExperience from "./WorkExperience.astro";
 import Services from "./Services.astro";
 import ContactDetails from "./ContactDetails.astro";
 import FollowMe from "./FollowMe.astro";
+import Perspective from "./Perspective.astro";
+import ProjectFeatured from "./ProjectFeatured.astro";
 
 const { content } = Astro.props as { content: Content };
 
@@ -15,9 +17,13 @@ const { content } = Astro.props as { content: Content };
 
   <Intro content={content} />
 
-  <WorkExperience content={content} />
-
   <Services content={content} />
+
+  <Perspective content={content} />
+
+  <ProjectFeatured content={content} />
+
+  <WorkExperience content={content} />
 
   <ContactDetails content={content} />
 

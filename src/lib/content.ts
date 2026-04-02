@@ -125,3 +125,64 @@ export type ServiceRaw = Services["services"][number];
 export type Service = Omit<ServiceRaw, "icon"> & {
   icon?: ServicesIconKey;
 };
+
+/**
+ * 🧭 Navigation
+ */
+export type Nav = Content["nav"];
+export type NavItem = Nav["items"][number];
+
+/**
+ * 🦸 Hero
+ */
+export type Hero = Content["hero"];
+
+/**
+ * 📧 Contact Details
+ */
+export type ContactDetails = Content["contactDetails"];
+export type ContactItem = ContactDetails["items"][number];
+
+/**
+ * 👋 Follow Me
+ */
+export type FollowMe = Content["followMe"];
+
+/**
+ * 🔭 Perspective
+ */
+export type Perspective = Content["perspective"];
+
+/**
+ * 🚀 Project Featured
+ */
+export type ProjectFeatured = Content["projectFeatured"];
+
+/**
+ * 📝 Posts (Discriminated Union)
+ */
+export type PostType = "perspective" | "project";
+
+export type PostBase = {
+  type: PostType;
+  title: string;
+  teaser: string;
+  image: string;
+  href: string;
+};
+
+export type PerspectivePost = PostBase & {
+  type: "perspective";
+  cta?: string;
+  featured?: never;
+};
+
+export type ProjectPost = PostBase & {
+  type: "project";
+  featured?: boolean;
+  cta?: never;
+};
+
+export type Post = PerspectivePost | ProjectPost;
+
+export type Posts = Content["posts"];

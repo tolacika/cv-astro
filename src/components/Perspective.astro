@@ -1,0 +1,53 @@
+---
+import type { Content } from "../lib/content";
+
+const { content } = Astro.props as { content: Content };
+
+const posts = content.posts.filter(i => i.type == "perspective");
+---
+
+<section class="bg-grey-50" id="perspective">
+  <div class="container py-16 md:py-20">
+
+    <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+      {content.perspective.title}
+    </h2>
+
+    <h4 class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+      {content.perspective.subTitle}
+    </h4>
+
+    <div class="mx-auto grid w-full grid-cols-1 gap-6 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-3 xl:gap-10">
+
+      {posts.map((post) => (
+        <a href={post.href} class="bg-white shadow group">
+
+          <!-- Image -->
+          <div
+            class="relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-60 xl:h-72"
+            style={`background-image: url(${post.image})`}
+          >
+            <span class="absolute inset-0 block bg-linear-to-b from-blog-gradient-from to-blog-gradient-to opacity-10 transition-opacity group-hover:opacity-50"></span>
+
+            <span class="absolute right-0 bottom-0 mr-4 mb-4 block rounded-full border-2 border-white px-6 py-2 text-center font-body text-sm font-bold uppercase text-white md:text-base">
+              {post.cta ?? "Read More"}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <div class="py-6 px-5 xl:py-8">
+            <span class="block font-body text-lg font-semibold text-black">
+              {post.title}
+            </span>
+
+            <span class="block pt-2 font-body text-grey-20">
+              {post.teaser}
+            </span>
+          </div>
+
+        </a>
+      ))}
+
+    </div>
+  </div>
+</section>
