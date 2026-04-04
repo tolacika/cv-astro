@@ -20,12 +20,12 @@ import iconGraphicsWhite from '../assets/img/icon-graphics-white.svg';
 import iconGraphicsBlack from '../assets/img/icon-graphics-black.svg';
 
 /**
- * 🔑 Source of truth
+ * 🔑 Source of truth (global content only - no posts)
  */
 export type Content = typeof en;
 
 /**
- * 📦 Loader (future: replace with CMS)
+ * 📦 Loader for global content
  */
 export async function getContent(): Promise<Content> {
   return en;
@@ -158,31 +158,3 @@ export type Perspective = Content["perspective"];
  */
 export type ProjectFeatured = Content["projectFeatured"];
 
-/**
- * 📝 Posts (Discriminated Union)
- */
-export type PostType = "perspective" | "project";
-
-export type PostBase = {
-  type: PostType;
-  title: string;
-  teaser: string;
-  image: string;
-  href: string;
-};
-
-export type PerspectivePost = PostBase & {
-  type: "perspective";
-  cta?: string;
-  featured?: never;
-};
-
-export type ProjectPost = PostBase & {
-  type: "project";
-  featured?: boolean;
-  cta?: never;
-};
-
-export type Post = PerspectivePost | ProjectPost;
-
-export type Posts = Content["posts"];

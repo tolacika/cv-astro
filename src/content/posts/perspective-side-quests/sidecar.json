@@ -1,0 +1,16 @@
+{
+  "type": "perspective",
+  "slug": "perspective-side-quests",
+  "title": "Personal Notes: Beyond Work",
+  "teaser": "Fragments from outside the main path - ideas, observations, and quiet experiments.",
+  "image": "/assets/posts/post-notes.webp",
+  "cta": "Read More",
+  "meta": {
+    "company": null,
+    "period": null,
+    "seo": {
+      "title": "Personal Notes: Beyond Work",
+      "description": "Fragments from outside the main path - ideas, observations, and quiet experiments."
+    }
+  }
+}

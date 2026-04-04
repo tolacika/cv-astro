@@ -275,37 +275,5 @@
   "projectFeatured": {
     "title": "Featured Projects",
     "subTitle": "A handful of systems, tools, and projects I’ve built or contributed to."
-  },
-  "posts": [
-    {
-      "type": "perspective",
-      "title": "Background: How I Got Here",
-      "teaser": "How I moved across software, hardware, and real-world environments - and why I think in systems today.",
-      "image": "/assets/posts/post-background.webp",
-      "href": "/post/systems-thinking",
-      "cta": "Explore More"
-    },
-    {
-      "type": "perspective",
-      "title": "Vision: The Way I Think About the World",
-      "teaser": "My perspective on technology, economics, politics, and the structures that influence progress and innovation.",
-      "image": "/assets/posts/post-vision.webp",
-      "href": "/post/building-systems"
-    },
-    {
-      "type": "perspective",
-      "title": "Personal Notes: Beyond Work",
-      "teaser": "Fragments from outside the main path - ideas, observations, and quiet experiments.",
-      "image": "/assets/posts/post-notes.webp",
-      "href": "/post/side-quests"
-    },
-    {
-      "type": "project",
-      "title": "First Project",
-      "teaser": "Asdf -- placeholder",
-      "image": "/assets/posts/post-background.webp",
-      "href": "/post/first-project",
-      "featured": true
-    }
-  ]
+  }
 }

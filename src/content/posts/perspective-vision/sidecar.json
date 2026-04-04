@@ -1,0 +1,15 @@
+{
+  "type": "perspective",
+  "slug": "perspective-vision",
+  "title": "Vision: The Way I Think About the World",
+  "teaser": "My perspective on technology, economics, politics, and the structures that influence progress and innovation.",
+  "image": "/assets/posts/post-vision.webp",
+  "meta": {
+    "company": null,
+    "period": null,
+    "seo": {
+      "title": "Vision: The Way I Think About the World",
+      "description": "My perspective on technology, economics, politics, and the structures that influence progress and innovation."
+    }
+  }
+}
