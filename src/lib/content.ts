@@ -1,160 +1,228 @@
+import { z } from "zod";
 import en from "../content/en.json";
 
-import logoOrdioImage from '../assets/img/logo-ordio.png';
-import logoDiligentImage from '../assets/img/logo-diligent.png';
-import logoRisskovImage from '../assets/img/logo-risskov.png';
-import logoWebshippyImage from '../assets/img/logo-webshippy.png';
-import logoMannaImage from '../assets/img/logo-manna.png';
+const logoGlob = import.meta.glob<{ default: string }>(
+  "../assets/img/logo-*.png",
+  { eager: true }
+);
+const logoMap = Object.fromEntries(
+  Object.entries(logoGlob).map(([path, mod]) => {
+    const name = path.split("/logo-")[1]?.replace(".png", "") ?? "";
+    return [name, mod.default];
+  })
+);
 
-import iconDevelopmentWhite from '../assets/img/icon-development-white.svg';
-import iconDevelopmentBlack from '../assets/img/icon-development-black.svg';
-import iconContentWhite from '../assets/img/icon-content-white.svg';
-import iconContentBlack from '../assets/img/icon-content-black.svg';
-import iconMobileWhite from '../assets/img/icon-mobile-white.svg';
-import iconMobileBlack from '../assets/img/icon-mobile-black.svg';
-import iconEmailWhite from '../assets/img/icon-email-white.svg';
-import iconEmailBlack from '../assets/img/icon-email-black.svg';
-import iconDesignWhite from '../assets/img/icon-design-white.svg';
-import iconDesignBlack from '../assets/img/icon-design-black.svg';
-import iconGraphicsWhite from '../assets/img/icon-graphics-white.svg';
-import iconGraphicsBlack from '../assets/img/icon-graphics-black.svg';
+const iconGlob = import.meta.glob<{ default: string }>(
+  "../assets/img/icon-*-*.svg",
+  { eager: true }
+);
+const iconMap = Object.fromEntries(
+  Object.entries(iconGlob).map(([path, mod]) => {
+    const filename = path.split("/icon-")[1] ?? "";
+    const [name, color] = filename.split("-").slice(-2);
+    return [`${name}/${color}`, mod.default];
+  })
+);
 
-/**
- * 🔑 Source of truth (global content only - no posts)
- */
-export type Content = typeof en;
+const validLogos = Object.keys(logoMap) as [string, ...string[]];
+const validIcons = [
+  ...new Set(
+    Object.keys(iconMap).map((k) => k.split("/")[0])
+  ),
+] as [string, ...string[]];
 
-/**
- * 📦 Loader for global content
- */
+const imagesSchema = z.object({
+  logos: z.array(z.string()),
+  icons: z.array(z.string()),
+});
+
+const navItemSchema = z.object({
+  label: z.string(),
+  href: z.string(),
+});
+
+const navSchema = z.object({
+  items: z.array(navItemSchema),
+});
+
+const heroSchema = z.object({
+  preTitle: z.string(),
+  fullName: z.string(),
+  subTitle: z.string(),
+});
+
+const socialLinkBaseSchema = z.object({
+  icon: z.string(),
+  followable: z.boolean().optional(),
+  target: z.string().optional(),
+});
+
+const socialLinkWithLinkSchema = socialLinkBaseSchema.extend({
+  link: z.string(),
+  scrollTo: z.undefined(),
+});
+
+const socialLinkWithScrollToSchema = socialLinkBaseSchema.extend({
+  scrollTo: z.string(),
+  link: z.undefined(),
+});
+
+const socialLinkSchema = z.union([
+  socialLinkWithLinkSchema,
+  socialLinkWithScrollToSchema,
+]);
+
+const socialLinksSchema = z.object({
+  actionText: z.string(),
+  followText: z.string(),
+  links: z.array(socialLinkSchema),
+});
+
+const skillSchema = z.object({
+  name: z.string(),
+  proficiency: z.number().min(0).max(100),
+  learning: z.boolean().optional(),
+});
+
+const languageSchema = z.object({
+  code: z.string(),
+  icon: z.string(),
+  label: z.string(),
+  greeting: z.string(),
+  proficiency: z.number().min(0).max(100),
+  learning: z.boolean().optional(),
+});
+
+const languagesSchema = z.object({
+  title: z.string(),
+  items: z.array(languageSchema),
+});
+
+const introSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  paragraph: z.string(),
+  skills: z.array(skillSchema),
+  langs: languagesSchema,
+});
+
+const jobSchema = z.object({
+  company: z.string(),
+  dates: z.string(),
+  position: z.string(),
+  description: z.string(),
+  logo: z.enum(validLogos).optional(),
+});
+
+const workExperienceSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  jobs: z.array(jobSchema),
+});
+
+const serviceSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  icon: z.enum(validIcons).optional(),
+});
+
+const servicesSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  services: z.array(serviceSchema),
+});
+
+const contactItemSchema = z.object({
+  icon: z.string(),
+  head: z.string(),
+  text: z.string(),
+  link: z.string().optional(),
+});
+
+const contactDetailsSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  description: z.string(),
+  items: z.array(contactItemSchema),
+});
+
+const followMeSchema = z.object({
+  title: z.string(),
+});
+
+const perspectiveSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+});
+
+const projectFeaturedSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+});
+
+const contentSchema = z.object({
+  images: imagesSchema,
+  nav: navSchema,
+  hero: heroSchema,
+  socialLinks: socialLinksSchema,
+  intro: introSchema,
+  workExperience: workExperienceSchema,
+  services: servicesSchema,
+  contactDetails: contactDetailsSchema,
+  followMe: followMeSchema,
+  perspective: perspectiveSchema,
+  projectFeatured: projectFeaturedSchema,
+});
+
+const parsedContent = contentSchema.parse(en);
+
+export const logoSet = logoMap as Record<string, string>;
+export type LogoKey = (typeof validLogos)[number];
+
+export const servicesIconSet = (Object.entries(iconMap).reduce(
+  (acc, [key, src]) => {
+    const [name, color] = key.split("/");
+    if (!acc[name]) acc[name] = { black: "", white: "" };
+    acc[name][color as "black" | "white"] = src;
+    return acc;
+  },
+  {} as Record<string, { black: string; white: string }>
+)) as Record<string, { black: string; white: string }>;
+
+export type ServicesIconKey = (typeof validIcons)[number];
+
+export type NavItem = z.infer<typeof navItemSchema>;
+export type Nav = z.infer<typeof navSchema>;
+
+export type Hero = z.infer<typeof heroSchema>;
+
+export type SocialLink = z.infer<typeof socialLinkSchema>;
+export type SocialLinksData = z.infer<typeof socialLinksSchema>;
+
+export type Skill = z.infer<typeof skillSchema>;
+export type Language = z.infer<typeof languageSchema>;
+export type Languages = z.infer<typeof languagesSchema>;
+export type Intro = z.infer<typeof introSchema>;
+
+export type Job = z.infer<typeof jobSchema>;
+export type WorkExperience = z.infer<typeof workExperienceSchema>;
+
+export type Service = z.infer<typeof serviceSchema>;
+export type Services = z.infer<typeof servicesSchema>;
+
+export type ContactItem = z.infer<typeof contactItemSchema>;
+export type ContactDetails = z.infer<typeof contactDetailsSchema>;
+
+export type FollowMe = z.infer<typeof followMeSchema>;
+export type Perspective = z.infer<typeof perspectiveSchema>;
+export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
+
+export type Content = z.infer<typeof contentSchema>;
+
 export async function getContent(): Promise<Content> {
-  return en;
+  return parsedContent;
 }
 
-/**
- * 🌍 Social Links
- */
-export type SocialLinksData = Content["socialLinks"];
-export type SocialLinkRaw = SocialLinksData["links"][number];
-
-export type SocialLinksBase = {
-  icon: string;
-  followable?: boolean;
-  target?: string;
-};
-
-type RequireAtLeastOne =
-  | { link: string; scrollTo?: never }
-  | { scrollTo: string; link?: never };
-
-export type SocialLink = SocialLinksBase & RequireAtLeastOne;
-
-/**
- * 🏢 Work Experience
- */
-
-// 🎯 Define logos ONCE (used by components too)
-export const logoSet = {
-  ordio: logoOrdioImage,
-  diligent: logoDiligentImage,
-  risskov: logoRisskovImage,
-  webshippy: logoWebshippyImage,
-  manna: logoMannaImage,
-} as const;
-
-export type LogoKey = keyof typeof logoSet;
-
-// Raw type from JSON
-export type WorkExperience = Content["workExperience"];
-export type JobRaw = WorkExperience["jobs"][number];
-
-// 🔒 Safe override (tighten logo typing)
-export type Job = Omit<JobRaw, "logo"> & {
-  logo?: LogoKey;
-};
-
-/**
- * 🌍 Languages
- */
-export type Languages = Content["intro"]["langs"];
-export type Language = Languages["items"][number];
-
-/**
- * ⚙️ Intro / Skills
- */
-export type Intro = Content["intro"];
-export type Skill = Intro["skills"][number];
-
-/**
- * 🎨 Services Icons
- */
-
-export const servicesIconSet = {
-  development: {
-    black: iconDevelopmentBlack,
-    white: iconDevelopmentWhite,
-  },
-  content: {
-    black: iconContentBlack,
-    white: iconContentWhite,
-  },
-  mobile: {
-    black: iconMobileBlack,
-    white: iconMobileWhite,
-  },
-  email: {
-    black: iconEmailBlack,
-    white: iconEmailWhite,
-  },
-  design: {
-    black: iconDesignBlack,
-    white: iconDesignWhite,
-  },
-  graphics: {
-    black: iconGraphicsBlack,
-    white: iconGraphicsWhite,
-  },
-} as const;
-
-export type ServicesIconKey = keyof typeof servicesIconSet;
-
-export type Services = Content["services"];
-export type ServiceRaw = Services["services"][number];
-
-// 🔒 Safe override (tighten icon typing)
-export type Service = Omit<ServiceRaw, "icon"> & {
-  icon?: ServicesIconKey;
-};
-
-/**
- * 🧭 Navigation
- */
-export type Nav = Content["nav"];
-export type NavItem = Nav["items"][number];
-
-/**
- * 🦸 Hero
- */
-export type Hero = Content["hero"];
-
-/**
- * 📧 Contact Details
- */
-export type ContactDetails = Content["contactDetails"];
-export type ContactItem = ContactDetails["items"][number];
-
-/**
- * 👋 Follow Me
- */
-export type FollowMe = Content["followMe"];
-
-/**
- * 🔭 Perspective
- */
-export type Perspective = Content["perspective"];
-
-/**
- * 🚀 Project Featured
- */
-export type ProjectFeatured = Content["projectFeatured"];
-
+export function validateContent(data: unknown): Content {
+  return contentSchema.parse(data);
+}

@@ -1,4 +1,8 @@
 {
+  "images": {
+    "logos": ["ordio", "diligent", "risskov", "webshippy", "manna"],
+    "icons": ["content", "development", "email", "mobile", "graphics", "design"]
+  },
   "nav": {
     "items": [
       {
