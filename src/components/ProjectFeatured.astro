@@ -3,7 +3,7 @@ import type { Content } from "../lib/content";
 
 const { content } = Astro.props as { content: Content };
 
-const posts = content.posts.filter(i => i.type == "project" && i.featured);
+const posts = [] as Array<{href:string,image:string,cta:string,title:string,teaser:string}>;// content.posts.filter(i => i.type == "project" && i.featured);
 ---
 
 <div class="bg-grey-50" id="blog">

@@ -18,7 +18,7 @@ const iconGlob = import.meta.glob<{ default: string }>(
 );
 const iconMap = Object.fromEntries(
   Object.entries(iconGlob).map(([path, mod]) => {
-    const filename = path.split("/icon-")[1] ?? "";
+    const filename = path.split("/icon-")[1]?.replace(".svg", "") ?? "";
     const [name, color] = filename.split("-").slice(-2);
     return [`${name}/${color}`, mod.default];
   })
@@ -176,18 +176,30 @@ const contentSchema = z.object({
 
 const parsedContent = contentSchema.parse(en);
 
-export const logoSet = logoMap as Record<string, string>;
+export type ImageType = {
+  src: string,
+  width: number,
+  height: number,
+  format: "png" | "svg",
+};
+
+export type IconImageType = {
+  black: ImageType | null,
+  white: ImageType | null,
+}
+
+export const logoSet = logoMap as unknown as Record<string, ImageType>;
 export type LogoKey = (typeof validLogos)[number];
 
 export const servicesIconSet = (Object.entries(iconMap).reduce(
   (acc, [key, src]) => {
-    const [name, color] = key.split("/");
-    if (!acc[name]) acc[name] = { black: "", white: "" };
-    acc[name][color as "black" | "white"] = src;
+    const [name, color] = key.split("/"); 
+    if (!acc[name]) acc[name] = { black: null, white: null };
+    acc[name][color as "black" | "white"] = src as unknown as ImageType;
     return acc;
   },
-  {} as Record<string, { black: string; white: string }>
-)) as Record<string, { black: string; white: string }>;
+  {} as Record<string, IconImageType>
+)) as Record<string, IconImageType>;
 
 export type ServicesIconKey = (typeof validIcons)[number];
 
