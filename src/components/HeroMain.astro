@@ -1,0 +1,40 @@
+---
+import type { Content } from "../lib/content";
+import Hero from "./Hero.astro";
+import LetsConnect from './LetsConnect.astro';
+
+import authorImg from '../assets/img/blog-author.jpg';
+
+const { content } = Astro.props as { content: Content };
+---
+
+<Hero>
+  <div class="flex flex-col items-center justify-center lg:flex-row">
+
+      <!-- Avatar -->
+      <div class="rounded-full border-8 border-primary shadow-xl">
+        <img
+          src={authorImg.src}
+          class="rounded-full max-w-48 md:max-w-64"
+          alt="author"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
+        <h1 class="text-center font-header text-4xl text-white lg:text-left sm:text-5xl xl:text-6xl">
+          <small class="text-2xl sm:text-3xl xl:text-4xl font-light">
+            {content.hero?.preTitle}
+          </small>
+          <br />
+          {content.hero?.fullName}!
+        </h1>
+        <h2 class="text-center font-header text-2xl text-white lg:text-left sm:text-3xl xl:text-4xl  font-extralight italic mt-4">
+          {content.hero?.subTitle}
+        </h2>
+
+        <LetsConnect content={content} class="pt-3 lg:justify-start" />
+      </div>
+
+    </div>
+</Hero>

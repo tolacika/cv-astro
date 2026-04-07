@@ -1,20 +1,17 @@
 ---
 import type { Content } from "../lib/content";
+import { getPosts } from "../lib/posts";
 import PostList from "./PostList.astro";
 
 const { content } = Astro.props as { content: Content };
 
-const posts = [] as Array<{
-  href: string;
-  image: string;
-  cta: string;
-  title: string;
-  teaser: string;
-}>; //content.posts.filter(i => i.type == "perspective");
+const posts = getPosts({type: "perspective", limit: 3});
+
 ---
 
 <PostList
   title={content.perspective.title}
   subTitle={content.perspective.subTitle}
   posts={posts}
+  sectionId="perspective"
 />

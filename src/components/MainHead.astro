@@ -2,8 +2,11 @@
 import "../styles/global.css";
 import type { MainHeadProps } from "../types";
 
+const defTitle = "Marshall Laszlo Toth: Personal Portfolio";
+const postfix = " | Marshall Laszlo Toth"
+
 const {
-  title = "Marshall Laszlo Toth: Personal Portfolio",
+  title,
   description = "The personal site of Marshall Laszlo Toth",
 } = Astro.props as MainHeadProps;
 ---
@@ -14,7 +17,7 @@ const {
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="generator" content={Astro.generator} />
 <meta name="theme-color" content="#5540af" />
-<title>{title}</title>
+<title>{title ? title + postfix : defTitle}</title>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />

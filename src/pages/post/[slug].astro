@@ -1,0 +1,33 @@
+---
+import { getContent, type Content } from "../../lib/content";
+import { getPosts } from "../../lib/posts"
+import BaseLayout from "../../layouts/Layout.astro"
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import ContentPost from "../../components/ContentPost.astro";
+
+export function getStaticPaths() {
+  const posts = getPosts({limit: 0})
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }))
+}
+
+const { post } = Astro.props;
+const content = await getContent() as Content;
+
+// SEO meta
+const seoTitle = post.meta?.seo?.title || post.title;
+const seoDesc = post.meta?.seo?.description || post.teaser;
+
+---
+
+<BaseLayout title={seoTitle} description={seoDesc}>
+  <Navbar content={content} />
+
+  <ContentPost content={content} post={post} />
+
+	<Footer content={content} />
+</BaseLayout>

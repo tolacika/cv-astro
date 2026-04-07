@@ -1,52 +1,20 @@
 ---
 import bgHero from '../assets/img/bg-hero.jpg';
-import authorImg from '../assets/img/blog-author.jpg';
 
-import type { Content } from "../lib/content";
-
-import LetsConnect from './LetsConnect.astro';
-
-const { content } = Astro.props as { content: Content };
+const { bgImg } = Astro.props as { bgImg: string }
 ---
 
 <section
   id="hero"
   class="relative bg-cover bg-center bg-no-repeat py-8"
-  style={`background-image: url(${bgHero.src})`}
+  style={`background-image: url(${bgImg ? bgImg : bgHero.src})`}
 >
   <!-- Gradient overlay -->
   <div
-    class="absolute inset-0 z-20 bg-linear-to-r from-hero-gradient-from to-hero-gradient-to">
+    class={`absolute inset-0 z-20 bg-linear-to-r` + (bgImg ? ` from-hero-post-gradient-from to-hero-post-gradient-to` : ` from-hero-gradient-from to-hero-gradient-to`)}>
   </div>
 
   <div class="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
-    <div class="flex flex-col items-center justify-center lg:flex-row">
-
-      <!-- Avatar -->
-      <div class="rounded-full border-8 border-primary shadow-xl">
-        <img
-          src={authorImg.src}
-          class="rounded-full max-w-48 md:max-w-64"
-          alt="author"
-        />
-      </div>
-
-      <!-- Text -->
-      <div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
-        <h1 class="text-center font-header text-4xl text-white lg:text-left sm:text-5xl xl:text-6xl">
-          <small class="text-2xl sm:text-3xl xl:text-4xl font-light">
-            {content.hero?.preTitle}
-          </small>
-          <br />
-          {content.hero?.fullName}!
-        </h1>
-        <h2 class="text-center font-header text-2xl text-white lg:text-left sm:text-3xl xl:text-4xl  font-extralight italic mt-4">
-          {content.hero?.subTitle}
-        </h2>
-
-        <LetsConnect content={content} class="pt-3 lg:justify-start" />
-      </div>
-
-    </div>
+    <slot />
   </div>
 </section>

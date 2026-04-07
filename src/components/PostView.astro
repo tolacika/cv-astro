@@ -1,0 +1,19 @@
+---
+import type { Content, ImageType } from "../lib/content";
+import type { Post, PostContent } from "../lib/posts";
+import { marked } from "marked";
+
+const { content, post, images } = Astro.props as {
+  content: Content;
+  post: Post;
+  images: Record<string, ImageType>;
+};
+
+const postBody = await post.content() as PostContent;
+const postHtml = marked.parse(postBody);
+---
+<section id="content" class="bg-grey-60">
+  <div class="container py-16 md:py-20 bg-white">
+    <article id={post.slug} set:html={postHtml} class="text-lg" />
+  </div>
+</section>

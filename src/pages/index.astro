@@ -2,7 +2,7 @@
 import { getContent, type Content } from "../lib/content";
 import Navbar from "../components/Navbar.astro";
 import BaseLayout from "../layouts/Layout.astro";
-import MainContent from "../components/MainContent.astro";
+import ContentMain from "../components/ContentMain.astro";
 import Footer from "../components/Footer.astro";
 
 const content = await getContent() as Content;
@@ -11,7 +11,7 @@ const content = await getContent() as Content;
 <BaseLayout>
 	<Navbar content={content} />
 
-	<MainContent content={content} />
+	<ContentMain content={content} />
 
 	<Footer content={content} />
 </BaseLayout>

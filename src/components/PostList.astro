@@ -1,10 +1,30 @@
 ---
+import type { ImageType } from "../lib/content";
+import type { Post } from "../lib/posts";
 
-const {title, subTitle, posts} = Astro.props as { title: string, subTitle: string, posts: [{href:string,image:string,cta:string,title:string,teaser:string}] }
+
+const {title, subTitle, posts, sectionId} = Astro.props as {
+  title: string,
+  subTitle: string, 
+  posts: Array<Post>,
+  sectionId: string | undefined
+}
+
+const images: Record<string, ImageType> = {};
+for (const post of posts) {
+  const imgs = await post.images() as Record<string, ImageType>
+  Object.entries(imgs).forEach(([name, img]) => {
+    if (!images[name]) images[name] = img;
+  })
+}
+
+//console.log({images})
+
+//console.log(await posts[0].images())
 ---
 
 
-<section class="bg-grey-50" id="perspective">
+<section class="bg-grey-50" id={sectionId || "perspective"}>
   <div class="container py-16 md:py-20">
 
     <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
@@ -18,12 +38,12 @@ const {title, subTitle, posts} = Astro.props as { title: string, subTitle: strin
     <div class="mx-auto grid w-full grid-cols-1 gap-6 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-3 xl:gap-10">
 
       {posts.map((post) => (
-        <a href={post.href} class="bg-white shadow group">
+        <a href={"/post/" + post.slug + ".html"} class="bg-white shadow group">
 
           <!-- Image -->
           <div
             class="relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-60 xl:h-72"
-            style={`background-image: url(${post.image})`}
+            style={`background-image: url(${images[post.image!].src})`}
           >
             <span class="absolute inset-0 block bg-linear-to-b from-blog-gradient-from to-blog-gradient-to opacity-10 transition-opacity group-hover:opacity-50"></span>
 
