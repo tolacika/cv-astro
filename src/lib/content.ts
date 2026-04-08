@@ -36,10 +36,24 @@ const imagesSchema = z.object({
   icons: z.array(z.string()),
 });
 
-const navItemSchema = z.object({
+const navItemBaseSchema = z.object({
   label: z.string(),
-  href: z.string(),
 });
+
+const navItemWithHrefSchema = navItemBaseSchema.extend({
+  href: z.string(),
+  action: z.undefined(),
+});
+
+const navItemWithActionSchema = navItemBaseSchema.extend({
+  action: z.string(),
+  href: z.undefined(),
+});
+
+const navItemSchema = z.union([
+  navItemWithHrefSchema,
+  navItemWithActionSchema,
+]);
 
 const navSchema = z.object({
   items: z.array(navItemSchema),
@@ -106,13 +120,27 @@ const introSchema = z.object({
   langs: languagesSchema,
 });
 
-const jobSchema = z.object({
+const jobBaseSchema = z.object({
   company: z.string(),
   dates: z.string(),
   position: z.string(),
   description: z.string(),
-  logo: z.enum(validLogos).optional(),
 });
+
+const jobWithLogoSchema = jobBaseSchema.extend({
+  logo: z.enum(validLogos),
+  altLogo: z.string().optional(),
+});
+
+const jobWithAltLogoSchema = jobBaseSchema.extend({
+  logo: z.undefined(),
+  altLogo: z.string(),
+});
+
+const jobSchema = z.union([
+  jobWithLogoSchema,
+  jobWithAltLogoSchema,
+]);
 
 const workExperienceSchema = z.object({
   title: z.string(),

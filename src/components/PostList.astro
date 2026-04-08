@@ -3,12 +3,14 @@ import type { ImageType } from "../lib/content";
 import type { Post } from "../lib/posts";
 
 
-const {title, subTitle, posts, sectionId} = Astro.props as {
+const {title, subTitle, posts, sectionId, ...props} = Astro.props as {
   title: string,
   subTitle: string, 
   posts: Array<Post>,
-  sectionId: string | undefined
+  sectionId: string | undefined,
+  comingSoon: boolean,
 }
+const comingSoon = props.comingSoon || posts.length == 0;
 
 const images: Record<string, ImageType> = {};
 for (const post of posts) {
@@ -37,7 +39,30 @@ for (const post of posts) {
 
     <div class="mx-auto grid w-full grid-cols-1 gap-6 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-3 xl:gap-10">
 
-      {posts.map((post) => (
+      {comingSoon && [0,1,0].map(cs => (
+        <div class={"bg-white shadow group" + (!cs && " hidden lg:block")}>
+          <div class="py-6 px-5 xl:py-8 rounded shadow-md">
+
+              <div class="flex space-x-4">
+                {cs ? (
+                  <span class="block font-body text-lg font-semibold text-black">
+                    Coming soon...
+                  </span>
+                ) : (
+                <div class="flex-1">
+                  <div class="w-full h-5 my-1 rounded bg-gray-300"></div>
+                </div>
+                )}
+              </div>
+              <div class="space-y-2 pt-2">
+                <div class="w-full h-4 rounded bg-gray-200"></div>
+                <div class="w-full h-4 rounded bg-gray-200"></div>
+                <div class="w-3/4 h-4 rounded bg-gray-200"></div>
+              </div>
+          </div>
+        </div>
+      ))}
+      {!comingSoon && posts.map((post) => (
         <a href={"/post/" + post.slug + ".html"} class="bg-white shadow group">
 
           <!-- Image -->

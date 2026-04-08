@@ -8,7 +8,7 @@ const { content } = Astro.props as { content: Content };
 ---
 
 <header>
-  <nav class="w-full z-50 top-0 py-3 sm:py-5 absolute no-print">
+  <nav id="navbar" class="w-full z-50 top-0 py-3 sm:py-5 fixed no-print bg-white/0 transition-colors duration-300">
     <div class="container flex items-center justify-between">
       <!-- Logo -->
       <div>
@@ -103,4 +103,17 @@ const { content } = Astro.props as { content: Content };
       closeMenu();
     });
   });
+
+  // Navbar background on scroll
+  const navbar = document.getElementById("navbar");
+
+  function updateNavbar() {
+    const scrollY = window.scrollY;
+    const opacity = Math.min(scrollY / 250, 1);
+    navbar!.style.backgroundColor = `rgba(85, 64, 175, ${opacity})`;
+  }
+
+  window.addEventListener("scroll", updateNavbar, { passive: true });
+  updateNavbar();
+
 </script>

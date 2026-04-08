@@ -37,7 +37,7 @@ const jobs = content.workExperience.jobs as Job[];
                   title={job.company}
                 />
               ) : (
-                job.company
+                <span class="text-lg font-header font-light tracking-widest hidden md:inline-block">{job.altLogo ?? job.company}</span>
               )}
             </span>
 
@@ -56,9 +56,13 @@ const jobs = content.workExperience.jobs as Job[];
               <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
 
               <div class="md:-mt-1 md:pl-8">
-                <span class="block font-body font-bold text-grey-40">
+                <span class="block sm:inline-block font-body font-bold text-grey-40">
                   {job.dates}
                 </span>
+                <span class="block sm:inline-block font-body font-bold text-gray-700 text-lg">
+                  <span class="sm:ml-4 sm:mr-1">@</span> {job.company}
+                </span>
+                
 
                 <span class="block pt-2 font-header text-xl font-bold text-primary">
                   {job.position}

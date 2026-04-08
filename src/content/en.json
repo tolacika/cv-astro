@@ -20,6 +20,10 @@
       {
         "label": "Contact",
         "href": "#contact"
+      },
+      {
+        "label": "LLM.TXT",
+        "action": "modal-llm-context"
       }
     ]
   },
@@ -127,14 +131,16 @@
       {
         "company": "Archbau GmbH",
         "dates": "Jun 2025 – Mar 2026",
-        "position": "Field Assistant (Archaeology – Side Project)",
-        "description": "Explored archaeological fieldwork and documentation both on-site and in-office, contributing to excavation processes and data handling. Gained hands-on experience outside software, while observing how heavy bureaucracy can slow down innovation and digital adoption."
+        "position": "Field Assistant (Archäology – Side Project)",
+        "description": "Explored archaeological fieldwork and documentation both on-site and in-office, contributing to excavation processes and data handling. Gained hands-on experience outside software, while observing how heavy bureaucracy can slow down innovation and digital adoption.",
+        "altLogo": "ArchBau"
       },
       {
-        "company": "NextTuesday &\nAdMetrics GmbH",
+        "company": "NextTuesday GmbH",
         "dates": "Sept 2024 – Mar 2025",
         "position": "Senior PHP Engineer",
-        "description": "Delivered custom solutions for multiple clients, working across Laravel, React, and Neos CMS. Contributed to building scalable systems from concept to production, translating complex business ideas into working software."
+        "description": "Delivered custom solutions for multiple clients, working across Laravel, React, and Neos CMS. Contributed to building scalable systems from concept to production, translating complex business ideas into working software.",
+        "altLogo": "NextTuesday"
       },
       {
         "company": "Ordio GmbH",
@@ -154,7 +160,8 @@
         "company": "Future Property Trade Kft",
         "dates": "May 2021 – May 2022",
         "position": "Senior Full-stack Lead Developer (Freelance)",
-        "description": "Led development of a full-scale e-commerce platform and internal back-office tools, designing architecture and delivering features using Laravel, Vue.js, and AWS."
+        "description": "Led development of a full-scale e-commerce platform and internal back-office tools, designing architecture and delivering features using Laravel, Vue.js, and AWS.",
+        "altLogo": "Future Trade"
       },
       {
         "company": "Risskov Autoferien AG",
@@ -167,7 +174,8 @@
         "company": "TechTeamer Kft &\nMikroCredit Zrt",
         "dates": "2018 – 2019",
         "position": "Backend Developer",
-        "description": "Developed CRM and financial systems using a microservices approach, focusing on reporting, data integrity, and scalable backend architecture."
+        "description": "Developed CRM and financial systems using a microservices approach, focusing on reporting, data integrity, and scalable backend architecture.",
+        "altLogo": "MicroCredit"
       },
       {
         "company": "WebShippy Kft",
@@ -187,7 +195,8 @@
         "company": "Érték-Rendszerház Kft &\nWore Hungary Kft",
         "dates": "2014 – 2016",
         "position": "Junior Full-stack Developer, System Admin",
-        "description": "Developed webshops, CMS, CRM and factory management systems, as well as internal tools and Android applications, gaining broad experience across full-stack development and system administration."
+        "description": "Developed webshops, CMS, CRM and factory management systems, as well as internal tools and Android applications, gaining broad experience across full-stack development and system administration.",
+        "altLogo": "Érték-Rendszerház"
       }
     ]
   },
