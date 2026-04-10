@@ -40,13 +40,14 @@ const links = content.socialLinks.links
       >
         <i class={`bx ${icon} text-2xl`}></i>
       </a>
-    ) : (
-      <span
-        data-scroll={scrollTo}
-        class={`cursor-pointer px-2 ${colorScheme[scheme].base} ${colorScheme[scheme].hover}`}
-      >
-        <i class={`bx ${icon} text-2xl`}></i>
-      </span>
-    )
+      ) : (
+        <span
+          data-action="scroll"
+          data-target={scrollTo}
+          class={`cursor-pointer px-2 ${colorScheme[scheme].base} ${colorScheme[scheme].hover}`}
+        >
+          <i class={`bx ${icon} text-2xl`}></i>
+        </span>
+      )
   ))}
 </div>

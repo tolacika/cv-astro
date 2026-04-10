@@ -2,31 +2,74 @@
 import MainHead from "../components/MainHead.astro";
 import type { MainHeadProps } from "../types";
 import "../styles/global.css";
+import LlmModal from "../components/LlmModal.astro";
 
 const { title, description } = Astro.props as MainHeadProps;
 ---
 
-<html lang="en">
+<html lang="en" data-action data-target>
   <head>
     <MainHead title={title} description={description} />
   </head>
   <body class="antialiased">
-    <div class="relative">
+    <LlmModal />
+    <div class="relative" data-action data-target>
       <slot />
     </div>
 
     <script>
+      function handleScroll(target: string) {
+        const el = document.querySelector(target);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function handleOpenModal(target: string) {
+        const el = document.querySelector(target);
+        if (el instanceof HTMLDialogElement) {
+          el.showModal();
+        } else if (el instanceof HTMLElement) {
+          el.classList.remove("hidden");
+        }
+      }
+
+      function handleCloseModal() {
+        document
+          .querySelectorAll('*[role="dialog"]:not(.hidden)')
+          .forEach((el) => {
+            if (el instanceof HTMLDialogElement) {
+              el.close();
+            } else if (el instanceof HTMLElement) {
+              el.classList.add("hidden");
+            }
+          });
+        /*document
+          .querySelectorAll('[role="dialog"][aria-modal="true"].hidden')
+          .forEach((el) => {
+            el.classList.remove("hidden");
+          });*/
+      }
+
       document.addEventListener("click", (e) => {
-        if (!(e.target instanceof HTMLElement)) return;
-
-        const el = e.target.closest("[data-scroll]");
+        const target = e.target;
+        if (!(target instanceof HTMLElement || target instanceof SVGElement)) return;
+        
+        const el = target.closest("[data-action]");
         if (!(el instanceof HTMLElement)) return;
+        
+        const action = el.dataset.action;
+        const actionTarget = el.dataset.target;
 
-        const id = el.dataset.scroll;
-        if (!id) return;
-
-        const target = document.querySelector(id);
-        if (target) target.scrollIntoView({ behavior: "smooth" });
+        switch (action) {
+          case "scroll":
+            if (actionTarget) handleScroll(actionTarget);
+            break;
+          case "openModal":
+            if (actionTarget) handleOpenModal(actionTarget);
+            break;
+          case "closeModal":
+            handleCloseModal();
+            break;
+        }
       });
     </script>
   </body>

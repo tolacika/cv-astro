@@ -1,0 +1,45 @@
+---
+import { getContent, type Content } from "../lib/content";
+import { generateLlmPrompt, type LlmGeneratorInput } from "../lib/generator";
+import { getPosts, type Post, type PostContent } from "../lib/posts";
+import Button from "./Button.astro";
+import Modal from "./Modal.astro";
+const env = import.meta.env.DEV ? "development" : "production";
+
+const content = await getContent() as Content;
+const posts = getPosts({ type: "perspective", limit: 3 })
+const getPost = (slug: string) => posts.find(p => p.slug == slug)
+
+const postBackground: Post = getPost("perspective-background") as Post;
+const contentBackground: PostContent = await postBackground.content();
+
+const postVision: Post = getPost("perspective-vision") as Post;
+const contentVision: PostContent = await postVision.content();
+
+const postNotes: Post = getPost("perspective-side-quests") as Post;
+const contentNotes: PostContent = await postNotes.content();
+
+const input: LlmGeneratorInput = {
+  translations: content,
+  featuredPosts: [] as unknown as [[Post, PostContent]],
+  perspectivePosts: [
+    [postBackground, contentBackground],
+    [postVision, contentVision],
+    [postNotes, contentNotes]
+  ] as unknown as [[Post, PostContent]],
+};
+---
+
+<Modal id="llm-context" title="LLM Context">
+  <!-- content -->
+  <div>
+    <textarea
+      id="llm-context-textarea"
+      class="w-full h-96"
+    >{generateLlmPrompt(input, env)}</textarea>
+  </div>
+  <div slot="footer">
+    <Button variant="outline" type="button" onclick="navigator.clipboard.writeText(document.getElementById('llm-context-textarea').value)">Copy</Button>
+    <Button variant="outline" action="closeModal">Close</Button>
+  </div>
+</Modal>

@@ -7,23 +7,28 @@
     "items": [
       {
         "label": "About",
-        "href": "#about"
+        "action": "scroll",
+        "target": "#about"
       },
       {
         "label": "Services",
-        "href": "#services"
+        "action": "scroll",
+        "target": "#services"
       },
       {
         "label": "Work",
-        "href": "#work"
+        "action": "scroll",
+        "target": "#work"
       },
       {
         "label": "Contact",
-        "href": "#contact"
+        "action": "scroll",
+        "target": "#contact"
       },
       {
         "label": "LLM.TXT",
-        "action": "modal-llm-context"
+        "action": "openModal",
+        "target": "#llm-context"
       }
     ]
   },

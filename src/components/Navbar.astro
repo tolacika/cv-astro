@@ -23,12 +23,23 @@ const { content } = Astro.props as { content: Content };
           {
             content.nav.items.map((item) => (
               <li class="group">
-                <span
-                  class="cursor-pointer px-3 pt-0.5 font-header font-semibold uppercase text-white"
-                  data-scroll={item.href}
-                >
-                  {item.label}
-                </span>
+                {"href" in item && item.href ? (
+                  <a
+                    href={item.href}
+                    target={item.target || "_self"}
+                    class="cursor-pointer px-3 pt-0.5 font-header font-semibold uppercase text-white"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <span
+                    class="cursor-pointer px-3 pt-0.5 font-header font-semibold uppercase text-white"
+                    data-action={item.action}
+                    data-target={item.target}
+                  >
+                    {item.label}
+                  </span>
+                )}
                 <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow" />
               </li>
             ))
@@ -61,13 +72,25 @@ const { content } = Astro.props as { content: Content };
         {
           content.nav.items.map((item) => (
             <li class="py-2">
-              <span
-                class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
-                data-scroll={item.href}
-                data-close
-              >
-                {item.label}
-              </span>
+              {"href" in item && item.href ? (
+                <a
+                  href={item.href}
+                  target={item.target || "_self"}
+                  class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+                  data-close
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <span
+                  class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white"
+                  data-action={item.action}
+                  data-target={item.target}
+                  data-close
+                >
+                  {item.label}
+                </span>
+              )}
             </li>
           ))
         }
@@ -97,11 +120,8 @@ const { content } = Astro.props as { content: Content };
   openBtn?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
 
-  // Handle close
-  document.querySelectorAll("[data-close]").forEach((el) => {
-    el.addEventListener("click", () => {
-      closeMenu();
-    });
+  document.querySelectorAll("#mobile-menu [data-action]").forEach((el) => {
+    el.addEventListener("click", closeMenu);
   });
 
   // Navbar background on scroll

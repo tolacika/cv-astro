@@ -42,11 +42,13 @@ const navItemBaseSchema = z.object({
 
 const navItemWithHrefSchema = navItemBaseSchema.extend({
   href: z.string(),
+  target: z.string().optional(),
   action: z.undefined(),
 });
 
 const navItemWithActionSchema = navItemBaseSchema.extend({
-  action: z.string(),
+  action: z.enum(["openModal", "scroll"]),
+  target: z.string(),
   href: z.undefined(),
 });
 
