@@ -1,43 +1,92 @@
-# Astro Starter Kit: Minimal
+# CV-Astro
 
-```sh
-npm create astro@latest -- --template minimal
+A modern, open-source static portfolio engine built with Astro + Tailwind v4.
+
+## Features
+
+- **Static HTML output** — SEO + LLM friendly
+- **Data-driven from JSON** — CMS-ready
+- **View Transitions** — SPA-like UX without SPA complexity
+- **Native page navigation** — real URLs, no interception
+- **Type-safe** — types derived from JSON schema
+
+## Architecture
+
+```
+content (JSON)
+        ↓
+typed loader (getContent / getPosts)
+        ↓
+Astro pages (static routes)
+        ↓
+Astro components (pure renderers)
+        ↓
+View Transitions (UX enhancement)
+        ↓
+static HTML output
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Philosophy
 
-## 🚀 Project Structure
+> One user → one JSON → one schema → one renderer
 
-Inside of your Astro project, you'll see the following folders and files:
+> Content is static. Navigation is real. Enhancement is optional.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+> HTML is the final API.
+
+## Project Structure
+
+```
+src/
+  content/
+    en.json              # content data
+
+  lib/
+    content.ts           # content loader
+    posts.ts              # posts loader
+    renderPost.ts         # markdown renderer
+
+  components/
+    Navbar.astro
+    Hero.astro
+    Intro.astro
+    WorkExperience.astro
+    Services.astro
+    ProjectFeatured.astro
+    Perspective.astro
+    ContactDetails.astro
+    FollowMe.astro
+    PostCard.astro
+    PostView.astro
+
+  layouts/
+    Layout.astro          # includes ViewTransitions
+
+  pages/
+    index.astro
+    post/
+      [slug].astro        # dynamic static pages
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Command           | Action                                      |
+| :---------------- | :------------------------------------------ |
+| `npm install`     | Installs dependencies                       |
+| `npm run dev`     | Starts local dev server at `localhost:3000` |
+| `npm run build`   | Build production site to `./dist/`          |
+| `npm run preview` | Preview build locally                       |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deployment
 
-## 🧞 Commands
+Deploys on free hosting (GitHub Pages, Netlify).
 
-All commands are run from the root of the project, from a terminal:
+## Tech Stack
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- Astro
+- Tailwind v4
+- Markdown rendering
 
-## 👀 Want to learn more?
+## License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+MIT
