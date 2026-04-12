@@ -1,0 +1,14 @@
+---
+import type { Content, ImageType, Tag } from "../lib/content";
+import HeroTag from "./HeroTag.astro";
+import TagView from "./TagView.astro";
+
+const { content, tag } = Astro.props as { content: Content, tag: Tag };
+
+---
+
+<main>
+  <HeroTag content={content} tag={tag} />
+
+  <TagView content={content} tag={tag} />
+</main>

@@ -8,6 +8,7 @@ import FollowMe from "./FollowMe.astro";
 import Perspective from "./Perspective.astro";
 import ProjectFeatured from "./ProjectFeatured.astro";
 import HeroMain from "./HeroMain.astro";
+import PostScriptum from "./PostScriptum.astro";
 
 const { content } = Astro.props as { content: Content };
 
@@ -24,6 +25,8 @@ const { content } = Astro.props as { content: Content };
   <ProjectFeatured content={content} />
 
   <WorkExperience content={content} />
+
+  <PostScriptum content={content} />
 
   <ContactDetails content={content} />
 

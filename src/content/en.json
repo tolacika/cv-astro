@@ -150,6 +150,12 @@
         "company": "Archbau GmbH",
         "dates": "Jun 2025 – Mar 2026",
         "position": "Field Assistant (Archäology – Side Project)",
+        "patterns": [
+          "physical-to-digital",
+          "data-pipelines",
+          "time-sensitive"
+        ],
+        "tags": [],
         "description": "Worked on-site in archaeological excavations at Archbau GmbH, supporting field preparation and documentation while analyzing how data flows from physical layers into formal records. Explored opportunities to modernize documentation workflows through automation and tooling, encountering the real-world constraints of regulation, legacy processes, and irreversible data capture.",
         "readMore": [
           "Archaeological excavation is often perceived as manual labor, but in practice it operates as a high-stakes data transformation system. Each layer of soil removed represents a permanent loss of context, making documentation the primary output of the entire process. Working with Archbau GmbH, I participated in preparing excavation sites for structured recording, ensuring that features, layers, and findings could be documented accurately for further analysis and reporting.",
@@ -163,6 +169,23 @@
         "company": "NextTuesday GmbH",
         "dates": "Sept 2024 – Mar 2025",
         "position": "Senior PHP Engineer",
+        "patterns": [
+          "legacy-modernization",
+          "external-dependencies"
+        ],
+        "tags": [
+          "php",
+          "custom-framework",
+          "laravel",
+          "mysql",
+          "react",
+          "neos-cms",
+          "javascript",
+          "typescript",
+          "html",
+          "css",
+          "api"
+        ],
         "description": "Delivered client-facing systems within NextTuesday GmbH, working across Laravel, React, and Neos CMS while adapting to a restructuring environment. Contributed to multiple projects under shifting team conditions, maintaining delivery continuity as the department was gradually phased out.",
         "readMore": [
           "Working at NextTuesday GmbH involved delivering custom software solutions for a range of clients, including industrial and logistics-focused companies. Projects spanned modern application development with Laravel and React, alongside content-driven systems built on Neos CMS and a legacy PHP-based framework. The work required adapting to different architectural styles, integrating business-specific requirements, and maintaining consistency across heterogeneous systems.",
@@ -176,6 +199,19 @@
         "company": "Ordio GmbH",
         "dates": "Feb 2024 – Jun 2024",
         "position": "Senior Full-stack Developer",
+        "patterns": [
+          "data-pipelines",
+          "external-dependencies",
+          "navigation"
+        ],
+        "tags": [
+          "api",
+          "php",
+          "mysql",
+          "symfony",
+          "typescript",
+          "react"
+        ],
         "description": "Worked on workforce management systems at Ordio GmbH, focusing on integrations, data migration, and process-oriented interfaces for non-technical users. Contributed to bridging external HR systems with internal workflows in a fast-evolving product environment.",
         "readMore": [
           "At Ordio GmbH, I worked on a platform designed to digitize and automate workforce operations for deskless industries such as hospitality, retail, and logistics. The system combines shift planning, time tracking, employee management, and payroll processes into a unified environment, addressing operational complexity that is typically handled through fragmented tools like spreadsheets and manual coordination.",
@@ -189,6 +225,19 @@
         "company": "Diligent Corp.",
         "dates": "Jun 2022 – Apr 2023",
         "position": "Senior Backend Developer",
+        "patterns": [
+          "legacy-modernization",
+          "external-dependencies",
+          "data-pipelines"
+        ],
+        "tags": [
+          "php",
+          "laravel",
+          "mysql",
+          "typescript",
+          "react",
+          "aws"
+        ],
         "description": "Worked on governance and compliance systems at Diligent Corporation, contributing to legacy PHP systems while adapting to a transition toward AWS-based infrastructure and TypeScript. Gained experience operating within large-scale, high-complexity systems where correctness, security, and auditability are critical.",
         "readMore": [
           "At Diligent Corporation, I worked on software supporting governance, risk, and compliance processes for enterprise organizations. These systems operate in high-stakes environments where data integrity, security, and traceability are essential, as they directly support board-level decision-making and regulatory processes. The platform integrates multiple domains, including governance workflows, audit trails, and risk management, forming a complex and tightly coupled system landscape.",
@@ -201,6 +250,19 @@
         "company": "Future Property Trade Kft",
         "dates": "May 2021 – May 2022",
         "position": "Senior Full-stack Lead Developer (Freelance)",
+        "patterns": [
+          "physical-to-digital",
+          "external-dependencies",
+          "time-sensitive"
+        ],
+        "tags": [
+          "php",
+          "laravel",
+          "mysql",
+          "javascript",
+          "vue",
+          "aws"
+        ],
         "description": "Building a scalable social commerce platform that turned influencer reach into fully operational product pipelines. Where audience, manufacturing, and logistics converged into a single system designed for velocity and scale.",
         "readMore": [
           "At Future Property Trade, I led the development of a social commerce platform designed to connect high-reach influencers with end-to-end merchandise production and global fulfillment. The goal was to transform audience attention into deployable product lines, enabling creators to launch branded storefronts with minimal friction. The system combined customizable landing experiences, product configuration, and scalable backend processes to support rapid onboarding and high variability across partners.",
@@ -212,6 +274,21 @@
         "company": "Risskov Autoferien AG",
         "dates": "Jan 2020 – Apr 2021",
         "position": "Senior Full-stack Developer",
+        "patterns": [
+          "physical-to-digital",
+          "external-dependencies",
+          "time-sensitive"
+        ],
+        "tags": [
+          "api",
+          "php",
+          "laravel",
+          "javascript",
+          "vue",
+          "graphql",
+          "azure",
+          "mysql"
+        ],
         "description": "Developed and maintained core systems at Risskov Autoferien AG, contributing to a multi-country travel platform focused on last-minute hotel capacity. Worked across booking flows, partner management, and public APIs within a distributed ecosystem built on Laravel, Vue.js, GraphQL, and Azure.",
         "readMore": [
           "At Risskov Autoferien AG, I worked on a platform that connects travelers with discounted hotel stays across Europe by utilizing unused capacity in partner hotels. The system operates as a time-sensitive marketplace, where availability, pricing, and package composition must be continuously synchronized between internal systems and external partners. With hundreds of hotels and multiple country-specific platforms, the environment required handling distributed data, localization, and high variability in partner input.",
@@ -225,6 +302,19 @@
         "company": "TechTeamer Kft &\nMikroCredit Zrt",
         "dates": "2018 – 2019",
         "position": "Backend Developer",
+        "patterns": [
+          "data-pipelines",
+          "external-dependencies",
+          "legacy-modernization"
+        ],
+        "tags": [
+          "api",
+          "php",
+          "laravel",
+          "javascript",
+          "react",
+          "mysql"
+        ],
         "description": "Designing the backbone of a digital lending system where identity, risk, and money flow had to align in real time. A microservice-driven architecture turning fragmented financial operations into a coherent, auditable system.",
         "readMore": [
           "At TechTeamer and Microcredit (MiniKölcsön), I worked on systems operating at the intersection of digital identity and online lending. TechTeamer’s core product, FaceKom, provided AI-assisted remote identification and video-based verification, enabling financial services to onboard customers without physical presence . This capability was directly integrated into Microcredit’s lending platform, where users could apply for small loans entirely online, from identity verification to approval and disbursement.",
@@ -237,7 +327,18 @@
       {
         "company": "WebShippy Kft",
         "dates": "2018",
-        "position": "Full-stack Developer",
+        "position": "Full-stack Developer (Freelance)",
+        "patterns": [
+          "physical-to-digital",
+          "external-dependencies",
+          "time-sensitive"
+        ],
+        "tags": [
+          "php",
+          "custom-framework",
+          "api",
+          "javascript"
+        ],
         "description": "Building the operational layer behind e-commerce, where digital orders become physical movement. Contributing to a system designed to scale from individual webshops toward platform-level commerce infrastructure.",
         "readMore": [
           "At Webshippy, I worked on the core systems that connected external webshops to an internal, automation-driven fulfillment platform. My primary focus was the API layer, enabling bidirectional data flow between custom-built stores and the Webshippy system, covering customers, products, stock levels, and orders. This integration layer allowed external systems to treat logistics as an extension of their own platform, with real-time synchronization ensuring that inventory, order status, and shipment data remained consistent across boundaries.",
@@ -251,6 +352,18 @@
         "company": "Manna Kreatív Zrt.",
         "dates": "2017",
         "position": "Junior Full-stack Developer, Service Desk",
+        "patterns": [
+          "physical-to-digital",
+          "data-pipelines",
+          "external-dependencies"
+        ],
+        "tags": [
+          "api",
+          "php",
+          "mysql",
+          "laravel",
+          "javascript"
+        ],
         "description": "Evolving a commerce system where product, story, and customer communication form a single continuous experience. Bridging handcrafted manufacturing with a tightly integrated digital ecosystem built around trust, feedback, and narrative.",
         "readMore": [
           "At MannaSzappan (Manna Soap), I worked on a system where the product was only one layer of a much larger structure. The company originated from a personal problem, when its founder began experimenting with soap-making to solve skin issues within her family, eventually growing into a widely recognized natural cosmetics brand used by tens of thousands of customers. This origin shaped the entire business: strong emphasis on authenticity, handcrafted production, and especially direct, ongoing communication with customers.",
@@ -264,6 +377,19 @@
         "company": "Érték-Rendszerház Kft &\nWore Hungary Kft",
         "dates": "2014 – 2016",
         "position": "Junior Full-stack Developer, System Admin",
+        "patterns": [
+          "physical-to-digital",
+          "data-pipelines",
+          "external-dependencies",
+          "navigation"
+        ],
+        "tags": [
+          "api",
+          "php",
+          "custom-framework",
+          "mysql",
+          "javascript"
+        ],
         "description": "Worked across a network of small businesses spanning furniture manufacturing, retail, and hospitality, contributing to early-stage system development, internal tooling, and operational processes. Gained first-hand exposure to how disconnected business units attempt to function as a larger system, and where those connections break down.",
         "readMore": [
           "My early professional experience developed within a loosely connected ecosystem of companies, including Érték-Rendszerház Kft, Wore Hungary Kft, Bella Italia Bútorház, SofaArt (Budapest and London), and a furniture production facility in Csepel. These businesses operated across manufacturing, retail, and international distribution, sharing overlapping ownership, resources, and operational dependencies, but lacking fully integrated systems to support that complexity.",
@@ -278,33 +404,39 @@
   "services": {
     "title": "System Patterns I’ve Worked With",
     "subTitle": "I design and stabilize systems that survive contact with reality. Here are the recurring patterns I have repeatedly built or improved:",
-    "services": [
+    "patterns": [
       {
+        "slug": "time-sensitive",
         "title": "Time-sensitive synchronization layers",
         "subTitle": "Real-time availability, last-minute marketplaces, logistics flows, and irreversible data capture (Risskov, WebShippy, Archbau, Ordio)",
         "icon": "content"
       },
       {
+        "slug": "data-pipelines",
         "title": "Distributed data transformation pipelines",
         "subTitle": "Moving information across incompatible domains while preserving integrity (microservices at TechTeamer, multi-country platforms at Risskov, physical-to-digital at Archbau and early furniture operations)",
         "icon": "development"
       },
       {
+        "slug": "external-dependencies",
         "title": "External dependency orchestration",
         "subTitle": "Integrating third-party HR systems, hotel partners, e-commerce platforms, and regulatory workflows without letting external volatility break the core system (Ordio, WebShippy, Risskov, Diligent, Archbau)",
         "icon": "email"
       },
       {
+        "slug": "legacy-modernization",
         "title": "Legacy modernization under live constraints",
         "subTitle": "Gradually replacing or augmenting large PHP monoliths while maintaining auditability, compliance, and delivery continuity (Diligent, NextTuesday)",
         "icon": "mobile"
       },
       {
+        "slug": "navigation",
         "title": "Constraint-aware navigation systems",
         "subTitle": "Guiding users through combinatorial or high-variability spaces (furniture configurator, workforce process interfaces at Ordio)",
         "icon": "graphics"
       },
       {
+        "slug": "physical-to-digital",
         "title": "Physical-to-digital feedback loops",
         "subTitle": "Bridging sensors, manual fieldwork, and formal records where reality itself is the source of truth (Archbau excavation, early hardware prototypes, warehouse automation at WebShippy)",
         "icon": "design"
@@ -372,5 +504,167 @@
   "projectFeatured": {
     "title": "Featured Projects",
     "subTitle": "A handful of systems, tools, and projects I’ve built or contributed to."
-  }
+  },
+  "tags": [
+    {
+      "slug": "php",
+      "label": "PHP",
+      "teaser": "Where messy business logic meets long-lived systems.",
+      "explanation": [
+        "I’ve spent most of my career working in PHP across monoliths, APIs, and evolving architectures, often in systems that could not be rewritten but had to be improved under real constraints.",
+        "My focus is not just writing PHP, but stabilizing and extending systems where correctness, backward compatibility, and incremental change matter more than ideal architecture."
+      ],
+      "seeAlso": ["laravel", "symfony", "custom-framework"]
+    },
+    {
+      "slug": "custom-framework",
+      "label": "Custom Framework",
+      "teaser": "Understanding systems without the safety net.",
+      "explanation": [
+        "Worked extensively in proprietary and legacy frameworks where conventions are implicit and documentation is incomplete, requiring deep system reading and reconstruction.",
+        "This experience shaped my ability to reason about architecture beyond tooling, focusing on data flow, coupling, and hidden assumptions."
+      ],
+      "seeAlso": ["php", "legacy-modernization", "api"]
+    },
+    {
+      "slug": "laravel",
+      "label": "Laravel",
+      "teaser": "A structured layer over chaotic domains.",
+      "explanation": [
+        "Used Laravel across multiple production systems, from API backends to full platforms, often as a stabilizing layer in otherwise fragmented architectures.",
+        "I treat Laravel not as an end-state, but as a tool for structuring domain logic, enforcing boundaries, and enabling gradual evolution."
+      ],
+      "seeAlso": ["php", "api", "mysql"]
+    },
+    {
+      "slug": "mysql",
+      "label": "MySQL",
+      "teaser": "Where truth is stored, approximated, and occasionally negotiated.",
+      "explanation": [
+        "Designed and maintained relational data models in systems where consistency, performance, and historical traceability are critical.",
+        "Worked with real-world data inconsistencies, migrations, and synchronization challenges across distributed systems."
+      ],
+      "seeAlso": ["php", "api", "graphql"]
+    },
+    {
+      "slug": "react",
+      "label": "React",
+      "teaser": "Interfaces for navigating complex systems.",
+      "explanation": [
+        "Built React-based interfaces for operational tools and client-facing systems, focusing on clarity in high-variability workflows.",
+        "Emphasis on translating complex backend processes into understandable user interactions rather than purely visual components."
+      ],
+      "seeAlso": ["typescript", "api", "javascript"]
+    },
+    {
+      "slug": "neos-cms",
+      "label": "Neos CMS",
+      "teaser": "Content systems where structure meets editorial reality.",
+      "explanation": [
+        "Worked with Neos CMS in client projects where content, layout, and business logic intersect in non-trivial ways.",
+        "Focused on adapting structured systems to editorial workflows without breaking consistency or flexibility."
+      ],
+      "seeAlso": ["php", "custom-framework", "html"]
+    },
+    {
+      "slug": "javascript",
+      "label": "JavaScript",
+      "teaser": "The glue between intention and interaction.",
+      "explanation": [
+        "Used JavaScript across frontend and integration layers to connect user interaction with system behavior.",
+        "Experience ranges from lightweight enhancements to complex state-driven interfaces."
+      ],
+      "seeAlso": ["typescript", "react", "vue"]
+    },
+    {
+      "slug": "typescript",
+      "label": "TypeScript",
+      "teaser": "Making implicit assumptions visible.",
+      "explanation": [
+        "Adopted TypeScript in larger systems to improve maintainability, especially where multiple developers and services interact.",
+        "Used it as a tool to reduce ambiguity in evolving architectures rather than just for type safety."
+      ],
+      "seeAlso": ["javascript", "react", "api"]
+    },
+    {
+      "slug": "html",
+      "label": "HTML",
+      "teaser": "The structural layer everything else depends on.",
+      "explanation": [
+        "Worked extensively with HTML in CMS-driven systems and frontend architectures where structure must remain adaptable.",
+        "Focus on semantic clarity and maintainability in systems where content changes frequently."
+      ],
+      "seeAlso": ["css", "javascript", "neos-cms"]
+    },
+    {
+      "slug": "css",
+      "label": "CSS",
+      "teaser": "Balancing structure, flexibility, and constraint.",
+      "explanation": [
+        "Used CSS to support complex UI systems, often in environments where design systems evolve over time.",
+        "Focus on maintainable styling approaches rather than pixel-perfect isolation."
+      ],
+      "seeAlso": ["html", "react", "vue"]
+    },
+    {
+      "slug": "api",
+      "label": "API",
+      "teaser": "Where systems agree to understand each other.",
+      "explanation": [
+        "Designed and integrated APIs across multiple domains, including logistics, HR systems, and partner platforms.",
+        "Experienced in handling inconsistent external data, versioning challenges, and long-term contract stability."
+      ],
+      "seeAlso": ["php", "graphql", "aws"]
+    },
+    {
+      "slug": "symfony",
+      "label": "Symfony",
+      "teaser": "Structured foundations in complex environments.",
+      "explanation": [
+        "Worked with Symfony in systems requiring strong architectural boundaries and long-term maintainability.",
+        "Used in contexts where explicit configuration and modularity are preferred over convention."
+      ],
+      "seeAlso": ["php", "api", "mysql"]
+    },
+    {
+      "slug": "aws",
+      "label": "AWS",
+      "teaser": "Infrastructure that scales, until reality interferes.",
+      "explanation": [
+        "Worked with AWS in evolving systems transitioning toward cloud-native architectures.",
+        "Exposure includes deployment, service integration, and understanding trade-offs between scalability and complexity."
+      ],
+      "seeAlso": ["api", "typescript", "distributed-systems"]
+    },
+    {
+      "slug": "vue",
+      "label": "Vue.js",
+      "teaser": "Pragmatic interfaces for fast-moving systems.",
+      "explanation": [
+        "Built Vue.js applications in production systems where rapid iteration and clarity were essential.",
+        "Often used in combination with Laravel to create cohesive full-stack solutions."
+      ],
+      "seeAlso": ["javascript", "laravel", "html"]
+    },
+    {
+      "slug": "graphql",
+      "label": "GraphQL",
+      "teaser": "Querying systems that don’t naturally align.",
+      "explanation": [
+        "Used GraphQL in distributed environments to provide flexible data access across multiple domains.",
+        "Focus on managing complexity, avoiding over-fetching, and maintaining clarity in schema design."
+      ],
+      "seeAlso": ["api", "mysql", "typescript"]
+    },
+    {
+      "slug": "azure",
+      "label": "Azure",
+      "teaser": "Enterprise infrastructure in structured ecosystems.",
+      "explanation": [
+        "Worked with Azure-based systems in multi-country and enterprise environments.",
+        "Exposure includes deployment, service integration, and operating within predefined infrastructure constraints."
+      ],
+      "seeAlso": ["api", "cloud", "distributed-systems"]
+    }
+  ]
 }

@@ -95,6 +95,7 @@ const { title, description } = Astro.props as MainHeadProps;
             handleCloseModal();
             break;
           case "collapse":
+            if (target.hasAttribute("href") && target.getAttribute("href")) return;
             if (actionTarget) handleCollapse(actionTarget);
             break;
         }

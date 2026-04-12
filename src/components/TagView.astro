@@ -1,0 +1,16 @@
+---
+import type { Content, Tag } from "../lib/content";
+
+const { content, tag } = Astro.props as {
+  content: Content;
+  tag: Tag;
+};
+
+---
+<section id="content" class="bg-grey-60">
+  <div class="container py-16 md:py-20 bg-white">
+    <article id={tag.slug} class="text-lg">
+      {tag.explanation.map(exp => <p>{exp}</p>)}
+    </article>
+  </div>
+</section>

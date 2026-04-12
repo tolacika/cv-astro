@@ -72,6 +72,7 @@ export async function createLlmInput(): Promise<LlmGeneratorInput> {
 
 export function generateLlmPromptBody(input: LlmGeneratorInput): string[] {
   const { translations, featuredPosts, perspectivePosts } = input;
+  const getPattern = (slug:string) => translations.services.patterns.find(p => p.slug == slug);
 
   const heroSection = `
 ### HERO SECTION
@@ -97,7 +98,7 @@ languages: ${translations.intro.langs.items.map(l => `${l.label}: ${l.proficienc
 ${escapeForJson(translations.workExperience.title)}
 ${escapeForJson(translations.workExperience.subTitle)}
 jobs:
-${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - ${escapeForJson(job.description)}\n` + (job.readMore || []).map(p => `    - ${escapeForJson(p)}`).join("\n")).join("\n")}
+${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - patterns: ${job.patterns.map(p => escapeForJson(getPattern(p)!.title)).join(", ")}\n    - tags: ${job.tags.join(", ")}\n    - ${escapeForJson(job.description)}\n` + (job.readMore || []).map(p => `    - ${escapeForJson(p)}`).join("\n")).join("\n")}
 `;
 
   const postScriptumSection = `
@@ -108,12 +109,12 @@ ${translations.postScriptum.content.map(escapeForJson).join("\n")}
 `;
 
   const servicesSection = `
-### SERVICES
+### PATTERNS
 
 ${escapeForJson(translations.services.title)}
 ${escapeForJson(translations.services.subTitle)}
-services:
-${translations.services.services.map(s => `  - **${escapeForJson(s.title)}:** ${escapeForJson(s.subTitle)}`).join("\n")}
+patterns:
+${translations.services.patterns.map(s => `  - **${escapeForJson(s.title)}:** ${escapeForJson(s.subTitle)}`).join("\n")}
 `;
 
   const contactSection = `
