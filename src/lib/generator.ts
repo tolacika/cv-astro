@@ -24,7 +24,12 @@ function truncateContent(content: string, maxLength: number = 2000): string {
 function formatPostForLlm(post: PostMeta, content: string): string {
   const meta = post.meta;
   const seo = meta?.seo ?? { title: "", description: "" };
-
+//   - company: ${meta?.company ?? "null"}
+//   - period: ${meta?.period ?? "null"}
+// - meta:
+//   - seo:
+//     - title: ${escapeForJson(seo.title)}
+//     - description: ${escapeForJson(seo.description)}
   return `
 #### POST
 - slug: ${escapeForJson(post.slug)}
@@ -32,12 +37,7 @@ function formatPostForLlm(post: PostMeta, content: string): string {
 - title: ${escapeForJson(post.title)}
 - teaser: ${escapeForJson(post.teaser)}
 - cta: ${post.cta ? escapeForJson(post.cta) : "null"}
-- meta:
-  - company: ${meta?.company ?? "null"}
-  - period: ${meta?.period ?? "null"}
-  - seo:
-    - title: ${escapeForJson(seo.title)}
-    - description: ${escapeForJson(seo.description)}
+- date: ${post.date ? escapeForJson(post.date + "") : "null"}
 - content: |
 ${content.split("\n").map(line => "  " + line).join("\n")}
 `;
@@ -93,14 +93,23 @@ languages: ${translations.intro.langs.items.map(l => `${l.label}: ${l.proficienc
 
   const workExperienceSection = `
 ### WORK EXPERIENCE
+
 ${escapeForJson(translations.workExperience.title)}
 ${escapeForJson(translations.workExperience.subTitle)}
 jobs:
-${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - ${job.description}\n` + (job.readMore || []).map(p => `    - ${p}`).join("\n")).join("\n")}
+${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - ${escapeForJson(job.description)}\n` + (job.readMore || []).map(p => `    - ${escapeForJson(p)}`).join("\n")).join("\n")}
+`;
+
+  const postScriptumSection = `
+### ${escapeForJson(translations.postScriptum.title)}
+
+${escapeForJson(translations.postScriptum.subTitle)}
+${translations.postScriptum.content.map(escapeForJson).join("\n")}
 `;
 
   const servicesSection = `
 ### SERVICES
+
 ${escapeForJson(translations.services.title)}
 ${escapeForJson(translations.services.subTitle)}
 services:
@@ -128,6 +137,7 @@ ${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateConte
     heroSection,
     introSection,
     workExperienceSection,
+    postScriptumSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -140,6 +150,7 @@ export function generateLlmPrompt(input: LlmGeneratorInput): string {
     heroSection,
     introSection,
     workExperienceSection,
+    postScriptumSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -155,6 +166,7 @@ ${servicesSection}
 ${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
+${postScriptumSection}
 
 Based on the above information, provide a comprehensive summary of Marshall Laszlo Toth's professional profile, skills, work history, and the specific projects outlined.`;
 
@@ -166,6 +178,7 @@ export function generateLlmPromptDev(input: LlmGeneratorInput): string {
     heroSection,
     introSection,
     workExperienceSection,
+    postScriptumSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -269,6 +282,7 @@ ${servicesSection}
 ${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
+${postScriptumSection}
 
 -------------------------
 ## JOB AD
@@ -284,6 +298,7 @@ export function generateLlmPromptResearch(input: LlmGeneratorInput): string {
     heroSection,
     introSection,
     workExperienceSection,
+    postScriptumSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -354,7 +369,6 @@ Use clear sections:
 - Summary
 - Key Insights
 - Portfolio Ideas
-- Recommended Project (detailed)
 - How to Stand Out
 
 -------------------------
@@ -367,6 +381,7 @@ ${servicesSection}
 ${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
+${postScriptumSection}
 
 -------------------------
 ## TASK

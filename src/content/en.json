@@ -81,8 +81,8 @@
   },
   "intro": {
     "title": "Who am I?",
-    "subTitle": "I'm Laszlo Toth, a dedicated Software Engineer",
-    "paragraph": "Passionate Software Engineer with a decade of experience in various programming languages and technologies. I have deep expertise in PHP, especially Laravel, along with broad experience across multiple platforms. I focus on building efficient systems, improving processes, and delivering real-world solutions.",
+    "subTitle": "I'm Laszlo Toth, a Software Engineer who builds systems that survive contact with reality.",
+    "paragraph": "With over a decade of experience, I design and improve software that connects code, data flows, and physical processes - from Laravel-based platforms and distributed integrations to on-site archaeological documentation and early hardware experiments. I’m particularly drawn to the places where systems bend: where data doesn’t flow cleanly, where reality introduces friction, and where manual work quietly appears.",
     "skills": [
       {
         "name": "PHP / Laravel",
@@ -276,39 +276,48 @@
     ]
   },
   "services": {
-    "title": "Building systems across software and the real world",
-    "subTitle": "I work across backend, frontend, infrastructure, and hardware - connecting ideas, systems, and teams into working solutions.",
+    "title": "System Patterns I’ve Worked With",
+    "subTitle": "I design and stabilize systems that survive contact with reality. Here are the recurring patterns I have repeatedly built or improved:",
     "services": [
       {
-        "title": "System Architecture",
-        "subTitle": "Designing scalable systems from idea to production - balancing business needs, technical constraints, and long-term maintainability.",
+        "title": "Time-sensitive synchronization layers",
+        "subTitle": "Real-time availability, last-minute marketplaces, logistics flows, and irreversible data capture (Risskov, WebShippy, Archbau, Ordio)",
         "icon": "content"
       },
       {
-        "title": "Full-stack Development",
-        "subTitle": "Building reliable applications across backend and frontend using modern frameworks, with a strong focus on performance and clarity.",
+        "title": "Distributed data transformation pipelines",
+        "subTitle": "Moving information across incompatible domains while preserving integrity (microservices at TechTeamer, multi-country platforms at Risskov, physical-to-digital at Archbau and early furniture operations)",
         "icon": "development"
       },
       {
-        "title": "Integration & Automation",
-        "subTitle": "Connecting services, APIs, and external systems into cohesive workflows that reduce manual work and improve efficiency.",
+        "title": "External dependency orchestration",
+        "subTitle": "Integrating third-party HR systems, hotel partners, e-commerce platforms, and regulatory workflows without letting external volatility break the core system (Ordio, WebShippy, Risskov, Diligent, Archbau)",
         "icon": "email"
       },
       {
-        "title": "IoT & Hardware Systems",
-        "subTitle": "Bridging software with the physical world - working with embedded systems, sensors, and real-world constraints.",
+        "title": "Legacy modernization under live constraints",
+        "subTitle": "Gradually replacing or augmenting large PHP monoliths while maintaining auditability, compliance, and delivery continuity (Diligent, NextTuesday)",
         "icon": "mobile"
       },
       {
-        "title": "System Improvement",
-        "subTitle": "Refactoring, optimizing, and stabilizing existing systems - making them faster, cleaner, and easier to work with.",
+        "title": "Constraint-aware navigation systems",
+        "subTitle": "Guiding users through combinatorial or high-variability spaces (furniture configurator, workforce process interfaces at Ordio)",
         "icon": "graphics"
       },
       {
-        "title": "Collaboration & Delivery",
-        "subTitle": "Working closely with teams, stakeholders, and clients to turn ideas into delivered, working solutions.",
+        "title": "Physical-to-digital feedback loops",
+        "subTitle": "Bridging sensors, manual fieldwork, and formal records where reality itself is the source of truth (Archbau excavation, early hardware prototypes, warehouse automation at WebShippy)",
         "icon": "design"
       }
+    ]
+  },
+  "postScriptum": {
+    "title": "Post Scriptum",
+    "subTitle": "If you’ve read this far, thank you. Truly.",
+    "content": [
+      "Putting this page together — and living the experiences it tries to describe — took longer than I expected. Every line is a small attempt to turn messy reality into something a little more understandable. The fact that you stayed with it means a lot.",
+      "Whether a particular project, a perspective post, or just a passing detail stuck with you, I’m grateful you took the time.",
+      "I’m still the same person who prefers fixing real friction over polishing surfaces, so if anything here feels worth a conversation, I’d be happy to continue it."
     ]
   },
   "contactDetails": {
@@ -343,8 +352,8 @@
       {
         "icon": "bx-envelope",
         "head": "Email",
-        "text": "inbox@tolacika.xyz",
-        "link": "mailto:inbox@tolacika.xyz"
+        "text": "laszlo@tolacika.dev",
+        "link": "mailto:laszlo@tolacika.dev"
       },
       {
         "icon": "bxs-map-pin",

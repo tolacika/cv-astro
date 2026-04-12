@@ -151,6 +151,12 @@ const workExperienceSchema = z.object({
   jobs: z.array(jobSchema),
 });
 
+const postScriptumSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  content: z.array(z.string()),
+});
+
 const serviceSchema = z.object({
   title: z.string(),
   subTitle: z.string(),
@@ -198,6 +204,7 @@ const contentSchema = z.object({
   socialLinks: socialLinksSchema,
   intro: introSchema,
   workExperience: workExperienceSchema,
+  postScriptum: postScriptumSchema,
   services: servicesSchema,
   contactDetails: contactDetailsSchema,
   followMe: followMeSchema,
