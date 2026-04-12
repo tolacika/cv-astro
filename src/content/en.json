@@ -201,7 +201,11 @@
         "company": "Future Property Trade Kft",
         "dates": "May 2021 – May 2022",
         "position": "Senior Full-stack Lead Developer (Freelance)",
-        "description": "Led development of a full-scale e-commerce platform and internal back-office tools, designing architecture and delivering features using Laravel, Vue.js, and AWS.",
+        "description": "Building a scalable social commerce platform that turned influencer reach into fully operational product pipelines. Where audience, manufacturing, and logistics converged into a single system designed for velocity and scale.",
+        "readMore": [
+          "At Future Property Trade, I led the development of a social commerce platform designed to connect high-reach influencers with end-to-end merchandise production and global fulfillment. The goal was to transform audience attention into deployable product lines, enabling creators to launch branded storefronts with minimal friction. The system combined customizable landing experiences, product configuration, and scalable backend processes to support rapid onboarding and high variability across partners.",
+          "Beyond the technical implementation, the challenge was aligning three fundamentally different domains: influencer-driven demand, manufacturing constraints, and logistics execution. I worked across architecture and delivery, guiding the team in building a system that could translate loosely defined business ideas into structured, repeatable flows. While the project ultimately shifted direction due to organizational and investment decisions, it provided deep insight into building platforms where digital intent must reliably materialize into physical outcomes."
+        ],
         "altLogo": "Future Trade"
       },
       {
@@ -221,21 +225,39 @@
         "company": "TechTeamer Kft &\nMikroCredit Zrt",
         "dates": "2018 – 2019",
         "position": "Backend Developer",
-        "description": "Developed CRM and financial systems using a microservices approach, focusing on reporting, data integrity, and scalable backend architecture.",
+        "description": "Designing the backbone of a digital lending system where identity, risk, and money flow had to align in real time. A microservice-driven architecture turning fragmented financial operations into a coherent, auditable system.",
+        "readMore": [
+          "At TechTeamer and Microcredit (MiniKölcsön), I worked on systems operating at the intersection of digital identity and online lending. TechTeamer’s core product, FaceKom, provided AI-assisted remote identification and video-based verification, enabling financial services to onboard customers without physical presence . This capability was directly integrated into Microcredit’s lending platform, where users could apply for small loans entirely online, from identity verification to approval and disbursement.",
+          "Microcredit was among the early adopters in Hungary to offer fully digital loan processing, combining document submission, biometric validation, and automated scoring into a streamlined flow . The system had to operate under strict regulatory and security constraints, while still delivering near real-time decisions. This created a unique environment where compliance, fraud prevention, and user experience were tightly coupled and constantly in tension.",
+          "My team focused on building a microservice-based backend responsible for customer and loan bookkeeping, forming the core system of record behind the platform. This included designing services to track user states, loan lifecycles, financial events, and audit trails across distributed components. The challenge was not just storing data, but ensuring consistency across asynchronous processes such as verification, scoring, approval, and payout, where each step depended on partially available and externally validated information.",
+          "From a systems perspective, the platform functioned as a real-time financial pipeline: identity verification triggered eligibility checks, which fed into risk evaluation and ultimately into monetary transactions. Working on this system provided deep exposure to how digital trust is constructed in practice, where every approved loan is the result of multiple loosely coupled systems agreeing on a single, high-stakes decision."
+        ],
         "altLogo": "MicroCredit"
       },
       {
         "company": "WebShippy Kft",
         "dates": "2018",
         "position": "Full-stack Developer",
-        "description": "Enhanced warehouse management systems and built integrations with major e-commerce platforms, improving logistics automation and system connectivity.",
+        "description": "Building the operational layer behind e-commerce, where digital orders become physical movement. Contributing to a system designed to scale from individual webshops toward platform-level commerce infrastructure.",
+        "readMore": [
+          "At Webshippy, I worked on the core systems that connected external webshops to an internal, automation-driven fulfillment platform. My primary focus was the API layer, enabling bidirectional data flow between custom-built stores and the Webshippy system, covering customers, products, stock levels, and orders. This integration layer allowed external systems to treat logistics as an extension of their own platform, with real-time synchronization ensuring that inventory, order status, and shipment data remained consistent across boundaries.",
+          "In parallel, we built streamlined onboarding paths for widely used e-commerce platforms, enabling near one-click integrations with providers like Shopify, WooCommerce, Magento, OpenCart, and PrestaShop. The goal was to remove friction from adoption: instead of building custom integrations, merchants could plug into an existing ecosystem and immediately operate on top of shared logistics infrastructure. This shifted the system from a service provider into a platform layer.",
+          "Beyond APIs, I had a significant role in developing the operational tooling inside the warehouse itself. This included early versions of handheld “picker” devices used to navigate storage and collect items, as well as the initial “packer” software responsible for assembling shipments. One of the more interesting challenges was coordinating physical communication between packing stations and shared printing infrastructure, where timing, reliability, and clarity directly affected throughput. These systems had to function under real-world constraints, where errors are not exceptions but disruptions in physical flow.",
+          "As a team, we also contributed to shaping the early innovation and automation directions of the platform. This meant exploring how far warehouse processes could be systematized, how manual steps could be reduced or guided, and how software could better reflect the state of a constantly changing physical environment. The experience reinforced a key insight: scaling e-commerce is not just about handling more requests, but about aligning digital intent with physical execution, where every inefficiency becomes tangible, measurable, and unavoidable."
+        ],
         "logo": "webshippy"
       },
       {
         "company": "Manna Kreatív Zrt.",
         "dates": "2017",
         "position": "Junior Full-stack Developer, Service Desk",
-        "description": "Worked on a wide range of systems including CRM, order management, and marketing tools, while supporting internal operations through service desk responsibilities.",
+        "description": "Evolving a commerce system where product, story, and customer communication form a single continuous experience. Bridging handcrafted manufacturing with a tightly integrated digital ecosystem built around trust, feedback, and narrative.",
+        "readMore": [
+          "At MannaSzappan (Manna Soap), I worked on a system where the product was only one layer of a much larger structure. The company originated from a personal problem, when its founder began experimenting with soap-making to solve skin issues within her family, eventually growing into a widely recognized natural cosmetics brand used by tens of thousands of customers. This origin shaped the entire business: strong emphasis on authenticity, handcrafted production, and especially direct, ongoing communication with customers.",
+          "My role focused on evolving a large, tightly coupled monolithic system that combined webshop, CMS, CRM, mailing, chat, and operational tooling into a single integrated platform. The system handled multi-language storefronts, complex product narratives, and high-touch customer interaction flows, where communication was not an add-on but a core business function. Every product, from handcrafted soaps to skincare items, carried not just attributes, but stories, guidance, and ongoing dialogue with users.",
+          "Beyond the customer-facing layer, the system extended deep into fulfillment and manufacturing. Soap production itself followed a semi-manual, craft-driven process using natural ingredients, which introduced variability and constraints that had to be reflected in stock handling, availability, and order fulfillment. This required aligning digital representations with real-world production timelines, ensuring that what the system promised could actually be delivered within the limits of handcrafted manufacturing.",
+          "In parallel, I operated in a service desk role, acting as a bridge between business operations and the system. This included handling internal issues, resolving flow disruptions, and managing incoming requests from multiple domains such as customer support, marketing, and production. The environment continuously exposed the friction points where systems meet reality, reinforcing the importance of designing software that not only works under ideal conditions, but remains understandable and adaptable when those conditions inevitably shift."
+        ],
         "logo": "manna"
       },
       {
