@@ -128,6 +128,8 @@ const jobBaseSchema = z.object({
   position: z.string(),
   description: z.string(),
   readMore: z.array(z.string()).optional(),
+  patterns: z.array(z.string()),
+  tags: z.array(z.string()),
 });
 
 const jobWithLogoSchema = jobBaseSchema.extend({
@@ -157,16 +159,25 @@ const postScriptumSchema = z.object({
   content: z.array(z.string()),
 });
 
-const serviceSchema = z.object({
+const patternSchema = z.object({
+  slug: z.string(),
   title: z.string(),
   subTitle: z.string(),
   icon: z.enum(validIcons).optional(),
 });
 
+const tagSchema = z.object({
+  slug: z.string(),
+  label: z.string(),
+  teaser: z.string(),
+  explanation: z.array(z.string()),
+  seeAlso: z.array(z.string()),
+});
+
 const servicesSchema = z.object({
   title: z.string(),
   subTitle: z.string(),
-  services: z.array(serviceSchema),
+  patterns: z.array(patternSchema),
 });
 
 const contactItemSchema = z.object({
@@ -210,6 +221,7 @@ const contentSchema = z.object({
   followMe: followMeSchema,
   perspective: perspectiveSchema,
   projectFeatured: projectFeaturedSchema,
+  tags: z.array(tagSchema),
 });
 
 const parsedContent = contentSchema.parse(en);
@@ -257,8 +269,10 @@ export type Intro = z.infer<typeof introSchema>;
 export type Job = z.infer<typeof jobSchema>;
 export type WorkExperience = z.infer<typeof workExperienceSchema>;
 
-export type Service = z.infer<typeof serviceSchema>;
+export type Service = z.infer<typeof patternSchema>;
 export type Services = z.infer<typeof servicesSchema>;
+
+export type PostScriptum = z.infer<typeof postScriptumSchema>;
 
 export type ContactItem = z.infer<typeof contactItemSchema>;
 export type ContactDetails = z.infer<typeof contactDetailsSchema>;
@@ -266,6 +280,8 @@ export type ContactDetails = z.infer<typeof contactDetailsSchema>;
 export type FollowMe = z.infer<typeof followMeSchema>;
 export type Perspective = z.infer<typeof perspectiveSchema>;
 export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
+
+export type Tag = z.infer<typeof tagSchema>;
 
 export type Content = z.infer<typeof contentSchema>;
 
