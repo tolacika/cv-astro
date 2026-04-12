@@ -8,6 +8,7 @@ const postMetaSchema = z.object({
   teaser: z.string(),
   image: z.string().optional(),
   cta: z.string().optional(),
+  date: z.union([z.date(), z.string()]).optional(),
   meta: z.object({
     company: z.string().nullable(),
     period: z.string().nullable(),
