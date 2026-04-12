@@ -1,0 +1,20 @@
+---
+import Button from "./Button.astro";
+
+export interface TextareaCopyProps {
+  label: string;
+  id: string;
+  content:string;
+}
+
+const {label, id, content} = Astro.props as TextareaCopyProps;
+
+---
+<div>
+  <label for={id}>{label}</label>
+  <textarea
+    id={id}
+    class="w-full h-64 text-xs"
+  >{content}</textarea>
+  <Button variant="outline" type="button" onclick={`navigator.clipboard.writeText(document.getElementById('${id}').value)`}`>Copy</Button>
+</div>

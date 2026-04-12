@@ -26,7 +26,7 @@ function formatPostForLlm(post: PostMeta, content: string): string {
   const seo = meta?.seo ?? { title: "", description: "" };
 
   return `
-## POST
+#### POST
 - slug: ${escapeForJson(post.slug)}
 - type: ${escapeForJson(post.type)}
 - title: ${escapeForJson(post.title)}
@@ -45,8 +45,9 @@ ${content.split("\n").map(line => "  " + line).join("\n")}
 
 export type Environment = "development" | "production";
 
-export function generateLlmPrompt(input: LlmGeneratorInput, env: Environment = "production"): string {
+export function generateLlmPromptBody(input: LlmGeneratorInput, env: Environment = "production"): string[] {
   const { translations, featuredPosts, perspectivePosts } = input;
+  const isDev = env == "development";
 
   const heroSection = `
 ### HERO SECTION
@@ -97,8 +98,29 @@ ${featuredPosts.map(([post, content]) => formatPostForLlm(post, truncateContent(
 
   const perspectivePostsSection = `
 ### PERSPECTIVE POSTS
-${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, env == "development" ? 7000 : 3000))).join("\n\n---\n\n")}
+${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, isDev ? 7000 : 3000))).join("\n\n---\n\n")}
 `;
+  return [
+    heroSection,
+    introSection,
+    workExperienceSection,
+    servicesSection,
+    contactSection,
+    featuredPostsSection,
+    perspectivePostsSection,
+  ];
+}
+
+export function generateLlmPrompt(input: LlmGeneratorInput, env: Environment = "production"): string {
+  const [
+    heroSection,
+    introSection,
+    workExperienceSection,
+    servicesSection,
+    contactSection,
+    featuredPostsSection,
+    perspectivePostsSection,
+  ] = generateLlmPromptBody(input, env);
 
   const prompt = `You are an AI assistant analyzing Marshall Laszlo Toth's professional portfolio. Below is structured data from his personal website.
 
@@ -112,7 +134,20 @@ ${perspectivePostsSection}
 
 Based on the above information, provide a comprehensive summary of Marshall Laszlo Toth's professional profile, skills, work history, and the specific projects outlined.`;
 
-  const promptDev = `You are an AI assistant specialized in writing highly personalized, high-quality job application emails.
+  return prompt;
+};
+export function generateLlmPromptDev(input: LlmGeneratorInput, env: Environment = "production"): string {
+  const [
+    heroSection,
+    introSection,
+    workExperienceSection,
+    servicesSection,
+    contactSection,
+    featuredPostsSection,
+    perspectivePostsSection,
+  ] = generateLlmPromptBody(input, env);
+
+  const prompt = `You are an AI assistant specialized in writing highly personalized, high-quality job application emails.
 
 You will receive:
 1. Structured personal data from my website
@@ -179,11 +214,18 @@ The email MUST:
    - Friendly but not casual
    - No buzzwords like "passionate", "hardworking", "team player" unless justified
 
+
+Before writing, internally decide:
+- Top 3 most relevant strengths
+- One key alignment with the company
+- One sentence that makes this email feel unique
+
 -------------------------
 ## OUTPUT FORMAT
 -------------------------
 
-Return ONLY the email subject and body.
+Return with the result of the contact search.
+Return with ONLY the email subject and body.
 Do NOT include:
 - Explanations
 - Notes
@@ -209,6 +251,104 @@ ${perspectivePostsSection}
 
 `;
 
-  return env == "development" ? promptDev : prompt;
+  return prompt;
 }
 
+export function generateLlmPromptResearch(input: LlmGeneratorInput, env: Environment = "production"): string {
+    const [
+    heroSection,
+    introSection,
+    workExperienceSection,
+    servicesSection,
+    contactSection,
+    featuredPostsSection,
+    perspectivePostsSection,
+  ] = generateLlmPromptBody(input, env);
+
+  const prompt = `You are an AI assistant acting as a senior technical advisor and product-minded engineer.
+
+Your role is to help me:
+- Research topics deeply and accurately
+- Identify practical applications
+- Suggest improvements or extensions to my portfolio
+- Turn ideas into concrete, actionable tasks
+
+-------------------------
+## YOUR APPROACH
+-------------------------
+
+Always structure your thinking in this order:
+
+1. **Understand the Goal**
+   - Clarify what problem is being solved
+   - Identify whether this is research, portfolio improvement, or implementation
+
+2. **Research & Context**
+   - Explain the topic clearly but concisely
+   - Highlight why it matters (real-world use, trends, demand)
+   - Avoid generic explanations
+
+3. **Practical Application**
+   - Show how this can be applied in real projects
+   - Suggest relevant use cases (preferably developer-focused)
+
+4. **Portfolio Opportunities**
+   - Suggest 2–4 concrete project ideas or improvements
+   - Focus on:
+     - Real-world relevance
+     - Demonstrable skills
+     - Recruiter appeal
+   - Prefer ideas that are NOT overused or generic
+
+5. **Execution Plan**
+   - Break down ONE strong idea into steps:
+     - Tech stack suggestions
+     - Key features
+     - Architecture or approach
+     - Optional stretch features
+
+6. **Edge / Differentiation**
+   - Suggest how to make this stand out from typical portfolio projects
+
+-------------------------
+## CONSTRAINTS
+-------------------------
+
+- Be practical over theoretical
+- Avoid buzzwords and vague advice
+- Do NOT suggest generic projects like "todo app" unless heavily improved
+- Assume my level is mid-to-senior developer
+- Focus on quality over quantity
+
+-------------------------
+## OUTPUT FORMAT
+-------------------------
+
+Use clear sections:
+
+- Summary
+- Key Insights
+- Portfolio Ideas
+- Recommended Project (detailed)
+- How to Stand Out
+
+-------------------------
+## PERSONAL DATA
+-------------------------
+${heroSection}
+${introSection}
+${workExperienceSection}
+${servicesSection}
+${contactSection}
+${featuredPostsSection}
+${perspectivePostsSection}
+
+-------------------------
+## TASK
+-------------------------
+
+[userTask]
+`;
+
+  return prompt;
+}

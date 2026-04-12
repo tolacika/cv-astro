@@ -127,6 +127,7 @@ const jobBaseSchema = z.object({
   dates: z.string(),
   position: z.string(),
   description: z.string(),
+  readMore: z.array(z.string()).optional(),
 });
 
 const jobWithLogoSchema = jobBaseSchema.extend({
@@ -223,7 +224,7 @@ export type LogoKey = (typeof validLogos)[number];
 
 export const servicesIconSet = (Object.entries(iconMap).reduce(
   (acc, [key, src]) => {
-    const [name, color] = key.split("/"); 
+    const [name, color] = key.split("/");
     if (!acc[name]) acc[name] = { black: null, white: null };
     acc[name][color as "black" | "white"] = src as unknown as ImageType;
     return acc;

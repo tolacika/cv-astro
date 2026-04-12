@@ -1,14 +1,16 @@
 ---
 import { getContent, type Content } from "../lib/content";
-import { generateLlmPrompt, type LlmGeneratorInput } from "../lib/generator";
+import { generateLlmPrompt, generateLlmPromptDev, generateLlmPromptResearch, type LlmGeneratorInput } from "../lib/generator";
 import { getPosts, type Post, type PostContent } from "../lib/posts";
 import Button from "./Button.astro";
 import Modal from "./Modal.astro";
+import TextareaWithCopyButton from "./TextareaWithCopyButton.astro";
 const env = import.meta.env.DEV ? "development" : "production";
+const isDev = env == "development";
 
-const content = await getContent() as Content;
-const posts = getPosts({ type: "perspective", limit: 3 })
-const getPost = (slug: string) => posts.find(p => p.slug == slug)
+const content = (await getContent()) as Content;
+const posts = getPosts({ type: "perspective", limit: 3 });
+const getPost = (slug: string) => posts.find((p) => p.slug == slug);
 
 const postBackground: Post = getPost("perspective-background") as Post;
 const contentBackground: PostContent = await postBackground.content();
@@ -25,7 +27,7 @@ const input: LlmGeneratorInput = {
   perspectivePosts: [
     [postBackground, contentBackground],
     [postVision, contentVision],
-    [postNotes, contentNotes]
+    [postNotes, contentNotes],
   ] as unknown as [[Post, PostContent]],
 };
 ---
@@ -33,13 +35,31 @@ const input: LlmGeneratorInput = {
 <Modal id="llm-context" title="LLM Context">
   <!-- content -->
   <div>
-    <textarea
+    <TextareaWithCopyButton
       id="llm-context-textarea"
-      class="w-full h-96 text-xs"
-    >{generateLlmPrompt(input, env)}</textarea>
+      label="Generic LLM Prompt"
+      content={generateLlmPrompt(input, env)}
+    />
+    {
+      isDev && (
+        <>
+          <hr class="my-2" />
+          <TextareaWithCopyButton
+            id="llm-dev-context-textarea"
+            label="Application LLM Prompt"
+            content={generateLlmPromptDev(input, env)}
+          />
+          <hr class="my-2" />
+          <TextareaWithCopyButton
+            id="llm-research-context-textarea"
+            label="Research LLM Prompt"
+            content={generateLlmPromptResearch(input, env)}
+          />
+        </>
+      )
+    }
   </div>
   <div slot="footer">
-    <Button variant="outline" type="button" onclick="navigator.clipboard.writeText(document.getElementById('llm-context-textarea').value)">Copy</Button>
     <Button variant="outline" action="closeModal">Close</Button>
   </div>
 </Modal>

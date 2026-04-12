@@ -49,13 +49,38 @@ const { title, description } = Astro.props as MainHeadProps;
           });*/
       }
 
+      function handleCollapse(target: string) {
+        const targetEl = document.getElementById(target);
+        if (!targetEl) return;
+
+        const isExpanded = targetEl.classList.contains("expanded");
+
+        // Close all other accordion elements
+        document.querySelectorAll("[data-accordion].expanded").forEach((el) => {
+          if (el instanceof HTMLElement && el.id !== target) {
+            el.style.height = "0px";
+            el.classList.remove("expanded");
+          }
+        });
+
+        // Toggle the target accordion
+        if (isExpanded) {
+          targetEl.style.height = "0px";
+          targetEl.classList.remove("expanded");
+        } else {
+          targetEl.style.height = targetEl.scrollHeight + "px";
+          targetEl.classList.add("expanded");
+        }
+      }
+
       document.addEventListener("click", (e) => {
         const target = e.target;
-        if (!(target instanceof HTMLElement || target instanceof SVGElement)) return;
-        
+        if (!(target instanceof HTMLElement || target instanceof SVGElement))
+          return;
+
         const el = target.closest("[data-action]");
         if (!(el instanceof HTMLElement)) return;
-        
+
         const action = el.dataset.action;
         const actionTarget = el.dataset.target;
 
@@ -68,6 +93,9 @@ const { title, description } = Astro.props as MainHeadProps;
             break;
           case "closeModal":
             handleCloseModal();
+            break;
+          case "collapse":
+            if (actionTarget) handleCollapse(actionTarget);
             break;
         }
       });

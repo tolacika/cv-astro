@@ -19,65 +19,85 @@ const jobs = content.workExperience.jobs as Job[];
 
   <div class="relative mx-auto mt-12 flex w-full flex-col 2xl:w-3/4">
 
-    <!-- Timeline line -->
-    <span class="left-1/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>
+    {jobs.map((job) => {
+      const id = job.logo ?? job.altLogo.toLowerCase().replaceAll(/[^0-9a-z_]/gi, "_")
+      return (
+      <div class="flex flex-col text-left">
+        <div class="relative flex flex-col text-center md:flex-row md:text-left" data-action="collapse" data-target={"collapse-" + id}>
+          <!-- Timeline line -->
+          <span class="left-1/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>
 
-    {jobs.map((job) => (
-      <div class="mt-4 flex flex-col text-center md:flex-row md:text-left">
+          <!-- Left (company + logo) -->
+          <div class="mt-8 md:w-1/5">
+            <div class="flex justify-center md:justify-start">
+              <span class="shrink-0 h-14">
+                {job.logo ? (
+                  <img
+                    src={logoSet[job.logo].src}
+                    class="w-auto h-full grayscale"
+                    alt={job.company}
+                    title={job.company}
+                  />
+                ) : (
+                  <span class="text-lg font-header font-light tracking-widest hidden md:inline-block">{job.altLogo ?? job.company}</span>
+                )}
+              </span>
 
-        <!-- Left (company + logo) -->
-        <div class="md:w-1/5">
-          <div class="flex justify-center md:justify-start">
-            <span class="shrink-0 h-14">
-              {job.logo ? (
-                <img
-                  src={logoSet[job.logo].src}
-                  class="w-auto h-full grayscale"
-                  alt={job.company}
-                  title={job.company}
-                />
-              ) : (
-                <span class="text-lg font-header font-light tracking-widest hidden md:inline-block">{job.altLogo ?? job.company}</span>
-              )}
-            </span>
-
-            <div class="relative ml-3 hidden w-full md:block">
-              <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-grey-70"></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right (details) -->
-        <div class="md:w-4/5">
-          <div class="relative flex md:pl-18">
-            <span class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
-
-            <div class="mt-1 flex">
-              <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
-
-              <div class="md:-mt-1 md:pl-8">
-                <span class="block sm:inline-block font-body font-bold text-grey-40">
-                  {job.dates}
-                </span>
-                <span class="block sm:inline-block font-body font-bold text-gray-700 text-lg">
-                  <span class="sm:ml-4 sm:mr-1">@</span> {job.company}
-                </span>
-                
-
-                <span class="block pt-2 font-header text-xl font-bold text-primary">
-                  {job.position}
-                </span>
-
-                <p class="pt-3 font-body text-black leading-relaxed">
-                  {job.description}
-                </p>
+              <div class="relative ml-3 hidden w-full md:block">
+                <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-grey-70"></span>
               </div>
             </div>
           </div>
-        </div>
 
+          <!-- Right (details) -->
+          <div class="mt-8 md:w-4/5">
+            <div class="relative flex md:pl-18">
+              <span class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
+
+              <div class="mt-1 flex">
+                <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
+
+                <div class="md:-mt-1 md:pl-8">
+                  <span class="block sm:inline-block font-body font-bold text-grey-40">
+                    {job.dates}
+                  </span>
+                  <span class="block sm:inline-block font-body font-bold text-gray-700 text-lg">
+                    <span class="sm:ml-4 sm:mr-1">@</span> {job.company}
+                  </span>
+                  
+
+                  <span class="block pt-2 font-header text-xl font-bold text-primary">
+                    {job.position}
+                  </span>
+
+                  <p class="pt-3 mb-2 font-body text-black leading-relaxed">
+                    {job.description}
+                  </p>
+
+                  {job.readMore?.length && (
+                    <p class="mb-4 font-header font-bold hover:underline text-gray-600 cursor-pointer">
+                      Read More...
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {job.readMore?.length && (
+          <div
+            id={"collapse-" + id}
+            data-accordion
+            class="accordion-content h-0 overflow-hidden transition-[height] duration-300 ease-in-out bg-grey-50 text-gray-800"
+          >
+            <div class="py-4 px-6">
+              {job.readMore.map(p => <p class="mb-2">{p}</p>)}
+            </div>
+          </div>
+        )}
       </div>
-    ))}
+    )})}
 
   </div>
 </section>
