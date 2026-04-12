@@ -72,7 +72,7 @@ languages: ${translations.intro.langs.items.map(l => `${l.label}: ${l.proficienc
 ${escapeForJson(translations.workExperience.title)}
 ${escapeForJson(translations.workExperience.subTitle)}
 jobs:
-${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}`).join("\n")}
+${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - ${job.description}\n` + (job.readMore || []).map(p => `    - ${p}`).join("\n")).join("\n")}
 `;
 
   const servicesSection = `

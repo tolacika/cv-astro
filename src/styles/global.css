@@ -114,3 +114,27 @@ article hr {
   border-top-color: var(--color-primary-light);
   margin-bottom: 1rem;
 }
+
+article ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+article ul li {
+  margin-bottom: 0.5rem;
+}
+
+article ul ul {
+  margin-bottom: 0;
+}
+
+article ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+article ol li {
+  margin-bottom: 0.5rem;
+}
