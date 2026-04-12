@@ -1,0 +1,11 @@
+---
+export const partial = true;
+
+import { createLlmInput, generateLlmPromptResearch } from "../lib/generator";
+
+const input = await createLlmInput();
+
+const body = generateLlmPromptResearch(input);
+---
+
+{body}
