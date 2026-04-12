@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import { llmContextIntegration } from './src/lib/llm-integration.js';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,4 +18,7 @@ export default defineConfig({
     port: 3000,
     host: true,
   },
+  integrations: [
+    llmContextIntegration(),
+  ],
 });

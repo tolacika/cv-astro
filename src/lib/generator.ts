@@ -1,5 +1,5 @@
-import type { Content } from "./content";
-import type { Post, PostContent, PostMeta } from "./posts";
+import { getContent, type Content } from "./content";
+import { getPosts, type Post, type PostContent, type PostMeta } from "./posts";
 
 export interface LlmGeneratorInput {
   translations: Content;
@@ -43,11 +43,35 @@ ${content.split("\n").map(line => "  " + line).join("\n")}
 `;
 }
 
-export type Environment = "development" | "production";
+export async function createLlmInput(): Promise<LlmGeneratorInput> {
+  const content = (await getContent()) as Content;
+  const posts = getPosts({ type: "perspective", limit: 3 });
+  const getPost = (slug: string) => posts.find((p) => p.slug == slug);
 
-export function generateLlmPromptBody(input: LlmGeneratorInput, env: Environment = "production"): string[] {
+  const postBackground: Post = getPost("perspective-background") as Post;
+  const contentBackground: PostContent = await postBackground.content();
+
+  const postVision: Post = getPost("perspective-vision") as Post;
+  const contentVision: PostContent = await postVision.content();
+
+  const postNotes: Post = getPost("perspective-side-quests") as Post;
+  const contentNotes: PostContent = await postNotes.content();
+
+  const input: LlmGeneratorInput = {
+    translations: content,
+    featuredPosts: [] as unknown as [[Post, PostContent]],
+    perspectivePosts: [
+      [postBackground, contentBackground],
+      [postVision, contentVision],
+      [postNotes, contentNotes],
+    ] as unknown as [[Post, PostContent]],
+  };
+
+  return input;
+}
+
+export function generateLlmPromptBody(input: LlmGeneratorInput): string[] {
   const { translations, featuredPosts, perspectivePosts } = input;
-  const isDev = env == "development";
 
   const heroSection = `
 ### HERO SECTION
@@ -98,7 +122,7 @@ ${featuredPosts.map(([post, content]) => formatPostForLlm(post, truncateContent(
 
   const perspectivePostsSection = `
 ### PERSPECTIVE POSTS
-${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, isDev ? 7000 : 3000))).join("\n\n---\n\n")}
+${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, 7000))).join("\n\n---\n\n")}
 `;
   return [
     heroSection,
@@ -111,7 +135,7 @@ ${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateConte
   ];
 }
 
-export function generateLlmPrompt(input: LlmGeneratorInput, env: Environment = "production"): string {
+export function generateLlmPrompt(input: LlmGeneratorInput): string {
   const [
     heroSection,
     introSection,
@@ -120,7 +144,7 @@ export function generateLlmPrompt(input: LlmGeneratorInput, env: Environment = "
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
-  ] = generateLlmPromptBody(input, env);
+  ] = generateLlmPromptBody(input);
 
   const prompt = `You are an AI assistant analyzing Marshall Laszlo Toth's professional portfolio. Below is structured data from his personal website.
 
@@ -136,7 +160,8 @@ Based on the above information, provide a comprehensive summary of Marshall Lasz
 
   return prompt;
 };
-export function generateLlmPromptDev(input: LlmGeneratorInput, env: Environment = "production"): string {
+
+export function generateLlmPromptDev(input: LlmGeneratorInput): string {
   const [
     heroSection,
     introSection,
@@ -145,7 +170,7 @@ export function generateLlmPromptDev(input: LlmGeneratorInput, env: Environment 
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
-  ] = generateLlmPromptBody(input, env);
+  ] = generateLlmPromptBody(input);
 
   const prompt = `You are an AI assistant specialized in writing highly personalized, high-quality job application emails.
 
@@ -254,8 +279,8 @@ ${perspectivePostsSection}
   return prompt;
 }
 
-export function generateLlmPromptResearch(input: LlmGeneratorInput, env: Environment = "production"): string {
-    const [
+export function generateLlmPromptResearch(input: LlmGeneratorInput): string {
+  const [
     heroSection,
     introSection,
     workExperienceSection,
@@ -263,7 +288,7 @@ export function generateLlmPromptResearch(input: LlmGeneratorInput, env: Environ
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
-  ] = generateLlmPromptBody(input, env);
+  ] = generateLlmPromptBody(input);
 
   const prompt = `You are an AI assistant acting as a senior technical advisor and product-minded engineer.
 

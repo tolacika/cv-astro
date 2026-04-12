@@ -1,6 +1,6 @@
 ---
 import { getContent, type Content } from "../lib/content";
-import { generateLlmPrompt, generateLlmPromptDev, generateLlmPromptResearch, type LlmGeneratorInput } from "../lib/generator";
+import { createLlmInput, generateLlmPrompt, generateLlmPromptDev, generateLlmPromptResearch, type LlmGeneratorInput } from "../lib/generator";
 import { getPosts, type Post, type PostContent } from "../lib/posts";
 import Button from "./Button.astro";
 import Modal from "./Modal.astro";
@@ -8,28 +8,7 @@ import TextareaWithCopyButton from "./TextareaWithCopyButton.astro";
 const env = import.meta.env.DEV ? "development" : "production";
 const isDev = env == "development";
 
-const content = (await getContent()) as Content;
-const posts = getPosts({ type: "perspective", limit: 3 });
-const getPost = (slug: string) => posts.find((p) => p.slug == slug);
-
-const postBackground: Post = getPost("perspective-background") as Post;
-const contentBackground: PostContent = await postBackground.content();
-
-const postVision: Post = getPost("perspective-vision") as Post;
-const contentVision: PostContent = await postVision.content();
-
-const postNotes: Post = getPost("perspective-side-quests") as Post;
-const contentNotes: PostContent = await postNotes.content();
-
-const input: LlmGeneratorInput = {
-  translations: content,
-  featuredPosts: [] as unknown as [[Post, PostContent]],
-  perspectivePosts: [
-    [postBackground, contentBackground],
-    [postVision, contentVision],
-    [postNotes, contentNotes],
-  ] as unknown as [[Post, PostContent]],
-};
+const input = await createLlmInput();
 ---
 
 <Modal id="llm-context" title="LLM Context">
@@ -38,7 +17,7 @@ const input: LlmGeneratorInput = {
     <TextareaWithCopyButton
       id="llm-context-textarea"
       label="Generic LLM Prompt"
-      content={generateLlmPrompt(input, env)}
+      content={generateLlmPrompt(input)}
     />
     {
       isDev && (
@@ -47,13 +26,13 @@ const input: LlmGeneratorInput = {
           <TextareaWithCopyButton
             id="llm-dev-context-textarea"
             label="Application LLM Prompt"
-            content={generateLlmPromptDev(input, env)}
+            content={generateLlmPromptDev(input)}
           />
           <hr class="my-2" />
           <TextareaWithCopyButton
             id="llm-research-context-textarea"
             label="Research LLM Prompt"
-            content={generateLlmPromptResearch(input, env)}
+            content={generateLlmPromptResearch(input)}
           />
         </>
       )

@@ -1,0 +1,34 @@
+---
+export const partial = true;
+
+import { getContent, type Content } from "../lib/content";
+import { generateLlmPrompt, type LlmGeneratorInput } from "../lib/generator";
+import { getPosts, type Post, type PostContent } from "../lib/posts";
+
+const content = (await getContent()) as Content;
+const posts = getPosts({ limit: 0 });
+
+const perspectivePosts: [[Post, PostContent]] = await Promise.all(
+  posts
+    .filter(p => p.type === "perspective")
+    .slice(0, 3)
+    .map(async (post) => [post, await post.content()] as [Post, PostContent])
+) as [[Post, PostContent]];
+
+const featuredPosts: [[Post, PostContent]] = await Promise.all(
+  posts
+    .filter(p => p.type === "project")
+    .slice(0, 3)
+    .map(async (post) => [post, await post.content()] as [Post, PostContent])
+) as [[Post, PostContent]];
+
+const input: LlmGeneratorInput = {
+  translations: content,
+  featuredPosts,
+  perspectivePosts,
+};
+
+const body = generateLlmPrompt(input);
+---
+
+{body}
