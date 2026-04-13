@@ -118,8 +118,8 @@ const languageSchema = z.object({
   icon: z.string(),
   label: z.string(),
   greeting: z.string(),
-  proficiency: z.number().min(0).max(100),
-  learning: z.boolean().optional(),
+  proficiency: z.string(),
+  comment: z.string(),
 });
 
 const languagesSchema = z.object({

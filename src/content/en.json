@@ -134,22 +134,24 @@
           "icon": "hu",
           "label": "Hungarian",
           "greeting": "Szia! 👋",
-          "proficiency": 99
+          "proficiency": "Native",
+          "comment": "I swear in it 10 mins straight without repeating a phrase when the build fails at 3 AM."
         },
         {
           "code": "en",
           "icon": "gb",
           "label": "English",
           "greeting": "Hello! 👋",
-          "proficiency": 75
+          "proficiency": "Fluent",
+          "comment": "The language I use to explain why my ESP32 is on fire (again)."
         },
         {
           "code": "de",
           "icon": "de",
           "label": "German",
           "greeting": "Hallo! 👋",
-          "proficiency": 5,
-          "learning": true
+          "proficiency": "Beginner",
+          "comment": "Enough to order beer and understand why bureaucracy is the ultimate legacy system."
         }
       ]
     }

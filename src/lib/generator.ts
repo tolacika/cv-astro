@@ -88,8 +88,8 @@ ${escapeForJson(translations.intro.title)}
 ${escapeForJson(translations.intro.subTitle)}
 
 ${truncateContent(translations.intro.paragraph, 500)}
-skills: ${translations.intro.skills.map(s => `${s.name} (${s.proficiency}%)${s.learning ? " [learning]" : ""}`).join(", ")}
-languages: ${translations.intro.langs.items.map(l => `${l.label}: ${l.proficiency}%${l.learning ? " [learning]" : ""}`).join(", ")}
+skills: ${translations.intro.skills.map(s => `${s.name} (${s.proficiency}%)${s.learning ? " [learning]" : ""}`).join("; ")}
+languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)}: ${escapeForJson(l.proficiency)} – ${escapeForJson(l.comment)}`).join("\n")}
 `;
 
   const workExperienceSection = `
