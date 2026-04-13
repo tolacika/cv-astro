@@ -1,0 +1,14 @@
+---
+import type { Content, Pattern } from "../lib/content";
+import HeroPattern from "./HeroPattern.astro";
+import ViewPattern from "./ViewPattern.astro";
+
+const { content, pattern } = Astro.props as { content: Content, pattern: Pattern };
+
+---
+
+<main>
+  <HeroPattern content={content} pattern={pattern} />
+
+  <ViewPattern content={content} pattern={pattern} />
+</main>

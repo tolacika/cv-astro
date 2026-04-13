@@ -1,0 +1,31 @@
+---
+import type { SeeAlso } from "../lib/content";
+import SeeAlsoCategory from "./SeeAlsoCategory.astro";
+
+const { also } = Astro.props as { also: SeeAlso[] };
+
+const filterAlso = (type: SeeAlso["type"]) =>
+  also.filter((a) => a.type == type);
+const mapping: Record<SeeAlso["type"], string> = {
+  external: "External links",
+  post: "Related posts",
+  experience: "Related experience",
+  pattern: "Related patterns",
+  tag: "Related tags",
+};
+---
+
+<div class="seeAlsoContainer">
+  {
+    Object.entries(mapping).map(([key, label]) => {
+      const as = filterAlso(key as SeeAlso["type"])
+      if (!as.length) return null;
+      return (
+        <SeeAlsoCategory
+          also={as}
+          label={label}
+        />
+      );
+    })
+  }
+</div>

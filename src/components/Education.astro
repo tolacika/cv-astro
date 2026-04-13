@@ -1,0 +1,29 @@
+---
+import type { Content } from "../lib/content";
+
+const { content } = Astro.props as { content: Content };
+---
+
+<section class="bg-grey-50" id="education">
+  <div class="container py-16 md:py-20">
+    <h2
+      class="text-center font-header text-4xl font-semibold text-primary sm:text-5xl lg:text-6xl"
+    >
+      {content.education.title}
+    </h2>
+
+    <p
+      class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl"
+    >
+      {content.education.subTitle}
+    </p>
+
+    <div class="mx-auto w-full pt-5 text-center sm:w-2/3 lg:pt-6">
+      {
+        content.education.content.map((p) => (
+          <p class="mt-2 font-body text-grey-10 sm:text-lg lg:text-xl">{p}</p>
+        ))
+      }
+    </div>
+  </div>
+</section>

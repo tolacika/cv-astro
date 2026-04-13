@@ -25,7 +25,7 @@ const getTag = (slug:string) => content.tags.find(t => t.slug == slug);
     {jobs.map((job) => {
       const id = job.logo ?? job.altLogo.toLowerCase().replaceAll(/[^0-9a-z_]/gi, "_")
       return (
-      <div class="flex flex-col text-left">
+      <div class="flex flex-col text-left" id={`experience-${job.slug}`}>
         <div class="relative flex flex-col text-center md:flex-row md:text-left" data-action="collapse" data-target={"collapse-" + id}>
           <!-- Timeline line -->
           <span class="left-1/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>

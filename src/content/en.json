@@ -161,6 +161,7 @@
     "subTitle": "What I’ve built, improved, and explored over the years",
     "jobs": [
       {
+        "slug": "archbau",
         "company": "Archbau GmbH",
         "dates": "Jun 2025 – Mar 2026",
         "position": "Field Assistant (Archäology – Side Project)",
@@ -180,6 +181,7 @@
         "altLogo": "ArchBau"
       },
       {
+        "slug": "nexttuesday",
         "company": "NextTuesday GmbH",
         "dates": "Sept 2024 – Mar 2025",
         "position": "Senior PHP Engineer",
@@ -210,6 +212,7 @@
         "altLogo": "NextTuesday"
       },
       {
+        "slug": "ordio",
         "company": "Ordio GmbH",
         "dates": "Feb 2024 – Jun 2024",
         "position": "Senior Full-stack Developer",
@@ -236,6 +239,7 @@
         "logo": "ordio"
       },
       {
+        "slug": "diligent",
         "company": "Diligent Corp.",
         "dates": "Jun 2022 – Apr 2023",
         "position": "Senior Backend Developer",
@@ -261,6 +265,7 @@
         "logo": "diligent"
       },
       {
+        "slug": "future-property-trade",
         "company": "Future Property Trade Kft",
         "dates": "May 2021 – May 2022",
         "position": "Senior Full-stack Lead Developer (Freelance)",
@@ -285,6 +290,7 @@
         "altLogo": "Future Trade"
       },
       {
+        "slug": "risskov",
         "company": "Risskov Autoferien AG",
         "dates": "Jan 2020 – Apr 2021",
         "position": "Senior Full-stack Developer",
@@ -313,6 +319,7 @@
         "logo": "risskov"
       },
       {
+        "slug": "techteamer-microcredit",
         "company": "TechTeamer Kft &\nMikroCredit Zrt",
         "dates": "2018 – 2019",
         "position": "Backend Developer",
@@ -339,6 +346,7 @@
         "altLogo": "MicroCredit"
       },
       {
+        "slug": "webshippy",
         "company": "WebShippy Kft",
         "dates": "2018",
         "position": "Full-stack Developer (Freelance)",
@@ -363,6 +371,7 @@
         "logo": "webshippy"
       },
       {
+        "slug": "manna",
         "company": "Manna Kreatív Zrt.",
         "dates": "2017",
         "position": "Junior Full-stack Developer, Service Desk",
@@ -388,6 +397,7 @@
         "logo": "manna"
       },
       {
+        "slug": "ertek-rendszerhaz",
         "company": "Érték-Rendszerház Kft &\nWore Hungary Kft",
         "dates": "2014 – 2016",
         "position": "Junior Full-stack Developer, System Admin",
@@ -423,38 +433,267 @@
         "slug": "time-sensitive",
         "title": "Time-sensitive synchronization layers",
         "subTitle": "Real-time availability, last-minute marketplaces, logistics flows, and irreversible data capture (Risskov, WebShippy, Archbau, Ordio)",
-        "icon": "content"
+        "explanation": [
+          "I’ve built and maintained systems where timing is the difference between success and failure — last-minute hotel bookings that must stay consistent across countries and partners, warehouse fulfillment that can’t tolerate delays, and archaeological documentation where once a layer is removed the context is gone forever.",
+          "These experiences taught me how to design synchronization layers that gracefully handle incomplete information, asynchronous updates, and real-world volatility without letting downstream processes break."
+        ],
+        "icon": "content",
+        "seeAlso": [
+          {
+            "type": "experience",
+            "label": "Risskov Autoferien AG",
+            "link": "#experience-risskov"
+          },
+          {
+            "type": "experience",
+            "label": "WebShippy Kft",
+            "link": "#experience-webshippy"
+          },
+          {
+            "type": "experience",
+            "label": "Archbau GmbH",
+            "link": "#experience-archbau"
+          },
+          {
+            "type": "experience",
+            "label": "Ordio GmbH",
+            "link": "#experience-ordio"
+          },
+          {
+            "type": "tag",
+            "label": "API",
+            "link": "api"
+          },
+          {
+            "type": "tag",
+            "label": "GraphQL",
+            "link": "graphql"
+          },
+          {
+            "type": "pattern",
+            "label": "Distributed Data Transformation Pipelines",
+            "link": "data-pipelines"
+          }
+        ]
       },
       {
         "slug": "data-pipelines",
         "title": "Distributed data transformation pipelines",
         "subTitle": "Moving information across incompatible domains while preserving integrity (microservices at TechTeamer, multi-country platforms at Risskov, physical-to-digital at Archbau and early furniture operations)",
-        "icon": "development"
+        "explanation": [
+          "From real-time loan lifecycles in a microservice fintech platform to transforming raw excavation measurements into structured archaeological records, I’ve repeatedly designed pipelines that move and reshape data across domains while keeping integrity, auditability, and traceability intact.",
+          "The pattern shows up whenever incompatible systems must talk — HR data from Workday into workforce platforms, multi-country availability across Azure, or physical fieldwork into formal records."
+        ],
+        "icon": "development",
+        "seeAlso": [
+          {
+            "type": "experience",
+            "label": "TechTeamer Kft & MikroCredit Zrt",
+            "link": "#experience-techteamer-microcredit"
+          },
+          {
+            "type": "experience",
+            "label": "Risskov Autoferien AG",
+            "link": "#experience-risskov"
+          },
+          {
+            "type": "experience",
+            "label": "Archbau GmbH",
+            "link": "#experience-archbau"
+          },
+          {
+            "type": "tag",
+            "label": "API",
+            "link": "api"
+          },
+          {
+            "type": "tag",
+            "label": "PHP",
+            "link": "php"
+          },
+          {
+            "type": "tag",
+            "label": "MySQL",
+            "link": "mysql"
+          },
+          {
+            "type": "pattern",
+            "label": "External Dependency Orchestration",
+            "link": "external-dependencies"
+          }
+        ]
       },
       {
         "slug": "external-dependencies",
         "title": "External dependency orchestration",
         "subTitle": "Integrating third-party HR systems, hotel partners, e-commerce platforms, and regulatory workflows without letting external volatility break the core system (Ordio, WebShippy, Risskov, Diligent, Archbau)",
-        "icon": "email"
+        "explanation": [
+          "Whether it was Workday HR imports at Ordio, hotel partner availability at Risskov, or regulatory identity verification at TechTeamer, I focused on building orchestration layers that isolate external volatility so the core system stays stable and observable.",
+          "The real skill is making dependencies explicit, recoverable, and auditable instead of letting them silently corrupt internal state."
+        ],
+        "icon": "email",
+        "seeAlso": [
+          {
+            "type": "experience",
+            "label": "Ordio GmbH",
+            "link": "#experience-ordio"
+          },
+          {
+            "type": "experience",
+            "label": "WebShippy Kft",
+            "link": "#experience-webshippy"
+          },
+          {
+            "type": "experience",
+            "label": "Risskov Autoferien AG",
+            "link": "#experience-risskov"
+          },
+          {
+            "type": "experience",
+            "label": "Diligent Corp.",
+            "link": "#experience-diligent"
+          },
+          {
+            "type": "tag",
+            "label": "API",
+            "link": "api"
+          },
+          {
+            "type": "pattern",
+            "label": "Time-sensitive Synchronization Layers",
+            "link": "time-sensitive"
+          }
+        ]
       },
       {
         "slug": "legacy-modernization",
         "title": "Legacy modernization under live constraints",
         "subTitle": "Gradually replacing or augmenting large PHP monoliths while maintaining auditability, compliance, and delivery continuity (Diligent, NextTuesday)",
-        "icon": "mobile"
+        "explanation": [
+          "At Diligent and NextTuesday I worked inside large, business-critical PHP systems that could not be stopped. The challenge was to modernize incrementally — introducing TypeScript services, cloud patterns, and clearer boundaries — without ever breaking audit trails or compliance requirements.",
+          "This pattern taught me that the hardest part is not the new code; it’s keeping the old system alive and trustworthy while you change it."
+        ],
+        "icon": "mobile",
+        "seeAlso": [
+          {
+            "type": "experience",
+            "label": "Diligent Corp.",
+            "link": "#experience-diligent"
+          },
+          {
+            "type": "experience",
+            "label": "NextTuesday GmbH",
+            "link": "#experience-nexttuesday"
+          },
+          {
+            "type": "tag",
+            "label": "PHP",
+            "link": "php"
+          },
+          {
+            "type": "tag",
+            "label": "Laravel",
+            "link": "laravel"
+          },
+          {
+            "type": "tag",
+            "label": "Custom Framework",
+            "link": "custom-framework"
+          },
+          {
+            "type": "pattern",
+            "label": "Distributed Data Transformation Pipelines",
+            "link": "data-pipelines"
+          }
+        ]
       },
       {
         "slug": "navigation",
         "title": "Constraint-aware navigation systems",
         "subTitle": "Guiding users through combinatorial or high-variability spaces (furniture configurator, workforce process interfaces at Ordio)",
-        "icon": "graphics"
+        "explanation": [
+          "I’ve built interfaces that let non-technical users move safely through spaces with enormous combinatorial complexity — from a furniture configurator with ~10^1851 valid combinations to guided workforce onboarding and approval flows at Ordio.",
+          "These are not simple forms; they are constraint-aware navigation systems that prevent invalid states while staying intuitive and fast."
+        ],
+        "icon": "graphics",
+        "seeAlso": [
+          {
+            "type": "experience",
+            "label": "Ordio GmbH",
+            "link": "#experience-ordio"
+          },
+          {
+            "type": "experience",
+            "label": "Érték-Rendszerház Kft & Wore Hungary Kft",
+            "link": "#experience-ertek-rendszerhaz"
+          },
+          {
+            "type": "tag",
+            "label": "React",
+            "link": "react"
+          },
+          {
+            "type": "tag",
+            "label": "TypeScript",
+            "link": "typescript"
+          },
+          {
+            "type": "tag",
+            "label": "Vue.js",
+            "link": "vue"
+          }
+        ]
       },
       {
         "slug": "physical-to-digital",
         "title": "Physical-to-digital feedback loops",
         "subTitle": "Bridging sensors, manual fieldwork, and formal records where reality itself is the source of truth (Archbau excavation, early hardware prototypes, warehouse automation at WebShippy)",
-        "icon": "design"
+        "explanation": [
+          "From on-site archaeological documentation at Archbau to warehouse picker/packer tools at WebShippy and my early ESP32/RFID experiments, I’ve repeatedly closed the loop where the physical world (measurements, sensors, manual steps) becomes structured, verifiable digital records.",
+          "These loops are unforgiving — errors in reality are irreversible — so the feedback mechanisms must be immediate, observable, and resilient to the messiness of the real world."
+        ],
+        "icon": "design",
+        "seeAlso": [
+          {
+            "type": "experience",
+            "label": "Archbau GmbH",
+            "link": "#experience-archbau"
+          },
+          {
+            "type": "experience",
+            "label": "WebShippy Kft",
+            "link": "#experience-webshippy"
+          },
+          {
+            "type": "experience",
+            "label": "Future Property Trade Kft",
+            "link": "#experience-future-property-trade"
+          },
+          {
+            "type": "tag",
+            "label": "PHP",
+            "link": "php"
+          },
+          {
+            "type": "pattern",
+            "label": "Time-sensitive Synchronization Layers",
+            "link": "time-sensitive"
+          },
+          {
+            "type": "post",
+            "label": "Background: How I Got Here",
+            "link": "perspective-background"
+          }
+        ]
       }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "subTitle": "Self-Directed Learner since 200X",
+    "content": [
+      "Started with an IT-focused high school and an advanced certification, then continued with electrical engineering studies at BME, alongside contributing to Studio Schönherz and the Schönherz Electronics Workshop. Over time, I shifted toward software, where building and iteration felt more immediate.",
+      "Since then, most of my learning has come through real systems, production environments, and side experiments across software and hardware. The path hasn’t been linear, but it has been consistent: learning by building, and adjusting when reality disagrees."
     ]
   },
   "postScriptum": {
@@ -528,7 +767,28 @@
         "I’ve spent most of my career working in PHP across monoliths, APIs, and evolving architectures, often in systems that could not be rewritten but had to be improved under real constraints.",
         "My focus is not just writing PHP, but stabilizing and extending systems where correctness, backward compatibility, and incremental change matter more than ideal architecture."
       ],
-      "seeAlso": ["laravel", "symfony", "custom-framework"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "Laravel",
+          "link": "laravel"
+        },
+        {
+          "type": "tag",
+          "label": "Symfony",
+          "link": "symfony"
+        },
+        {
+          "type": "pattern",
+          "label": "Custom Framework",
+          "link": "custom-framework"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        }
+      ]
     },
     {
       "slug": "custom-framework",
@@ -538,7 +798,23 @@
         "Worked extensively in proprietary and legacy frameworks where conventions are implicit and documentation is incomplete, requiring deep system reading and reconstruction.",
         "This experience shaped my ability to reason about architecture beyond tooling, focusing on data flow, coupling, and hidden assumptions."
       ],
-      "seeAlso": ["php", "legacy-modernization", "api"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "pattern",
+          "label": "Legacy Modernization",
+          "link": "legacy-modernization"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        }
+      ]
     },
     {
       "slug": "laravel",
@@ -548,7 +824,28 @@
         "Used Laravel across multiple production systems, from API backends to full platforms, often as a stabilizing layer in otherwise fragmented architectures.",
         "I treat Laravel not as an end-state, but as a tool for structuring domain logic, enforcing boundaries, and enabling gradual evolution."
       ],
-      "seeAlso": ["php", "api", "mysql"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "MySQL",
+          "link": "mysql"
+        },
+        {
+          "type": "tag",
+          "label": "Vue.js",
+          "link": "vue"
+        }
+      ]
     },
     {
       "slug": "mysql",
@@ -558,7 +855,28 @@
         "Designed and maintained relational data models in systems where consistency, performance, and historical traceability are critical.",
         "Worked with real-world data inconsistencies, migrations, and synchronization challenges across distributed systems."
       ],
-      "seeAlso": ["php", "api", "graphql"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "GraphQL",
+          "link": "graphql"
+        },
+        {
+          "type": "tag",
+          "label": "Laravel",
+          "link": "laravel"
+        }
+      ]
     },
     {
       "slug": "react",
@@ -568,7 +886,23 @@
         "Built React-based interfaces for operational tools and client-facing systems, focusing on clarity in high-variability workflows.",
         "Emphasis on translating complex backend processes into understandable user interactions rather than purely visual components."
       ],
-      "seeAlso": ["typescript", "api", "javascript"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "TypeScript",
+          "link": "typescript"
+        },
+        {
+          "type": "tag",
+          "label": "JavaScript",
+          "link": "javascript"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        }
+      ]
     },
     {
       "slug": "neos-cms",
@@ -578,7 +912,23 @@
         "Worked with Neos CMS in client projects where content, layout, and business logic intersect in non-trivial ways.",
         "Focused on adapting structured systems to editorial workflows without breaking consistency or flexibility."
       ],
-      "seeAlso": ["php", "custom-framework", "html"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "pattern",
+          "label": "Custom Framework",
+          "link": "custom-framework"
+        },
+        {
+          "type": "tag",
+          "label": "HTML",
+          "link": "html"
+        }
+      ]
     },
     {
       "slug": "javascript",
@@ -588,7 +938,23 @@
         "Used JavaScript across frontend and integration layers to connect user interaction with system behavior.",
         "Experience ranges from lightweight enhancements to complex state-driven interfaces."
       ],
-      "seeAlso": ["typescript", "react", "vue"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "TypeScript",
+          "link": "typescript"
+        },
+        {
+          "type": "tag",
+          "label": "React",
+          "link": "react"
+        },
+        {
+          "type": "tag",
+          "label": "Vue.js",
+          "link": "vue"
+        }
+      ]
     },
     {
       "slug": "typescript",
@@ -598,7 +964,23 @@
         "Adopted TypeScript in larger systems to improve maintainability, especially where multiple developers and services interact.",
         "Used it as a tool to reduce ambiguity in evolving architectures rather than just for type safety."
       ],
-      "seeAlso": ["javascript", "react", "api"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "JavaScript",
+          "link": "javascript"
+        },
+        {
+          "type": "tag",
+          "label": "React",
+          "link": "react"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        }
+      ]
     },
     {
       "slug": "html",
@@ -608,7 +990,23 @@
         "Worked extensively with HTML in CMS-driven systems and frontend architectures where structure must remain adaptable.",
         "Focus on semantic clarity and maintainability in systems where content changes frequently."
       ],
-      "seeAlso": ["css", "javascript", "neos-cms"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "CSS",
+          "link": "css"
+        },
+        {
+          "type": "tag",
+          "label": "JavaScript",
+          "link": "javascript"
+        },
+        {
+          "type": "tag",
+          "label": "Neos CMS",
+          "link": "neos-cms"
+        }
+      ]
     },
     {
       "slug": "css",
@@ -618,7 +1016,23 @@
         "Used CSS to support complex UI systems, often in environments where design systems evolve over time.",
         "Focus on maintainable styling approaches rather than pixel-perfect isolation."
       ],
-      "seeAlso": ["html", "react", "vue"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "HTML",
+          "link": "html"
+        },
+        {
+          "type": "tag",
+          "label": "React",
+          "link": "react"
+        },
+        {
+          "type": "tag",
+          "label": "Vue.js",
+          "link": "vue"
+        }
+      ]
     },
     {
       "slug": "api",
@@ -628,7 +1042,28 @@
         "Designed and integrated APIs across multiple domains, including logistics, HR systems, and partner platforms.",
         "Experienced in handling inconsistent external data, versioning challenges, and long-term contract stability."
       ],
-      "seeAlso": ["php", "graphql", "aws"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "tag",
+          "label": "GraphQL",
+          "link": "graphql"
+        },
+        {
+          "type": "tag",
+          "label": "Laravel",
+          "link": "laravel"
+        },
+        {
+          "type": "tag",
+          "label": "AWS",
+          "link": "aws"
+        }
+      ]
     },
     {
       "slug": "symfony",
@@ -638,7 +1073,23 @@
         "Worked with Symfony in systems requiring strong architectural boundaries and long-term maintainability.",
         "Used in contexts where explicit configuration and modularity are preferred over convention."
       ],
-      "seeAlso": ["php", "api", "mysql"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "MySQL",
+          "link": "mysql"
+        }
+      ]
     },
     {
       "slug": "aws",
@@ -648,7 +1099,23 @@
         "Worked with AWS in evolving systems transitioning toward cloud-native architectures.",
         "Exposure includes deployment, service integration, and understanding trade-offs between scalability and complexity."
       ],
-      "seeAlso": ["api", "typescript", "distributed-systems"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "Azure",
+          "link": "azure"
+        },
+        {
+          "type": "pattern",
+          "label": "Distributed Systems",
+          "link": "distributed-systems"
+        }
+      ]
     },
     {
       "slug": "vue",
@@ -658,7 +1125,23 @@
         "Built Vue.js applications in production systems where rapid iteration and clarity were essential.",
         "Often used in combination with Laravel to create cohesive full-stack solutions."
       ],
-      "seeAlso": ["javascript", "laravel", "html"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "JavaScript",
+          "link": "javascript"
+        },
+        {
+          "type": "tag",
+          "label": "Laravel",
+          "link": "laravel"
+        },
+        {
+          "type": "tag",
+          "label": "HTML",
+          "link": "html"
+        }
+      ]
     },
     {
       "slug": "graphql",
@@ -668,7 +1151,23 @@
         "Used GraphQL in distributed environments to provide flexible data access across multiple domains.",
         "Focus on managing complexity, avoiding over-fetching, and maintaining clarity in schema design."
       ],
-      "seeAlso": ["api", "mysql", "typescript"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "MySQL",
+          "link": "mysql"
+        },
+        {
+          "type": "tag",
+          "label": "TypeScript",
+          "link": "typescript"
+        }
+      ]
     },
     {
       "slug": "azure",
@@ -678,7 +1177,28 @@
         "Worked with Azure-based systems in multi-country and enterprise environments.",
         "Exposure includes deployment, service integration, and operating within predefined infrastructure constraints."
       ],
-      "seeAlso": ["api", "cloud", "distributed-systems"]
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "AWS",
+          "link": "aws"
+        },
+        {
+          "type": "pattern",
+          "label": "Distributed Systems",
+          "link": "distributed-systems"
+        },
+        {
+          "type": "pattern",
+          "label": "Cloud",
+          "link": "cloud"
+        }
+      ]
     }
   ]
 }

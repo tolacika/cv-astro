@@ -2,7 +2,7 @@
 import type { Content, ImageType } from "../lib/content";
 import type { Post, PostContent } from "../lib/posts";
 import HeroPost from "./HeroPost.astro";
-import PostView from "./PostView.astro";
+import ViewPost from "./ViewPost.astro";
 
 const { content, post } = Astro.props as { content: Content, post: Post };
 const images = await post.images() as Record<string, ImageType>
@@ -12,5 +12,5 @@ const images = await post.images() as Record<string, ImageType>
 <main>
   <HeroPost content={content} post={post} images={images} />
 
-  <PostView content={content} post={post} images={images} />
+  <ViewPost content={content} post={post} images={images} />
 </main>

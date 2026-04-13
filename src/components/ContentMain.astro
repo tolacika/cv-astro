@@ -9,6 +9,7 @@ import Perspective from "./Perspective.astro";
 import ProjectFeatured from "./ProjectFeatured.astro";
 import HeroMain from "./HeroMain.astro";
 import PostScriptum from "./PostScriptum.astro";
+import Education from "./Education.astro";
 
 const { content } = Astro.props as { content: Content };
 
@@ -25,6 +26,8 @@ const { content } = Astro.props as { content: Content };
   <ProjectFeatured content={content} />
 
   <WorkExperience content={content} />
+
+  <Education content={content} />
 
   <PostScriptum content={content} />
 

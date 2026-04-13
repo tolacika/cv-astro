@@ -1,4 +1,4 @@
-import { getContent, type Content } from "./content";
+import { getContent, type Content, type SeeAlso } from "./content";
 import { getPosts, type Post, type PostContent, type PostMeta } from "./posts";
 
 export interface LlmGeneratorInput {
@@ -41,6 +41,10 @@ function formatPostForLlm(post: PostMeta, content: string): string {
 - content: |
 ${content.split("\n").map(line => "  " + line).join("\n")}
 `;
+}
+
+function formatSeeAlso(also: SeeAlso[]): string[] {
+  return also.map(s => escapeForJson(`${s.type}:${s.link} - ${s.label}${s.comment ? ` (${s.comment})`:``}`));
 }
 
 export async function createLlmInput(): Promise<LlmGeneratorInput> {
@@ -114,8 +118,9 @@ ${translations.postScriptum.content.map(escapeForJson).join("\n")}
 ${escapeForJson(translations.services.title)}
 ${escapeForJson(translations.services.subTitle)}
 patterns:
-${translations.services.patterns.map(s => `  - **${escapeForJson(s.title)}:** ${escapeForJson(s.subTitle)}`).join("\n")}
-`;
+${translations.services.patterns.map(p => `  - **${escapeForJson(p.title)}:** ${escapeForJson(p.subTitle)}${p.seeAlso ? `
+    - see also: ${formatSeeAlso(p.seeAlso).join("; ")}` : ``}
+`)}`;
 
   const contactSection = `
 ### CONTACT
@@ -149,10 +154,11 @@ ${translations.tags.map(t => `
 #### ${escapeForJson(t.label)} [${escapeForJson(t.slug)}]
 
 ${escapeForJson(t.teaser)}
-${t.explanation.map(e => escapeForJson(e)).join("\n")}
-see also: ${t.seeAlso.map(s => escapeForJson(s)).join("; ")}
+${t.explanation.map(e => escapeForJson(e)).join("\n")}${t.seeAlso ? `
+    - see also: ${formatSeeAlso(t.seeAlso).join("; ")}` : ``}
 `)}
 `;
+
   
   return [
     heroSection,

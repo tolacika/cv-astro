@@ -136,6 +136,7 @@ const introSchema = z.object({
 });
 
 const jobBaseSchema = z.object({
+  slug: z.string(),
   company: z.string(),
   dates: z.string(),
   position: z.string(),
@@ -172,11 +173,26 @@ const postScriptumSchema = z.object({
   content: z.array(z.string()),
 });
 
+const educationSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  content: z.array(z.string()),
+});
+
+const seeAlsoSchema = z.object({
+  type: z.enum(["external", "tag", "pattern", "experience", "post"]),
+  label: z.string(),
+  comment: z.string().optional(),
+  link: z.string(),
+})
+
 const patternSchema = z.object({
   slug: z.string(),
   title: z.string(),
   subTitle: z.string(),
   icon: z.enum(validIcons).optional(),
+  explanation: z.array(z.string()),
+  seeAlso: z.array(seeAlsoSchema).optional(),
 });
 
 const tagSchema = z.object({
@@ -184,7 +200,7 @@ const tagSchema = z.object({
   label: z.string(),
   teaser: z.string(),
   explanation: z.array(z.string()),
-  seeAlso: z.array(z.string()),
+  seeAlso: z.array(seeAlsoSchema).optional(),
 });
 
 const servicesSchema = z.object({
@@ -230,6 +246,7 @@ const contentSchema = z.object({
   intro: introSchema,
   workExperience: workExperienceSchema,
   postScriptum: postScriptumSchema,
+  education: educationSchema,
   services: servicesSchema,
   contactDetails: contactDetailsSchema,
   followMe: followMeSchema,
@@ -287,6 +304,7 @@ export type Service = z.infer<typeof patternSchema>;
 export type Services = z.infer<typeof servicesSchema>;
 
 export type PostScriptum = z.infer<typeof postScriptumSchema>;
+export type Education = z.infer<typeof educationSchema>;
 
 export type ContactItem = z.infer<typeof contactItemSchema>;
 export type ContactDetails = z.infer<typeof contactDetailsSchema>;
@@ -295,6 +313,7 @@ export type FollowMe = z.infer<typeof followMeSchema>;
 export type Perspective = z.infer<typeof perspectiveSchema>;
 export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
 
+export type SeeAlso = z.infer<typeof seeAlsoSchema>;
 export type Tag = z.infer<typeof tagSchema>;
 export type Pattern = z.infer<typeof patternSchema>;
 export type SEO = z.infer<typeof seoSchema>;

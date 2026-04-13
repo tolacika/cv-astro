@@ -24,7 +24,7 @@ const services = content.services.patterns;
       const icon = servicesIconSet[service.icon as ServicesIconKey];
 
       return (
-        <div class="group rounded px-8 py-12 shadow hover:bg-primary">
+        <a href={`/pattern/${service.slug}.html`} class="group rounded px-8 py-12 shadow hover:bg-primary cursor-pointer">
 
           <!-- Icon -->
           <div class="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
@@ -47,7 +47,7 @@ const services = content.services.patterns;
             </p>
           </div>
 
-        </div>
+        </a>
       );
     })}
 

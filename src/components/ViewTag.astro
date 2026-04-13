@@ -1,5 +1,6 @@
 ---
 import type { Content, Tag } from "../lib/content";
+import SeeAlso from "./SeeAlso.astro";
 
 const { content, tag } = Astro.props as {
   content: Content;
@@ -11,6 +12,8 @@ const { content, tag } = Astro.props as {
   <div class="container py-16 md:py-20 bg-white">
     <article id={tag.slug} class="text-lg">
       {tag.explanation.map(exp => <p>{exp}</p>)}
+
+      {tag.seeAlso && <SeeAlso also={tag.seeAlso} />}
     </article>
   </div>
 </section>

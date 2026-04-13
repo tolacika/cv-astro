@@ -139,3 +139,13 @@ article ol {
 article ol li {
   margin-bottom: 0.5rem;
 }
+
+.seeAlsoContainer a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.seeAlsoContainer a:hover {
+  text-decoration: none;
+}
