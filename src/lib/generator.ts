@@ -112,6 +112,13 @@ ${escapeForJson(translations.postScriptum.subTitle)}
 ${translations.postScriptum.content.map(escapeForJson).join("\n")}
 `;
 
+  const educationSection = `
+### ${escapeForJson(translations.education.title)}
+
+${escapeForJson(translations.education.subTitle)}
+${translations.education.content.map(escapeForJson).join("\n")}
+`;
+
   const servicesSection = `
 ### PATTERNS
 
@@ -165,6 +172,7 @@ ${t.explanation.map(e => escapeForJson(e)).join("\n")}${t.seeAlso ? `
     introSection,
     workExperienceSection,
     postScriptumSection,
+    educationSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -179,6 +187,7 @@ export function generateLlmPrompt(input: LlmGeneratorInput): string {
     introSection,
     workExperienceSection,
     postScriptumSection,
+    educationSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -191,6 +200,7 @@ export function generateLlmPrompt(input: LlmGeneratorInput): string {
 ${heroSection}
 ${introSection}
 ${workExperienceSection}
+${educationSection}
 ${servicesSection}
 ${contactSection}
 ${featuredPostsSection}
@@ -209,6 +219,7 @@ export function generateLlmPromptDev(input: LlmGeneratorInput): string {
     introSection,
     workExperienceSection,
     postScriptumSection,
+    educationSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -309,6 +320,7 @@ The result must be clean and ready to copy-paste into a new conversation or emai
 ${heroSection}
 ${introSection}
 ${workExperienceSection}
+${educationSection}
 ${servicesSection}
 ${contactSection}
 ${featuredPostsSection}
@@ -331,6 +343,7 @@ export function generateLlmPromptResearch(input: LlmGeneratorInput): string {
     introSection,
     workExperienceSection,
     postScriptumSection,
+    educationSection,
     servicesSection,
     contactSection,
     featuredPostsSection,
@@ -410,6 +423,7 @@ Use clear sections:
 ${heroSection}
 ${introSection}
 ${workExperienceSection}
+${educationSection}
 ${servicesSection}
 ${contactSection}
 ${featuredPostsSection}
