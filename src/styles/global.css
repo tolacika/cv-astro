@@ -1,3 +1,4 @@
+/* Built with Tailwind CSS v4 – https://tailwindcss.com */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
@@ -26,7 +27,7 @@
   --color-grey-70: #d8d8d8;
 
   --color-hero-gradient-from: rgba(85, 64, 174, 0.95);
-  --color-hero-gradient-to: rgba(65, 47, 144, 0.93);
+  --color-hero-gradient-to: rgba(65, 47, 144, 0.90);
   --color-hero-post-gradient-from: rgba(85, 64, 174, 0.35);
   --color-hero-post-gradient-to: rgba(65, 47, 144, 0.33);
 

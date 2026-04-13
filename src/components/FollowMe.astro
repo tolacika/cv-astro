@@ -14,9 +14,9 @@ const { content } = Astro.props as { content: Content };
 >
   <div class="container relative z-30">
     
-    <h3 class="text-center font-header text-3xl uppercase leading-tight tracking-wide text-white sm:text-4xl lg:text-5xl whitespace-pre-wrap">
+    <h2 class="text-center font-header text-3xl uppercase leading-tight tracking-wide text-white sm:text-4xl lg:text-5xl whitespace-pre-wrap">
       {content.followMe.title}
-    </h3>
+    </h2>
 
     <div class="pt-6 text-center">
       <LetsConnect content={content} class="pt-6" followMe={true} />

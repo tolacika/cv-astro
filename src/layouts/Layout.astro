@@ -1,15 +1,15 @@
 ---
 import MainHead from "../components/MainHead.astro";
-import type { MainHeadProps } from "../types";
+import type { MainHeadProps } from "../components/MainHead.astro";
 import "../styles/global.css";
 import LlmModal from "../components/LlmModal.astro";
 
-const { title, description } = Astro.props as MainHeadProps;
+const { headProps } = Astro.props as { headProps: MainHeadProps };
 ---
 
 <html lang="en" data-action data-target>
   <head>
-    <MainHead title={title} description={description} />
+    <MainHead props={headProps} />
   </head>
   <body class="antialiased">
     <LlmModal />
@@ -95,7 +95,8 @@ const { title, description } = Astro.props as MainHeadProps;
             handleCloseModal();
             break;
           case "collapse":
-            if (target.hasAttribute("href") && target.getAttribute("href")) return;
+            if (target.hasAttribute("href") && target.getAttribute("href"))
+              return;
             if (actionTarget) handleCollapse(actionTarget);
             break;
         }

@@ -3,20 +3,20 @@ import type { Content } from "../lib/content";
 import Hero from "./Hero.astro";
 import LetsConnect from './LetsConnect.astro';
 
-import authorImg from '../assets/img/blog-author.jpg';
+import bgHero from '../assets/img/archaeology-field-planum-highvis-placeholder.jpg';
+import authorImg from '../assets/img/author-blue-hair.jpg';
 
 const { content } = Astro.props as { content: Content };
 ---
 
-<Hero>
+<Hero bgImg={bgHero.src} bgAlt={content.hero.bgAlt} isDark={true}>
   <div class="flex flex-col items-center justify-center lg:flex-row">
-
       <!-- Avatar -->
       <div class="rounded-full border-8 border-primary shadow-xl">
         <img
           src={authorImg.src}
           class="rounded-full max-w-48 md:max-w-64"
-          alt="author"
+          alt={content.hero.imageAlt}
         />
       </div>
 
@@ -29,9 +29,9 @@ const { content } = Astro.props as { content: Content };
           <br />
           {content.hero?.fullName}!
         </h1>
-        <h2 class="text-center font-header text-2xl text-white lg:text-left sm:text-3xl xl:text-4xl  font-extralight italic mt-4">
+        <p class="text-center font-header text-2xl text-white lg:text-left sm:text-3xl xl:text-4xl  font-extralight italic mt-4">
           {content.hero?.subTitle}
-        </h2>
+        </p>
 
         <LetsConnect content={content} class="pt-3 lg:justify-start" />
       </div>

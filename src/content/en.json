@@ -45,10 +45,22 @@
       }
     ]
   },
+  "seo": {
+    "cannonUrl": "https://tolacika.dev",
+    "defaultTitle": "Marshall Laszlo Toth: Personal Portfolio",
+    "defaultTitlePostfix": " | Marshall Laszlo Toth",
+    "defaultDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality.",
+    "defaultKeywords": "software engineer, laravel developer, iot, embedded systems, archaeology tech, full stack, self-taught",
+    "defaultAuthor": "Marshall Laszlo Toth <laszlo@tolacika.dev>",
+    "defaultOgTitle": "Marshall Laszlo Toth | Systems Engineer – Code Meets Reality",
+    "defaultOgDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality."
+  },
   "hero": {
     "preTitle": "Hello, my name is",
     "fullName": "Marshall Laszlo Toth",
-    "subTitle": "I build scalable software systems and real-world machines."
+    "subTitle": "I build scalable software systems and real-world machines.",
+    "imageAlt": "Marshall Laszlo Toth - Software Engineer with blue hair, building systems that survive reality",
+    "bgAlt": "Archaeological excavation scene: workers in high-vis and hard hats on a flat planum"
   },
   "socialLinks": {
     "actionText": "Let's connect",

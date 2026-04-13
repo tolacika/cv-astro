@@ -9,7 +9,12 @@ const { content } = Astro.props as { content: Content };
   <div class="container flex flex-col justify-between py-6 sm:flex-row">
     <p class="text-center font-body text-white md:text-left">
       © Copyright 2024. All right reserved.<br>
-      Generated with ❤️ by custom engine. <a href="https://github.com/tolacika/cv-astro" target="_blank" class="underline hover:text-purple-300">Available on github.</a>
+      Generated with ❤️ by custom engine. <a href="https://github.com/tolacika/cv-astro" target="_blank" class="underline hover:text-purple-300">Available on github.</a><br>
+      Stack:
+      <a href="https://redpixelthemes.com/templates/atom/" target="_blank" class="underline hover:text-purple-300">Atom</a>,
+      <a href="https://astro.build/" target="_blank" class="underline hover:text-purple-300">Astro</a>,
+      <a href="https://tailwindcss.com/" target="_blank" class="underline hover:text-purple-300">Tailwind v4</a>,
+      
     </p>
     <SocialLinks content={content} />
   </div>

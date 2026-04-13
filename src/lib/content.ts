@@ -61,10 +61,23 @@ const navSchema = z.object({
   items: z.array(navItemSchema),
 });
 
+const seoSchema = z.object({
+  cannonUrl: z.string(),
+  defaultTitle: z.string(),
+  defaultTitlePostfix: z.string(),
+  defaultDescription: z.string(),
+  defaultKeywords: z.string(),
+  defaultAuthor: z.string(),
+  defaultOgTitle: z.string(),
+  defaultOgDescription: z.string(),
+})
+
 const heroSchema = z.object({
   preTitle: z.string(),
   fullName: z.string(),
   subTitle: z.string(),
+  imageAlt: z.string(),
+  bgAlt: z.string(),
 });
 
 const socialLinkBaseSchema = z.object({
@@ -211,6 +224,7 @@ const projectFeaturedSchema = z.object({
 const contentSchema = z.object({
   images: imagesSchema,
   nav: navSchema,
+  seo: seoSchema,
   hero: heroSchema,
   socialLinks: socialLinksSchema,
   intro: introSchema,
@@ -282,6 +296,8 @@ export type Perspective = z.infer<typeof perspectiveSchema>;
 export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
 
 export type Tag = z.infer<typeof tagSchema>;
+export type Pattern = z.infer<typeof patternSchema>;
+export type SEO = z.infer<typeof seoSchema>;
 
 export type Content = z.infer<typeof contentSchema>;
 

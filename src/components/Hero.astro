@@ -1,20 +1,32 @@
 ---
-import bgHero from '../assets/img/bg-hero.jpg';
+import { bigint } from "astro:schema";
 
-const { bgImg } = Astro.props as { bgImg: string }
+const { bgImg, bgAlt, isDark = false } = Astro.props as {
+  bgImg: string;
+  bgAlt: string | undefined;
+  isDark: boolean;
+};
 ---
 
 <section
   id="hero"
   class="relative bg-cover bg-center bg-no-repeat py-8"
-  style={`background-image: url(${bgImg ? bgImg : bgHero.src})`}
+  style={`background-image: url(${bgImg})`}
 >
+  <!-- BG -->
+  <img style="width: 0; height: 0;" src={bgImg} alt={bgAlt} />
   <!-- Gradient overlay -->
   <div
-    class={`absolute inset-0 z-20 bg-linear-to-r` + (bgImg ? ` from-hero-post-gradient-from to-hero-post-gradient-to` : ` from-hero-gradient-from to-hero-gradient-to`)}>
+    class={`absolute inset-0 z-20 bg-linear-to-r` +
+      (isDark
+        ? ` from-hero-gradient-from to-hero-gradient-to`
+        : ` from-hero-post-gradient-from to-hero-post-gradient-to`)}
+  >
   </div>
 
-  <div class="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48">
+  <div
+    class="container relative z-30 pt-20 pb-12 sm:pt-56 sm:pb-48 lg:pt-64 lg:pb-48"
+  >
     <slot />
   </div>
 </section>
