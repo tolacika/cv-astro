@@ -122,18 +122,38 @@ ${translations.services.patterns.map(s => `  - **${escapeForJson(s.title)}:** ${
 ${escapeForJson(translations.contactDetails.title)}
 ${escapeForJson(translations.contactDetails.subTitle)}
 ${truncateContent(translations.contactDetails.description, 500)}
+${escapeForJson(translations.socialLinks.actionText)}:
+${translations.socialLinks.links.filter(l => l.link).map(l => `  - ${l.link}`).join("\n")}
 `;
 
   const featuredPostsSection = `
 ### FEATURED PROJECTS
+
+${escapeForJson(translations.projectFeatured.title)}  
+${escapeForJson(translations.projectFeatured.subTitle)}
 ${featuredPosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, 1500))).join("\n\n---\n\n")}
 `;
 
 
   const perspectivePostsSection = `
 ### PERSPECTIVE POSTS
+
+${escapeForJson(translations.perspective.title)}  
+${escapeForJson(translations.perspective.subTitle)}
 ${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, 7000))).join("\n\n---\n\n")}
 `;
+
+  const tagsSection = `
+### TAGS
+${translations.tags.map(t => `
+#### ${escapeForJson(t.label)} [${escapeForJson(t.slug)}]
+
+${escapeForJson(t.teaser)}
+${t.explanation.map(e => escapeForJson(e)).join("\n")}
+see also: ${t.seeAlso.map(s => escapeForJson(s)).join("; ")}
+`)}
+`;
+  
   return [
     heroSection,
     introSection,
@@ -143,6 +163,7 @@ ${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateConte
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
+    tagsSection,
   ];
 }
 
@@ -156,6 +177,7 @@ export function generateLlmPrompt(input: LlmGeneratorInput): string {
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
+    tagsSection,
   ] = generateLlmPromptBody(input);
 
   const prompt = `You are an AI assistant analyzing Marshall Laszlo Toth's professional portfolio. Below is structured data from his personal website.
@@ -168,6 +190,7 @@ ${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
 ${postScriptumSection}
+${tagsSection}
 
 Based on the above information, provide a comprehensive summary of Marshall Laszlo Toth's professional profile, skills, work history, and the specific projects outlined.`;
 
@@ -184,6 +207,7 @@ export function generateLlmPromptDev(input: LlmGeneratorInput): string {
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
+    tagsSection,
   ] = generateLlmPromptBody(input);
 
   const prompt = `You are an AI assistant specialized in writing highly personalized, high-quality job application emails.
@@ -284,6 +308,7 @@ ${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
 ${postScriptumSection}
+${tagsSection}
 
 -------------------------
 ## JOB AD
@@ -304,6 +329,7 @@ export function generateLlmPromptResearch(input: LlmGeneratorInput): string {
     contactSection,
     featuredPostsSection,
     perspectivePostsSection,
+    tagsSection,
   ] = generateLlmPromptBody(input);
 
   const prompt = `You are an AI assistant acting as a senior technical advisor and product-minded engineer.
@@ -383,6 +409,7 @@ ${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
 ${postScriptumSection}
+${tagsSection}
 
 -------------------------
 ## TASK
