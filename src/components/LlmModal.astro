@@ -1,6 +1,12 @@
 ---
 import { getContent, type Content } from "../lib/content";
-import { createLlmInput, generateLlmPrompt, generateLlmPromptDev, generateLlmPromptResearch, type LlmGeneratorInput } from "../lib/generator";
+import {
+  createLlmInput,
+  generateLlmPrompt,
+  generateLlmPromptDev,
+  generateLlmPromptResearch,
+  type LlmGeneratorInput,
+} from "../lib/generator";
 import { getPosts, type Post, type PostContent } from "../lib/posts";
 import Button from "./Button.astro";
 import Modal from "./Modal.astro";
@@ -14,6 +20,17 @@ const input = await createLlmInput();
 <Modal id="llm-context" title="LLM Context">
   <!-- content -->
   <div>
+    <article>
+      <p>Machine-readable profile</p>
+      <p>Use this to:</p>
+      <ul>
+        <li>analyze my experience with AI tools</li>
+        <li>generate interview questions</li>
+        <li>evaluate my skills</li>
+        <li>import into HR tooling</li>
+      </ul>
+    </article>
+    <p class="mb-4">This is the same data as /llm.txt, structured for automation.</p>
     <TextareaWithCopyButton
       id="llm-context-textarea"
       label="Generic LLM Prompt"

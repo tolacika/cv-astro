@@ -163,7 +163,7 @@ ${translations.tags.map(t => `
 ${escapeForJson(t.teaser)}
 ${t.explanation.map(e => escapeForJson(e)).join("\n")}${t.seeAlso ? `
     - see also: ${formatSeeAlso(t.seeAlso).join("; ")}` : ``}
-`)}
+`).join("\n")}
 `;
 
   
