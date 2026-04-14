@@ -8,11 +8,9 @@ import type { MainHeadProps } from "../components/MainHead.astro";
 import { getDefaultSeoProps } from "../lib/seo";
 import authorImg from '../assets/img/author-blue-hair.jpg';
 
-const content = await getContent() as Content;
+const content = getContent() as Content;
 
-const headProps: MainHeadProps = getDefaultSeoProps(content);
-
-headProps.ogImage = content.seo.cannonUrl + authorImg.src
+const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
 ---
 
 <BaseLayout headProps={headProps}>

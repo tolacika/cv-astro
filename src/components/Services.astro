@@ -1,11 +1,9 @@
 ---
 import type { Content, ServicesIconKey } from "../lib/content";
-import { servicesIconSet } from "../lib/content";
+import { getTagBySlug, servicesIconSet } from "../lib/content";
+import TagLink from "./TagLink.astro";
 
 const { content } = Astro.props as { content: Content };
-
-
-const services = content.services.patterns;
 ---
 
 <section class="container py-16 md:py-20" id="patterns">
@@ -20,34 +18,34 @@ const services = content.services.patterns;
 
   <div class="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 md:gap-10 md:pt-12 xl:grid-cols-3">
     
-    {services.map((service) => {
-      const icon = servicesIconSet[service.icon as ServicesIconKey];
+    {content.services.patterns.map(p => getTagBySlug(p)).map((tag) => {
+      const icon = servicesIconSet[tag.icon as ServicesIconKey];
 
       return (
-        <a href={`/pattern/${service.slug}.html`} class="group rounded px-8 py-12 shadow hover:bg-primary cursor-pointer">
+        <TagLink type="custom" tag={tag}>
 
           <!-- Icon -->
           <div class="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
             <div class="hidden group-hover:block">
-              <img src={icon.white?.src} alt={`${service.icon} icon`} />
+              <img src={icon.white?.src} alt={`${tag.icon} icon`} />
             </div>
             <div class="block group-hover:hidden">
-              <img src={icon.black?.src} alt={`${service.icon} icon`} />
+              <img src={icon.black?.src} alt={`${tag.icon} icon`} />
             </div>
           </div>
 
           <!-- Text -->
           <div class="text-center">
             <h3 class="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-              {service.title}
+              {tag.label}
             </h3>
 
             <p class="text-grey pt-4 text-sm group-hover:text-white md:text-base">
-              {service.subTitle}
+              {tag.teaser}
             </p>
           </div>
 
-        </a>
+        </TagLink>
       );
     })}
 

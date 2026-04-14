@@ -10,12 +10,12 @@ const { title, subTitle, paragraph } = content.intro;
 ---
 
 <section id="about" class="bg-grey-50">
-  <div class="container-fluid md:container">
+  <div class="container-fluid sm:container">
     <div
-      class="mx-6 md:mx-0 flex flex-col items-center py-8 md:py-12 lg:py-20 lg:flex-row"
+      class="mx-6 md:mx-0 flex flex-col items-start py-8 md:py-12 lg:py-20 md:flex-row"
     >
       <!-- Left -->
-      <div class="w-full text-center md:w-3/4 lg:w-3/5 lg:text-left">
+      <div class="w-full text-center md:w-3/5 md:text-left">
         <h2
           class="font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl"
         >
@@ -39,14 +39,16 @@ const { title, subTitle, paragraph } = content.intro;
           class="pt-6 lg:justify-start"
           scheme="primary"
         />
-
-        <LanguageSection content={content} />
       </div>
 
       <!-- Right -->
-      <div class="w-full pl-0 pt-10 md:w-3/4 lg:w-2/5 lg:pl-12 lg:pt-0">
-        <SkillsBar content={content} />
+      <div class="w-full pl-0 pt-10 md:w-2/5 md:pl-12 md:pt-0">
+        <LanguageSection content={content} />
       </div>
     </div>
+
+    <!-- Bottom -->
+        <SkillsBar content={content} />
+
   </div>
 </section>

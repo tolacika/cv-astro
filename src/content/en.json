@@ -52,7 +52,7 @@
     "defaultDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality.",
     "defaultKeywords": "software engineer, laravel developer, iot, embedded systems, archaeology tech, full stack, self-taught",
     "defaultAuthor": "Marshall Laszlo Toth <laszlo@tolacika.dev>",
-    "defaultOgTitle": "Marshall Laszlo Toth | Systems Engineer – Code Meets Reality",
+    "defaultOgTitle": "Marshall Laszlo Toth | Systems Engineer - Code Meets Reality",
     "defaultOgDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality."
   },
   "hero": {
@@ -95,37 +95,125 @@
     "title": "Who am I?",
     "subTitle": "I'm Laszlo Toth, a Software Engineer who builds systems that survive contact with reality.",
     "paragraph": "With over a decade of experience, I design and improve software that connects code, data flows, and physical processes - from Laravel-based platforms and distributed integrations to on-site archaeological documentation and early hardware experiments. I’m particularly drawn to the places where systems bend: where data doesn’t flow cleanly, where reality introduces friction, and where manual work quietly appears.",
-    "skills": [
-      {
-        "name": "PHP / Laravel",
-        "proficiency": 90
-      },
-      {
-        "name": "HTML / CSS",
-        "proficiency": 75
-      },
-      {
-        "name": "JavaScript / TypeScript",
-        "proficiency": 80
-      },
-      {
-        "name": "SQL / NoSQL / GraphQL",
-        "proficiency": 70
-      },
-      {
-        "name": "React / Vue / Node.js",
-        "proficiency": 70
-      },
-      {
-        "name": "System Administration",
-        "proficiency": 50
-      },
-      {
-        "name": "IoT / Embedded / Electrical Engineering",
-        "proficiency": 20,
-        "learning": true
-      }
-    ],
+    "skills": {
+      "title": "Skills",
+      "subTitle": "Where I’ve Spent the Most Cycles",
+      "groups": [
+        {
+          "label": "Core Backend & Domain Logic",
+          "items": [
+            {
+              "tags": [
+                "php"
+              ],
+              "comment": "Where messy business logic meets long-lived systems."
+            },
+            {
+              "tags": [
+                "laravel"
+              ],
+              "comment": "A structured layer over chaotic domains."
+            },
+            {
+              "tags": [
+                "symfony"
+              ],
+              "comment": "Structured foundations in complex environments."
+            },
+            {
+              "tags": [
+                "custom-framework"
+              ],
+              "comment": "Understanding systems without the safety net."
+            },
+            {
+              "tags": [
+                "api"
+              ],
+              "comment": "Where systems agree to understand each other."
+            }
+          ]
+        },
+        {
+          "label": "Data & Integration",
+          "items": [
+            {
+              "tags": [
+                "mysql"
+              ],
+              "comment": "Where truth is stored, approximated, and occasionally negotiated."
+            },
+            {
+              "tags": [
+                "graphql"
+              ],
+              "comment": "Querying systems that don’t naturally align."
+            }
+          ]
+        },
+        {
+          "label": "Frontend & Navigation",
+          "items": [
+            {
+              "tags": [
+                "react"
+              ],
+              "comment": "Interfaces for navigating complex systems."
+            },
+            {
+              "tags": [
+                "vue"
+              ],
+              "comment": "Pragmatic interfaces for fast-moving systems."
+            },
+            {
+              "tags": [
+                "typescript"
+              ],
+              "comment": "Making implicit assumptions visible."
+            },
+            {
+              "tags": [
+                "javascript"
+              ],
+              "comment": "The glue between intention and interaction."
+            },
+            {
+              "tags": [
+                "html",
+                "css"
+              ],
+              "comment": "The structural layer everything else depends on."
+            }
+          ]
+        },
+        {
+          "label": "Infrastructure & Reality Layer",
+          "items": [
+            {
+              "tags": [
+                "aws",
+                "azure"
+              ],
+              "comment": "Infrastructure that scales—until reality interferes."
+            },
+            {
+              "tags": [
+                "system-administration"
+              ],
+              "comment": "Keeping the lights on when the abstractions break."
+            },
+            {
+              "tags": [
+                "iot",
+                "embedded"
+              ],
+              "comment": "Bridging code and physical processes."
+            }
+          ]
+        }
+      ]
+    },
     "langs": {
       "title": "Spoken Languages",
       "items": [
@@ -135,7 +223,7 @@
           "label": "Hungarian",
           "greeting": "Szia! 👋",
           "proficiency": "Native",
-          "comment": "I swear in it 10 mins straight without repeating a phrase when the build fails at 3 AM."
+          "comment": "I can swear in it 10 mins straight without repeating a phrase when the build fails at 3 AM."
         },
         {
           "code": "en",
@@ -164,7 +252,7 @@
         "slug": "archbau",
         "company": "Archbau GmbH",
         "dates": "Jun 2025 – Mar 2026",
-        "position": "Field Assistant (Archäology – Side Project)",
+        "position": "Field Assistant (Archäology - Side Project)",
         "patterns": [
           "physical-to-digital",
           "data-pipelines",
@@ -429,263 +517,12 @@
     "title": "System Patterns I’ve Worked With",
     "subTitle": "I design and stabilize systems that survive contact with reality. Here are the recurring patterns I have repeatedly built or improved:",
     "patterns": [
-      {
-        "slug": "time-sensitive",
-        "title": "Time-sensitive synchronization layers",
-        "subTitle": "Real-time availability, last-minute marketplaces, logistics flows, and irreversible data capture (Risskov, WebShippy, Archbau, Ordio)",
-        "explanation": [
-          "I’ve built and maintained systems where timing is the difference between success and failure — last-minute hotel bookings that must stay consistent across countries and partners, warehouse fulfillment that can’t tolerate delays, and archaeological documentation where once a layer is removed the context is gone forever.",
-          "These experiences taught me how to design synchronization layers that gracefully handle incomplete information, asynchronous updates, and real-world volatility without letting downstream processes break."
-        ],
-        "icon": "content",
-        "seeAlso": [
-          {
-            "type": "experience",
-            "label": "Risskov Autoferien AG",
-            "link": "#experience-risskov"
-          },
-          {
-            "type": "experience",
-            "label": "WebShippy Kft",
-            "link": "#experience-webshippy"
-          },
-          {
-            "type": "experience",
-            "label": "Archbau GmbH",
-            "link": "#experience-archbau"
-          },
-          {
-            "type": "experience",
-            "label": "Ordio GmbH",
-            "link": "#experience-ordio"
-          },
-          {
-            "type": "tag",
-            "label": "API",
-            "link": "api"
-          },
-          {
-            "type": "tag",
-            "label": "GraphQL",
-            "link": "graphql"
-          },
-          {
-            "type": "pattern",
-            "label": "Distributed Data Transformation Pipelines",
-            "link": "data-pipelines"
-          }
-        ]
-      },
-      {
-        "slug": "data-pipelines",
-        "title": "Distributed data transformation pipelines",
-        "subTitle": "Moving information across incompatible domains while preserving integrity (microservices at TechTeamer, multi-country platforms at Risskov, physical-to-digital at Archbau and early furniture operations)",
-        "explanation": [
-          "From real-time loan lifecycles in a microservice fintech platform to transforming raw excavation measurements into structured archaeological records, I’ve repeatedly designed pipelines that move and reshape data across domains while keeping integrity, auditability, and traceability intact.",
-          "The pattern shows up whenever incompatible systems must talk — HR data from Workday into workforce platforms, multi-country availability across Azure, or physical fieldwork into formal records."
-        ],
-        "icon": "development",
-        "seeAlso": [
-          {
-            "type": "experience",
-            "label": "TechTeamer Kft & MikroCredit Zrt",
-            "link": "#experience-techteamer-microcredit"
-          },
-          {
-            "type": "experience",
-            "label": "Risskov Autoferien AG",
-            "link": "#experience-risskov"
-          },
-          {
-            "type": "experience",
-            "label": "Archbau GmbH",
-            "link": "#experience-archbau"
-          },
-          {
-            "type": "tag",
-            "label": "API",
-            "link": "api"
-          },
-          {
-            "type": "tag",
-            "label": "PHP",
-            "link": "php"
-          },
-          {
-            "type": "tag",
-            "label": "MySQL",
-            "link": "mysql"
-          },
-          {
-            "type": "pattern",
-            "label": "External Dependency Orchestration",
-            "link": "external-dependencies"
-          }
-        ]
-      },
-      {
-        "slug": "external-dependencies",
-        "title": "External dependency orchestration",
-        "subTitle": "Integrating third-party HR systems, hotel partners, e-commerce platforms, and regulatory workflows without letting external volatility break the core system (Ordio, WebShippy, Risskov, Diligent, Archbau)",
-        "explanation": [
-          "Whether it was Workday HR imports at Ordio, hotel partner availability at Risskov, or regulatory identity verification at TechTeamer, I focused on building orchestration layers that isolate external volatility so the core system stays stable and observable.",
-          "The real skill is making dependencies explicit, recoverable, and auditable instead of letting them silently corrupt internal state."
-        ],
-        "icon": "email",
-        "seeAlso": [
-          {
-            "type": "experience",
-            "label": "Ordio GmbH",
-            "link": "#experience-ordio"
-          },
-          {
-            "type": "experience",
-            "label": "WebShippy Kft",
-            "link": "#experience-webshippy"
-          },
-          {
-            "type": "experience",
-            "label": "Risskov Autoferien AG",
-            "link": "#experience-risskov"
-          },
-          {
-            "type": "experience",
-            "label": "Diligent Corp.",
-            "link": "#experience-diligent"
-          },
-          {
-            "type": "tag",
-            "label": "API",
-            "link": "api"
-          },
-          {
-            "type": "pattern",
-            "label": "Time-sensitive Synchronization Layers",
-            "link": "time-sensitive"
-          }
-        ]
-      },
-      {
-        "slug": "legacy-modernization",
-        "title": "Legacy modernization under live constraints",
-        "subTitle": "Gradually replacing or augmenting large PHP monoliths while maintaining auditability, compliance, and delivery continuity (Diligent, NextTuesday)",
-        "explanation": [
-          "At Diligent and NextTuesday I worked inside large, business-critical PHP systems that could not be stopped. The challenge was to modernize incrementally — introducing TypeScript services, cloud patterns, and clearer boundaries — without ever breaking audit trails or compliance requirements.",
-          "This pattern taught me that the hardest part is not the new code; it’s keeping the old system alive and trustworthy while you change it."
-        ],
-        "icon": "mobile",
-        "seeAlso": [
-          {
-            "type": "experience",
-            "label": "Diligent Corp.",
-            "link": "#experience-diligent"
-          },
-          {
-            "type": "experience",
-            "label": "NextTuesday GmbH",
-            "link": "#experience-nexttuesday"
-          },
-          {
-            "type": "tag",
-            "label": "PHP",
-            "link": "php"
-          },
-          {
-            "type": "tag",
-            "label": "Laravel",
-            "link": "laravel"
-          },
-          {
-            "type": "tag",
-            "label": "Custom Framework",
-            "link": "custom-framework"
-          },
-          {
-            "type": "pattern",
-            "label": "Distributed Data Transformation Pipelines",
-            "link": "data-pipelines"
-          }
-        ]
-      },
-      {
-        "slug": "navigation",
-        "title": "Constraint-aware navigation systems",
-        "subTitle": "Guiding users through combinatorial or high-variability spaces (furniture configurator, workforce process interfaces at Ordio)",
-        "explanation": [
-          "I’ve built interfaces that let non-technical users move safely through spaces with enormous combinatorial complexity — from a furniture configurator with ~10^1851 valid combinations to guided workforce onboarding and approval flows at Ordio.",
-          "These are not simple forms; they are constraint-aware navigation systems that prevent invalid states while staying intuitive and fast."
-        ],
-        "icon": "graphics",
-        "seeAlso": [
-          {
-            "type": "experience",
-            "label": "Ordio GmbH",
-            "link": "#experience-ordio"
-          },
-          {
-            "type": "experience",
-            "label": "Érték-Rendszerház Kft & Wore Hungary Kft",
-            "link": "#experience-ertek-rendszerhaz"
-          },
-          {
-            "type": "tag",
-            "label": "React",
-            "link": "react"
-          },
-          {
-            "type": "tag",
-            "label": "TypeScript",
-            "link": "typescript"
-          },
-          {
-            "type": "tag",
-            "label": "Vue.js",
-            "link": "vue"
-          }
-        ]
-      },
-      {
-        "slug": "physical-to-digital",
-        "title": "Physical-to-digital feedback loops",
-        "subTitle": "Bridging sensors, manual fieldwork, and formal records where reality itself is the source of truth (Archbau excavation, early hardware prototypes, warehouse automation at WebShippy)",
-        "explanation": [
-          "From on-site archaeological documentation at Archbau to warehouse picker/packer tools at WebShippy and my early ESP32/RFID experiments, I’ve repeatedly closed the loop where the physical world (measurements, sensors, manual steps) becomes structured, verifiable digital records.",
-          "These loops are unforgiving — errors in reality are irreversible — so the feedback mechanisms must be immediate, observable, and resilient to the messiness of the real world."
-        ],
-        "icon": "design",
-        "seeAlso": [
-          {
-            "type": "experience",
-            "label": "Archbau GmbH",
-            "link": "#experience-archbau"
-          },
-          {
-            "type": "experience",
-            "label": "WebShippy Kft",
-            "link": "#experience-webshippy"
-          },
-          {
-            "type": "experience",
-            "label": "Future Property Trade Kft",
-            "link": "#experience-future-property-trade"
-          },
-          {
-            "type": "tag",
-            "label": "PHP",
-            "link": "php"
-          },
-          {
-            "type": "pattern",
-            "label": "Time-sensitive Synchronization Layers",
-            "link": "time-sensitive"
-          },
-          {
-            "type": "post",
-            "label": "Background: How I Got Here",
-            "link": "perspective-background"
-          }
-        ]
-      }
+      "time-sensitive",
+      "data-pipelines",
+      "external-dependencies",
+      "legacy-modernization",
+      "navigation",
+      "physical-to-digital"
     ]
   },
   "education": {
@@ -759,6 +596,263 @@
     "subTitle": "A handful of systems, tools, and projects I’ve built or contributed to."
   },
   "tags": [
+    {
+      "slug": "time-sensitive",
+      "label": "Time-sensitive Synchronization",
+      "icon": "content",
+      "teaser": "Real-time availability, last-minute marketplaces, logistics flows, and irreversible data capture.",
+      "explanation": [
+        "I've built and maintained systems where timing is the difference between success and failure — last-minute hotel bookings that must stay consistent across countries and partners, warehouse fulfillment that can't tolerate delays, and archaeological documentation where once a layer is removed the context is gone forever.",
+        "These experiences taught me how to design synchronization layers that gracefully handle incomplete information, asynchronous updates, and real-world volatility without letting downstream processes break."
+      ],
+      "seeAlso": [
+        {
+          "type": "experience",
+          "label": "Risskov Autoferien AG",
+          "link": "#experience-risskov"
+        },
+        {
+          "type": "experience",
+          "label": "WebShippy Kft",
+          "link": "#experience-webshippy"
+        },
+        {
+          "type": "experience",
+          "label": "Archbau GmbH",
+          "link": "#experience-archbau"
+        },
+        {
+          "type": "experience",
+          "label": "Ordio GmbH",
+          "link": "#experience-ordio"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "GraphQL",
+          "link": "graphql"
+        },
+        {
+          "type": "pattern",
+          "label": "Distributed Data Transformation Pipelines",
+          "link": "data-pipelines"
+        }
+      ]
+    },
+    {
+      "slug": "data-pipelines",
+      "label": "Data Transformation Pipelines",
+      "icon": "development",
+      "teaser": "Moving information across incompatible domains while preserving integrity.",
+      "explanation": [
+        "From real-time loan lifecycles in a microservice fintech platform to transforming raw excavation measurements into structured archaeological records, I've repeatedly designed pipelines that move and reshape data across domains while keeping integrity, auditability, and traceability intact.",
+        "The pattern shows up whenever incompatible systems must talk — HR data from Workday into workforce platforms, multi-country availability across Azure, or physical fieldwork into formal records."
+      ],
+      "seeAlso": [
+        {
+          "type": "experience",
+          "label": "TechTeamer Kft & MikroCredit Zrt",
+          "link": "#experience-techteamer-microcredit"
+        },
+        {
+          "type": "experience",
+          "label": "Risskov Autoferien AG",
+          "link": "#experience-risskov"
+        },
+        {
+          "type": "experience",
+          "label": "Archbau GmbH",
+          "link": "#experience-archbau"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "tag",
+          "label": "MySQL",
+          "link": "mysql"
+        },
+        {
+          "type": "pattern",
+          "label": "External Dependency Orchestration",
+          "link": "external-dependencies"
+        }
+      ]
+    },
+    {
+      "slug": "external-dependencies",
+      "label": "External Dependency Orchestration",
+      "icon": "email",
+      "teaser": "Integrating third-party systems without letting external volatility break the core system.",
+      "explanation": [
+        "Whether it was Workday HR imports at Ordio, hotel partner availability at Risskov, or regulatory identity verification at TechTeamer, I focused on building orchestration layers that isolate external volatility so the core system stays stable and observable.",
+        "The real skill is making dependencies explicit, recoverable, and auditable instead of letting them silently corrupt internal state."
+      ],
+      "seeAlso": [
+        {
+          "type": "experience",
+          "label": "Ordio GmbH",
+          "link": "#experience-ordio"
+        },
+        {
+          "type": "experience",
+          "label": "WebShippy Kft",
+          "link": "#experience-webshippy"
+        },
+        {
+          "type": "experience",
+          "label": "Risskov Autoferien AG",
+          "link": "#experience-risskov"
+        },
+        {
+          "type": "experience",
+          "label": "Diligent Corp.",
+          "link": "#experience-diligent"
+        },
+        {
+          "type": "tag",
+          "label": "API",
+          "link": "api"
+        },
+        {
+          "type": "pattern",
+          "label": "Time-sensitive Synchronization Layers",
+          "link": "time-sensitive"
+        }
+      ]
+    },
+    {
+      "slug": "legacy-modernization",
+      "label": "Legacy Modernization",
+      "icon": "mobile",
+      "teaser": "Gradually replacing or augmenting large systems while maintaining auditability and compliance.",
+      "explanation": [
+        "At Diligent and NextTuesday I worked inside large, business-critical PHP systems that could not be stopped. The challenge was to modernize incrementally — introducing TypeScript services, cloud patterns, and clearer boundaries — without ever breaking audit trails or compliance requirements.",
+        "This pattern taught me that the hardest part is not the new code; it's keeping the old system alive and trustworthy while you change it."
+      ],
+      "seeAlso": [
+        {
+          "type": "experience",
+          "label": "Diligent Corp.",
+          "link": "#experience-diligent"
+        },
+        {
+          "type": "experience",
+          "label": "NextTuesday GmbH",
+          "link": "#experience-nexttuesday"
+        },
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "tag",
+          "label": "Laravel",
+          "link": "laravel"
+        },
+        {
+          "type": "tag",
+          "label": "Custom Framework",
+          "link": "custom-framework"
+        },
+        {
+          "type": "pattern",
+          "label": "Distributed Data Transformation Pipelines",
+          "link": "data-pipelines"
+        }
+      ]
+    },
+    {
+      "slug": "navigation",
+      "label": "Constraint-aware Navigation",
+      "icon": "graphics",
+      "teaser": "Guiding users through combinatorial or high-variability spaces.",
+      "explanation": [
+        "I've built interfaces that let non-technical users move safely through spaces with enormous combinatorial complexity — from a furniture configurator with ~10^1851 valid combinations to guided workforce onboarding and approval flows at Ordio.",
+        "These are not simple forms; they are constraint-aware navigation systems that prevent invalid states while staying intuitive and fast."
+      ],
+      "seeAlso": [
+        {
+          "type": "experience",
+          "label": "Ordio GmbH",
+          "link": "#experience-ordio"
+        },
+        {
+          "type": "experience",
+          "label": "Érték-Rendszerház Kft & Wore Hungary Kft",
+          "link": "#experience-ertek-rendszerhaz"
+        },
+        {
+          "type": "tag",
+          "label": "React",
+          "link": "react"
+        },
+        {
+          "type": "tag",
+          "label": "TypeScript",
+          "link": "typescript"
+        },
+        {
+          "type": "tag",
+          "label": "Vue.js",
+          "link": "vue"
+        }
+      ]
+    },
+    {
+      "slug": "physical-to-digital",
+      "label": "Physical-to-Digital Feedback Loops",
+      "icon": "design",
+      "teaser": "Bridging sensors, manual fieldwork, and formal records where reality itself is the source of truth.",
+      "explanation": [
+        "From on-site archaeological documentation at Archbau to warehouse picker/packer tools at WebShippy and my early ESP32/RFID experiments, I've repeatedly closed the loop where the physical world (measurements, sensors, manual steps) becomes structured, verifiable digital records.",
+        "These loops are unforgiving — errors in reality are irreversible — so the feedback mechanisms must be immediate, observable, and resilient to the messiness of the real world."
+      ],
+      "seeAlso": [
+        {
+          "type": "experience",
+          "label": "Archbau GmbH",
+          "link": "#experience-archbau"
+        },
+        {
+          "type": "experience",
+          "label": "WebShippy Kft",
+          "link": "#experience-webshippy"
+        },
+        {
+          "type": "experience",
+          "label": "Future Property Trade Kft",
+          "link": "#experience-future-property-trade"
+        },
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        },
+        {
+          "type": "pattern",
+          "label": "Time-sensitive Synchronization Layers",
+          "link": "time-sensitive"
+        },
+        {
+          "type": "post",
+          "label": "Background: How I Got Here",
+          "link": "perspective-background"
+        }
+      ]
+    },
     {
       "slug": "php",
       "label": "PHP",
@@ -1197,6 +1291,74 @@
           "type": "pattern",
           "label": "Cloud",
           "link": "cloud"
+        }
+      ]
+    },
+    {
+      "slug": "system-administration",
+      "label": "System Administration",
+      "teaser": "Keeping the lights on when the abstractions break.",
+      "explanation": [
+        "Managed servers, deployments, and operational infrastructure across production environments.",
+        "From emergency hotfixes at 3 AM to designing resilient systems that don't need middle-of-the-night attention."
+      ],
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "AWS",
+          "link": "aws"
+        },
+        {
+          "type": "tag",
+          "label": "Azure",
+          "link": "azure"
+        },
+        {
+          "type": "tag",
+          "label": "PHP",
+          "link": "php"
+        }
+      ]
+    },
+    {
+      "slug": "iot",
+      "label": "IoT",
+      "teaser": "Bridging code and physical processes.",
+      "explanation": [
+        "Built systems connecting digital logic to physical action — from sensor data to automated responses.",
+        "Experience with microcontrollers, protocols, and the challenges of making code interact with the unpredictable real world."
+      ],
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "Embedded",
+          "link": "embedded"
+        },
+        {
+          "type": "pattern",
+          "label": "Physical-to-Digital",
+          "link": "physical-to-digital"
+        }
+      ]
+    },
+    {
+      "slug": "embedded",
+      "label": "Embedded",
+      "teaser": "Code that runs on hardware, not in the cloud.",
+      "explanation": [
+        "Written firmware and low-level code for microcontrollers and dedicated hardware.",
+        "Working with constraints where every byte and cycle matters, and where bugs have physical consequences."
+      ],
+      "seeAlso": [
+        {
+          "type": "tag",
+          "label": "IoT",
+          "link": "iot"
+        },
+        {
+          "type": "pattern",
+          "label": "Physical-to-Digital",
+          "link": "physical-to-digital"
         }
       ]
     }

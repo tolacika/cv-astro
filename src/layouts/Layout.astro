@@ -3,6 +3,7 @@ import MainHead from "../components/MainHead.astro";
 import type { MainHeadProps } from "../components/MainHead.astro";
 import "../styles/global.css";
 import LlmModal from "../components/LlmModal.astro";
+import TagDetailModal from "../components/TagDetailModal.astro";
 
 const { headProps } = Astro.props as { headProps: MainHeadProps };
 ---
@@ -13,22 +14,44 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
   </head>
   <body class="antialiased">
     <LlmModal />
-    <div class="relative" data-action data-target>
+    <TagDetailModal />
+    <div class="relative">
       <slot />
     </div>
 
     <script>
+      function handleTagExplorerModal(el: Element, payload: string) {
+        const elContent = el.querySelector(`#${el.id}-content`);
+        if (!elContent) return;
+        elContent.innerHTML = "";
+
+        fetch(`/tag/${payload}-patrial.html`)
+          .then((res) => res.text())
+          .then((html) => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            elContent.innerHTML = doc.body.innerHTML;
+          });
+
+        console.log({ el, elContent });
+      }
+
       function handleScroll(target: string) {
         const el = document.querySelector(target);
         if (el) el.scrollIntoView({ behavior: "smooth" });
       }
 
-      function handleOpenModal(target: string) {
+      function handleOpenModal(target: string, payload: string | undefined) {
         const el = document.querySelector(target);
+        if (!el) return;
         if (el instanceof HTMLDialogElement) {
           el.showModal();
         } else if (el instanceof HTMLElement) {
           el.classList.remove("hidden");
+        }
+
+        if (payload) {
+          handleTagExplorerModal(el, payload);
         }
       }
 
@@ -42,11 +65,6 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
               el.classList.add("hidden");
             }
           });
-        /*document
-          .querySelectorAll('[role="dialog"][aria-modal="true"].hidden')
-          .forEach((el) => {
-            el.classList.remove("hidden");
-          });*/
       }
 
       function handleCollapse(target: string) {
@@ -83,13 +101,22 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
 
         const action = el.dataset.action;
         const actionTarget = el.dataset.target;
+        const actionPayload = el.dataset.payload;
 
         switch (action) {
           case "scroll":
             if (actionTarget) handleScroll(actionTarget);
             break;
           case "openModal":
-            if (actionTarget) handleOpenModal(actionTarget);
+            if (actionTarget) {
+              if (
+                document.querySelector(actionTarget) &&
+                el.hasAttribute("href") &&
+                !!el.getAttribute("href")
+              )
+                e.preventDefault();
+              handleOpenModal(actionTarget, actionPayload);
+            }
             break;
           case "closeModal":
             handleCloseModal();
@@ -99,6 +126,15 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
               return;
             if (actionTarget) handleCollapse(actionTarget);
             break;
+        }
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document
+            .querySelectorAll("[role=dialog]:not(.hidden)")
+            .forEach((modal) => {
+              modal.classList.add("hidden");
+            });
         }
       });
     </script>

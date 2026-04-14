@@ -1,42 +1,51 @@
 ---
-import type { Content } from "../lib/content";
+import type { Tag } from "../lib/content";
+import { getTagBySlug, type Content } from "../lib/content";
+import TagLink from "./TagLink.astro";
 
 const { content } = Astro.props as { content: Content };
 
 const skills = content.intro.skills;
 ---
 
-<section id="skills">
-  {skills.map((skill, idx) => {
-    const level = skill.proficiency;
-    const extra = skill.learning && level < 80;
-    const extraWidth = 80 - level;
-
-    return (
-      <div class={idx > 0 ? "pt-6" : ""}>
-        <div class="flex items-end justify-between">
-          <h4 class="font-body font-semibold uppercase text-black whitespace-pre-wrap">
-            {skill.name}
-          </h4>
-          <h3 class="font-body text-3xl font-bold text-primary">
-            {skill.proficiency}%
-          </h3>
+<section id="skills" class="pb-10">
+  <h3
+    class="text-left font-header text-2xl font-semibold uppercase mb-4 text-primary sm:text-3xl lg:text-4xl"
+  >
+    {content.intro.skills.title}
+    <span class="text-xt sm:text-2xl lg:text-3xl ml-2 text-gray-800">
+      {content.intro.skills.subTitle}
+    </span>
+  </h3>
+  {
+    skills.groups.map((group) => {
+      return (
+        <div class="">
+          <p class="font-body font-semibold text-lg lg:text-xl text-black whitespace-pre-wrap border-b-2 border-primary my-3">
+            {group.label}
+          </p>
+          <div class="flex flex-row gap-4 flex-wrap justify-start">
+            {group.items.map((item) => {
+              const tags = item.tags.map((s) => getTagBySlug(s));
+              return (
+                <div class="bg-white rounded-xl shadow-xl w-full md:w-72 p-1 group hover:bg-primary">
+                  <p class="md:text-lg lg:text-xl font-bold text-black group-hover:text-white text-center py-2">
+                    {tags.map((t, idx) => (
+                      <>
+                        {idx > 0 ? " / " : ""}
+                        <TagLink type="tag" tag={t}>{t.label}</TagLink>
+                      </>
+                    ))}
+                  </p>
+                  <p class="font-body italic leading-relaxed text-grey-10 group-hover:text-grey-60 text-center md:text-lg">
+                    {item.comment}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
-
-        <div class="flex mt-2 h-3 w-full rounded-full bg-lila">
-          <div
-            class={`h-3 ${extra ? "rounded-l" : "rounded-full"} bg-primary`}
-            style={`width: ${skill.proficiency}%`}
-          ></div>
-
-          {extra && (
-            <div
-              class="h-3 rounded-r bg-striped bg-2828 animate-move-stripe"
-              style={`width: ${extraWidth}%`}
-            ></div>
-          )}
-        </div>
-      </div>
-    );
-  })}
+      );
+    })
+  }
 </section>

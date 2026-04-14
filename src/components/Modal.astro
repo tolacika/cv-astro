@@ -9,8 +9,8 @@ const { id, title } = Astro.props;
 
 <div id={id} class="fixed inset-0 z-100 hidden" role="dialog" aria-modal="true">
   <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" data-action="closeModal"></div>
-  <div class="fixed inset-4 sm:inset-20 flex flex-col bg-primary rounded-lg shadow-2xl">
-    <div class="flex items-center justify-between p-1 border-b border-white/10">
+  <div class="fixed mx-auto md:w-3/5 inset-4 sm:inset-20 flex flex-col rounded-2xl shadow-2xl">
+    <div class="flex items-center justify-between p-1 border-b bg-primary border-white/10">
       <h2 class="mt-1 ml-3 text-xl font-header font-bold uppercase text-white">{title}</h2>
       <button
         class="p-2 text-white/70 hover:text-white transition-colors"
@@ -30,13 +30,3 @@ const { id, title } = Astro.props;
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      document.querySelectorAll("[role=dialog]:not(.hidden)").forEach((modal) => {
-        modal.classList.add("hidden");
-      });
-    }
-  });
-</script>

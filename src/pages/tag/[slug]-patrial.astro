@@ -1,8 +1,7 @@
 ---
+export const partial = true;
+
 import { getContent, type Content } from "../../lib/content";
-import BaseLayout from "../../layouts/Layout.astro"
-import Navbar from "../../components/Navbar.astro";
-import Footer from "../../components/Footer.astro";
 import ContentTag from "../../components/ContentTag.astro";
 import authorImg from '../../assets/img/author-blue-hair.jpg';
 import type { MainHeadProps } from "../../components/MainHead.astro";
@@ -18,14 +17,6 @@ export function getStaticPaths() {
 const { tag } = Astro.props;
 
 const content = getContent() as Content;
-
-const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
 ---
 
-<BaseLayout headProps={headProps}>
-  <Navbar content={content} />
-
-  <ContentTag content={content} tag={tag} />
-
-	<Footer content={content} />
-</BaseLayout>
+<ContentTag content={content} tag={tag} />

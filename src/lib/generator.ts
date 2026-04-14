@@ -1,4 +1,4 @@
-import { getContent, type Content, type SeeAlso } from "./content";
+import { getContent, getTagBySlug, type Content, type SeeAlso, type Tag } from "./content";
 import { getPosts, type Post, type PostContent, type PostMeta } from "./posts";
 
 export interface LlmGeneratorInput {
@@ -76,7 +76,6 @@ export async function createLlmInput(): Promise<LlmGeneratorInput> {
 
 export function generateLlmPromptBody(input: LlmGeneratorInput): string[] {
   const { translations, featuredPosts, perspectivePosts } = input;
-  const getPattern = (slug:string) => translations.services.patterns.find(p => p.slug == slug);
 
   const heroSection = `
 ### HERO SECTION
@@ -92,7 +91,8 @@ ${escapeForJson(translations.intro.title)}
 ${escapeForJson(translations.intro.subTitle)}
 
 ${truncateContent(translations.intro.paragraph, 500)}
-skills: ${translations.intro.skills.map(s => `${s.name} (${s.proficiency}%)${s.learning ? " [learning]" : ""}`).join("; ")}
+${escapeForJson(translations.intro.skills.title)} - ${escapeForJson(translations.intro.skills.subTitle)}
+${translations.intro.skills.groups.map(g => `  - ${escapeForJson(g.label)}:\n${g.items.map(i => `    - ${i.tags.join(", ")}: ${escapeForJson(i.comment)}`).join("\n")}`).join("\n")}
 languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)}: ${escapeForJson(l.proficiency)} – ${escapeForJson(l.comment)}`).join("\n")}
 `;
 
@@ -102,7 +102,7 @@ languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.lab
 ${escapeForJson(translations.workExperience.title)}
 ${escapeForJson(translations.workExperience.subTitle)}
 jobs:
-${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - patterns: ${job.patterns.map(p => escapeForJson(getPattern(p)!.title)).join(", ")}\n    - tags: ${job.tags.join(", ")}\n    - ${escapeForJson(job.description)}\n` + (job.readMore || []).map(p => `    - ${escapeForJson(p)}`).join("\n")).join("\n")}
+${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - patterns: ${job.patterns.map(p => escapeForJson(p)).join(", ")}\n    - tags: ${job.tags.join(", ")}\n    - ${escapeForJson(job.description)}\n` + (job.readMore || []).map(p => `    - ${escapeForJson(p)}`).join("\n")).join("\n")}
 `;
 
   const postScriptumSection = `
@@ -125,7 +125,7 @@ ${translations.education.content.map(escapeForJson).join("\n")}
 ${escapeForJson(translations.services.title)}
 ${escapeForJson(translations.services.subTitle)}
 patterns:
-${translations.services.patterns.map(p => `  - **${escapeForJson(p.title)}:** ${escapeForJson(p.subTitle)}${p.seeAlso ? `
+${translations.services.patterns.map(p => getTagBySlug(p)).map(p => `  - **${escapeForJson(p.label)}:** ${escapeForJson(p.teaser)}${p.seeAlso ? `
     - see also: ${formatSeeAlso(p.seeAlso).join("; ")}` : ``}
 `)}`;
 
@@ -259,6 +259,7 @@ The email MUST:
 - Be tailored to THIS specific company and role
 - Clearly connect my experience to the job requirements
 - Demonstrate understanding of what the company does
+- Do NOT use '–'
 
 ### MUST INCLUDE
 
@@ -379,7 +380,7 @@ Always structure your thinking in this order:
    - Suggest relevant use cases (preferably developer-focused)
 
 4. **Portfolio Opportunities**
-   - Suggest 2–4 concrete project ideas or improvements
+   - Suggest 2-4 concrete project ideas or improvements
    - Focus on:
      - Real-world relevance
      - Demonstrable skills
@@ -405,6 +406,7 @@ Always structure your thinking in this order:
 - Do NOT suggest generic projects like "todo app" unless heavily improved
 - Assume my level is mid-to-senior developer
 - Focus on quality over quantity
+- Do NOT use '–'
 
 -------------------------
 ## OUTPUT FORMAT

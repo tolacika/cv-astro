@@ -1,13 +1,13 @@
 ---
 import type { Content, Job } from "../lib/content";
-import { logoSet } from "../lib/content";
+import { getTagBySlug, logoSet } from "../lib/content";
+import TagLink from "./TagLink.astro";
 
 const { content } = Astro.props as { content: Content };
 const { title, subTitle } = content.workExperience;
 const jobs = content.workExperience.jobs as Job[];
 
-const getPattern = (slug:string) => content.services.patterns.find(p => p.slug == slug);
-const getTag = (slug:string) => content.tags.find(t => t.slug == slug);
+
 
 ---
 
@@ -75,9 +75,9 @@ const getTag = (slug:string) => content.tags.find(t => t.slug == slug);
 
                   {job.patterns?.length > 0 && (
                     <p class="mb-1 font-body text-black text-sm flex flex-wrap">
-                      {job.patterns.map(pat => {
-                        const pattern = getPattern(pat)
-                        return <a class="text-gray-600 hover:text-black hover:underline px-2 py-1 mr-1 mb-0.5 bg-primary-light whitespace-nowrap rounded cursor-pointer" href={"/pattern/" + pattern?.slug + ".html"}>{pattern?.title}</a>
+                      {job.patterns.map(t => {
+                        const tag = getTagBySlug(t)
+                        return <TagLink type="badge" tag={tag}>{tag.label}</TagLink>;
                       })}
                     </p>
                   )}
@@ -85,9 +85,8 @@ const getTag = (slug:string) => content.tags.find(t => t.slug == slug);
                   {job.tags?.length > 0 && (
                     <p class="mb-1 font-body text-black text-sm flex flex-wrap">
                       {job.tags.map(t => {
-                        const tag = getTag(t)
-                        if (!tag) return "missing tag:" + t;
-                        return <a class="text-gray-600 hover:text-black hover:underline px-2 py-1 mr-1 mb-0.5 bg-primary-light whitespace-nowrap rounded cursor-pointer" href={"/tag/" + tag?.slug + ".html"}>{tag?.label}</a>
+                        const tag = getTagBySlug(t)
+                        return <TagLink type="badge" tag={tag}>{tag.label}</TagLink>;
                       })}
                     </p>
                   )}

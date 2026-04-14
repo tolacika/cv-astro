@@ -16,6 +16,7 @@ const { also, label } = Astro.props as { also: SeeAlso[]; label: string };
             <a href={item.link} target="_blank">
               {item.label}
             </a>
+            {item.comment && <> – {item.comment}</>}
           </li>
         );
       if (item.type == "experience")
@@ -40,7 +41,7 @@ const { also, label } = Astro.props as { also: SeeAlso[]; label: string };
       if (item.type == "pattern")
         return (
           <li>
-            <a href={`/pattern/${item.link}.html`}>
+            <a href={`/tag/${item.link}.html`}>
               {item.label}
             </a>
             {item.comment && <> – {item.comment}</>}
