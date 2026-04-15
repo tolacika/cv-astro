@@ -19,4 +19,4 @@ const { tag } = Astro.props;
 const content = getContent() as Content;
 ---
 
-<ContentTag content={content} tag={tag} />
+<ContentTag content={content} tag={tag} partial={true} />

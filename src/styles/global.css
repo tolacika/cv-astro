@@ -102,6 +102,11 @@
   animation: move-stripe 10s linear infinite;
 }
 
+html {
+  scroll-padding-top: 110px;
+  scroll-behavior: smooth;
+}
+
 article {
   color: var(--color-gray-900);
 }

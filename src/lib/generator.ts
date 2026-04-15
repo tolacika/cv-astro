@@ -93,7 +93,7 @@ ${escapeForJson(translations.intro.subTitle)}
 ${truncateContent(translations.intro.paragraph, 500)}
 ${escapeForJson(translations.intro.skills.title)} - ${escapeForJson(translations.intro.skills.subTitle)}
 ${translations.intro.skills.groups.map(g => `  - ${escapeForJson(g.label)}:\n${g.items.map(i => `    - ${i.tags.join(", ")}: ${escapeForJson(i.comment)}`).join("\n")}`).join("\n")}
-languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)}: ${escapeForJson(l.proficiency)} – ${escapeForJson(l.comment)}`).join("\n")}
+languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)}: ${escapeForJson(l.proficiency)} - ${escapeForJson(l.comment)}`).join("\n")}
 `;
 
   const workExperienceSection = `

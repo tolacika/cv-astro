@@ -9,7 +9,7 @@ const { content, tag } = Astro.props as {
 
 ---
 <section id="content" class="bg-grey-60">
-  <div class="container py-16 md:py-20 bg-white">
+  <div class="container py-4 md:py-8 bg-white">
     <article id={tag.slug} class="text-lg">
       {tag.explanation.map(exp => <p>{exp}</p>)}
 

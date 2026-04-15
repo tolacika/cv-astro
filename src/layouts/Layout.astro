@@ -8,11 +8,11 @@ import TagDetailModal from "../components/TagDetailModal.astro";
 const { headProps } = Astro.props as { headProps: MainHeadProps };
 ---
 
-<html lang="en" data-action data-target>
+<html lang="en">
   <head>
     <MainHead props={headProps} />
   </head>
-  <body class="antialiased">
+  <body class="antialiased bg-primary">
     <LlmModal />
     <TagDetailModal />
     <div class="relative">
@@ -32,13 +32,26 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
             const doc = parser.parseFromString(html, "text/html");
             elContent.innerHTML = doc.body.innerHTML;
           });
-
-        console.log({ el, elContent });
       }
 
-      function handleScroll(target: string) {
+      function handleScroll(target: string, e: PointerEvent) {
         const el = document.querySelector(target);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        console.log("fck")
+
+        if (el) {
+          e.preventDefault();
+
+          const header = document.querySelector("header > nav");
+          const headerHeight = header ? header.clientHeight : 0;
+          const buffer = 10;
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - headerHeight - buffer;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
       }
 
       function handleOpenModal(target: string, payload: string | undefined) {
@@ -105,14 +118,13 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
 
         switch (action) {
           case "scroll":
-            if (actionTarget) handleScroll(actionTarget);
+            if (actionTarget) handleScroll(actionTarget, e);
             break;
           case "openModal":
             if (actionTarget) {
               if (
                 document.querySelector(actionTarget) &&
-                el.hasAttribute("href") &&
-                !!el.getAttribute("href")
+                el.classList.contains("prevent-default")
               )
                 e.preventDefault();
               handleOpenModal(actionTarget, actionPayload);

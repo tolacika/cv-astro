@@ -120,7 +120,7 @@ const { content } = Astro.props as { content: Content };
   openBtn?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
 
-  document.querySelectorAll("#mobile-menu [data-action]").forEach((el) => {
+  document.querySelectorAll("#mobile-menu [data-close]").forEach((el) => {
     el.addEventListener("click", closeMenu);
   });
 

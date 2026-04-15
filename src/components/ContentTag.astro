@@ -3,12 +3,17 @@ import type { Content, ImageType, Tag } from "../lib/content";
 import HeroTag from "./HeroTag.astro";
 import ViewTag from "./ViewTag.astro";
 
-const { content, tag } = Astro.props as { content: Content, tag: Tag };
+interface Props {
+  content: Content;
+  tag: Tag;
+  partial?: boolean;
+}
 
+const { content, tag, partial = false } = Astro.props as Props;
 ---
 
 <main>
-  <HeroTag content={content} tag={tag} />
+  <HeroTag content={content} tag={tag} partial={partial} />
 
   <ViewTag content={content} tag={tag} />
 </main>

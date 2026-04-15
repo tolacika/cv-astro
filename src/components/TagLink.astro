@@ -37,7 +37,7 @@ const classes: Record<Props["type"], string[]> = {
 
 <a
   href={href}
-  class:list={classes[type]}
+  class:list={[...classes[type], "prevent-default"]}
   data-action="openModal"
   data-target="#tag-explorer"
   data-payload={tag.slug}

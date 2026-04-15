@@ -20,23 +20,28 @@
     "items": [
       {
         "label": "About",
-        "action": "scroll",
-        "target": "#about"
+        "target": "_self",
+        "href": "/#hero"
       },
       {
-        "label": "Services",
-        "action": "scroll",
-        "target": "#services"
+        "label": "Skills",
+        "target": "_self",
+        "href": "/#skills"
       },
       {
-        "label": "Work",
-        "action": "scroll",
-        "target": "#work"
+        "label": "Perspective",
+        "target": "_self",
+        "href": "/#perspective"
+      },
+      {
+        "label": "Experience",
+        "target": "_self",
+        "href": "/#work"
       },
       {
         "label": "Contact",
-        "action": "scroll",
-        "target": "#contact"
+        "target": "_self",
+        "href": "/#contact"
       },
       {
         "label": "LLM.TXT",
@@ -222,7 +227,7 @@
           "icon": "hu",
           "label": "Hungarian",
           "greeting": "Szia! 👋",
-          "proficiency": "Native",
+          "proficiency": "Native 🔥",
           "comment": "I can swear in it 10 mins straight without repeating a phrase when the build fails at 3 AM."
         },
         {
@@ -230,7 +235,7 @@
           "icon": "gb",
           "label": "English",
           "greeting": "Hello! 👋",
-          "proficiency": "Fluent",
+          "proficiency": "Fluent 🌍",
           "comment": "The language I use to explain why my ESP32 is on fire (again)."
         },
         {
@@ -238,7 +243,7 @@
           "icon": "de",
           "label": "German",
           "greeting": "Hallo! 👋",
-          "proficiency": "Beginner",
+          "proficiency": "Beginner 🍺",
           "comment": "Enough to order beer and understand why bureaucracy is the ultimate legacy system."
         }
       ]
@@ -251,7 +256,7 @@
       {
         "slug": "archbau",
         "company": "Archbau GmbH",
-        "dates": "Jun 2025 – Mar 2026",
+        "dates": "Jun 2025 - Mar 2026",
         "position": "Field Assistant (Archäology - Side Project)",
         "patterns": [
           "physical-to-digital",
@@ -271,7 +276,7 @@
       {
         "slug": "nexttuesday",
         "company": "NextTuesday GmbH",
-        "dates": "Sept 2024 – Mar 2025",
+        "dates": "Sept 2024 - Mar 2025",
         "position": "Senior PHP Engineer",
         "patterns": [
           "legacy-modernization",
@@ -302,7 +307,7 @@
       {
         "slug": "ordio",
         "company": "Ordio GmbH",
-        "dates": "Feb 2024 – Jun 2024",
+        "dates": "Feb 2024 - Jun 2024",
         "position": "Senior Full-stack Developer",
         "patterns": [
           "data-pipelines",
@@ -329,7 +334,7 @@
       {
         "slug": "diligent",
         "company": "Diligent Corp.",
-        "dates": "Jun 2022 – Apr 2023",
+        "dates": "Jun 2022 - Apr 2023",
         "position": "Senior Backend Developer",
         "patterns": [
           "legacy-modernization",
@@ -355,7 +360,7 @@
       {
         "slug": "future-property-trade",
         "company": "Future Property Trade Kft",
-        "dates": "May 2021 – May 2022",
+        "dates": "May 2021 - May 2022",
         "position": "Senior Full-stack Lead Developer (Freelance)",
         "patterns": [
           "physical-to-digital",
@@ -380,7 +385,7 @@
       {
         "slug": "risskov",
         "company": "Risskov Autoferien AG",
-        "dates": "Jan 2020 – Apr 2021",
+        "dates": "Jan 2020 - Apr 2021",
         "position": "Senior Full-stack Developer",
         "patterns": [
           "physical-to-digital",
@@ -409,7 +414,7 @@
       {
         "slug": "techteamer-microcredit",
         "company": "TechTeamer Kft &\nMikroCredit Zrt",
-        "dates": "2018 – 2019",
+        "dates": "2018 - 2019",
         "position": "Backend Developer",
         "patterns": [
           "data-pipelines",
@@ -487,7 +492,7 @@
       {
         "slug": "ertek-rendszerhaz",
         "company": "Érték-Rendszerház Kft &\nWore Hungary Kft",
-        "dates": "2014 – 2016",
+        "dates": "2014 - 2016",
         "position": "Junior Full-stack Developer, System Admin",
         "patterns": [
           "physical-to-digital",
@@ -1130,7 +1135,7 @@
     },
     {
       "slug": "api",
-      "label": "API",
+      "label": "API Design",
       "teaser": "Where systems agree to understand each other.",
       "explanation": [
         "Designed and integrated APIs across multiple domains, including logistics, HR systems, and partner platforms.",
