@@ -145,36 +145,10 @@ const introSchema = z.object({
   langs: languagesSchema,
 });
 
-const jobBaseSchema = z.object({
-  slug: z.string(),
-  company: z.string(),
-  dates: z.string(),
-  position: z.string(),
-  description: z.string(),
-  readMore: z.array(z.string()).optional(),
-  patterns: z.array(z.string()),
-  tags: z.array(z.string()),
-});
-
-const jobWithLogoSchema = jobBaseSchema.extend({
-  logo: z.enum(validLogos),
-  altLogo: z.string().optional(),
-});
-
-const jobWithAltLogoSchema = jobBaseSchema.extend({
-  logo: z.undefined(),
-  altLogo: z.string(),
-});
-
-const jobSchema = z.union([
-  jobWithLogoSchema,
-  jobWithAltLogoSchema,
-]);
-
 const workExperienceSchema = z.object({
   title: z.string(),
   subTitle: z.string(),
-  jobs: z.array(jobSchema),
+  jobs: z.array(z.string()),
 });
 
 const postScriptumSchema = z.object({
@@ -194,15 +168,6 @@ const seeAlsoSchema = z.object({
   label: z.string(),
   comment: z.string().optional(),
   link: z.string(),
-})
-
-const tagSchema = z.object({
-  slug: z.string(),
-  label: z.string(),
-  teaser: z.string(),
-  explanation: z.array(z.string()),
-  seeAlso: z.array(seeAlsoSchema).optional(),
-  icon: z.enum(validIcons).optional(),
 });
 
 const servicesSchema = z.object({
@@ -254,7 +219,6 @@ const contentSchema = z.object({
   followMe: followMeSchema,
   perspective: perspectiveSchema,
   projectFeatured: projectFeaturedSchema,
-  tags: z.array(tagSchema),
 });
 
 const parsedContent = contentSchema.parse(en);
@@ -301,7 +265,6 @@ export type Language = z.infer<typeof languageSchema>;
 export type Languages = z.infer<typeof languagesSchema>;
 export type Intro = z.infer<typeof introSchema>;
 
-export type Job = z.infer<typeof jobSchema>;
 export type WorkExperience = z.infer<typeof workExperienceSchema>;
 
 export type Services = z.infer<typeof servicesSchema>;
@@ -317,7 +280,6 @@ export type Perspective = z.infer<typeof perspectiveSchema>;
 export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
 
 export type SeeAlso = z.infer<typeof seeAlsoSchema>;
-export type Tag = z.infer<typeof tagSchema>;
 export type SEO = z.infer<typeof seoSchema>;
 
 export type Content = z.infer<typeof contentSchema>;
@@ -329,12 +291,3 @@ export function getContent(): Content {
 export function validateContent(data: unknown): Content {
   return contentSchema.parse(data);
 }
-
-const missingTag: Tag = {
-  slug: "",
-  label: "Missing tag: ",
-  teaser: "",
-  explanation: [],
-}
-
-export const getTagBySlug = (slug: string): Tag => parsedContent.tags.find(t => t.slug == slug) ?? {...missingTag, slug: slug, label: missingTag.label + slug};

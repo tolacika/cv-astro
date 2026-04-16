@@ -1,11 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import type { Content } from "../lib/content";
-import { getPosts } from "../lib/posts";
 import PostList from "./PostList.astro";
 
 const { content } = Astro.props as { content: Content };
 
-const posts = getPosts({type: "project", limit: 3});
+const posts = await  getCollection("postCollection", ({data}) => data.type == "project")
 ---
 
 <PostList

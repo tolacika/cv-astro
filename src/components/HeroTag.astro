@@ -1,10 +1,11 @@
 ---
-import type { Content, ImageType, Tag } from "../lib/content";
+import type { CollectionEntry } from "astro:content";
+import type { Content } from "../lib/content";
 import Hero from "./Hero.astro";
 
 interface Props {
   content: Content;
-  tag: Tag;
+  tag: CollectionEntry<"tagCollection">;
   partial?: boolean;
 }
 
@@ -19,12 +20,12 @@ const Test = partial ? "div" : Hero;
       <h1
         class="text-center font-header text-4xl text-white lg:text-left sm:text-5xl xl:text-6xl bg-linear-to-r from-hero-gradient-from to-hero-gradient-to inline-block p-1"
       >
-        {tag.label}
+        {tag.data.label}
       </h1>
       <h2
         class="text-center font-header text-2xl text-white lg:text-left sm:text-3xl xl:text-4xl font-extralight italic mt-4 bg-linear-to-r from-hero-gradient-from to-hero-gradient-to p-2"
       >
-        {tag.teaser}
+        {tag.data.teaser}
       </h2>
     </div>
   </div>

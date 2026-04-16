@@ -1,19 +1,22 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import type { Content, ImageType } from "../lib/content";
-import type { Post, PostContent } from "../lib/posts";
-import { marked } from "marked";
+import { render } from "astro:content";
 
-const { content, post, images } = Astro.props as {
+interface Props {
   content: Content;
-  post: Post;
-  images: Record<string, ImageType>;
-};
+  post: CollectionEntry<"postCollection">;
+}
 
-const postBody = await post.content() as PostContent;
-const postHtml = marked.parse(postBody);
+const { content, post } = Astro.props;
+
+const { Content } = await render(post);
 ---
+
 <section id="content" class="bg-grey-60">
   <div class="container py-16 md:py-20 bg-white">
-    <article id={post.slug} set:html={postHtml} class="text-lg" />
+    <article id={post.data.slug} class="text-lg">
+      <Content />
+    </article>
   </div>
 </section>

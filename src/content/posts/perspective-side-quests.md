@@ -1,10 +1,26 @@
+---
+type: "perspective"
+slug: "perspective-side-quests"
+title: "Personal Notes: Beyond Work"
+teaser: "Fragments from outside the main path - ideas, observations, and quiet experiments."
+image: "post-notes.webp"
+date: "2026-04-01 12:00:00"
+cta: "Explore More"
+tags:
+  - "embedded"
+  - "iot"
+  - "physical-to-digital"
+  - "custom-framework"
+  - "system-administration"
+---
+
 This is not a structured story.  
-It’s a collection of fragments.
+It's a collection of fragments.
 
 ---
 
 I like building things.  
-Sometimes useful. Sometimes not. Just things that didn’t exist before.
+Sometimes useful. Sometimes not. Just things that didn't exist before.
 
 ---
 
@@ -22,9 +38,9 @@ I also built a delivery app for a community-supported kitchen.
 
 It worked.  
 Then they disappeared.  
-I can’t reach them anymore.
+I can't reach them anymore.
 
-Systems don’t always fail.
+Systems don't always fail.
 Sometimes they just vanish.
 
 ---
@@ -32,7 +48,7 @@ Sometimes they just vanish.
 I once came across a thread on an Arduino forum where someone tried to stream live video from an ESP device to YouTube.
 Another user offered a paid solution.
 
-That didn’t sit right with me.
+That didn't sit right with me.
 
 On a community forum, knowledge should be shared, or at least not hidden behind a price tag so loudly.
 
@@ -62,7 +78,7 @@ It looked suspicious enough that the school thought it might be a bomb.
 
 The principal got involved.
 
-I didn’t win the competition.  
+I didn't win the competition.  
 But I got a special award for the show.
 
 Fair...
@@ -88,20 +104,20 @@ I used another one to build a torch.
 Buying one would have been easier.  
 But I already had the parts.  
 Sometimes building is not about efficiency.  
-It’s about continuation.
+It's about continuation.
 
 ---
 
-I’ve rewritten the same idea multiple times.
+I've rewritten the same idea multiple times.
 
 Each version felt final.  
 None of them were.
 
 ---
 
-The strangest constraint I’ve worked with reached something around 10^1851 combinations.
+The strangest constraint I've worked with reached something around 10^1851 combinations.
 
-At that point, you don’t manage data.  
+At that point, you don't manage data.  
 You navigate a universe.
 
 The simplest interface often hides the most complicated system behind it.
@@ -113,20 +129,20 @@ And systems that know when not to do more.
 
 ---
 
-I don’t like mushrooms.
+I don't like mushrooms.
 
 No deeper philosophy here.
 
 ---
 
-I’ve volunteered in different places over the years. Animal shelters. Community restoration projects. The kind of work where progress is slow, visible, and very real.
+I've volunteered in different places over the years. Animal shelters. Community restoration projects. The kind of work where progress is slow, visible, and very real.
 
 It changes your sense of scale.
 
 ---
 
 The larger the system, the harder it is to change.  
-Not because it’s strong, but because it’s entangled.
+Not because it's strong, but because it's entangled.
 
 ---
 
@@ -145,35 +161,35 @@ This portfolio is part of that effort.
 
 ---
 
-I’ve tried to improve many systems.  
-Some didn’t want to be improved.
+I've tried to improve many systems.  
+Some didn't want to be improved.
 
 That might be the hardest constraint of all.
 
 ---
 
-I’ve learned things that don’t fit here.  
-Shibari is one of them. Don’t Google it. Not safe for work.
+I've learned things that don't fit here.  
+Shibari is one of them. Don't Google it. Not safe for work.
 
 Context matters.  
 Consent required.
 
 ---
 
-I’ve created mods for games like Minecraft and Factorio.
+I've created mods for games like Minecraft and Factorio.
 
-There’s something satisfying about modifying systems that are already systems.  
+There's something satisfying about modifying systems that are already systems.  
 Like adding a new rule to a universe and watching how it adapts.
 
 ---
 
-Somewhere on the internet, on prog.hu, there’s a question under my name about global variables in Java.
+Somewhere on the internet, on prog.hu, there's a question under my name about global variables in Java.
 
-It’s not a good question.
+It's not a good question.
 
 It still exists.
 
-That’s fine.
+That's fine.
 
 ---
 
@@ -209,7 +225,7 @@ The bureaucracy was… also a system.
 I notice patterns. And mistakes.  
 In code. In systems. In everyday situations.  
 Sometimes I point them out.  
-Sometimes I don’t.
+Sometimes I don't.
 
 Small inconsistencies tend to point at larger problems.
 
@@ -219,7 +235,7 @@ Some systems look correct on paper.
 
 Until Reality disagrees.
 
-Just because something can be optimized doesn’t mean it should be.
+Just because something can be optimized doesn't mean it should be.
 
 ---
 
@@ -227,9 +243,9 @@ I like working in teams.
 
 Not because teams are always efficient, but because they are combinatorial.
 
-No one invents something truly new alone. We remix. We recombine. Like colors that can’t exist individually, but emerge when mixed.
+No one invents something truly new alone. We remix. We recombine. Like colors that can't exist individually, but emerge when mixed.
 
-A good team doesn’t remove mistakes.  
+A good team doesn't remove mistakes.  
 It makes them visible sooner.
 
 ---
@@ -238,7 +254,7 @@ I like when things flow.
 
 Data, materials, ideas.
 
-When they don’t, something is wrong.
+When they don't, something is wrong.
 
 ---
 
@@ -250,7 +266,7 @@ Just slightly more interesting ones.
 
 A good life, for me, is not extreme.
 
-It’s balanced.
+It's balanced.
 
 Some work. Some rest. Some social life. Some time for my own ideas.
 
@@ -264,14 +280,14 @@ Coffee.
 One-to-one ratio with milk.  
 Four sugars and a spoon of honey.
 
-But don’t stir it.  
-I don’t like it sweet.
+But don't stir it.  
+I don't like it sweet.
 
 Some background noise. A podcast, maybe.  
-It’s a small system that works.
+It's a small system that works.
 
 ---
 
-I’m still figuring things out.
+I'm still figuring things out.
 
 But at least now I know what kind of questions to ask.

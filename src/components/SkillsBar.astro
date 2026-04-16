@@ -1,11 +1,13 @@
 ---
-import type { Tag } from "../lib/content";
-import { getTagBySlug, type Content } from "../lib/content";
+import { getCollection } from "astro:content";
+import type { Content } from "../lib/content";
+import { getTagBySlug } from "../content.config";
 import TagLink from "./TagLink.astro";
 
 const { content } = Astro.props as { content: Content };
 
 const skills = content.intro.skills;
+const tagColl = await getCollection("tagCollection");
 ---
 
 <section id="skills" class="pb-10">
@@ -26,11 +28,11 @@ const skills = content.intro.skills;
           </p>
           <div class="flex flex-row gap-4 flex-wrap justify-start">
             {group.items.map((item) => {
-              const tags = item.tags.map((s) => getTagBySlug(s));
+              const tags = item.tags.map((s) => getTagBySlug(s, tagColl));
               return (
                 <div class="bg-white rounded-xl shadow-xl w-full md:w-72 p-1 group hover:bg-primary">
                   <p class="md:text-lg lg:text-xl font-bold text-black group-hover:text-white text-center py-2">
-                    {tags.map((t, idx) => (
+                    {tags.map(t => t.data).map((t, idx) => (
                       <>
                         {idx > 0 ? " / " : ""}
                         <TagLink type="tag" tag={t}>{t.label}</TagLink>

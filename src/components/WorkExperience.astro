@@ -1,14 +1,15 @@
 ---
-import type { Content, Job } from "../lib/content";
-import { getTagBySlug, logoSet } from "../lib/content";
+import { getCollection } from "astro:content";
+import { getTagBySlug } from "../content.config";
+import type { Content } from "../lib/content";
+import { logoSet } from "../lib/content";
 import TagLink from "./TagLink.astro";
+import { render } from "astro:content";
 
 const { content } = Astro.props as { content: Content };
-const { title, subTitle } = content.workExperience;
-const jobs = content.workExperience.jobs as Job[];
-
-
-
+const { title, subTitle, jobs } = content.workExperience;
+const jobColl = await getCollection("jobCollection");
+const tagColl = await getCollection("tagCollection");
 ---
 
 <section class="container py-16 md:py-20" id="work">
@@ -22,7 +23,9 @@ const jobs = content.workExperience.jobs as Job[];
 
   <div class="relative mx-auto mt-12 flex w-full flex-col 2xl:w-3/4">
 
-    {jobs.map((job) => {
+    {jobs.map(slug => jobColl.find(j => j.data.slug == slug)).filter(j => j !== undefined).map(async jobEntry => {
+      const { Content } = await render(jobEntry);
+      const job = jobEntry.data
       const id = job.logo ?? job.altLogo.toLowerCase().replaceAll(/[^0-9a-z_]/gi, "_")
       return (
       <div class="flex flex-col text-left" id={`experience-${job.slug}`}>
@@ -62,7 +65,7 @@ const jobs = content.workExperience.jobs as Job[];
 
                 <div class="md:-mt-1 md:pl-8">
                   <span class="block sm:inline-block font-body font-bold text-grey-40">
-                    {job.dates}
+                    {job.datePeriod}
                   </span>
                   <span class="block sm:inline-block font-body font-bold text-gray-700 text-lg">
                     <span class="sm:ml-4 sm:mr-1">@</span> {job.company}
@@ -76,8 +79,8 @@ const jobs = content.workExperience.jobs as Job[];
                   {job.patterns?.length > 0 && (
                     <p class="mb-1 font-body text-black text-sm flex flex-wrap">
                       {job.patterns.map(t => {
-                        const tag = getTagBySlug(t)
-                        return <TagLink type="badge" tag={tag}>{tag.label}</TagLink>;
+                        const tag = getTagBySlug(t.id, tagColl)
+                        return <TagLink type="badge" tag={tag.data}>{tag.data.label}</TagLink>;
                       })}
                     </p>
                   )}
@@ -85,38 +88,34 @@ const jobs = content.workExperience.jobs as Job[];
                   {job.tags?.length > 0 && (
                     <p class="mb-1 font-body text-black text-sm flex flex-wrap">
                       {job.tags.map(t => {
-                        const tag = getTagBySlug(t)
-                        return <TagLink type="badge" tag={tag}>{tag.label}</TagLink>;
+                        const tag = getTagBySlug(t.id, tagColl)
+                        return <TagLink type="badge" tag={tag.data}>{tag.data.label}</TagLink>;
                       })}
                     </p>
                   )}
 
                   <p class="pt-3 mb-2 font-body text-black leading-relaxed">
-                    {job.description}
+                    {job.teaser}
                   </p>
 
-                  {job.readMore?.length && (
-                    <p class="mb-4 font-header font-bold hover:underline text-gray-600 cursor-pointer">
-                      Read More...
-                    </p>
-                  )}
+                  <p class="mb-4 font-header font-bold hover:underline text-gray-600 cursor-pointer">
+                    Read More...
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
         </div>
-        {job.readMore?.length && (
           <div
             id={"collapse-" + id}
             data-accordion
             class="accordion-content h-0 overflow-hidden transition-[height] duration-300 ease-in-out bg-grey-50 text-gray-800"
           >
             <div class="py-4 px-6">
-              {job.readMore.map(p => <p class="mb-2">{p}</p>)}
+              <Content />
             </div>
           </div>
-        )}
       </div>
     )})}
 

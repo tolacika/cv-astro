@@ -3,15 +3,16 @@ export const partial = true;
 
 import { getContent, type Content } from "../../lib/content";
 import ContentTag from "../../components/ContentTag.astro";
-import authorImg from '../../assets/img/author-blue-hair.jpg';
-import type { MainHeadProps } from "../../components/MainHead.astro";
-import { getDefaultSeoProps } from "../../lib/seo";
+import { getCollection } from "astro:content";
 
-export function getStaticPaths() {
-  return (getContent() as Content).tags.map((tag) => ({
-    params: { slug: tag.slug },
-    props: { tag }
-  }))
+export async function getStaticPaths() {
+  return (await getCollection("tagCollection")).map((tag) => {
+    const slug = tag.data.slug ?? tag.id ?? "unknown";
+    return {
+      params: { slug },
+      props: { tag },
+    };
+  });
 }
 
 const { tag } = Astro.props;

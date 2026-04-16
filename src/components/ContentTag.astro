@@ -1,11 +1,12 @@
 ---
-import type { Content, ImageType, Tag } from "../lib/content";
+import type { CollectionEntry } from "astro:content";
+import type { Content } from "../lib/content";
 import HeroTag from "./HeroTag.astro";
 import ViewTag from "./ViewTag.astro";
 
 interface Props {
   content: Content;
-  tag: Tag;
+  tag: CollectionEntry<"tagCollection">;
   partial?: boolean;
 }
 

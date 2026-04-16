@@ -1,9 +1,12 @@
 ---
+import { getCollection } from "astro:content";
+import { getTagBySlug } from "../content.config";
 import type { Content, ServicesIconKey } from "../lib/content";
-import { getTagBySlug, servicesIconSet } from "../lib/content";
+import { servicesIconSet } from "../lib/content";
 import TagLink from "./TagLink.astro";
 
 const { content } = Astro.props as { content: Content };
+const tagColl = await getCollection("tagCollection");
 ---
 
 <section class="container py-16 md:py-20" id="patterns">
@@ -18,30 +21,30 @@ const { content } = Astro.props as { content: Content };
 
   <div class="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 md:gap-10 md:pt-12 xl:grid-cols-3">
     
-    {content.services.patterns.map(p => getTagBySlug(p)).map((tag) => {
-      const icon = servicesIconSet[tag.icon as ServicesIconKey];
+    {content.services.patterns.map(p => getTagBySlug(p, tagColl)).map((tag) => {
+      const icon = servicesIconSet[tag.data.icon as ServicesIconKey];
 
       return (
-        <TagLink type="custom" tag={tag}>
+        <TagLink type="custom" tag={tag.data}>
 
           <!-- Icon -->
           <div class="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
             <div class="hidden group-hover:block">
-              <img src={icon.white?.src} alt={`${tag.icon} icon`} />
+              <img src={icon.white?.src} alt={`${tag.data.icon} icon`} />
             </div>
             <div class="block group-hover:hidden">
-              <img src={icon.black?.src} alt={`${tag.icon} icon`} />
+              <img src={icon.black?.src} alt={`${tag.data.icon} icon`} />
             </div>
           </div>
 
           <!-- Text -->
           <div class="text-center">
             <h3 class="pt-8 text-lg font-semibold uppercase text-primary group-hover:text-yellow lg:text-xl">
-              {tag.label}
+              {tag.data.label}
             </h3>
 
             <p class="text-grey pt-4 text-sm group-hover:text-white md:text-base">
-              {tag.teaser}
+              {tag.data.teaser}
             </p>
           </div>
 

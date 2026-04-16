@@ -1,10 +1,12 @@
-import { getContent, getTagBySlug, type Content, type SeeAlso, type Tag } from "./content";
-import { getPosts, type Post, type PostContent, type PostMeta } from "./posts";
+import { getCollection, getEntries, type CollectionEntry } from "astro:content";
+import { getContent, type Content, type SeeAlso } from "./content";
 
 export interface LlmGeneratorInput {
   translations: Content;
-  featuredPosts: [[Post, PostContent]];
-  perspectivePosts: [[Post, PostContent]];
+  featuredPosts: CollectionEntry<"postCollection">[];
+  perspectivePosts: CollectionEntry<"postCollection">[];
+  tags: CollectionEntry<"tagCollection">[];
+  jobs: CollectionEntry<"jobCollection">[];
 }
 
 function escapeForJson(value: string): string {
@@ -21,61 +23,65 @@ function truncateContent(content: string, maxLength: number = 2000): string {
   return content.slice(0, maxLength).trim() + "...";
 }
 
-function formatPostForLlm(post: PostMeta, content: string): string {
-  const meta = post.meta;
-  const seo = meta?.seo ?? { title: "", description: "" };
-//   - company: ${meta?.company ?? "null"}
-//   - period: ${meta?.period ?? "null"}
-// - meta:
-//   - seo:
-//     - title: ${escapeForJson(seo.title)}
-//     - description: ${escapeForJson(seo.description)}
+function formatPostForLlm(post: CollectionEntry<"postCollection">["data"], content: string): string {
+  //  const meta = post.meta;
+  //  const seo = meta?.seo ?? { title: "", description: "" };
+  //   - company: ${meta?.company ?? "null"}
+  //   - period: ${meta?.period ?? "null"}
+  // - meta:
+  //   - seo:
+  //     - title: ${escapeForJson(seo.title)}
+  //     - description: ${escapeForJson(seo.description)}
   return `
 #### POST
 - slug: ${escapeForJson(post.slug)}
-- type: ${escapeForJson(post.type)}
 - title: ${escapeForJson(post.title)}
 - teaser: ${escapeForJson(post.teaser)}
-- cta: ${post.cta ? escapeForJson(post.cta) : "null"}
 - date: ${post.date ? escapeForJson(post.date + "") : "null"}
+- cta: ${post.cta ? escapeForJson(post.cta) : "null"}
 - content: |
-${content.split("\n").map(line => "  " + line).join("\n")}
+${content.split("\n").map(line => "  " + escapeForJson(line)).join("\n")}
 `;
 }
 
 function formatSeeAlso(also: SeeAlso[]): string[] {
-  return also.map(s => escapeForJson(`${s.type}:${s.link} - ${s.label}${s.comment ? ` (${s.comment})`:``}`));
+  return also.map(s => escapeForJson(`${s.type}:${s.link} - ${s.label}${s.comment ? ` (${s.comment})` : ``}`));
 }
 
 export async function createLlmInput(): Promise<LlmGeneratorInput> {
-  const content = (await getContent()) as Content;
-  const posts = getPosts({ type: "perspective", limit: 3 });
-  const getPost = (slug: string) => posts.find((p) => p.slug == slug);
+  const content = getContent() as Content;
 
-  const postBackground: Post = getPost("perspective-background") as Post;
-  const contentBackground: PostContent = await postBackground.content();
+  const tags = (await getCollection("tagCollection"))
+    .sort((a, b) => a.data.slug.localeCompare(b.data.slug));
+  const jobs = await getEntries(content.workExperience.jobs.map(j => ({ collection: "jobCollection", id: j })))
 
-  const postVision: Post = getPost("perspective-vision") as Post;
-  const contentVision: PostContent = await postVision.content();
-
-  const postNotes: Post = getPost("perspective-side-quests") as Post;
-  const contentNotes: PostContent = await postNotes.content();
+  const perspectivePosts = await getEntries([
+    { collection: "postCollection", id: "perspective-background" },
+    { collection: "postCollection", id: "perspective-vision" },
+    { collection: "postCollection", id: "perspective-side-quests" },
+  ])
 
   const input: LlmGeneratorInput = {
     translations: content,
-    featuredPosts: [] as unknown as [[Post, PostContent]],
-    perspectivePosts: [
-      [postBackground, contentBackground],
-      [postVision, contentVision],
-      [postNotes, contentNotes],
-    ] as unknown as [[Post, PostContent]],
+    featuredPosts: [],
+    perspectivePosts: perspectivePosts,
+    tags,
+    jobs
   };
 
   return input;
 }
 
 export function generateLlmPromptBody(input: LlmGeneratorInput): string[] {
-  const { translations, featuredPosts, perspectivePosts } = input;
+  const { translations, featuredPosts, perspectivePosts, tags, jobs } = input;
+  const tagIdx = tags.reduce<Record<string, number>>((acc, tag, idx) => {
+    acc[tag.data.slug] = idx;
+    return acc;
+  }, {});
+  const jobIdx = jobs.reduce<Record<string, number>>((acc, tag, idx) => {
+    acc[tag.data.slug] = idx;
+    return acc;
+  }, {});
 
   const heroSection = `
 ### HERO SECTION
@@ -93,7 +99,7 @@ ${escapeForJson(translations.intro.subTitle)}
 ${truncateContent(translations.intro.paragraph, 500)}
 ${escapeForJson(translations.intro.skills.title)} - ${escapeForJson(translations.intro.skills.subTitle)}
 ${translations.intro.skills.groups.map(g => `  - ${escapeForJson(g.label)}:\n${g.items.map(i => `    - ${i.tags.join(", ")}: ${escapeForJson(i.comment)}`).join("\n")}`).join("\n")}
-languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)}: ${escapeForJson(l.proficiency)} - ${escapeForJson(l.comment)}`).join("\n")}
+languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)} ${(l.greeting)}: ${(l.proficiency)} - ${escapeForJson(l.comment)}`).join("\n")}
 `;
 
   const workExperienceSection = `
@@ -102,7 +108,19 @@ languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.lab
 ${escapeForJson(translations.workExperience.title)}
 ${escapeForJson(translations.workExperience.subTitle)}
 jobs:
-${translations.workExperience.jobs.map(job => `  - ${escapeForJson(job.company)} | ${job.dates} | ${escapeForJson(job.position)}\n    - patterns: ${job.patterns.map(p => escapeForJson(p)).join(", ")}\n    - tags: ${job.tags.join(", ")}\n    - ${escapeForJson(job.description)}\n` + (job.readMore || []).map(p => `    - ${escapeForJson(p)}`).join("\n")).join("\n")}
+${translations.workExperience.jobs
+      .map(j => jobs[jobIdx[j]])
+      .map(j => {
+        const job = j.data;
+        const body = j.body || "";
+        return `  - ${escapeForJson(job.company)} | ${job.datePeriod} | ${escapeForJson(job.position)}
+    - patterns: ${job.patterns.map(t => escapeForJson(t.id)).join(", ")}
+    - tags: ${job.tags.map(t => escapeForJson(t.id)).join(", ")}
+    - ${escapeForJson(job.teaser)}
+${body.split("\n").filter(line => !!line).map(line => "      " + escapeForJson(line)).join("\n")}`;
+      })
+      .join("\n")
+    }
 `;
 
   const postScriptumSection = `
@@ -125,9 +143,16 @@ ${translations.education.content.map(escapeForJson).join("\n")}
 ${escapeForJson(translations.services.title)}
 ${escapeForJson(translations.services.subTitle)}
 patterns:
-${translations.services.patterns.map(p => getTagBySlug(p)).map(p => `  - **${escapeForJson(p.label)}:** ${escapeForJson(p.teaser)}${p.seeAlso ? `
-    - see also: ${formatSeeAlso(p.seeAlso).join("; ")}` : ``}
-`)}`;
+${translations.services.patterns
+      .map(p => tags[tagIdx[p]])
+      .map(p => {
+        const tag = p.data;
+        const body = p.body || "";
+        return `  - **${escapeForJson(tag.label)}:** ${escapeForJson(tag.teaser)}
+${body.split("\n").filter(line => !!line).map(line => "      " + escapeForJson(line)).join("\n")}${tag.relatedTags ? `
+    - relatedTags: ${tag.relatedTags.map(i => i.id).map(i => escapeForJson(tags[tagIdx[i]].data.slug)).join("; ")}` : ``}
+`;
+      })}`;
 
   const contactSection = `
 ### CONTACT
@@ -143,30 +168,32 @@ ${translations.socialLinks.links.filter(l => l.link).map(l => `  - ${l.link}`).j
 
 ${escapeForJson(translations.projectFeatured.title)}  
 ${escapeForJson(translations.projectFeatured.subTitle)}
-${featuredPosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, 1500))).join("\n\n---\n\n")}
+${featuredPosts.map((entry) => formatPostForLlm(entry.data, truncateContent(entry.body!, 1500))).join("\n\n---\n\n")}
 `;
-
 
   const perspectivePostsSection = `
 ### PERSPECTIVE POSTS
 
 ${escapeForJson(translations.perspective.title)}  
 ${escapeForJson(translations.perspective.subTitle)}
-${perspectivePosts.map(([post, content]) => formatPostForLlm(post, truncateContent(content, 7000))).join("\n\n---\n\n")}
+${perspectivePosts.map((entry) => formatPostForLlm(entry.data, truncateContent(entry.body!, 7000))).join("\n\n---\n\n")}
 `;
-
   const tagsSection = `
 ### TAGS
-${translations.tags.map(t => `
-#### ${escapeForJson(t.label)} [${escapeForJson(t.slug)}]
+${tags.map(t => {
+  const tag = t.data;
+  const body = t.body || "";
+    return `
+#### ${escapeForJson(tag.label)} [${escapeForJson(tag.slug)}]
 
-${escapeForJson(t.teaser)}
-${t.explanation.map(e => escapeForJson(e)).join("\n")}${t.seeAlso ? `
-    - see also: ${formatSeeAlso(t.seeAlso).join("; ")}` : ``}
-`).join("\n")}
+${escapeForJson(tag.teaser)}
+
+${body.split("\n").filter(line => !!line).map(line => escapeForJson(line)).join("\n")}`;
+  }).join("\n")}
 `;
+  //  ${t.explanation.map(e => escapeForJson(e)).join("\n")}${t.seeAlso ? `
+  //    - see also: ${formatSeeAlso(t.seeAlso).join("; ")}` : ``}
 
-  
   return [
     heroSection,
     introSection,
@@ -266,9 +293,9 @@ The email MUST:
 1. **Personalized Opening**
    - Address the contact person if available
    - Mention the specific role
-   - Include a short, tailored hook about the company
+   - Include a short, tailored hook about co-operation
 
-2. **Relevant Experience**
+2. **Relevant Experience/Project/Post**
    - Select ONLY the most relevant parts from my background
    - Show impact (results, outcomes, or strengths)
    - Avoid listing everything
@@ -279,8 +306,9 @@ The email MUST:
 
 4. **Portfolio & Work**
    Include naturally in the text:
-   - Portfolio: https://tolacika.dev and https://tolacika.github.io
-   - GitHub: https://github.com/tolacika
+   - Portfolio: https://tolacika.dev - refer to relevant content
+   - GitHub: https://github.com/tolacika - all of my non-NDA works is available for showcasing
+   - If the company is German also include that I already have Tax ID for work.
 
    Mention that these contain deeper details and projects what does not covers NDA.
 
