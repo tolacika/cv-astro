@@ -13,7 +13,7 @@ image: "coming-soon-placeholder.jpg"
 
 I once came across a thread on the Arduino forum where someone was trying to stream live video from an ESP32-CAM directly to YouTube. Another user offered a paid solution.
 
-That didn't sit right with me. On a community forum, knowledge should be shared freely, or at least not locked behind a price tag. So I decided to rebuild the problem from scratch.
+That didn't sit right with me. I don't like gatekeeping. On a community forum, knowledge should be shared freely, or at least not locked behind a price tag. So I decided to rebuild the problem from scratch.
 
 I started with the official `esp32-camera` component and experimented with different approaches to push the stream out. After many late nights, debugging sessions, and learning the hard limits of the hardware (memory, CPU, Wi-Fi bandwidth, and the camera's own constraints), I got it working.
 
