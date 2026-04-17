@@ -49,7 +49,7 @@ Sometimes they just vanish.
 I once came across a thread on an Arduino forum where someone tried to stream live video from an ESP device to YouTube.
 Another user offered a paid solution.
 
-That didn't sit right with me.
+That didn't sit right with me. I don't like gatekeeping.
 
 On a community forum, knowledge should be shared, or at least not hidden behind a price tag so loudly.
 
