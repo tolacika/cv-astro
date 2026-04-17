@@ -63,6 +63,8 @@ const navSchema = z.object({
 
 const seoSchema = z.object({
   cannonUrl: z.string(),
+  cannonEmail: z.string(),
+  cannonPhone: z.string(),
   defaultTitle: z.string(),
   defaultTitlePostfix: z.string(),
   defaultDescription: z.string(),
@@ -70,6 +72,9 @@ const seoSchema = z.object({
   defaultAuthor: z.string(),
   defaultOgTitle: z.string(),
   defaultOgDescription: z.string(),
+  jsonLdAvatar: z.string(),
+  jsonLdJobTitle: z.string(),
+  jsonLdDescription: z.string(),
 })
 
 const heroSchema = z.object({

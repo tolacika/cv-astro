@@ -4,6 +4,7 @@ import type { MainHeadProps } from "../components/MainHead.astro";
 import "../styles/global.css";
 import LlmModal from "../components/LlmModal.astro";
 import TagDetailModal from "../components/TagDetailModal.astro";
+import JsonLd from "../components/JsonLd.astro";
 
 const { headProps } = Astro.props as { headProps: MainHeadProps };
 ---
@@ -13,11 +14,12 @@ const { headProps } = Astro.props as { headProps: MainHeadProps };
     <MainHead props={headProps} />
   </head>
   <body class="antialiased bg-primary">
-    <LlmModal />
+    <JsonLd />
     <TagDetailModal />
     <div class="relative">
       <slot />
     </div>
+    <LlmModal />
 
     <script>
       function handleTagExplorerModal(el: Element, payload: string) {

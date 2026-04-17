@@ -52,13 +52,18 @@
   },
   "seo": {
     "cannonUrl": "https://tolacika.dev",
+    "cannonEmail": "laszlo@tolacika.dev",
+    "cannonPhone": "+36308751419",
     "defaultTitle": "Marshall Laszlo Toth: Personal Portfolio",
     "defaultTitlePostfix": " | Marshall Laszlo Toth",
     "defaultDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality.",
     "defaultKeywords": "software engineer, laravel developer, iot, embedded systems, archaeology tech, full stack, self-taught",
     "defaultAuthor": "Marshall Laszlo Toth <laszlo@tolacika.dev>",
     "defaultOgTitle": "Marshall Laszlo Toth | Systems Engineer - Code Meets Reality",
-    "defaultOgDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality."
+    "defaultOgDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality.",
+    "jsonLdAvatar": "https://avatars.githubusercontent.com/u/1866861?v=4",
+    "jsonLdJobTitle": "Senior Software Engineer",
+    "jsonLdDescription": "I build scalable software systems and real-world machines. Bridging code and physical reality through Laravel, IoT, embedded systems, and data pipelines that survive messy real-world conditions."
   },
   "hero": {
     "preTitle": "Hello, my name is",
@@ -78,12 +83,12 @@
       },
       {
         "icon": "bxl-linkedin-square",
-        "link": "https://www.linkedin.com/in/tolacika/",
+        "link": "https://linkedin.com/in/tolacika/",
         "followable": true
       },
       {
         "icon": "bxl-facebook-square",
-        "link": "https://www.facebook.com/marshall.things",
+        "link": "https://facebook.com/marshall.things",
         "followable": true
       },
       {
@@ -228,7 +233,7 @@
           "label": "Hungarian",
           "greeting": "Szia! 👋",
           "proficiency": "Native 🔥",
-          "comment": "I can swear in it 10 mins straight without repeating a phrase when the build fails at 3 AM."
+          "comment": "I can swear in it for 10 minutes straight without repeating a phrase when the build fails at 3 AM."
         },
         {
           "code": "en",

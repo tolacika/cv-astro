@@ -1,0 +1,32 @@
+---
+import { getContent, type Content } from "../lib/content"
+
+const content = getContent() as Content;
+
+const json = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": content.hero.fullName,
+    "url": content.seo.cannonUrl,
+    "image": content.seo.jsonLdAvatar,
+    "jobTitle": content.seo.jsonLdJobTitle,
+    "description": content.seo.jsonLdDescription,
+    "email": content.seo.cannonEmail,
+    "telephone": "",
+    "sameAs": content.socialLinks.links.filter(l => l.followable).map(l => l.link),
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "BME - Budapest University of Technology and Economics"
+    },
+    "knowsAbout": [
+      "Laravel",
+      "PHP",
+      "IoT",
+      "Embedded Systems",
+      "Physical-to-Digital Systems",
+      "Full-Stack Development"
+    ]
+  };
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(json)}></script>
