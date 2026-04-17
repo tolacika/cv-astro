@@ -6,7 +6,7 @@ featured: true
 type: "project"
 slug: "laravel-cron-bundle"
 title: "Retrospective: Laravel Cron Bundle"
-teaser: "A 2017 side-project that replaced Laravel's static scheduler with a database-driven cron manager + admin panel and Supervisor support"
+teaser: "A 2017 open-source package that replaced Laravel’s static scheduler with a database-driven, auditable cron manager + Supervisor support. Even infrastructure code must survive dynamic production reality without relying on fragile server crontabs."
 date: "2026-04-16 14:00:00"
 image: "coming-soon-placeholder.jpg"
 ---
