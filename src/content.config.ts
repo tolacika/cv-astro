@@ -68,9 +68,9 @@ const jobCollection = defineCollection({
   schema: jobSchema,
 });
 
-export type PostMeta = z.infer<typeof postMetaSchema>;
-export type Tag = z.infer<typeof tagSchema>;
-export type Job = z.infer<typeof jobSchema>;
+export type PostMeta = CollectionEntry<"postCollection">["data"];
+export type Tag = CollectionEntry<"tagCollection">["data"];
+export type Job = CollectionEntry<"jobCollection">["data"];
 
 const missingEntry: CollectionEntry<"tagCollection"> = {
   id: "",

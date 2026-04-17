@@ -10,6 +10,7 @@ export interface MainHeadProps {
   ogDesc: string;
   ogImage: string;
   ogUrl: string;
+  twitterCard?: string;
 }
 
 const { props } = Astro.props as { props: MainHeadProps };
@@ -23,6 +24,7 @@ const {
   ogDesc,
   ogImage,
   ogUrl,
+  twitterCard = "summary",
 } = props;
 ---
 
@@ -45,7 +47,7 @@ const {
 <meta property="og:description" content={ogDesc} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:url" content={ogUrl} />
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content={twitterCard} />
 
 <link rel="alternate" type="text/plain" href="/llm.txt" title="LLM Context" />
 <link

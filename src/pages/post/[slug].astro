@@ -6,7 +6,7 @@ import Footer from "../../components/Footer.astro";
 import ContentPost from "../../components/ContentPost.astro";
 import authorImg from '../../assets/img/author-blue-hair.jpg';
 import type { MainHeadProps } from "../../components/MainHead.astro";
-import { getDefaultSeoProps } from "../../lib/seo";
+import { getPostSeoProps } from "../../lib/seo";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -22,7 +22,7 @@ const { post } = Astro.props;
 
 const content = getContent() as Content;
 
-const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
+const headProps: MainHeadProps = getPostSeoProps(content, post.data);
 ---
 
 <BaseLayout headProps={headProps}>
