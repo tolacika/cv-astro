@@ -2,7 +2,7 @@
 import {
   createLlmInput,
   generateLlmPrompt,
-  generateLlmPromptDev,
+  generateLlmPromptApply,
   generateLlmPromptResearch,
 } from "../lib/generator";
 import Button from "./Button.astro";
@@ -40,7 +40,7 @@ const input = await createLlmInput();
           <TextareaWithCopyButton
             id="llm-dev-context-textarea"
             label="Application LLM Prompt"
-            content={generateLlmPromptDev(input)}
+            content={generateLlmPromptApply(input)}
           />
           <hr class="my-2" />
           <TextareaWithCopyButton

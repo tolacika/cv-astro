@@ -1,11 +1,11 @@
 ---
 export const partial = true;
 
-import { createLlmInput, generateLlmPromptDev } from "../lib/generator";
+import { createLlmInput, generateLlmPromptApply } from "../lib/generator";
 
 const input = await createLlmInput();
 
-const body = generateLlmPromptDev(input);
+const body = generateLlmPromptApply(input);
 ---
 
 {body}

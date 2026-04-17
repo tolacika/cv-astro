@@ -240,7 +240,7 @@ Based on the above information, provide a comprehensive summary of Marshall Lasz
   return prompt;
 };
 
-export function generateLlmPromptDev(input: LlmGeneratorInput): string {
+export function generateLlmPromptApply(input: LlmGeneratorInput): string {
   const [
     heroSection,
     introSection,
