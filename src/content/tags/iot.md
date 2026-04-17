@@ -7,6 +7,6 @@ relatedTags:
   - "physical-to-digital"
 ---
 
-Built systems connecting digital logic to physical action — from sensor data to automated responses.
+Built systems connecting digital logic to physical action, from sensor data to automated responses.
 
 Experience with microcontrollers, protocols, and the challenges of making code interact with the unpredictable real world.

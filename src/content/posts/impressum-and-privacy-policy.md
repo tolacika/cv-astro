@@ -46,7 +46,7 @@ This website is a static portfolio hosted on GitHub Pages. It does not use cooki
 
 When you visit the site, the web server (provided by GitHub) automatically logs technical data such as your IP address, browser type, operating system, and access time. These server log files are necessary for the technical operation and security of the website. GitHub processes this data as our hosting provider.
 
-We do not collect or store any additional personal data. The logs are handled according to GitHub’s privacy practices and are not used for marketing or profiling purposes by us.
+We do not collect or store any additional personal data. The logs are handled according to GitHub's privacy practices and are not used for marketing or profiling purposes by us.
 
 **Your Rights**  
 Under the EU General Data Protection Regulation (GDPR), you have the right to access, rectification, erasure, restriction of processing, and objection regarding your personal data. To exercise these rights or if you have any questions, please contact me at laszlo@tolacika.dev.
@@ -54,7 +54,7 @@ Under the EU General Data Protection Regulation (GDPR), you have the right to ac
 You may also lodge a complaint with the competent data protection supervisory authority in your country or in Hungary (Hungarian Authority for Data Protection and Freedom of Information – NAIH).
 
 **Hosting Provider**  
-This website is hosted by GitHub, Inc. For details on how GitHub processes data, please refer to GitHub’s Privacy Statement:  
+This website is hosted by GitHub, Inc. For details on how GitHub processes data, please refer to GitHub's Privacy Statement:  
 https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 ---

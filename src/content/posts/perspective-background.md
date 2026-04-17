@@ -70,17 +70,9 @@ Not from developer to something else, but from thinking in features to thinking 
 
 Looking back, most of this doesn't appear on a CV.
 
-What it won't show is everything around it.
+What it won't show are the electronics experiments, the hardware prototypes, the small side quests that quietly built intuition about how things behave outside the screen: temperature sensors, RFID systems, weather stations, barely-working ESP camera streams. Running small experiments that had no immediate business value, but quietly built intuition about how things behave outside the screen.
 
-Building electronics. Working in commerce. Handling deliveries. Prototyping hardware. Running small experiments that had no immediate business value, but quietly built intuition about how things behave outside the screen.
-
-A temperature sensor for commercial fridges.  
-An RFID access system.  
-A weather station.  
-A barely-working ESP camera stream running at seven frames per second.
-
-Individually, none of these matter much.
-
+Individually, none of these matter much.  
 Together, they form a pattern.
 
 Some systems are designed to scale.  
@@ -88,8 +80,7 @@ Others just need to endure.
 
 I'm still not sure where this path leads.
 
-But I know what kind of problems pull me in without effort. The ones that are not fully defined yet. The ones that connect multiple domains. The ones where solving them means understanding how things interact, not just how they work in isolation.
+But I know what kind of problems pull me in without effort. The ones that are not fully defined yet. The ones that connect multiple domains. The ones where solving them means designing **systems that don't snap when reality pushes back.**
 
-That's where I feel useful.
-
+That's where I feel useful.  
 And that's where I keep going.

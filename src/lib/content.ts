@@ -144,8 +144,7 @@ const languagesSchema = z.object({
 
 const introSchema = z.object({
   title: z.string(),
-  subTitle: z.string(),
-  paragraph: z.string(),
+  paragraphs: z.array(z.string()),
   skills: skillsSchema,
   langs: languagesSchema,
 });
@@ -177,7 +176,7 @@ const seeAlsoSchema = z.object({
 
 const servicesSchema = z.object({
   title: z.string(),
-  subTitle: z.string(),
+  paragraphs: z.array(z.string()),
   patterns: z.array(z.string()),
 });
 

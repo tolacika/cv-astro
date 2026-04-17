@@ -9,6 +9,6 @@ relatedTags:
 icon: "graphics"
 ---
 
-I've built interfaces that let non-technical users move safely through spaces with enormous combinatorial complexity — from a furniture configurator with ~10^1851 valid combinations to guided workforce onboarding and approval flows at Ordio.
+I've built interfaces that let non-technical users move safely through spaces with enormous combinatorial complexity: from a furniture configurator with ~10^1851 valid combinations to guided workforce onboarding and approval flows at Ordio.
 
 These are not simple forms; they are constraint-aware navigation systems that prevent invalid states while staying intuitive and fast.

@@ -13,11 +13,11 @@ const tagColl = await getCollection("tagCollection");
 ---
 
 <section class="container py-16 md:py-20" id="work">
-  <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+  <h2 class="text-center font-header text-2xl font-semibold uppercase text-primary sm:text-3xl lg:text-4xl">
     {title}
   </h2>
 
-  <p class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+  <p class="pt-6 text-center font-header text-lg font-medium text-black sm:text-lg lg:text-xl">
     {subTitle}
   </p>
 
@@ -96,6 +96,11 @@ const tagColl = await getCollection("tagCollection");
 
                   <p class="pt-3 mb-2 font-body text-black leading-relaxed">
                     {job.teaser}
+                  </p>
+
+                  <p class="pt-3 mb-2 font-body text-black leading-relaxed italic">
+                    <span class="font-semibold">Reality check:</span>
+                    {job.realityCheck}
                   </p>
 
                   <p class="mb-4 font-header font-bold hover:underline text-gray-600 cursor-pointer">

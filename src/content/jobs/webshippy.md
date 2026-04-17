@@ -3,7 +3,8 @@ slug: webshippy
 company: "WebShippy Kft"
 datePeriod: "in 2018"
 position: "Full-stack Developer (Freelance)"
-teaser: "Building the operational layer behind e-commerce, where digital orders become physical movement. Contributing to a system designed to scale from individual webshops toward platform-level commerce infrastructure."
+teaser: "At WebShippy I built the integration and warehouse tooling layer that turned digital orders from external webshops into physical fulfillment, creating bidirectional APIs and early picker/packer systems inside the warehouse."
+realityCheck: "Scaling e-commerce doesn't happen by handling more requests; it happens when digital intent is reliably aligned with physical movement, where every inefficiency becomes immediately visible and costly."
 patterns:
   - "physical-to-digital"
   - "external-dependencies"
@@ -16,10 +17,6 @@ tags:
 logo: "webshippy"
 ---
 
-At Webshippy, I worked on the core systems that connected external webshops to an internal, automation-driven fulfillment platform. My primary focus was the API layer, enabling bidirectional data flow between custom-built stores and the Webshippy system, covering customers, products, stock levels, and orders. This integration layer allowed external systems to treat logistics as an extension of their own platform, with real-time synchronization ensuring that inventory, order status, and shipment data remained consistent across boundaries.
+The core work was the API layer enabling real-time synchronization of customers, stock, orders, and shipments. I also contributed to one-click onboarding for major platforms and to operational tools such as handheld pickers and packing station coordination with shared printers.
 
-In parallel, we built streamlined onboarding paths for widely used e-commerce platforms, enabling near one-click integrations with providers like Shopify, WooCommerce, Magento, OpenCart, and PrestaShop. The goal was to remove friction from adoption: instead of building custom integrations, merchants could plug into an existing ecosystem and immediately operate on top of shared logistics infrastructure. This shifted the system from a service provider into a platform layer.
-
-Beyond APIs, I had a significant role in developing the operational tooling inside the warehouse itself. This included early versions of handheld "picker" devices used to navigate storage and collect items, as well as the initial "packer" software responsible for assembling shipments. One of the more interesting challenges was coordinating physical communication between packing stations and shared printing infrastructure, where timing, reliability, and clarity directly affected throughput. These systems had to function under real-world constraints, where errors are not exceptions but disruptions in physical flow.
-
-As a team, we also contributed to shaping the early innovation and automation directions of the platform. This meant exploring how far warehouse processes could be systematized, how manual steps could be reduced or guided, and how software could better reflect the state of a constantly changing physical environment. The experience reinforced a key insight: scaling e-commerce is not just about handling more requests, but about aligning digital intent with physical execution, where every inefficiency becomes tangible, measurable, and unavoidable.
+These systems had to function under real warehouse constraints where timing and reliability directly determined throughput. The experience sharpened my understanding that physical-to-digital loops are unforgiving; errors are not exceptions but disruptions in physical flow.

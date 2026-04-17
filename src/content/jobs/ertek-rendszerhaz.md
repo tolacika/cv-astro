@@ -1,9 +1,10 @@
 ---
 slug: ertek-rendszerhaz
-company: "Érték-Rendszerház Kft &\nWore Hungary Kft"
+company: "Érték-Rendszerház Kft & Wore Hungary Kft"
 datePeriod: "between 2014 and 2016"
 position: "Junior Full-stack Developer, System Admin"
-teaser: "Worked across a network of small businesses spanning furniture manufacturing, retail, and hospitality, contributing to early-stage system development, internal tooling, and operational processes. Gained first-hand exposure to how disconnected business units attempt to function as a larger system, and where those connections break down."
+teaser: "My early career unfolded inside a loosely connected network of furniture manufacturing, retail, and hospitality companies. I built internal tools and webshops that tried to replace spreadsheets and manual coordination across disconnected units."
+realityCheck: "Disconnected business units only function as a larger system when data, materials, and decisions can move across boundaries without constant manual intervention and lost information."
 patterns:
   - "physical-to-digital"
   - "data-pipelines"
@@ -18,10 +19,6 @@ tags:
 altLogo: "Érték-Rendszerház"
 ---
 
-My early professional experience developed within a loosely connected ecosystem of companies, including Érték-Rendszerház Kft, Wore Hungary Kft, Bella Italia Bútorház, SofaArt (Budapest and London), and a furniture production facility in Csepel. These businesses operated across manufacturing, retail, and international distribution, sharing overlapping ownership, resources, and operational dependencies, but lacking fully integrated systems to support that complexity.
+The work included inventory systems, early configurators (with enormous combinatorial complexity), and experimental projects like a low-cost POS for Érték Bár. I also gained hands-on operational insight by working as a bartender during high-traffic events.
 
-I worked on internal tools and early software solutions aimed at supporting day-to-day operations, including inventory handling, webshop functionality, and administrative processes. Much of the work involved translating real-world workflows into digital systems, often replacing spreadsheets or manual coordination. This period also included experimental projects such as Érték Bár, where I explored low-cost POS and operational tooling in a hospitality context, extending system thinking beyond traditional software environments.
-
-What made this experience particularly formative was the visibility into how data, materials, and decisions move across organizational boundaries. Manufacturing constraints, product complexity, logistics, and sales channels were tightly coupled in practice, but poorly connected in systems. This created friction points where information was delayed, duplicated, or lost entirely, requiring constant manual intervention.
-
-In parallel, I gained hands-on experience in hospitality operations, including working as a bartender during high-traffic events. While unrelated on the surface, this environment reinforced the importance of real-time decision-making, clear processes, and systems that must function under pressure without failure. Together, these experiences established my foundation in thinking about software not as isolated applications, but as part of larger, interconnected systems shaped by real-world constraints.
+This period laid the foundation for how I think about software today: not as isolated applications, but as part of larger, real-world systems shaped by manufacturing constraints, logistics, and human pressure; exactly where the patterns I still use today first emerged.

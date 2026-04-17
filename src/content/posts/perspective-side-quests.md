@@ -16,7 +16,7 @@ tags:
 ---
 
 This is not a structured story.  
-It's a collection of fragments.
+It's a collection of fragments: small moments where I built things, watched them bend, or saw them meet reality in unexpected ways. Each one quietly fed the same question that runs through everything I do: how do we design systems that don't fail when reality disagrees.
 
 ---
 
@@ -210,6 +210,11 @@ Later, during the Schönherz Qpa competition, we made a “replacement tram for 
 
 It made sense at the time.
 
+---
+
+My father always told me when I was stupid: “don't do something, because you will have more ears than teeth”.  
+I was today-years-old when I clicked that I will not grow more ears 🤷‍♂️
+
 Some ideas make sense immediately.  
 Others need years before they click.
 
@@ -291,4 +296,4 @@ It's a small system that works.
 
 I'm still figuring things out.
 
-But at least now I know what kind of questions to ask.
+But at least now I know what kind of questions to ask, and how to keep designing **systems that don't fail when reality disagrees.**

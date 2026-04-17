@@ -6,7 +6,7 @@ import SkillsBar from "./SkillsBar.astro";
 import LanguageSection from "./LanguageSection.astro";
 
 const { content } = Astro.props as { content: Content };
-const { title, subTitle, paragraph } = content.intro;
+const { title, paragraphs } = content.intro;
 ---
 
 <section id="about" class="bg-grey-50">
@@ -22,23 +22,13 @@ const { title, subTitle, paragraph } = content.intro;
           {title}
         </h2>
 
-        <p
-          class="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl"
-        >
-          {subTitle}
-        </p>
-
-        <p
-          class="pt-6 font-body leading-relaxed text-grey-10 sm:text-lg lg:text-xl"
-        >
-          {paragraph}
-        </p>
-
-        <LetsConnect
-          content={content}
-          class="pt-6 lg:justify-start"
-          scheme="primary"
-        />
+        {
+          paragraphs.map((p) => (
+            <p class="pt-6 font-body leading-relaxed text-grey-10 sm:text-lg lg:text-xl">
+              {p}
+            </p>
+          ))
+        }
       </div>
 
       <!-- Right -->
@@ -48,7 +38,6 @@ const { title, subTitle, paragraph } = content.intro;
     </div>
 
     <!-- Bottom -->
-        <SkillsBar content={content} />
-
+    <SkillsBar content={content} />
   </div>
 </section>

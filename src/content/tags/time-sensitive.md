@@ -9,6 +9,6 @@ relatedTags:
 icon: "content"
 ---
 
-I've built and maintained systems where timing is the difference between success and failure — last-minute hotel bookings that must stay consistent across countries and partners, warehouse fulfillment that can't tolerate delays, and archaeological documentation where once a layer is removed the context is gone forever.
+I've built and maintained systems where timing is the difference between success and failure: last-minute hotel bookings that must stay consistent across countries and partners, warehouse fulfillment that can't tolerate delays, and archaeological documentation where once a layer is removed the context is gone forever.
 
 These experiences taught me how to design synchronization layers that gracefully handle incomplete information, asynchronous updates, and real-world volatility without letting downstream processes break.

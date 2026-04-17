@@ -10,4 +10,4 @@ icon: "design"
 
 From on-site archaeological documentation at Archbau to warehouse picker/packer tools at WebShippy and my early ESP32/RFID experiments, I've repeatedly closed the loop where the physical world (measurements, sensors, manual steps) becomes structured, verifiable digital records.
 
-These loops are unforgiving — errors in reality are irreversible — so the feedback mechanisms must be immediate, observable, and resilient to the messiness of the real world.
+These loops are unforgiving (errors in reality are irreversible) so the feedback mechanisms must be immediate, observable, and resilient to the messiness of the real world.

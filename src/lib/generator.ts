@@ -89,10 +89,11 @@ ${translations.hero.subTitle}
 ### INTRO SECTION
 
 ${translations.intro.title}
-${translations.intro.subTitle}
 
-${truncateContent(translations.intro.paragraph, 500)}
+${translations.intro.paragraphs.join("\n\n")}
+
 ${translations.intro.skills.title} - ${translations.intro.skills.subTitle}
+
 ${translations.intro.skills.groups.map(g => `  - ${g.label}:\n${g.items.map(i => `    - ${i.tags.join(", ")}: ${i.comment}`).join("\n")}`).join("\n")}
 languages:\n${translations.intro.langs.items.map(l => `  - ${l.label} ${(l.greeting)}: ${(l.proficiency)} - ${l.comment}`).join("\n")}
 `;
@@ -112,6 +113,7 @@ ${translations.workExperience.jobs
     - patterns: ${job.patterns.map(t => t.id).join(", ")}
     - tags: ${job.tags.map(t => t.id).join(", ")}
     - ${job.teaser}
+    - reality check: ${job.realityCheck}
 ${body.split("\n").filter(line => !!line).map(line => "      " + line).join("\n")}`;
       })
       .join("\n")
@@ -136,7 +138,9 @@ ${translations.education.content.join("\n")}
 ### PATTERNS
 
 ${translations.services.title}
-${translations.services.subTitle}
+
+${translations.services.paragraphs.join("\n\n")}
+
 patterns:
 ${translations.services.patterns
       .map(p => tags[tagIdx[p]])
@@ -219,13 +223,13 @@ export function generateLlmPrompt(input: LlmGeneratorInput): string {
 
 ${heroSection}
 ${introSection}
+${servicesSection}
 ${workExperienceSection}
 ${educationSection}
-${servicesSection}
-${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
 ${postScriptumSection}
+${contactSection}
 ${tagsSection}
 
 Based on the above information, provide a comprehensive summary of Marshall Laszlo Toth's professional profile, skills, work history, and the specific projects outlined.`;
@@ -341,13 +345,13 @@ The result must be clean and ready to copy-paste into a new conversation or emai
 -------------------------
 ${heroSection}
 ${introSection}
+${servicesSection}
 ${workExperienceSection}
 ${educationSection}
-${servicesSection}
-${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
 ${postScriptumSection}
+${contactSection}
 ${tagsSection}
 
 -------------------------
@@ -445,13 +449,13 @@ Use clear sections:
 -------------------------
 ${heroSection}
 ${introSection}
+${servicesSection}
 ${workExperienceSection}
 ${educationSection}
-${servicesSection}
-${contactSection}
 ${featuredPostsSection}
 ${perspectivePostsSection}
 ${postScriptumSection}
+${contactSection}
 ${tagsSection}
 
 -------------------------

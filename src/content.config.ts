@@ -33,6 +33,7 @@ const jobBaseSchema = z.object({
   datePeriod: z.string(),
   position: z.string(),
   teaser: z.string(),
+  realityCheck: z.string(),
   patterns: z.array(reference("tagCollection")),
   tags: z.array(reference("tagCollection")),
 });

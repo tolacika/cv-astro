@@ -58,12 +58,12 @@
     "defaultOgDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality.",
     "jsonLdAvatar": "https://avatars.githubusercontent.com/u/1866861?v=4",
     "jsonLdJobTitle": "Senior Software Engineer",
-    "jsonLdDescription": "I build scalable software systems and real-world machines. Bridging code and physical reality through Laravel, IoT, embedded systems, and data pipelines that survive messy real-world conditions."
+    "jsonLdDescription": "I design systems that don't snap when reality pushes back. Bridging code and physical reality through Laravel, IoT, embedded systems, and data pipelines that survive messy real-world conditions."
   },
   "hero": {
     "preTitle": "Hello, my name is",
     "fullName": "Marshall Laszlo Toth",
-    "subTitle": "I build scalable software systems and real-world machines.",
+    "subTitle": "I design systems that don't snap when reality pushes back.",
     "imageAlt": "Marshall Laszlo Toth - Software Engineer with blue hair, building systems that survive reality",
     "bgAlt": "Archaeological excavation scene: workers in high-vis and hard hats on a flat planum"
   },
@@ -98,8 +98,11 @@
   },
   "intro": {
     "title": "Who am I?",
-    "subTitle": "I'm Laszlo Toth, a Software Engineer who builds systems that survive contact with reality.",
-    "paragraph": "With over a decade of experience, I design and improve software that connects code, data flows, and physical processes - from Laravel-based platforms and distributed integrations to on-site archaeological documentation and early hardware experiments. I'm particularly drawn to the places where systems bend: where data doesn't flow cleanly, where reality introduces friction, and where manual work quietly appears.",
+    "paragraphs": [
+      "I'm Marshall Laszlo Toth; a software engineer who lives at the bend where clean code collides with messy reality. For over a decade I have designed and stabilized systems that don't snap when reality pushes back: from Laravel platforms and distributed integrations to on-site archaeological digs and early hardware experiments.",
+      "I'm drawn to the exact places most systems try to hide: where data stops flowing cleanly, where manual work quietly appears, and where abstractions meet the physical world. That friction is not a bug. It's the signal I follow.",
+      "Everything on this site (the patterns I master, the work I've done, the perspective I've written) is an exploration of that single idea."
+    ],
     "skills": {
       "title": "Skills",
       "subTitle": "Where I've Spent the Most Cycles",
@@ -250,8 +253,8 @@
     }
   },
   "workExperience": {
-    "title": "My work experience",
-    "subTitle": "What I've built, improved, and explored over the years",
+    "title": "Proof in Work",
+    "subTitle": "Every role below is a chapter in the same story: how I designed systems that don't snap when reality pushes back. I've listed them chronologically so you can watch the patterns evolve in real time. Each job explicitly names the dominant patterns it strengthened (linked to the Patterns section above) and ends with a short “Reality check” that ties it back to the thesis.",
     "jobs": [
       "archbau",
       "nexttuesday",
@@ -266,8 +269,11 @@
     ]
   },
   "services": {
-    "title": "System Patterns I've Worked With",
-    "subTitle": "I design and stabilize systems that survive contact with reality. Here are the recurring patterns I have repeatedly built or improved:",
+    "title": "Patterns I Master",
+    "paragraphs": [
+      "These are the six recurring patterns I have repeatedly designed, stabilized, and refined while building systems that don't snap when reality pushes back. Each one appears across multiple chapters of my work (see Proof in Work) and continues to shape how I approach every new problem.",
+      "I treat them not as abstract concepts but as battle-tested tools forged at the exact point where intention meets friction. You'll find them referenced throughout the jobs below, the perspective writing, and the tags that connect everything."
+    ],
     "patterns": [
       "time-sensitive",
       "data-pipelines",
@@ -278,26 +284,26 @@
     ]
   },
   "education": {
-    "title": "Education",
-    "subTitle": "Self-Directed Learner since 200X",
+    "title": "Education & Path",
+    "subTitle": "Self-Directed Learner since 2000",
     "content": [
-      "Started with an IT-focused high school and an advanced certification, then continued with electrical engineering studies at BME, alongside contributing to Studio Schönherz and the Schönherz Electronics Workshop. Over time, I shifted toward software, where building and iteration felt more immediate.",
-      "Since then, most of my learning has come through real systems, production environments, and side experiments across software and hardware. The path hasn't been linear, but it has been consistent: learning by building, and adjusting when reality disagrees."
+      "I began with an IT-focused high school and advanced certification, then studied electrical engineering at BME while contributing to Studio Schönherz and the electronics workshop. Over time the path bent toward software — because building and iterating in production felt more honest than theory.",
+      "The real education, however, happened in the systems I've described above. Every job, every side quest, and every perspective post has been an extension of that same question: how do we design systems that don't snap when reality pushes back?"
     ]
   },
   "postScriptum": {
     "title": "Post Scriptum",
     "subTitle": "If you've read this far, thank you. Truly.",
     "content": [
-      "Putting this page together — and living the experiences it tries to describe — took longer than I expected. Every line is a small attempt to turn messy reality into something a little more understandable. The fact that you stayed with it means a lot.",
-      "Whether a particular project, a perspective post, or just a passing detail stuck with you, I'm grateful you took the time.",
-      "I'm still the same person who prefers fixing real friction over polishing surfaces, so if anything here feels worth a conversation, I'd be happy to continue it."
+      "Everything on this site (from the hero line to the last perspective fragment) is an attempt to turn messy reality into something a little more understandable. I still prefer fixing real friction over polishing surfaces, so if any pattern, any job, or any idea here resonates, I'd be genuinely happy to continue the conversation.",
+      "I design systems that don't snap when reality pushes back. Let's build, fix, or explore something together.",
+      "Tax-registered in Germany and Hungary for cross-border work."
     ]
   },
   "contactDetails": {
     "title": "Get in Touch",
     "subTitle": "Let's build something, fix something, or explore something",
-    "description": "Whether you have an idea, a problem to solve, or just want to connect - feel free to reach out. I'm always open to meaningful conversations and interesting challenges. Tax-registered in Germany and Hungary for cross-border work.",
+    "description": "Whether you have an idea, a problem to solve, or just want to connect - feel free to reach out. I'm always open to meaningful conversations and interesting challenges.",
     "items": [
       {
         "icon": "bxl-github",
@@ -340,11 +346,11 @@
     "title": "Follow what I build,\nexplore, and improve"
   },
   "perspective": {
-    "title": "Context & Perspective",
-    "subTitle": "If you're curious - here's where I come from, how I think, and a few things beyond the work."
+    "title": "Perspective: Deeper Reflections",
+    "subTitle": "If you want to understand how I actually think, start here. These essays are not add-ons; they are the philosophical core that ties every pattern, every job, and every experiment together. Each one explicitly references the systems I've built and the moments when reality pushed back hardest."
   },
   "projectFeatured": {
-    "title": "Featured Projects",
-    "subTitle": "A handful of systems, tools, and projects I've built or contributed to."
+    "title": "What's Next: Open Experiments",
+    "subTitle": "The same mindset that drives the paid work also fuels my personal projects. These are the places where I test new patterns in the open, before reality has a chance to push back at scale."
   }
 }
