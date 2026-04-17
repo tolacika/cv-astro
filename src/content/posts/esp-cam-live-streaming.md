@@ -29,4 +29,4 @@ This is a classic **successful failure** in my book. The project didn't deliver 
 It reinforced one of my core beliefs: **I design systems that don't snap when reality pushes back.** Sometimes reality pushes back with limited cycles, noisy sensors, and tight memory; and the real win is understanding exactly where the bend happens, then sharing what you learned on the other side.
 
 You can find the repo here: https://github.com/tolacika/espcam-live-straming  
-(Yes, the name has a typo. It stays — it's part of the story.)
+(Yes, the name has a typo. It stays - it's part of the story.)
