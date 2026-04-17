@@ -5,7 +5,11 @@ import PostList from "./PostList.astro";
 
 const { content } = Astro.props as { content: Content };
 
-const posts = await  getCollection("postCollection", ({data}) => data.type == "project")
+const posts = await getCollection(
+  "postCollection",
+  ({ data }) =>
+    data.type == "project" && data.public === true && data.featured === true,
+);
 ---
 
 <PostList

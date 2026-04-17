@@ -9,15 +9,6 @@ export interface LlmGeneratorInput {
   jobs: CollectionEntry<"jobCollection">[];
 }
 
-function escapeForJson(value: string): string {
-  return value
-    .replace(/\\/g, "\\\\")
-    .replace(/"/g, '\\"')
-    .replace(/\n/g, "\\n")
-    .replace(/\r/g, "\\r")
-    .replace(/\t/g, "\\t");
-}
-
 function truncateContent(content: string, maxLength: number = 2000): string {
   if (content.length <= maxLength) return content;
   return content.slice(0, maxLength).trim() + "...";
@@ -30,22 +21,24 @@ function formatPostForLlm(post: CollectionEntry<"postCollection">["data"], conte
   //   - period: ${meta?.period ?? "null"}
   // - meta:
   //   - seo:
-  //     - title: ${escapeForJson(seo.title)}
-  //     - description: ${escapeForJson(seo.description)}
+  //     - title: ${seo.title}
+  //     - description: ${seo.description}
   return `
 #### POST
-- slug: ${escapeForJson(post.slug)}
-- title: ${escapeForJson(post.title)}
-- teaser: ${escapeForJson(post.teaser)}
-- date: ${post.date ? escapeForJson(post.date + "") : "null"}
-- cta: ${post.cta ? escapeForJson(post.cta) : "null"}
-- content: |
-${content.split("\n").map(line => "  " + escapeForJson(line)).join("\n")}
-`;
+- wip: ${post.wip === true ? "yes" : "no"}
+- draft: ${post.draft === true ? "yes" : "no"}
+- slug: ${post.slug}
+- title: ${post.title}
+- teaser: ${post.teaser}
+- date: ${post.date ? post.date + "" : "null"}
+- cta: ${post.cta ? post.cta : "null"}
+${post.draft !== true ? `- content: |
+${content.split("\n").map(line => "  " + line).join("\n")}` : ``}
+`
 }
 
 function formatSeeAlso(also: SeeAlso[]): string[] {
-  return also.map(s => escapeForJson(`${s.type}:${s.link} - ${s.label}${s.comment ? ` (${s.comment})` : ``}`));
+  return also.map(s => `${s.type}:${s.link} - ${s.label}${s.comment ? ` (${s.comment})` : ``}`);
 }
 
 export async function createLlmInput(): Promise<LlmGeneratorInput> {
@@ -61,10 +54,12 @@ export async function createLlmInput(): Promise<LlmGeneratorInput> {
     { collection: "postCollection", id: "perspective-side-quests" },
   ])
 
+  const featuredPosts = await getCollection("postCollection", data => (data.data.type == "project" && data.data.public === true))
+
   const input: LlmGeneratorInput = {
     translations: content,
-    featuredPosts: [],
-    perspectivePosts: perspectivePosts,
+    featuredPosts,
+    perspectivePosts,
     tags,
     jobs
   };
@@ -86,113 +81,111 @@ export function generateLlmPromptBody(input: LlmGeneratorInput): string[] {
   const heroSection = `
 ### HERO SECTION
 
-${escapeForJson(translations.hero.preTitle)} ${escapeForJson(translations.hero.fullName)}  
-${escapeForJson(translations.hero.subTitle)}
+${translations.hero.preTitle} ${translations.hero.fullName}  
+${translations.hero.subTitle}
 `;
 
   const introSection = `
 ### INTRO SECTION
 
-${escapeForJson(translations.intro.title)}
-${escapeForJson(translations.intro.subTitle)}
+${translations.intro.title}
+${translations.intro.subTitle}
 
 ${truncateContent(translations.intro.paragraph, 500)}
-${escapeForJson(translations.intro.skills.title)} - ${escapeForJson(translations.intro.skills.subTitle)}
-${translations.intro.skills.groups.map(g => `  - ${escapeForJson(g.label)}:\n${g.items.map(i => `    - ${i.tags.join(", ")}: ${escapeForJson(i.comment)}`).join("\n")}`).join("\n")}
-languages:\n${translations.intro.langs.items.map(l => `  - ${escapeForJson(l.label)} ${(l.greeting)}: ${(l.proficiency)} - ${escapeForJson(l.comment)}`).join("\n")}
+${translations.intro.skills.title} - ${translations.intro.skills.subTitle}
+${translations.intro.skills.groups.map(g => `  - ${g.label}:\n${g.items.map(i => `    - ${i.tags.join(", ")}: ${i.comment}`).join("\n")}`).join("\n")}
+languages:\n${translations.intro.langs.items.map(l => `  - ${l.label} ${(l.greeting)}: ${(l.proficiency)} - ${l.comment}`).join("\n")}
 `;
 
   const workExperienceSection = `
 ### WORK EXPERIENCE
 
-${escapeForJson(translations.workExperience.title)}
-${escapeForJson(translations.workExperience.subTitle)}
+${translations.workExperience.title}
+${translations.workExperience.subTitle}
 jobs:
 ${translations.workExperience.jobs
       .map(j => jobs[jobIdx[j]])
       .map(j => {
         const job = j.data;
         const body = j.body || "";
-        return `  - ${escapeForJson(job.company)} | ${job.datePeriod} | ${escapeForJson(job.position)}
-    - patterns: ${job.patterns.map(t => escapeForJson(t.id)).join(", ")}
-    - tags: ${job.tags.map(t => escapeForJson(t.id)).join(", ")}
-    - ${escapeForJson(job.teaser)}
-${body.split("\n").filter(line => !!line).map(line => "      " + escapeForJson(line)).join("\n")}`;
+        return `  - ${job.company} | ${job.datePeriod} | ${job.position}
+    - patterns: ${job.patterns.map(t => t.id).join(", ")}
+    - tags: ${job.tags.map(t => t.id).join(", ")}
+    - ${job.teaser}
+${body.split("\n").filter(line => !!line).map(line => "      " + line).join("\n")}`;
       })
       .join("\n")
     }
 `;
 
   const postScriptumSection = `
-### ${escapeForJson(translations.postScriptum.title)}
+### ${translations.postScriptum.title}
 
-${escapeForJson(translations.postScriptum.subTitle)}
-${translations.postScriptum.content.map(escapeForJson).join("\n")}
+${translations.postScriptum.subTitle}
+${translations.postScriptum.content.join("\n")}
 `;
 
   const educationSection = `
-### ${escapeForJson(translations.education.title)}
+### ${translations.education.title}
 
-${escapeForJson(translations.education.subTitle)}
-${translations.education.content.map(escapeForJson).join("\n")}
+${translations.education.subTitle}
+${translations.education.content.join("\n")}
 `;
 
   const servicesSection = `
 ### PATTERNS
 
-${escapeForJson(translations.services.title)}
-${escapeForJson(translations.services.subTitle)}
+${translations.services.title}
+${translations.services.subTitle}
 patterns:
 ${translations.services.patterns
       .map(p => tags[tagIdx[p]])
       .map(p => {
         const tag = p.data;
         const body = p.body || "";
-        return `  - **${escapeForJson(tag.label)}:** ${escapeForJson(tag.teaser)}
-${body.split("\n").filter(line => !!line).map(line => "      " + escapeForJson(line)).join("\n")}${tag.relatedTags ? `
-    - relatedTags: ${tag.relatedTags.map(i => i.id).map(i => escapeForJson(tags[tagIdx[i]].data.slug)).join("; ")}` : ``}
+        return `  - **${tag.label}:** ${tag.teaser}
+${body.split("\n").filter(line => !!line).map(line => "      " + line).join("\n")}${tag.relatedTags ? `
+    - relatedTags: ${tag.relatedTags.map(i => i.id).map(i => tags[tagIdx[i]].data.slug).join("; ")}` : ``}
 `;
-      })}`;
+      }).join("\n")}`;
 
   const contactSection = `
 ### CONTACT
-${escapeForJson(translations.contactDetails.title)}
-${escapeForJson(translations.contactDetails.subTitle)}
+${translations.contactDetails.title}
+${translations.contactDetails.subTitle}
 ${truncateContent(translations.contactDetails.description, 500)}
-${escapeForJson(translations.socialLinks.actionText)}:
+${translations.socialLinks.actionText}:
 ${translations.socialLinks.links.filter(l => l.link).map(l => `  - ${l.link}`).join("\n")}
 `;
 
   const featuredPostsSection = `
 ### FEATURED PROJECTS
 
-${escapeForJson(translations.projectFeatured.title)}  
-${escapeForJson(translations.projectFeatured.subTitle)}
+${translations.projectFeatured.title}  
+${translations.projectFeatured.subTitle}
 ${featuredPosts.map((entry) => formatPostForLlm(entry.data, truncateContent(entry.body!, 1500))).join("\n\n---\n\n")}
 `;
 
   const perspectivePostsSection = `
 ### PERSPECTIVE POSTS
 
-${escapeForJson(translations.perspective.title)}  
-${escapeForJson(translations.perspective.subTitle)}
+${translations.perspective.title}  
+${translations.perspective.subTitle}
 ${perspectivePosts.map((entry) => formatPostForLlm(entry.data, truncateContent(entry.body!, 7000))).join("\n\n---\n\n")}
 `;
   const tagsSection = `
 ### TAGS
 ${tags.map(t => {
-  const tag = t.data;
-  const body = t.body || "";
+    const tag = t.data;
+    const body = t.body || "";
     return `
-#### ${escapeForJson(tag.label)} [${escapeForJson(tag.slug)}]
+#### ${tag.label} [${tag.slug}]
 
-${escapeForJson(tag.teaser)}
+${tag.teaser}
 
-${body.split("\n").filter(line => !!line).map(line => escapeForJson(line)).join("\n")}`;
+${body.split("\n").filter(line => !!line).join("\n")}`;
   }).join("\n")}
 `;
-  //  ${t.explanation.map(e => escapeForJson(e)).join("\n")}${t.seeAlso ? `
-  //    - see also: ${formatSeeAlso(t.seeAlso).join("; ")}` : ``}
 
   return [
     heroSection,

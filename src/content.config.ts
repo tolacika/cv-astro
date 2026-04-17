@@ -12,6 +12,10 @@ const postMetaSchema = ({ image }: SchemaContext) => z.object({
   date: z.string(),
   tags: z.array(z.string()).optional(),
   jobs: z.array(z.string()).optional(),
+  public: z.boolean(),
+  wip: z.boolean().optional(),
+  draft: z.boolean().optional(),
+  featured: z.boolean().optional(),
 });
 
 const tagSchema = z.object({

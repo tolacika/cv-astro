@@ -1,4 +1,5 @@
 ---
+public: true
 type: "perspective"
 slug: "perspective-background"
 title: "Background: How I Got Here"

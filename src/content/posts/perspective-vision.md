@@ -1,4 +1,5 @@
 ---
+public: true
 type: "perspective"
 slug: "perspective-vision"
 title: "Vision: When Systems Meet Reality"

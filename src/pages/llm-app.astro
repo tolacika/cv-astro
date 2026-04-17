@@ -1,5 +1,6 @@
 ---
 export const partial = true;
+export const prerender = true;
 
 import { createLlmInput, generateLlmPromptApply } from "../lib/generator";
 
@@ -8,4 +9,4 @@ const input = await createLlmInput();
 const body = generateLlmPromptApply(input);
 ---
 
-{body}
+<Fragment set:html={body} />

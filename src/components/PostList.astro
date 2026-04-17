@@ -50,7 +50,7 @@ const comingSoon = props.comingSoon || posts.length == 0;
         </div>
       ))}
       {!comingSoon && posts.map((post) => (
-        <a href={"/post/" + post.id + ".html"} class="bg-white shadow group">
+        <a href={post.data.draft === true ? null : "/post/" + post.id + ".html"} class="bg-white shadow group">
 
           <!-- Image -->
           <div
@@ -62,6 +62,14 @@ const comingSoon = props.comingSoon || posts.length == 0;
             <span class="absolute right-0 bottom-0 mr-4 mb-4 block rounded-full border-2 border-white px-6 py-2 text-center font-body text-sm font-bold uppercase text-white md:text-base">
               {post.data.cta ?? "Read More"}
             </span>
+            <div class="block absolute top-0 left-0 px-2 pt-4">
+              {post.data.wip === true && (
+                <span class="py-2 px-4 bg-blue-700 text-white rounded-full">WIP</span>
+              )}
+              {post.data.draft === true && (
+                <span class="py-2 px-4 bg-red-700 text-white rounded-full">Draft</span>
+              )}
+            </div>
           </div>
 
           <!-- Content -->

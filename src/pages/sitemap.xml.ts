@@ -4,7 +4,7 @@ export const prerender = true;
 
 const site = "https://tolacika.dev";
 
-const posts = await getCollection("postCollection");
+const posts = await getCollection("postCollection", data => (data.data.public === true && data.data.draft !== true));
 const tags = await getCollection("tagCollection");
 
 const formatDate = (date: unknown): string => {

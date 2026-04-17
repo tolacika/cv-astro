@@ -1,4 +1,5 @@
 ---
+public: true
 type: "perspective"
 slug: "perspective-side-quests"
 title: "Personal Notes: Beyond Work"
