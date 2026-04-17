@@ -1,7 +1,7 @@
 ---
 slug: archbau
 company: Archbau GmbH
-datePeriod: "Jun 2025 - Mar 2026"
+datePeriod: "June 2025 - March 2026"
 position: "Field Assistant (Archäology - Side Project)"
 teaser: "Worked on-site in archaeological excavations at Archbau GmbH, supporting field preparation and documentation while analyzing how data flows from physical layers into formal records. Explored opportunities to modernize documentation workflows through automation and tooling, encountering the real-world constraints of regulation, legacy processes, and irreversible data capture."
 patterns:

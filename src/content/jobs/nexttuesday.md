@@ -1,7 +1,7 @@
 ---
 slug: nexttuesday
 company: NextTuesday GmbH
-datePeriod: "Sept 2024 - Mar 2025"
+datePeriod: "Septemper 2024 - March 2025"
 position: "Senior PHP Engineer"
 teaser: "Delivered client-facing systems within NextTuesday GmbH, working across Laravel, React, and Neos CMS while adapting to a restructuring environment. Contributed to multiple projects under shifting team conditions, maintaining delivery continuity as the department was gradually phased out."
 patterns:

@@ -1,7 +1,7 @@
 ---
 slug: ertek-rendszerhaz
 company: "Érték-Rendszerház Kft &\nWore Hungary Kft"
-datePeriod: "2014 - 2016"
+datePeriod: "between 2014 and 2016"
 position: "Junior Full-stack Developer, System Admin"
 teaser: "Worked across a network of small businesses spanning furniture manufacturing, retail, and hospitality, contributing to early-stage system development, internal tooling, and operational processes. Gained first-hand exposure to how disconnected business units attempt to function as a larger system, and where those connections break down."
 patterns:

@@ -1,7 +1,7 @@
 ---
 slug: techteamer-microcredit
 company: "TechTeamer Kft &\nMikroCredit Zrt"
-datePeriod: "2018 - 2019"
+datePeriod: "between 2018 and 2019"
 position: "Backend Developer"
 teaser: "Designing the backbone of a digital lending system where identity, risk, and money flow had to align in real time. A microservice-driven architecture turning fragmented financial operations into a coherent, auditable system."
 patterns:

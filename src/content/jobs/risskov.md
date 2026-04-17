@@ -1,7 +1,7 @@
 ---
 slug: risskov
 company: "Risskov Autoferien AG"
-datePeriod: "Jan 2020 - Apr 2021"
+datePeriod: "January 2020 - April 2021"
 position: "Senior Full-stack Developer"
 teaser: "Developed and maintained core systems at Risskov Autoferien AG, contributing to a multi-country travel platform focused on last-minute hotel capacity. Worked across booking flows, partner management, and public APIs within a distributed ecosystem built on Laravel, Vue.js, GraphQL, and Azure."
 patterns:

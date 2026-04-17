@@ -1,7 +1,7 @@
 ---
 slug: webshippy
 company: "WebShippy Kft"
-datePeriod: "2018"
+datePeriod: "in 2018"
 position: "Full-stack Developer (Freelance)"
 teaser: "Building the operational layer behind e-commerce, where digital orders become physical movement. Contributing to a system designed to scale from individual webshops toward platform-level commerce infrastructure."
 patterns:

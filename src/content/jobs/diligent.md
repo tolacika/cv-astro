@@ -1,7 +1,7 @@
 ---
 slug: diligent
 company: Diligent Corp.
-datePeriod: "Jun 2022 - Apr 2023"
+datePeriod: "June 2022 - April 2023"
 position: "Senior Backend Developer"
 teaser: "Worked on governance and compliance systems at Diligent Corporation, contributing to legacy PHP systems while adapting to a transition toward AWS-based infrastructure and TypeScript. Gained experience operating within large-scale, high-complexity systems where correctness, security, and auditability are critical."
 patterns:

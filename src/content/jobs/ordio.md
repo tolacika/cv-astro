@@ -1,7 +1,7 @@
 ---
 slug: ordio
 company: Ordio GmbH
-datePeriod: "Feb 2024 - Jun 2024"
+datePeriod: "February 2024 - June 2024"
 position: "Senior Full-stack Developer"
 teaser: "Worked on workforce management systems at Ordio GmbH, focusing on integrations, data migration, and process-oriented interfaces for non-technical users. Contributed to bridging external HR systems with internal workflows in a fast-evolving product environment."
 patterns:

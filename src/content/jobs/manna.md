@@ -1,7 +1,7 @@
 ---
 slug: manna
 company: "Manna Kreatív Zrt."
-datePeriod: "2017"
+datePeriod: "in 2017"
 position: "Junior Full-stack Developer, Service Desk"
 teaser: "Evolving a commerce system where product, story, and customer communication form a single continuous experience. Bridging handcrafted manufacturing with a tightly integrated digital ecosystem built around trust, feedback, and narrative."
 patterns:
