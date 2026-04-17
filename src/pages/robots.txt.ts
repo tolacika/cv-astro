@@ -8,8 +8,10 @@ User-agent: *
 Allow: /
 Allow: /llm.txt
 Allow: /post/
+Allow: /tag/
 
 Sitemap: ${site}/sitemap.xml
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 `;
 
   return new Response(robots, {
