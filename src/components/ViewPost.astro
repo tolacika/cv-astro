@@ -1,14 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { Content, ImageType } from "../lib/content";
 import { render } from "astro:content";
 
 interface Props {
-  content: Content;
   post: CollectionEntry<"postCollection">;
 }
 
-const { content, post } = Astro.props;
+const { post } = Astro.props;
 
 const { Content } = await render(post);
 ---

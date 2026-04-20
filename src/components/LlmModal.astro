@@ -5,7 +5,6 @@ import {
   generateLlmPromptApply,
   generateLlmPromptResearch,
 } from "../lib/generator";
-import Button from "./Button.astro";
 import Modal from "./Modal.astro";
 import TextareaWithCopyButton from "./TextareaWithCopyButton.astro";
 const env = import.meta.env.DEV ? "development" : "production";
@@ -15,6 +14,7 @@ const input = await createLlmInput();
 ---
 
 <button
+  id="ai-button"
   class="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-900 text-white shadow-xl shadow-zinc-950/50 hover:bg-zinc-800 active:scale-95 transition-all duration-200 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-zinc-400/30 group cursor-pointer"
   aria-label="Open LLM Context"
   title="Open structured LLM Context"
@@ -22,15 +22,22 @@ const input = await createLlmInput();
   data-target="#llm-context"
 >
   <!-- Robot emoji with subtle animation -->
-  <span class="text-3xl transition-transform group-hover:rotate-12 group-active:scale-110">🤖</span>
-  
+  <span
+    class="text-3xl transition-transform group-hover:rotate-12 group-active:scale-110"
+    >🤖</span
+  >
+
   <!-- Optional small badge -->
-  <span class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-mono font-bold ring-2 ring-zinc-900">
+  <span
+    class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-mono font-bold ring-2 ring-zinc-900"
+  >
     AI
   </span>
 </button>
 
-<div class="pointer-events-none fixed bottom-24 right-8 hidden rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-300 shadow-xl group-hover:block">
+<div
+  class="pointer-events-none fixed bottom-24 right-8 hidden rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-300 shadow-xl group-hover:block"
+>
   LLM Context • Paste into any AI
 </div>
 
@@ -39,7 +46,10 @@ const input = await createLlmInput();
   <div>
     <article>
       <p>Structured data for LLMs</p>
-      <p>This is the complete, structured seed of my portfolio. Paste it into any LLM for accurate answers about my work.</p>
+      <p>
+        This is the complete, structured seed of my portfolio. Paste it into any
+        LLM for accurate answers about my work.
+      </p>
       <p>Use this to:</p>
       <ul>
         <li>analyze my experience with AI tools</li>
@@ -48,7 +58,9 @@ const input = await createLlmInput();
         <li>import into HR tooling</li>
       </ul>
     </article>
-    <p class="mb-4">This is the same data as /llm.txt, structured for automation.</p>
+    <p class="mb-4">
+      This is the same data as /llm.txt, structured for automation.
+    </p>
     <TextareaWithCopyButton
       id="llm-context-textarea"
       label="Generic LLM Prompt"
@@ -74,18 +86,29 @@ const input = await createLlmInput();
     }
   </div>
   <div slot="footer">
-    <Button variant="outline" action="closeModal">Close</Button>
+    <button
+      class="inline-flex items-center justify-center font-header font-semibold uppercase tracking-wide transition-colors duration-200 rounded cursor-pointer border-2 border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 text-base"
+      type="button"
+      data-action="closeModal"
+    >
+      Close
+    </button>
   </div>
 </Modal>
 
 <style>
   /* Optional subtle pulse animation */
   @keyframes gentlePulse {
-    0%, 100% { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3); }
-    50% { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4); }
+    0%,
+    100% {
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+    }
+    50% {
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.6);
+    }
   }
-  
-  button {
+
+  #ai-button {
     animation: gentlePulse 4s ease-in-out infinite;
   }
 </style>

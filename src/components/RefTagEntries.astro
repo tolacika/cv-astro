@@ -3,14 +3,13 @@ import type { CollectionEntry } from "astro:content";
 import { getEntries } from "astro:content";
 import { getCollection } from "astro:content";
 import RefItem from "./RefItem.astro";
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 
 interface Props {
-  content: Content;
   tag: CollectionEntry<"tagCollection">;
 }
 
-const { content, tag } = Astro.props;
+const { tag } = Astro.props;
 
 const tags = await getEntries(tag.data.relatedTags || []);
 const patterns = await getEntries(tag.data.relatedPatterns || []);

@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 
-export interface MainHeadProps {
+export interface Props {
   title: string;
   description: string;
   keywords: string;
@@ -13,8 +13,6 @@ export interface MainHeadProps {
   twitterCard?: string;
 }
 
-const { props } = Astro.props as { props: MainHeadProps };
-
 const {
   title,
   description,
@@ -25,7 +23,7 @@ const {
   ogImage,
   ogUrl,
   twitterCard = "summary",
-} = props;
+} = Astro.props;
 ---
 
 <meta charset="UTF-8" />

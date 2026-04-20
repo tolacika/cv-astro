@@ -1,14 +1,9 @@
 ---
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 import PostList from "./PostList.astro";
 import { getCollection } from "astro:content";
-const sortOrder = [
-  "perspective-background",
-  "perspective-vision",
-  "perspective-side-quests",
-];
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 
 const posts = (await  getCollection("postCollection", ({data}) => data.type == "perspective")).sort(
   (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),

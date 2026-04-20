@@ -1,5 +1,4 @@
 ---
-import type { Content } from "../lib/content";
 import Intro from "./Intro.astro";
 import WorkExperience from "./WorkExperience.astro";
 import Services from "./Services.astro";
@@ -11,27 +10,27 @@ import HeroMain from "./HeroMain.astro";
 import PostScriptum from "./PostScriptum.astro";
 import Education from "./Education.astro";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 
 ---
 <main class="bg-white">
-  <HeroMain content={content} />
+  <HeroMain />
 
-  <Intro content={content} />
+  <Intro />
 
-  <Services content={content} />
+  <Services />
 
-  <WorkExperience content={content} />
+  <WorkExperience />
 
-  <Education content={content} />
+  <Education />
 
-  <ProjectFeatured content={content} />
+  <ProjectFeatured />
 
-  <Perspective content={content} />
+  <Perspective />
 
-  <PostScriptum content={content} />
+  <PostScriptum />
 
-  <ContactDetails content={content} />
+  <ContactDetails />
 
-  <FollowMe content={content} />
+  <FollowMe />
 </main>

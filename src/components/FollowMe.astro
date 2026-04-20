@@ -1,10 +1,10 @@
 ---
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 
 import bgCta from '../assets/img/bg-cta.jpg';
 import LetsConnect from './LetsConnect.astro';
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 ---
 
 <section
@@ -19,7 +19,7 @@ const { content } = Astro.props as { content: Content };
     </h2>
 
     <div class="pt-6 text-center">
-      <LetsConnect content={content} class="pt-6" followMe={true} />
+      <LetsConnect class="pt-6" followMe={true} />
     </div>
 
   </div>

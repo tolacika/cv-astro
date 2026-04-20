@@ -1,12 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import { getTagBySlug } from "../content.config";
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 import { logoSet } from "../lib/content";
 import RefLink from "./RefLink.astro";
 import { render } from "astro:content";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
+
 const { title, subTitle, jobs } = content.workExperience;
 const jobColl = await getCollection("jobCollection");
 const tagColl = await getCollection("tagCollection");

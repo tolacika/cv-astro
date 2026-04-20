@@ -1,5 +1,5 @@
 import { getCollection, getEntries, type CollectionEntry } from "astro:content";
-import { getContent, type Content, type SeeAlso } from "./content";
+import { content, type Content, type SeeAlso } from "./content";
 import type { PostMeta, Tag } from "../content.config";
 import type { ReferenceItemType } from "../types";
 
@@ -75,8 +75,6 @@ function formatSeeAlso(also: SeeAlso[]): string[] {
 }
 
 export async function createLlmInput(): Promise<LlmGeneratorInput> {
-  const content = getContent() as Content;
-
   const tags = (await getCollection("tagCollection"))
     .sort((a, b) => a.data.slug.localeCompare(b.data.slug));
   const jobs = await getEntries(content.workExperience.jobs.map(j => ({ collection: "jobCollection", id: j })))

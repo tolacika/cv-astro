@@ -1,13 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-const {title, subTitle, posts, sectionId, ...props} = Astro.props as {
+interface Props {
   title: string,
   subTitle: string, 
   posts: Array<CollectionEntry<"postCollection">>,
-  sectionId: string | undefined,
-  comingSoon: boolean,
+  sectionId?: string,
+  comingSoon?: boolean,
 }
+
+const {title, subTitle, posts, sectionId, ...props} = Astro.props;
 const comingSoon = props.comingSoon || posts.length == 0;
 
 ---

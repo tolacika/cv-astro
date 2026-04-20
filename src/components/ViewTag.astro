@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { Content } from "../lib/content";
 import { render } from "astro:content";
 
-const { content, tag } = Astro.props as {
-  content: Content;
-  tag: CollectionEntry<"tagCollection">;
-};
+interface Props {
+    tag: CollectionEntry<"tagCollection">;
+}
+
+const { tag } = Astro.props;
 
 const { Content } = await render(tag);
 ---

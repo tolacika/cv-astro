@@ -1,11 +1,11 @@
 ---
-import { getContent, type Content } from "../../lib/content";
+import { content } from "../../lib/content";
 import BaseLayout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import ContentTag from "../../components/ContentTag.astro";
 import authorImg from "../../assets/img/author-blue-hair.jpg";
-import type { MainHeadProps } from "../../components/MainHead.astro";
+import type { Props as MainHeadProps } from "../../components/MainHead.astro";
 import { getDefaultSeoProps } from "../../lib/seo";
 import { getCollection } from "astro:content";
 
@@ -21,15 +21,13 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 
-const content = getContent() as Content;
-
 const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
 ---
 
 <BaseLayout headProps={headProps}>
-  <Navbar content={content} />
+  <Navbar />
 
-  <ContentTag content={content} tag={tag} />
+  <ContentTag tag={tag} />
 
-  <Footer content={content} />
+  <Footer />
 </BaseLayout>

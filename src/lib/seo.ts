@@ -1,4 +1,4 @@
-import type { MainHeadProps } from "../components/MainHead.astro";
+import type { Props as MainHeadProps } from "../components/MainHead.astro";
 import type { PostMeta } from "../content.config";
 import type { Content } from "./content";
 

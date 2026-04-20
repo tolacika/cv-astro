@@ -1,12 +1,12 @@
 ---
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 import Hero from "./Hero.astro";
 import LetsConnect from './LetsConnect.astro';
 
 import bgHero from '../assets/img/archaeology-field-planum-highvis-placeholder.jpg';
 import authorImg from '../assets/img/author-blue-hair.jpg';
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 ---
 
 <Hero bgImg={bgHero.src} bgAlt={content.hero.bgAlt} isDark={true}>
@@ -33,7 +33,7 @@ const { content } = Astro.props as { content: Content };
           {content.hero?.subTitle}
         </p>
 
-        <LetsConnect content={content} class="pt-3 lg:justify-start" />
+        <LetsConnect class="pt-3 lg:justify-start" />
       </div>
 
     </div>

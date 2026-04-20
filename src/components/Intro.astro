@@ -1,11 +1,11 @@
 ---
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 
-import LetsConnect from "./LetsConnect.astro";
 import SkillsBar from "./SkillsBar.astro";
 import LanguageSection from "./LanguageSection.astro";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
+
 const { title, paragraphs } = content.intro;
 ---
 
@@ -33,11 +33,11 @@ const { title, paragraphs } = content.intro;
 
       <!-- Right -->
       <div class="w-full pl-0 pt-10 md:w-2/5 md:pl-2 md:pt-0">
-        <LanguageSection content={content} />
+        <LanguageSection />
       </div>
     </div>
 
     <!-- Bottom -->
-    <SkillsBar content={content} />
+    <SkillsBar />
   </div>
 </section>

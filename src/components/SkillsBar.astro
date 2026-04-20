@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 import { getTagBySlug } from "../content.config";
 import RefLink from "./RefLink.astro";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 
 const skills = content.intro.skills;
 const tagColl = await getCollection("tagCollection");

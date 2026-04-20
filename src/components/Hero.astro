@@ -1,11 +1,12 @@
 ---
-import { bigint } from "astro:schema";
+interface Props {
+  bgImg?: string;
+  bgAlt?: string;
+  isDark?: boolean;
+  children: any;
+}
 
-const { bgImg, bgAlt, isDark = false } = Astro.props as {
-  bgImg: string;
-  bgAlt: string | undefined;
-  isDark: boolean;
-};
+const { bgImg = "", bgAlt = "", isDark = false } = Astro.props;
 ---
 
 <section

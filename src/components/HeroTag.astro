@@ -1,20 +1,18 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { Content } from "../lib/content";
 import Hero from "./Hero.astro";
 
 interface Props {
-  content: Content;
   tag: CollectionEntry<"tagCollection">;
   partial?: boolean;
 }
 
-const { content, tag, partial = false } = Astro.props as Props;
+const { tag, partial = false } = Astro.props;
 
-const Test = partial ? "div" : Hero;
+const HeroOrDiv = partial ? "div" : Hero;
 ---
 
-<Test>
+<HeroOrDiv>
   <div class="flex flex-col items-center justify-center lg:flex-row">
     <div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
       <h1
@@ -29,4 +27,4 @@ const Test = partial ? "div" : Hero;
       </h2>
     </div>
   </div>
-</Test>
+</HeroOrDiv>

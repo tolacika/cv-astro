@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { getTagBySlug } from "../content.config";
-import type { Content, ServicesIconKey } from "../lib/content";
+import { content, type ServicesIconKey } from "../lib/content";
 import { servicesIconSet } from "../lib/content";
 import RefLink from "./RefLink.astro";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
+
 const tagColl = await getCollection("tagCollection");
 ---
 

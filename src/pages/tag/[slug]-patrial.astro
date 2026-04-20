@@ -1,7 +1,6 @@
 ---
 export const partial = true;
 
-import { getContent, type Content } from "../../lib/content";
 import ContentTag from "../../components/ContentTag.astro";
 import { getCollection } from "astro:content";
 
@@ -16,8 +15,6 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
-
-const content = getContent() as Content;
 ---
 
-<ContentTag content={content} tag={tag} partial={true} />
+<ContentTag tag={tag} partial={true} />

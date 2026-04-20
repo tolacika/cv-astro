@@ -1,23 +1,21 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { Content } from "../lib/content";
 import HeroTag from "./HeroTag.astro";
 import ViewTag from "./ViewTag.astro";
 import RefTagEntries from "./RefTagEntries.astro";
 
 interface Props {
-  content: Content;
   tag: CollectionEntry<"tagCollection">;
   partial?: boolean;
 }
 
-const { content, tag, partial = false } = Astro.props as Props;
+const { tag, partial = false } = Astro.props as Props;
 ---
 
 <main>
-  <HeroTag content={content} tag={tag} partial={partial} />
+  <HeroTag tag={tag} partial={partial} />
 
-  <ViewTag content={content} tag={tag} />
+  <ViewTag tag={tag} />
 
-  <RefTagEntries content={content} tag={tag} />
+  <RefTagEntries tag={tag} />
 </main>

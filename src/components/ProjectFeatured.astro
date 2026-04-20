@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 import PostList from "./PostList.astro";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 
 const posts = await getCollection(
   "postCollection",

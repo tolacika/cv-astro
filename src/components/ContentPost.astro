@@ -1,24 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { Content } from "../lib/content";
 import HeroPost from "./HeroPost.astro";
 import ViewPost from "./ViewPost.astro";
 import RefPostEntries from "./RefPostEntries.astro";
 
 interface Props {
-  content: Content;
   post: CollectionEntry<"postCollection">
 }
 
-const { content, post } = Astro.props;
-
-
+const { post } = Astro.props;
 ---
 
 <main>
-  <HeroPost content={content} post={post} />
+  <HeroPost post={post} />
 
-  <ViewPost content={content} post={post} />
+  <ViewPost post={post} />
 
-  <RefPostEntries content={content} post={post} />
+  <RefPostEntries post={post} />
 </main>

@@ -1,8 +1,8 @@
 ---
-import type { Content } from "../lib/content";
+import { content } from "../lib/content";
 import SocialLinks from "./SocialLinks.astro";
 
-const { content } = Astro.props as { content: Content };
+interface Props {}
 ---
 
 <footer class="bg-primary">
@@ -17,6 +17,6 @@ const { content } = Astro.props as { content: Content };
       <a href="https://tailwindcss.com/" target="_blank" class="underline hover:text-purple-300">Tailwind v4</a>,
       
     </p>
-    <SocialLinks content={content} class="mr-16" />
+    <SocialLinks class="mr-16" />
   </div>
 </footer>

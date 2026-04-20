@@ -1,5 +1,6 @@
 import { z } from "zod";
 import en from "../content/en.json";
+import deepFreeze, { type DeepReadonly } from "deep-freeze";
 
 const logoGlob = import.meta.glob<{ default: string }>(
   "../assets/img/logo-*.png",
@@ -227,6 +228,7 @@ const contentSchema = z.object({
 });
 
 const parsedContent = contentSchema.parse(en);
+const cachedContent = deepFreeze(parsedContent);
 
 export type ImageType = {
   src: string,
@@ -287,12 +289,11 @@ export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
 export type SeeAlso = z.infer<typeof seeAlsoSchema>;
 export type SEO = z.infer<typeof seoSchema>;
 
-export type Content = z.infer<typeof contentSchema>;
+export type MutableContent = z.infer<typeof contentSchema>;
+export type Content = DeepReadonly<MutableContent>;
 
-export function getContent(): Content {
-  return parsedContent;
-}
+export const content: Content = cachedContent;
 
-export function validateContent(data: unknown): Content {
+export function validateContent(data: unknown): MutableContent {
   return contentSchema.parse(data);
 }

@@ -1,19 +1,17 @@
 ---
-import type { Content, SocialLink } from "../lib/content";
+import { content, type SocialLink } from "../lib/content";
 
-export type SocialLinksProps = {
-  content: Content;
+type Props = {
   class?: string;
   scheme?: 'white' | 'primary';
   followMe?: boolean;
 };
 
 const {
-  content,
   class: className = '',
   scheme = 'white',
   followMe = false
-} = Astro.props as SocialLinksProps;
+} = Astro.props;
 
 const colorScheme = {
   white: {
