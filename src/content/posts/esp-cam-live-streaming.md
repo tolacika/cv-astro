@@ -9,6 +9,21 @@ title: "Failed Successfully: ESP32-CAM Live Streaming"
 teaser: "An experiment pushing an ESP32-CAM to stream live video to YouTube/Twitch and other platforms: achieving a rock-solid 7 fps before hardware limits declared victory. Sometimes the system doesn't snap, it gracefully reveals its true constraints. Sharing the \"successful failure\" openly turned a hardware limitation into usable community knowledge."
 date: "2026-04-16 10:00:00"
 image: "coming-soon-placeholder.jpg"
+patterns:
+  - physical-to-digital
+  - time-sensitive
+tags:
+  - embedded
+  - iot
+external:
+  - label: "Original post on Arduino.cc"
+    href: "https://forum.arduino.cc/t/esp32-cam-and-live-streaming-to-youtube/609425"
+  - label: "Solution on Arduino.cc"
+    href: "https://forum.arduino.cc/t/re-esp32-cam-and-live-streaming-to-youtube-and-twitch/1340468"
+  - label: "ESP32 Camera Driver"
+    href: "https://github.com/espressif/esp32-camera"
+  - label: "GitHub Repository"
+    href: "https://github.com/tolacika/espcam-live-straming"
 ---
 
 I once came across a thread on the Arduino forum where someone was trying to stream live video from an ESP32-CAM directly to YouTube. Another user offered a paid solution.

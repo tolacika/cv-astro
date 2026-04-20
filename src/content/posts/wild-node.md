@@ -9,6 +9,17 @@ title: "Case Study: 🌿 WildNode"
 teaser: "A pocket-sized, solar-powered ESP32 device that captures cinematic telemetry from the physical world. Closing the loop where reality itself (light, movement, environment) becomes structured digital data in harsh, off-grid conditions."
 date: "2026-04-16 10:00:00"
 image: "wild-node-concept-art.jpg"
+patterns:
+  - physical-to-digital
+  - time-sensitive
+  - data-pipelines
+tags:
+  - embedded
+  - iot
+  - api
+external:
+  - label: "ESP32 Documentation"
+    href: "https://docs.espressif.com/projects/esp-idf/"
 ---
 
 ## 1. Current Status: Pre-Deployment, Waiting for Reality

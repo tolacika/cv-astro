@@ -75,6 +75,7 @@ const seoSchema = z.object({
   jsonLdAvatar: z.string(),
   jsonLdJobTitle: z.string(),
   jsonLdDescription: z.string(),
+  ctaRelatedEntries: z.string(),
 })
 
 const heroSchema = z.object({

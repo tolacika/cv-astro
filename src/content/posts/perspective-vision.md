@@ -7,12 +7,20 @@ teaser: "Systems look stable - until reality disagrees. This is where they begin
 image: "post-vision.webp"
 date: "2026-04-01 11:00:00"
 cta: "Read More"
+patterns:
+  - physical-to-digital
+  - time-sensitive
+  - external-dependencies
+  - legacy-modernization
+  - data-pipelines
 tags:
-  - "physical-to-digital"
-  - "time-sensitive"
-  - "external-dependencies"
-  - "legacy-modernization"
-  - "data-pipelines"
+  - api
+  - iot
+  - embedded
+  - php
+external:
+  - label: "Wikipedia - Cyber-Physical System"
+    href: "https://en.wikipedia.org/wiki/Cyber-physical_system"
 ---
 
 I don't hate systems. That would be easier. What I feel is closer to a quiet, persistent tension; the awareness that what we build and what actually happens in the world are never fully aligned.

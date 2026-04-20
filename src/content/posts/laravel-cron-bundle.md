@@ -9,6 +9,24 @@ title: "Retrospective: Laravel Cron Bundle"
 teaser: "A 2017 open-source package that replaced Laravel's static scheduler with a database-driven, auditable cron manager + Supervisor support. Even infrastructure code must survive dynamic production reality without relying on fragile server crontabs."
 date: "2026-04-16 14:00:00"
 image: "coming-soon-placeholder.jpg"
+patterns:
+  - legacy-modernization
+  - external-dependencies
+  - time-sensitive
+tags:
+  - php
+  - laravel
+  - mysql
+  - system-administration
+jobs:
+  - techteamer-microcredit
+external:
+  - label: "Laravel Scheduler Docs"
+    href: "https://laravel.com/docs/scheduling"
+  - label: "Supervisor Docs"
+    href: "http://supervisord.org/"
+  - label: "GitHub Repository"
+    href: "https://github.com/tolacika/laravel-cron-bundle"
 ---
 
 **Laravel Cron Bundle** was one of my first proper open-source packages (2017–2019).

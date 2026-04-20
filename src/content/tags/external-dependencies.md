@@ -2,9 +2,13 @@
 slug: "external-dependencies"
 label: "External Dependency Orchestration"
 teaser: "Integrating third-party systems without letting external volatility break the core system."
+relatedPatterns:
+  - time-sensitive
 relatedTags:
-  - "api"
-  - "time-sensitive"
+  - api
+external:
+  - label: "Wikipedia - Dependency (Computer Science)"
+    href: "https://en.wikipedia.org/wiki/Dependency_(computer_science)"
 icon: "email"
 ---
 

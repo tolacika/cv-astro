@@ -10,6 +10,17 @@ teaser: "A collection of experiments including a simulation framework, NMRA DCC 
 date: "2026-04-16 10:00:00"
 cta: "Coming soon"
 image: "railroad.jpg"
+patterns:
+  - time-sensitive
+  - physical-to-digital
+  - navigation
+tags:
+  - embedded
+  - iot
+  - custom-framework
+external:
+  - label: "Wikipedia - DCC"
+    href: "https://en.wikipedia.org/wiki/Digital_Command_Control"
 ---
 
 Coming soon

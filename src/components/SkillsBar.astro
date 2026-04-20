@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import type { Content } from "../lib/content";
 import { getTagBySlug } from "../content.config";
-import TagLink from "./TagLink.astro";
+import RefLink from "./RefLink.astro";
 
 const { content } = Astro.props as { content: Content };
 
@@ -35,7 +35,7 @@ const tagColl = await getCollection("tagCollection");
                     {tags.map(t => t.data).map((t, idx) => (
                       <>
                         {idx > 0 ? " / " : ""}
-                        <TagLink type="tag" tag={t}>{t.label}</TagLink>
+                        <RefLink type="tagGroup" item={t}>{t.label}</RefLink>
                       </>
                     ))}
                   </p>

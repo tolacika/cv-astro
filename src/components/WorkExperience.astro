@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { getTagBySlug } from "../content.config";
 import type { Content } from "../lib/content";
 import { logoSet } from "../lib/content";
-import TagLink from "./TagLink.astro";
+import RefLink from "./RefLink.astro";
 import { render } from "astro:content";
 
 const { content } = Astro.props as { content: Content };
@@ -80,7 +80,7 @@ const tagColl = await getCollection("tagCollection");
                     <p class="mb-1 font-body text-black text-sm flex flex-wrap">
                       {job.patterns.map(t => {
                         const tag = getTagBySlug(t.id, tagColl)
-                        return <TagLink type="badge" tag={tag.data}>{tag.data.label}</TagLink>;
+                        return <RefLink type="badge" item={tag.data}>{tag.data.label}</RefLink>;
                       })}
                     </p>
                   )}
@@ -89,7 +89,7 @@ const tagColl = await getCollection("tagCollection");
                     <p class="mb-1 font-body text-black text-sm flex flex-wrap">
                       {job.tags.map(t => {
                         const tag = getTagBySlug(t.id, tagColl)
-                        return <TagLink type="badge" tag={tag.data}>{tag.data.label}</TagLink>;
+                        return <RefLink type="badge" item={tag.data}>{tag.data.label}</RefLink>;
                       })}
                     </p>
                   )}

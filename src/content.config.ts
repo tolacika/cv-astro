@@ -2,6 +2,11 @@ import { z } from "zod";
 import { glob } from "astro/loaders";
 import { defineCollection, reference, type CollectionEntry, type SchemaContext } from "astro:content";
 
+const externalLinkSchema = z.object({
+  label: z.string(),
+  href: z.string(),
+});
+
 const postMetaSchema = ({ image }: SchemaContext) => z.object({
   type: z.string(),
   slug: z.string(),
@@ -10,8 +15,11 @@ const postMetaSchema = ({ image }: SchemaContext) => z.object({
   image: image().optional(),
   cta: z.string().optional(),
   date: z.string(),
-  tags: z.array(z.string()).optional(),
-  jobs: z.array(z.string()).optional(),
+  patterns: z.array(reference("tagCollection")).optional(),
+  tags: z.array(reference("tagCollection")).optional(),
+  jobs: z.array(reference("jobCollection")).optional(),
+  related: z.array(reference("postCollection")).optional(),
+  external: z.array(externalLinkSchema).optional(),
   public: z.boolean(),
   wip: z.boolean().optional(),
   draft: z.boolean().optional(),
@@ -22,10 +30,11 @@ const tagSchema = z.object({
   slug: z.string(),
   label: z.string(),
   teaser: z.string(),
-  relatedTags: z.array(reference("tagCollection")),
+  relatedPatterns: z.array(reference("tagCollection")).optional(),
+  relatedTags: z.array(reference("tagCollection")).optional(),
+  external: z.array(externalLinkSchema).optional(),
   icon: z.string().optional(),
 });
-
 
 const jobBaseSchema = z.object({
   slug: z.string(),
@@ -36,6 +45,8 @@ const jobBaseSchema = z.object({
   realityCheck: z.string(),
   patterns: z.array(reference("tagCollection")),
   tags: z.array(reference("tagCollection")),
+  posts: z.array(reference("postCollection")).optional(),
+  external: z.array(externalLinkSchema).optional(),
 });
 
 const jobWithLogoSchema = jobBaseSchema.extend({
@@ -71,6 +82,7 @@ const jobCollection = defineCollection({
 export type PostMeta = CollectionEntry<"postCollection">["data"];
 export type Tag = CollectionEntry<"tagCollection">["data"];
 export type Job = CollectionEntry<"jobCollection">["data"];
+export type ExternalLink = z.infer<typeof externalLinkSchema>;
 
 const missingEntry: CollectionEntry<"tagCollection"> = {
   id: "",

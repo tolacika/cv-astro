@@ -7,12 +7,24 @@ teaser: "How I moved across software, hardware, and real-world environments - an
 image: "post-background.webp"
 date: "2026-04-01 10:00:00"
 cta: "Explore More"
+patterns:
+  - physical-to-digital
+  - navigation
+  - data-pipelines
+  - external-dependencies
 tags:
-  - "physical-to-digital"
-  - "navigation"
-  - "embedded"
-  - "iot"
-  - "custom-framework"
+  - embedded
+  - iot
+  - custom-framework
+  - php
+  - mysql
+jobs:
+  - ertek-rendszerhaz
+  - manna
+  - webshippy
+external:
+  - label: "Wikipedia - Systems Theory"
+    href: "https://en.wikipedia.org/wiki/Systems_theory"
 ---
 
 There are careers that follow a line.  

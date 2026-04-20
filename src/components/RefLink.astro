@@ -1,0 +1,101 @@
+---
+import type { ExternalLink, Job, PostMeta, Tag } from "../content.config";
+
+interface Props {
+  type:
+      // tags
+    | "badge"
+    | "tagGroup"
+    | "pattern"
+    | "tag"
+    | "custom"
+      // post
+    | "post"
+      // job
+    | "job"
+      // external ling
+    | "external";
+  item: Tag | PostMeta | Job | ExternalLink;
+}
+
+type hasSlug = { slug: string };
+
+const { type, item } = Astro.props;
+
+const href = ((t, i) => {
+  switch (t) {
+    case "post":
+      return `/post/${(item as unknown as hasSlug).slug}.html`;
+    case "job":
+      return `/#experience-${(item as unknown as hasSlug).slug}`;
+    case "tag":
+    case "badge":
+    case "custom":
+    case "pattern":
+    case "tagGroup":
+      return `/tag/${(item as unknown as hasSlug).slug}.html`;
+    case "external":
+      return (item as unknown as ExternalLink).href;
+  }
+  return "";
+})(type, item);
+
+const classes: Record<Props["type"], string[]> = {
+  tagGroup: ["hover:underline", "text-primary", "group-hover:text-yellow"],
+  tag: ["hover:underline", "text-primary"],
+  pattern: ["hover:underline", "text-primary"],
+  post: ["hover:underline", "text-primary"],
+  job: ["hover:underline", "text-primary"],
+  external: ["hover:underline", "text-primary"],
+  badge: [
+    "text-gray-600",
+    "hover:text-black",
+    "hover:underline",
+    "px-2",
+    "py-1",
+    "mr-1",
+    "mb-0.5",
+    "bg-primary-light",
+    "whitespace-nowrap",
+    "rounded",
+    "cursor-pointer",
+  ],
+  custom: [
+    "group",
+    "rounded",
+    "px-8",
+    "py-12",
+    "shadow",
+    "hover:bg-primary",
+    "cursor-pointer",
+  ],
+};
+
+const tagAttrs: Record<string, string> = {
+  "data-action": "openModal",
+  "data-target": "#tag-explorer",
+  "data-payload": (item as unknown as hasSlug)?.slug || "",
+};
+
+const extraAttrs: {
+  [K in Props["type"]]?: Record<string, string>;
+} = {
+  tag: tagAttrs,
+  tagGroup: tagAttrs,
+  pattern: tagAttrs,
+  badge: tagAttrs,
+  custom: tagAttrs,
+};
+
+const postfix = type == "external" ? "🔗" : null;
+---
+
+<a
+  href={href}
+  class:list={[...classes[type], "prevent-default"]}
+  {...extraAttrs[type] ?? {}}
+  {...postfix ? { target: "_blank" } : {}}
+>
+  <slot />
+  {postfix}
+</a>

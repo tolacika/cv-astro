@@ -10,6 +10,17 @@ teaser: "An attempt to build a multi-sensor temperature monitoring system on ESP
 date: "2026-04-16 10:00:00"
 cta: "Coming soon"
 image: "esp-6ch-sensor.jpg"
+patterns:
+  - physical-to-digital
+  - time-sensitive
+tags:
+  - embedded
+  - iot 
+external:
+  - label: "ESP-IDF Documentation"
+    href: "https://docs.espressif.com/projects/esp-idf/"
+  - label: "GitHub Repository"
+    href: "https://github.com/tolacika/esp-6ch-sensor"
 ---
 
 Coming soon

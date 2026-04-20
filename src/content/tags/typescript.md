@@ -2,10 +2,16 @@
 slug: "typescript"
 label: "TypeScript"
 teaser: "Making implicit assumptions visible."
+relatedPatterns:
+  - navigation
 relatedTags:
-  - "javascript"
-  - "react"
-  - "api"
+  - javascript
+  - react
+external:
+  - label: "Wikipedia - TypeScript"
+    href: "https://en.wikipedia.org/wiki/TypeScript"
+  - label: "TypeScript Docs"
+    href: "https://www.typescriptlang.org/docs/"
 ---
 
 Adopted TypeScript in larger systems to improve maintainability, especially where multiple developers and services interact.

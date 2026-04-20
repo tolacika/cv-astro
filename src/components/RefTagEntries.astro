@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getEntries } from "astro:content";
+import { getCollection } from "astro:content";
+import RefItem from "./RefItem.astro";
+import type { Content } from "../lib/content";
+
+interface Props {
+  content: Content;
+  tag: CollectionEntry<"tagCollection">;
+}
+
+const { content, tag } = Astro.props;
+
+const tags = await getEntries(tag.data.relatedTags || []);
+const patterns = await getEntries(tag.data.relatedPatterns || []);
+const allPosts = await getCollection("postCollection");
+const posts = allPosts.filter(
+  (post) =>
+    post.data.tags?.map((t) => t.id).includes(tag.data.slug) ||
+    post.data.patterns?.map((t) => t.id).includes(tag.data.slug),
+);
+const allJobs = await getCollection("jobCollection");
+const jobs = allJobs.filter(
+  (job) =>
+    job.data.tags?.map((t) => t.id).includes(tag.data.slug) ||
+    job.data.patterns?.map((t) => t.id).includes(tag.data.slug),
+);
+
+const fullLength = patterns.length + tags.length + posts.length + jobs.length + (tag.data.external || [])?.length;
+---
+{fullLength > 0 ? (
+<section id="relatedEntries" class="bg-grey-60">
+  <div class="container py-4 md:py-8 bg-white">
+    <p>{content.seo.ctaRelatedEntries}</p>
+    <RefItem type="pattern" items={patterns.map(t => t.data)} />
+    <RefItem type="tag" items={tags.map(t => t.data)} />
+    <RefItem type="job" items={jobs.map(t => t.data)} />
+    <RefItem type="post" items={posts.map(t => t.data)} />
+    <RefItem type="external" items={tag.data.external || []} />
+  </div>
+</section>
+) : <></>}

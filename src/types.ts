@@ -1,0 +1,1 @@
+export type ReferenceItemType = "pattern" | "tag" | "job" | "post" | "external";

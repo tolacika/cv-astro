@@ -3,9 +3,12 @@ slug: "navigation"
 label: "Constraint-aware Navigation"
 teaser: "Guiding users through combinatorial or high-variability spaces."
 relatedTags:
-  - "react"
-  - "typescript"
-  - "vue"
+  - react
+  - vue
+  - typescript
+external:
+  - label: "Wikipedia - Information Architecture"
+    href: "https://en.wikipedia.org/wiki/Information_architecture"
 icon: "graphics"
 ---
 

@@ -3,9 +3,11 @@ slug: "time-sensitive"
 label: "Time-sensitive Synchronization"
 teaser: "Real-time availability, last-minute marketplaces, logistics flows, and irreversible data capture."
 relatedTags:
-  - "api"
-  - "graphql"
-  - "data-pipelines"
+  - api
+  - iot
+external:
+  - label: "Wikipedia - Real-time Computing"
+    href: "https://en.wikipedia.org/wiki/Real-time_computing"
 icon: "content"
 ---
 

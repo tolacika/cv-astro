@@ -2,10 +2,14 @@
 slug: "neos-cms"
 label: "Neos CMS"
 teaser: "Content systems where structure meets editorial reality."
+relatedPatterns:
+  - legacy-modernization
 relatedTags:
-  - "php"
-  - "custom-framework"
-  - "html"
+  - php
+  - html
+external:
+  - label: "Neos CMS"
+    href: "https://www.neos.io/"
 ---
 
 Worked with Neos CMS in client projects where content, layout, and business logic intersect in non-trivial ways.

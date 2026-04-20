@@ -10,6 +10,18 @@ teaser: "A minimal, well-documented example using ESP-IDF 5.4+ new I2C driver to
 date: "2026-04-16 10:00:00"
 cta: "Coming soon"
 image: "esp-lcd-i2c.webp"
+patterns:
+  - physical-to-digital
+tags:
+  - embedded
+  - iot
+jobs:
+  - archbau
+external:
+  - label: "ESP-IDF I2C Driver"
+    href: "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/i2c.html"
+  - label: "GitHub Repository"
+    href: "https://github.com/tolacika/esp-lcd-example"
 ---
 
 Coming soon

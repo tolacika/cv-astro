@@ -3,10 +3,11 @@ slug: "legacy-modernization"
 label: "Legacy Modernization"
 teaser: "Gradually replacing or augmenting large systems while maintaining auditability and compliance."
 relatedTags:
-  - "php"
-  - "laravel"
-  - "custom-framework"
-  - "data-pipelines"
+  - php
+  - custom-framework
+external:
+  - label: "Wikipedia - Legacy System"
+    href: "https://en.wikipedia.org/wiki/Legacy_system"
 icon: "mobile"
 ---
 

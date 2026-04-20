@@ -2,11 +2,18 @@
 slug: "php"
 label: "PHP"
 teaser: "Where messy business logic meets long-lived systems."
+relatedPatterns:
+  - legacy-modernization
+  - data-pipelines
 relatedTags:
-  - "laravel"
-  - "symfony"
-  - "custom-framework"
-  - "api"
+  - laravel
+  - symfony
+  - mysql
+external:
+  - label: "Wikipedia - PHP"
+    href: "https://en.wikipedia.org/wiki/PHP"
+  - label: "PHP Official Docs"
+    href: "https://www.php.net/"
 ---
 
 I've spent most of my career working in PHP across monoliths, APIs, and evolving architectures, often in systems that could not be rewritten but had to be improved under real constraints.

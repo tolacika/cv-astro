@@ -2,11 +2,18 @@
 slug: "laravel"
 label: "Laravel"
 teaser: "A structured layer over chaotic domains."
+relatedPatterns:
+  - legacy-modernization
+  - external-dependencies
 relatedTags:
-  - "php"
-  - "api"
-  - "mysql"
-  - "vue"
+  - php
+  - mysql
+  - vue
+external:
+  - label: "Wikipedia - Laravel"
+    href: "https://en.wikipedia.org/wiki/Laravel"
+  - label: "Laravel Docs"
+    href: "https://laravel.com/docs"
 ---
 
 Used Laravel across multiple production systems, from API backends to full platforms, often as a stabilizing layer in otherwise fragmented architectures.

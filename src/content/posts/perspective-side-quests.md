@@ -7,12 +7,15 @@ teaser: "Fragments from outside the main path - ideas, observations, and quiet e
 image: "post-notes.webp"
 date: "2026-04-01 12:00:00"
 cta: "Explore More"
+patterns:
+  - physical-to-digital
+  - navigation
+  - time-sensitive
 tags:
-  - "embedded"
-  - "iot"
-  - "physical-to-digital"
-  - "custom-framework"
-  - "system-administration"
+  - embedded
+  - iot
+  - custom-framework
+  - system-administration
 ---
 
 This is not a structured story.  

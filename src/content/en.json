@@ -58,7 +58,8 @@
     "defaultOgDescription": "Marshall Laszlo Toth - Senior Software Engineer building scalable systems and real-world machines. Laravel, IoT, physical-to-digital pipelines, and systems that survive reality.",
     "jsonLdAvatar": "https://avatars.githubusercontent.com/u/1866861?v=4",
     "jsonLdJobTitle": "Senior Software Engineer",
-    "jsonLdDescription": "I design systems that don't snap when reality pushes back. Bridging code and physical reality through Laravel, IoT, embedded systems, and data pipelines that survive messy real-world conditions."
+    "jsonLdDescription": "I design systems that don't snap when reality pushes back. Bridging code and physical reality through Laravel, IoT, embedded systems, and data pipelines that survive messy real-world conditions.",
+    "ctaRelatedEntries": "Dive deeper into the projects and thinking where this pattern proved its worth:"
   },
   "hero": {
     "preTitle": "Hello, my name is",

@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { getTagBySlug } from "../content.config";
 import type { Content, ServicesIconKey } from "../lib/content";
 import { servicesIconSet } from "../lib/content";
-import TagLink from "./TagLink.astro";
+import RefLink from "./RefLink.astro";
 
 const { content } = Astro.props as { content: Content };
 const tagColl = await getCollection("tagCollection");
@@ -27,7 +27,7 @@ const tagColl = await getCollection("tagCollection");
       const icon = servicesIconSet[tag.data.icon as ServicesIconKey];
 
       return (
-        <TagLink type="custom" tag={tag.data}>
+        <RefLink type="custom" item={tag.data}>
 
           <!-- Icon -->
           <div class="mx-auto h-24 w-24 text-center xl:h-28 xl:w-28">
@@ -50,7 +50,7 @@ const tagColl = await getCollection("tagCollection");
             </p>
           </div>
 
-        </TagLink>
+        </RefLink>
       );
     })}
 

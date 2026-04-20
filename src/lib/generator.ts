@@ -1,5 +1,7 @@
 import { getCollection, getEntries, type CollectionEntry } from "astro:content";
 import { getContent, type Content, type SeeAlso } from "./content";
+import type { PostMeta, Tag } from "../content.config";
+import type { ReferenceItemType } from "../types";
 
 export interface LlmGeneratorInput {
   translations: Content;
@@ -7,6 +9,35 @@ export interface LlmGeneratorInput {
   perspectivePosts: CollectionEntry<"postCollection">[];
   tags: CollectionEntry<"tagCollection">[];
   jobs: CollectionEntry<"jobCollection">[];
+}
+
+const referenceLabels: Record<ReferenceItemType, string> = {
+  pattern: "Patterns",
+  tag: "Tags",
+  job: "Experiences",
+  post: "Posts",
+  external: "External Links",
+};
+
+function printReferences({ tag = undefined, post = undefined }: { tag?: Tag, post?: PostMeta }): string {
+  const out: Partial<Record<ReferenceItemType, Array<string>>> | null =
+    tag !== undefined ? {
+      pattern: tag.relatedPatterns?.map(({ id }) => id) || [],
+      tag: tag.relatedTags?.map(({ id }) => id) || [],
+      external: tag.external?.map(({ label, href }) => `[${label}](${href})`) || [],
+    } : post !== undefined ? {
+      pattern: post.patterns?.map(({ id }) => id) || [],
+      tag: post.tags?.map(({ id }) => id) || [],
+      job: post.jobs?.map(({ id }) => id) || [],
+      post: post.related?.map(({ id }) => id) || [],
+      external: post.external?.map(({ label, href }) => `[${label}](${href})`) || [],
+    } : null;
+
+  return Object.values(out || {}).some((arr) => Array.isArray(arr) && arr.length > 0) ?
+    "Related items:\n" + Object.entries(out || {})
+      .filter(([_, arr]) => arr && arr.length > 0)
+      .map(([key, arr]) => `- ${referenceLabels[key as ReferenceItemType]}: ${arr.join("; ")}`)
+      .join("\n") : "";
 }
 
 function truncateContent(content: string, maxLength: number = 2000): string {
@@ -34,6 +65,8 @@ function formatPostForLlm(post: CollectionEntry<"postCollection">["data"], conte
 - cta: ${post.cta ? post.cta : "null"}
 ${post.draft !== true ? `- content: |
 ${content.split("\n").map(line => "  " + line).join("\n")}` : ``}
+
+${printReferences({ post })}
 `
 }
 
@@ -151,7 +184,8 @@ ${translations.services.patterns
 ${body.split("\n").filter(line => !!line).map(line => "      " + line).join("\n")}${tag.relatedTags ? `
     - relatedTags: ${tag.relatedTags.map(i => i.id).map(i => tags[tagIdx[i]].data.slug).join("; ")}` : ``}
 `;
-      }).join("\n")}`;
+      }).join("\n")}
+`;
 
   const contactSection = `
 ### CONTACT
@@ -178,12 +212,13 @@ ${translations.perspective.subTitle}
 ${perspectivePosts.map((entry) => formatPostForLlm(entry.data, truncateContent(entry.body!, 7000))).join("\n\n---\n\n")}
 `;
   const tagsSection = `
-### TAGS
+### TAGS - label [slug]
 ${tags.map(t => {
     const tag = t.data;
     const body = t.body || "";
     return `
 #### ${tag.label} [${tag.slug}]
+${printReferences({ tag })}
 
 ${tag.teaser}
 

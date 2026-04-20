@@ -1,0 +1,43 @@
+---
+import RefLink from './RefLink.astro';
+import type { Job, PostMeta, Tag, ExternalLink } from '../content.config';
+import type { ReferenceItemType } from '../types';
+
+
+interface Props {
+  type: ReferenceItemType,
+  items: Tag[] | PostMeta[] | Job[] | ExternalLink[];
+}
+
+const { type, items } = Astro.props;
+const getLabel = (t: Props['type'], i: Props['items'][number]):string => {
+  switch (t) {
+    case "pattern":
+    case "tag":
+      return (i as unknown as Tag).label;
+    case "job":
+      return (i as unknown as Job).position +" @ "+ (i as unknown as Job).company;
+    case "post":
+      return (i as unknown as PostMeta).title;
+    case "external":
+      return (i as unknown as ExternalLink).label;
+  }
+}
+const headers: Record<Props["type"], string> = {
+  pattern: "Patterns:",
+  tag: "Tags:",
+  job: "Experiences:",
+  post: "Posts",
+  external: "External links:"
+}
+---
+{items.length > 0 ? (
+<div>
+  <p>{headers[type]}</p>
+    <ul>
+      {items.map(i => <li>
+        <RefLink type={type} item={i}>{getLabel(type, i)}</RefLink>
+      </li>)}
+    </ul>
+</div>
+) : <></>}

@@ -2,9 +2,14 @@
 slug: "physical-to-digital"
 label: "Physical-to-Digital Feedback Loops"
 teaser: "Bridging sensors, manual fieldwork, and formal records where reality itself is the source of truth."
+relatedPatterns:
+  - time-sensitive
 relatedTags:
-  - "php"
-  - "time-sensitive"
+  - iot
+  - embedded
+external:
+  - label: "Wikipedia - Cyber-Physical System"
+    href: "https://en.wikipedia.org/wiki/Cyber-physical_system"
 icon: "design"
 ---
 

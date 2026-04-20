@@ -3,10 +3,12 @@ slug: "data-pipelines"
 label: "Data Transformation Pipelines"
 teaser: "Moving information across incompatible domains while preserving integrity."
 relatedTags:
-  - "api"
-  - "php"
-  - "mysql"
-  - "external-dependencies"
+  - api
+  - php
+  - mysql
+external:
+  - label: "Wikipedia - Data Pipeline"
+    href: "https://en.wikipedia.org/wiki/Data_pipeline"
 icon: "development"
 ---
 

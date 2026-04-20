@@ -2,10 +2,14 @@
 slug: "system-administration"
 label: "System Administration"
 teaser: "Keeping the lights on when the abstractions break."
+relatedPatterns:
+  - external-dependencies
 relatedTags:
-  - "aws"
-  - "azure"
-  - "php"
+  - aws
+  - azure
+external:
+  - label: "Wikipedia - System Administration"
+    href: "https://en.wikipedia.org/wiki/System_administration"
 ---
 
 Managed servers, deployments, and operational infrastructure across production environments.
