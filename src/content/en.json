@@ -36,12 +36,12 @@
       {
         "label": "Blog & Projects",
         "target": "_self",
-        "href": "/post/"
+        "href": "/post.html"
       },
       {
         "label": "Tag Cloud",
         "target": "_self",
-        "href": "/tag/"
+        "href": "/tag.html"
       },
       {
         "label": "Contact",
