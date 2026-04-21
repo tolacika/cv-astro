@@ -7,7 +7,9 @@ export async function GET() {
 User-agent: *
 Allow: /
 Allow: /llm.txt
+Allow: /post.html
 Allow: /post/
+Allow: /tag.html
 Allow: /tag/
 
 Sitemap: ${site}/sitemap.xml

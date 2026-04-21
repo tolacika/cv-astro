@@ -15,10 +15,11 @@ const formatDate = (date: unknown): string => {
 
 const staticPages = [
   "",
-  "/llm",
-  "/llm-app",
-  "/llm-res",
   "/llm.txt",
+  "/llm-app.txt",
+  "/llm-res.txt",
+  "/post.html",
+  "/tag.html",
 ];
 
 export async function GET() {
