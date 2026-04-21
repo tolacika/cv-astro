@@ -1,0 +1,67 @@
+---
+import Footer from "../../components/Footer.astro";
+import Hero from "../../components/Hero.astro";
+import type { Props as MainHeadProps } from "../../components/MainHead.astro";
+import Navbar from "../../components/Navbar.astro";
+import BaseLayout from "../../layouts/Layout.astro";
+import { content } from "../../lib/content";
+import { getDefaultSeoProps } from "../../lib/seo";
+import bgHero from "../../assets/img/post-header.webp";
+import { getCollection } from "astro:content";
+import { type PostsByType, type PostType } from "../../content.config"
+import PostList from "../../components/PostList.astro";
+
+const headProps: MainHeadProps = getDefaultSeoProps(content);
+
+const allPosts = (await getCollection("postCollection"))
+  .sort(
+    (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
+  );
+
+const postsByType: PostsByType = {
+  perspective: [],
+  project: [],
+  blog: [],
+  page: [],
+};
+
+const groups: Record<PostType, string> = {
+  perspective: "Perspective Posts",
+  project: "Projects",
+  blog: "Blog",
+  page: "Technical pages",
+} as const;
+
+for (const post of allPosts) {
+  postsByType[post.data.type].push(post);
+}
+---
+
+<BaseLayout headProps={headProps}>
+  <Navbar />
+
+  <main>
+    <Hero
+      bgImg={bgHero.src}
+      bgAlt="Posts Header image"
+      title="Recent Posts"
+      isHeaderDark
+    />
+ 
+    <section id="content" class="bg-grey-60">
+      <div class="container p-0 pt-10 bg-white">
+        {Object.entries(postsByType).map(([key, posts]) => (
+          <PostList
+            title={groups[key as PostType]}
+            sectionId={key}
+            posts={posts}
+            imageSize="small"
+            class="bg-grey-50 pb-10"
+          />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

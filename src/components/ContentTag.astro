@@ -1,8 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import HeroTag from "./HeroTag.astro";
 import ViewTag from "./ViewTag.astro";
 import RefTagEntries from "./RefTagEntries.astro";
+import Hero from "./Hero.astro";
+import HeroLight from "./HeroLight.astro";
 
 interface Props {
   tag: CollectionEntry<"tagCollection">;
@@ -13,7 +14,13 @@ const { tag, partial = false } = Astro.props as Props;
 ---
 
 <main>
-  <HeroTag tag={tag} partial={partial} />
+  {
+    !partial ? (
+      <Hero title={tag.data.label} subTitle={tag.data.teaser} isDark />
+    ) : (
+      <HeroLight title={tag.data.label} subTitle={tag.data.teaser} />
+    )
+  }
 
   <ViewTag tag={tag} />
 

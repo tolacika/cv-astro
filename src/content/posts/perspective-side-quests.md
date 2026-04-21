@@ -158,10 +158,10 @@ To let randomness take control for a while.
 
 Documentation is something I struggle with.
 
-Not understanding systems. Not building them.
-But explaining them clearly, consistently, in a way that survives time.
+Not understanding systems. Not building them.  
+But explaining them clearly, consistently.
 
-This portfolio is part of that effort.
+I am aware that **explaining systems in a way that survives time** is a *different* problem than **building them**. This portfolio itself feels like an attempt to close that gap.
 
 ---
 

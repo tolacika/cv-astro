@@ -2,7 +2,7 @@ import type { Props as MainHeadProps } from "../components/MainHead.astro";
 import type { PostMeta } from "../content.config";
 import type { Content } from "./content";
 
-export function getDefaultSeoProps(content: Content, ogImage: string): MainHeadProps {
+export function getDefaultSeoProps(content: Content, ogImage?: string): MainHeadProps {
   return {
     title: content.seo.defaultTitle,
     postfix: content.seo.defaultTitlePostfix,
@@ -11,7 +11,7 @@ export function getDefaultSeoProps(content: Content, ogImage: string): MainHeadP
     author: content.seo.defaultAuthor,
     ogTitle: content.seo.defaultOgTitle,
     ogDesc: content.seo.defaultOgDescription,
-    ogImage: content.seo.cannonUrl + ogImage,
+    ogImage: ogImage ? content.seo.cannonUrl + ogImage : "",
     ogUrl: content.seo.cannonUrl,
   } as MainHeadProps;
 }

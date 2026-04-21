@@ -31,7 +31,7 @@ const fullLength = patterns.length + tags.length + posts.length + jobs.length + 
 {fullLength > 0 ? (
 <section id="relatedEntries" class="bg-grey-60">
   <div class="container py-4 md:py-8 bg-white">
-    <p>{content.seo.ctaRelatedEntries}</p>
+    <p class="text-base sm:text-lg lg:text-xl">{content.seo.ctaRelatedEntries}</p>
     <RefItem type="pattern" items={patterns.map(t => t.data)} />
     <RefItem type="tag" items={tags.map(t => t.data)} />
     <RefItem type="job" items={jobs.map(t => t.data)} />

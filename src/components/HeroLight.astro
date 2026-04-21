@@ -1,0 +1,40 @@
+---
+
+interface Props {
+  preTitle?: string;
+  title: string;
+  postTitle?: string;
+  subTitle?: string;
+}
+
+const { preTitle, title, postTitle, subTitle } = Astro.props;
+
+---
+<div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
+  <h1
+  class="text-center font-header text-4xl text-white lg:text-left sm:text-5xl xl:text-6xl bg-linear-to-r from-hero-gradient-from to-hero-gradient-to inline-block p-1"
+  >
+    {
+      preTitle && (
+        <small class="text-2xl sm:text-3xl xl:text-4xl font-light">
+          {preTitle}
+        </small>
+        <br />
+      )
+    }
+    {title}
+    {
+      postTitle && (
+        <br />
+        <small class="text-2xl sm:text-3xl xl:text-4xl font-light">
+          {postTitle}
+        </small>
+      )
+    }
+  </h1>
+  <h2
+  class="text-center font-header text-2xl text-white lg:text-left sm:text-3xl xl:text-4xl font-extralight italic mt-4 bg-linear-to-r from-hero-gradient-from to-hero-gradient-to p-2"
+  >
+    {subTitle}
+  </h2>
+</div>

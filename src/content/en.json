@@ -29,14 +29,19 @@
         "href": "/#skills"
       },
       {
-        "label": "Perspective",
-        "target": "_self",
-        "href": "/#perspective"
-      },
-      {
         "label": "Experience",
         "target": "_self",
         "href": "/#work"
+      },
+      {
+        "label": "Blog & Projects",
+        "target": "_self",
+        "href": "/post/"
+      },
+      {
+        "label": "Tag Cloud",
+        "target": "_self",
+        "href": "/tag/"
       },
       {
         "label": "Contact",

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { type, items } = Astro.props;
-const getLabel = (t: Props['type'], i: Props['items'][number]):string => {
+function getLabel(t: Props['type'], i: Props['items'][number]):string {
   switch (t) {
     case "pattern":
     case "tag":
@@ -21,20 +21,22 @@ const getLabel = (t: Props['type'], i: Props['items'][number]):string => {
     case "external":
       return (i as unknown as ExternalLink).label;
   }
+  return "";
 }
-const headers: Record<Props["type"], string> = {
+const headers: Partial<Record<Props["type"], string>> = {
   pattern: "Patterns:",
   tag: "Tags:",
   job: "Experiences:",
   post: "Posts",
   external: "External links:"
 }
+
 ---
 {items.length > 0 ? (
 <div>
-  <p>{headers[type]}</p>
+  {headers[type] && <p class="text-base sm:text-lg lg:text-xl mt-2">{headers[type]}</p>}
     <ul>
-      {items.map(i => <li>
+      {items.map(i => <li class="text-base sm:text-lg lg:text-xl">
         <RefLink type={type} item={i}>{getLabel(type, i)}</RefLink>
       </li>)}
     </ul>

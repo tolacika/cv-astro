@@ -7,8 +7,17 @@ const externalLinkSchema = z.object({
   href: z.string(),
 });
 
+export const POST_TYPES = [
+  "project",
+  "perspective",
+  "blog",
+  "page",
+] as const;
+
+export type PostType = typeof POST_TYPES[number];
+
 const postMetaSchema = ({ image }: SchemaContext) => z.object({
-  type: z.string(),
+  type: z.enum(POST_TYPES),
   slug: z.string(),
   title: z.string(),
   teaser: z.string(),
@@ -83,6 +92,8 @@ export type PostMeta = CollectionEntry<"postCollection">["data"];
 export type Tag = CollectionEntry<"tagCollection">["data"];
 export type Job = CollectionEntry<"jobCollection">["data"];
 export type ExternalLink = z.infer<typeof externalLinkSchema>;
+
+export type PostsByType = Record<PostType, CollectionEntry<"postCollection">[]>;
 
 const missingEntry: CollectionEntry<"tagCollection"> = {
   id: "",

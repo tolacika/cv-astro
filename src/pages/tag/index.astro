@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import type { Props as MainHeadProps } from "../../components/MainHead.astro";
+import { content } from "../../lib/content";
+import { getDefaultSeoProps } from "../../lib/seo";
+import BaseLayout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/Hero.astro";
+import bgHero from "../../assets/img/post-header.webp";
+import Footer from "../../components/Footer.astro";
+import type { Tag } from "../../content.config";
+
+const counterCache = {
+  posts: (await getCollection("postCollection")).map((i) => i.data),
+  jobs: (await getCollection("jobCollection")).map((i) => i.data),
+  tags: (await getCollection("tagCollection")).map((i) => i.data),
+};
+
+function getTagCount(t: Tag) {
+  return (
+    counterCache.posts.reduce(
+      (acc, p) =>
+        acc +
+        (p.patterns?.map(({ id }) => id).includes(t.slug) ? 1 : 0) +
+        (p.tags?.map(({ id }) => id).includes(t.slug) ? 1 : 0),
+      0,
+    ) +
+    counterCache.jobs.reduce(
+      (acc, j) =>
+        acc +
+        (j.patterns?.map(({ id }) => id).includes(t.slug) ? 1 : 0) +
+        (j.tags?.map(({ id }) => id).includes(t.slug) ? 1 : 0),
+      0,
+    ) +
+    counterCache.tags.reduce(
+      (acc, p) =>
+        acc +
+        (p.relatedPatterns?.map(({ id }) => id).includes(t.slug) ? 1 : 0) +
+        (p.relatedTags?.map(({ id }) => id).includes(t.slug) ? 1 : 0),
+      0,
+    ) +
+    (t.external?.length || 0)
+  );
+}
+
+const headProps: MainHeadProps = getDefaultSeoProps(content);
+
+const tags = (await getCollection("tagCollection")).sort((a, b) =>
+  a.data.label.localeCompare(b.data.label),
+);
+---
+
+<BaseLayout headProps={headProps}>
+  <Navbar />
+
+  <main>
+    <Hero
+      bgImg={bgHero.src}
+      bgAlt="Tags Header image"
+      title="Tag Cloud"
+      isHeaderDark
+    />
+
+    <section id="content" class="bg-grey-60">
+      <div class="container py-10 bg-white">
+        <p class="flex flex-wrap gap-2 text-lg sm:text-2xl lg:text-3xl">
+          {
+            tags.map((i) => (
+              <a
+                href={`/tag/${i.data.slug}.html`}
+                class={`text-white font-semibold hover:text-yellow hover:underline bg-primary whitespace-nowrap rounded cursor-pointer prevent-default px-2 py-1`}
+                data-action="openModal"
+                data-target="#tag-explorer"
+                data-payload={i.data.slug}
+              >
+                {i.data.label} ({getTagCount(i.data)})
+              </a>
+            ))
+          }
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

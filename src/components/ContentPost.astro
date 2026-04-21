@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import HeroPost from "./HeroPost.astro";
 import ViewPost from "./ViewPost.astro";
 import RefPostEntries from "./RefPostEntries.astro";
+import Hero from "./Hero.astro";
 
 interface Props {
   post: CollectionEntry<"postCollection">
@@ -12,7 +12,13 @@ const { post } = Astro.props;
 ---
 
 <main>
-  <HeroPost post={post} />
+  <Hero
+    bgImg={post.data.image ? post.data.image.src : ""}
+    bgAlt={`Hero image: ${post.data.title}`}
+    title={post.data.title}
+    subTitle={post.data.teaser}
+    isHeaderDark
+  />
 
   <ViewPost post={post} />
 

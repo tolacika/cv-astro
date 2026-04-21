@@ -6,15 +6,28 @@ import ContactDetails from "./ContactDetails.astro";
 import FollowMe from "./FollowMe.astro";
 import Perspective from "./Perspective.astro";
 import ProjectFeatured from "./ProjectFeatured.astro";
-import HeroMain from "./HeroMain.astro";
 import PostScriptum from "./PostScriptum.astro";
 import Education from "./Education.astro";
+import Hero from "./Hero.astro";
+import { content } from "../lib/content";
+import bgHero from "../assets/img/archaeology-field-planum-highvis-placeholder.jpg";
+import authorImg from "../assets/img/author-blue-hair.jpg";
 
 interface Props {}
-
 ---
+
 <main class="bg-white">
-  <HeroMain />
+  <Hero
+    bgImg={bgHero.src}
+    bgAlt={content.hero.bgAlt}
+    avatarImg={authorImg.src}
+    avatarAlt={content.hero.imageAlt}
+    isDark={true}
+    preTitle={content.hero.preTitle}
+    title={`${content.hero.fullName}!`}
+    subTitle={content.hero.subTitle}
+    letsConnect={true}
+  />
 
   <Intro />
 
