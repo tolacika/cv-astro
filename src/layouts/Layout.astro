@@ -6,7 +6,11 @@ import LlmModal from "../components/LlmModal.astro";
 import TagDetailModal from "../components/TagDetailModal.astro";
 import JsonLd from "../components/JsonLd.astro";
 
-const { headProps } = Astro.props as { headProps: MainHeadProps };
+interface Props {
+  headProps: MainHeadProps
+}
+
+const { headProps } = Astro.props;
 ---
 
 <html lang="en">

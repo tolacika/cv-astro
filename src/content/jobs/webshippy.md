@@ -5,6 +5,9 @@ datePeriod: "in 2018"
 position: "Full-stack Developer (Freelance)"
 teaser: "At WebShippy I built the integration and warehouse tooling layer that turned digital orders from external webshops into physical fulfillment, creating bidirectional APIs and early picker/packer systems inside the warehouse."
 realityCheck: "Scaling e-commerce doesn't happen by handling more requests; it happens when digital intent is reliably aligned with physical movement, where every inefficiency becomes immediately visible and costly."
+cvPoints:
+  - "Built API and warehouse tooling for e-commerce fulfillment"
+  - "Connected webshop data with real-time physical operations"
 patterns:
   - "physical-to-digital"
   - "external-dependencies"

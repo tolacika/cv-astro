@@ -5,6 +5,9 @@ datePeriod: "May 2021 - May 2022"
 position: "Senior Full-stack Lead Developer (Freelance)"
 teaser: "I led development of a social commerce platform that turned influencer reach into end-to-end merchandise production and global fulfillment, aligning audience demand, manufacturing constraints, and logistics into one fast-moving system."
 realityCheck: "Digital intent doesn't reliably become physical outcomes unless the system can translate loosely defined ideas into repeatable flows while respecting real-world manufacturing and logistics limits."
+cvPoints:
+  - "Led development of a social commerce platform connecting influencers, production, and logistics"
+  - "Designed systems aligning digital demand with physical manufacturing constraints"
 patterns:
   - "physical-to-digital"
   - "external-dependencies"

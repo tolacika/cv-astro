@@ -358,5 +358,106 @@
   "projectFeatured": {
     "title": "What's Next: Open Experiments",
     "subTitle": "The same mindset that drives the paid work also fuels my personal projects. These are the places where I test new patterns in the open, before reality has a chance to push back at scale."
+  },
+  "cv": {
+    "profession": "Senior Software Engineer",
+    "location": "Hungary / Germany (tax-registered)",
+    "portfolioUrl": {
+      "label": "tolacika.dev",
+      "href": "https://tolacika.dev"
+    },
+    "githubUrl": {
+      "label": "gh/tolacika",
+      "href": "https://github.com/tolacika"
+    },
+    "linkedinUrl": {
+      "label": "in/tolacika",
+      "href": "https://linkedin.com/in/tolacika"
+    },
+    "profile": [
+      "Software engineer with 10+ years of experience designing systems that remain stable under real-world pressure. Specialized in backend-heavy platforms, distributed integrations, and systems where digital logic must align with physical processes.",
+      "Focus areas include synchronization under uncertainty, data transformation across domains, and incremental modernization of long-lived systems. Particularly drawn to edge cases where abstractions break and manual work begins to appear."
+    ],
+    "strengths": [
+      {
+        "label": "Backend & Architecture",
+        "desc": "PHP (Laravel, Symfony), API design, domain modeling"
+      },
+      {
+        "label": "Data & Integrations",
+        "desc": "MySQL, GraphQL, external system orchestration"
+      },
+      {
+        "label": "Frontend (supporting role)",
+        "desc": "React, Vue, TypeScript"
+      },
+      {
+        "label": "Infrastructure & Ops",
+        "desc": "AWS, Azure, system administration"
+      },
+      {
+        "label": "Special Focus",
+        "desc": [
+          "Time-sensitive synchronization (real-time, marketplaces, logistics)",
+          "Data pipelines across incompatible systems",
+          "Legacy modernization without breaking auditability",
+          "Physical vs digital system alignment (IoT, embedded, field processes)"
+        ]
+      }
+    ],
+    "experience": [
+      "nexttuesday",
+      "ordio",
+      "diligent",
+      "future-property-trade",
+      "risskov",
+      "techteamer-microcredit",
+      "webshippy",
+      {
+        "position": "Early Career (Full-stack / System Admin)",
+        "period": "2014 - 2017",
+        "points": [
+          "Built internal systems for manufacturing, retail, and logistics",
+          "Developed early configurators with extreme combinatorial complexity",
+          "Gained operational insight across business workflows"
+        ],
+        "link": "/#experience-manna"
+      }
+    ],
+    "extra": {
+      "label": "Selected Projects & Open Work",
+      "items": [
+        {
+          "label": "WildNode (IoT)",
+          "desc": "Solar-powered environmental sensing system",
+          "link": "/post/wild-node.html"
+        },
+        {
+          "label": "ESP32 Streaming Experiment",
+          "desc": "Real-time video under hardware constraints (open source)",
+          "link": "/post/esp-cam-live-streaming.html"
+        },
+        {
+          "label": "Laravel Cron Bundle",
+          "desc": "Database-driven scheduler with auditability",
+          "link": "/post/laravel-cron-bundle.html"
+        },
+        {
+          "label": "Model Railway Systems (WIP)",
+          "desc": "Real-time physical system simulation & control",
+          "link": "/post/model-railway-experiments.html"
+        }
+      ]
+    },
+    "education": [
+      "Electrical Engineering studies – Budapest University of Technology and Economics",
+      "IT-focused secondary education",
+      "Ongoing self-directed learning across software, hardware, and systems"
+    ],
+    "additional": [
+      "Languages: Hungarian (native), English (fluent), German (learning)",
+      "Experience across Hungary & Germany",
+      "Open to complex, cross-domain problems and system design challenges"
+    ]
   }
 }

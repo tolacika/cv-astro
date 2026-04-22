@@ -1,6 +1,7 @@
 import { z } from "zod";
 import en from "../content/en.json";
 import deepFreeze, { type DeepReadonly } from "deep-freeze";
+import { externalLinkSchema } from "../content.config";
 
 const logoGlob = import.meta.glob<{ default: string }>(
   "../assets/img/logo-*.png",
@@ -169,13 +170,6 @@ const educationSchema = z.object({
   content: z.array(z.string()),
 });
 
-const seeAlsoSchema = z.object({
-  type: z.enum(["external", "tag", "pattern", "experience", "post"]),
-  label: z.string(),
-  comment: z.string().optional(),
-  link: z.string(),
-});
-
 const servicesSchema = z.object({
   title: z.string(),
   paragraphs: z.array(z.string()),
@@ -210,6 +204,45 @@ const projectFeaturedSchema = z.object({
   subTitle: z.string(),
 });
 
+const strengthSchema = z.object({
+  label: z.string(),
+  desc: z.union([
+    z.string(),
+    z.array(z.string()),
+  ])
+});
+
+const experienceSchema = z.object({
+  position: z.string(),
+  period: z.string(),
+  points: z.array(z.string()),
+  link: z.string(),
+});
+
+const cvSchema = z.object({
+  profession: z.string(),
+  location: z.string(),
+  portfolioUrl: externalLinkSchema,
+  githubUrl: externalLinkSchema,
+  linkedinUrl: externalLinkSchema,
+  profile: z.array(z.string()),
+  strengths: z.array(strengthSchema),
+  experience: z.array(z.union([
+    z.string(),
+    experienceSchema],
+  )),
+  extra: z.object({
+    label: z.string(),
+    items: z.array(z.object({
+      label: z.string(),
+      desc: z.string(),
+      link: z.string(),
+    }))
+  }),
+  education: z.array(z.string()),
+  additional: z.array(z.string()),
+});
+
 const contentSchema = z.object({
   images: imagesSchema,
   nav: navSchema,
@@ -225,6 +258,7 @@ const contentSchema = z.object({
   followMe: followMeSchema,
   perspective: perspectiveSchema,
   projectFeatured: projectFeaturedSchema,
+  cv: cvSchema,
 });
 
 const parsedContent = contentSchema.parse(en);
@@ -286,8 +320,10 @@ export type FollowMe = z.infer<typeof followMeSchema>;
 export type Perspective = z.infer<typeof perspectiveSchema>;
 export type ProjectFeatured = z.infer<typeof projectFeaturedSchema>;
 
-export type SeeAlso = z.infer<typeof seeAlsoSchema>;
 export type SEO = z.infer<typeof seoSchema>;
+
+export type Experience = z.infer<typeof experienceSchema>;
+export type CVType = z.infer<typeof cvSchema>;
 
 export type MutableContent = z.infer<typeof contentSchema>;
 export type Content = DeepReadonly<MutableContent>;

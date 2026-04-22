@@ -2,7 +2,7 @@ import { z } from "zod";
 import { glob } from "astro/loaders";
 import { defineCollection, reference, type CollectionEntry, type SchemaContext } from "astro:content";
 
-const externalLinkSchema = z.object({
+export const externalLinkSchema = z.object({
   label: z.string(),
   href: z.string(),
 });
@@ -56,6 +56,8 @@ const jobBaseSchema = z.object({
   tags: z.array(reference("tagCollection")),
   posts: z.array(reference("postCollection")).optional(),
   external: z.array(externalLinkSchema).optional(),
+  cvSentence: z.string().optional(),
+  cvPoints: z.array(z.string()).optional(),
 });
 
 const jobWithLogoSchema = jobBaseSchema.extend({

@@ -1,0 +1,19 @@
+---
+import "../styles/global.css";
+import MainHead from "../components/MainHead.astro";
+import type { Props as MainHeadProps } from "../components/MainHead.astro";
+
+interface Props {
+  headProps: MainHeadProps
+}
+
+const { headProps } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <MainHead {...headProps} />
+  </head>
+  <body class="antialiased bg-primary-light">
+    <slot />
+  </body>
+</html>

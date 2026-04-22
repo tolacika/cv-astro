@@ -1,24 +1,30 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import pdf from 'astro-pdf'
 import tailwindcss from '@tailwindcss/vite';
 import { llmContextIntegration } from './src/lib/llm-integration.js';
+import { pdfOptions } from './src/lib/pdf.js';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://tolacika.github.io",
+  site: "https://tolacika.dev/",
   output: "static",
   build: {
     format: 'file',
   },
   vite: {
+    build: {
+      cssCodeSplit: true,
+    },
     plugins: [tailwindcss()]
   },
-  server: {
+  server: ({command}) => ({
     port: 3000,
-    host: true,
-  },
+    host: command === "dev" ? true : "localhost",
+  }),
   integrations: [
     llmContextIntegration(),
+    pdf(pdfOptions),
   ],
 });

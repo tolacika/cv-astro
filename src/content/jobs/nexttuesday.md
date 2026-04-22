@@ -5,6 +5,11 @@ datePeriod: "September 2024 - March 2025"
 position: "Senior PHP Engineer"
 teaser: "At NextTuesday I kept client systems alive across Laravel, React, and a legacy custom framework while the entire department was being restructured and gradually phased out."
 realityCheck: "Legacy systems don't snap when reality pushes back if you modernize incrementally while preserving continuity and auditability under shifting organizational pressure."
+cvSentence: "Maintained and evolved client systems across Laravel, React, and legacy frameworks during organizational restructuring."
+cvPoints:
+  - "Stabilized heterogeneous systems under reduced team conditions"
+  - "Balanced modernization with continuity in long-lived applications"
+  - "Worked across CMS, logistics, and industrial client environments"
 patterns:
   - "legacy-modernization"
   - "external-dependencies"

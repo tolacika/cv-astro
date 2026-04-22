@@ -5,6 +5,9 @@ datePeriod: "between 2018 and 2019"
 position: "Backend Developer"
 teaser: "I helped build the microservice backend for an early fully digital lending platform in Hungary, where identity verification, risk scoring, and loan disbursement had to align in near real time under strict regulatory constraints."
 realityCheck: "High-stakes financial pipelines don't snap when reality pushes back when loosely coupled services can still reach consistent, auditable decisions despite partial and externally validated information."
+cvPoints:
+  - "Developed core systems for a digital lending platform"
+  - "Integrated identity verification, risk scoring, and loan lifecycle systems"
 patterns:
   - "data-pipelines"
   - "external-dependencies"

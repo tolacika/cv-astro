@@ -1,0 +1,122 @@
+---
+import PrintableLayout from "../layouts/Printable.astro";
+import { content } from "../lib/content";
+import { getDefaultSeoProps } from "../lib/seo";
+import authorImg from "../assets/img/author-blue-hair.jpg";
+import type { Props as MainHeadProps } from "../components/MainHead.astro";
+import { getCollection } from "astro:content";
+
+const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
+
+const jobCollectionCache = await getCollection("jobCollection");
+
+function createUrl(path: string): string {
+  return content.seo.cannonUrl + path;
+}
+---
+
+<PrintableLayout headProps={headProps}>
+  <div class="header">
+    <img src={authorImg.src} alt="Author's image" />
+    <p>{content.hero.fullName}</p>
+    <p>{content.cv.profession}</p>
+    <p>{content.cv.location}</p>
+    <p>
+      Portfolio: <a href={createUrl(content.cv.portfolioUrl.href)} target="_blank"
+        >{content.cv.portfolioUrl.label}</a
+      >
+    </p>
+    <p>
+      Github: <a href={createUrl(content.cv.githubUrl.href)} target="_blank"
+        >{content.cv.githubUrl.label}</a
+      >
+    </p>
+    <p>
+      LinkedIn: <a href={createUrl(content.cv.linkedinUrl.href)} target="_blank"
+        >{content.cv.linkedinUrl.label}</a
+      >
+    </p>
+  </div>
+  <div class="main">
+    <p>Profile</p>
+    {content.cv.profile.map((p) => <p>{p}</p>)}
+    <hr />
+
+    <p>Core Strengths</p>
+    {
+      content.cv.strengths.map((item) => {
+        return (
+          <div>
+            <p>{item.label}</p>
+            {typeof item.desc == "string" ? (
+              <p>{item.desc}</p>
+            ) : (
+              item.desc.map((line) => <p>{line}</p>)
+            )}
+          </div>
+        );
+      })
+    }
+    <hr />
+
+    <p>Professional Experience</p>
+    {
+      content.cv.experience.map((item) => {
+        if (typeof item !== "string") {
+          return (
+            <div>
+              <p>{item.position}</p>
+              <p>{item.period}</p>
+              {item.points.map((i) => (
+                <p>{i}</p>
+              ))}
+              <p>
+                <a href={createUrl(item.link)} target="_blank">
+                  Read more...
+                </a>
+              </p>
+            </div>
+          );
+        }
+        const job = jobCollectionCache.find((i) => i.data.slug === item);
+        if (!job) return null;
+        return (
+          <div>
+            <p>{job.data.position}</p>
+            <p>
+              <strong>{job.data.company}</strong> | {job.data.datePeriod}
+            </p>
+            {job.data.cvSentence && <p>{job.data.cvSentence}</p>}
+            {job.data.cvPoints &&
+              job.data.cvPoints.length > 0 &&
+              job.data.cvPoints.map((p) => <p>{p}</p>)}
+            <p>
+              <a href={createUrl(`/#experience-${job.data.slug}`)} target="_blank">
+                Read more...
+              </a>
+            </p>
+          </div>
+        );
+      })
+    }
+    <hr />
+
+    <p>{content.cv.extra.label}</p>
+    <ul>
+      {content.cv.extra.items.map(item => <li>
+        <strong>{item.label}:</strong>
+        {item.desc}
+        <br />
+        <a href={createUrl(item.link)} target="_blank">Read more: {item.link}</a>
+      </li>)}
+    </ul>
+    <hr />
+
+    <p>Education</p>
+    {content.cv.education.map(i => <p>{i}</p>)}
+
+    <p>Additional</p>
+    {content.cv.additional.map(i => <p>{i}</p>)}
+
+  </div>
+</PrintableLayout>

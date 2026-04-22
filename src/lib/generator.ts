@@ -1,5 +1,5 @@
 import { getCollection, getEntries, type CollectionEntry } from "astro:content";
-import { content, type Content, type SeeAlso } from "./content";
+import { content, type Content } from "./content";
 import type { PostMeta, Tag } from "../content.config";
 import type { ReferenceItemType } from "../types";
 
@@ -68,10 +68,6 @@ ${content.split("\n").map(line => "  " + line).join("\n")}` : ``}
 
 ${printReferences({ post })}
 `
-}
-
-function formatSeeAlso(also: SeeAlso[]): string[] {
-  return also.map(s => `${s.type}:${s.link} - ${s.label}${s.comment ? ` (${s.comment})` : ``}`);
 }
 
 export async function createLlmInput(): Promise<LlmGeneratorInput> {
