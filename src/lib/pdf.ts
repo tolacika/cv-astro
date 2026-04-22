@@ -11,5 +11,8 @@ export const pdfOptions: Options = {
   },
   pages: {
     '/cv.html': 'CV-Marshall_Laszlo_Toth.pdf'
+  },
+  launch: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   }
 };
