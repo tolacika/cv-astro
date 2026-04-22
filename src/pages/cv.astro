@@ -182,7 +182,7 @@ function formatTagsLine(description: string): string {
             content.cv.strengths.map((item, idx) => {
               return (
                 <div
-                  class={`border border-primary shadow-lg bg-grey-50 p-2 inline-block${idx === 4 ? " col-span-2" : ""}`}
+                  class={`border border-primary shadow bg-grey-50 p-2 inline-block${idx === 4 ? " col-span-2" : ""}`}
                 >
                   <p class="text-lg font-medium font-header">{item.label}</p>
                   {typeof item.desc == "string" ? (
