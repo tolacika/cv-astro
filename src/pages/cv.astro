@@ -47,7 +47,7 @@ function formatTagsLine(description: string): string {
     <div class="container">
       <div class="flex flex-row gap-4">
         <div
-          class="flex-none self-start rounded-full border-4 border-primary shadow-xl"
+          class="flex-none self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
         >
           <img
             src={authorImg.src}
@@ -106,7 +106,7 @@ function formatTagsLine(description: string): string {
     <div class="container">
       <div class="flex flex-row gap-4">
         <div
-          class="flex-none self-start rounded-full border-4 border-primary shadow-xl"
+          class="flex-none self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
         >
           <img
             src={authorImg.src}
@@ -182,7 +182,7 @@ function formatTagsLine(description: string): string {
             content.cv.strengths.map((item, idx) => {
               return (
                 <div
-                  class={`border border-primary shadow bg-grey-50 p-2 inline-block${idx === 4 ? " col-span-2" : ""}`}
+                  class={`border border-primary shadow-md shadow-gray-500 bg-grey-50 p-2 inline-block${idx === 4 ? " col-span-2" : ""}`}
                 >
                   <p class="text-lg font-medium font-header">{item.label}</p>
                   {typeof item.desc == "string" ? (
