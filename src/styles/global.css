@@ -184,4 +184,34 @@ article {
 .cv-site {
   color: var(--color-gray-900);
 
+  .header {
+    position: relative;
+    width: 100%;
+  }
+
+  .main {
+    & a {
+      color: var(--color-primary);
+      text-decoration: underline;
+
+      &:hover {
+        color: color-mix(in oklab, var(--color-primary) 60%, blue);
+      }
+
+      &:visited {
+        color: color-mix(in oklab, var(--color-primary) 60%, purple);
+      }
+
+
+
+      &:active {
+        color: color-mix(in oklab, var(--color-primary) 20%, red);
+      }
+    }
+
+    & ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+  }
 }

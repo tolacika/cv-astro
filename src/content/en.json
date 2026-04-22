@@ -381,27 +381,27 @@
     "strengths": [
       {
         "label": "Backend & Architecture",
-        "desc": "PHP (Laravel, Symfony), API design, domain modeling"
+        "desc": "[php] ([laravel], [symfony]), [api], domain modeling"
       },
       {
         "label": "Data & Integrations",
-        "desc": "MySQL, GraphQL, external system orchestration"
+        "desc": "[mysql], [graphql], [external system orchestration](external-dependencies)"
       },
       {
         "label": "Frontend (supporting role)",
-        "desc": "React, Vue, TypeScript"
+        "desc": "[react], [vue], [typescript]"
       },
       {
         "label": "Infrastructure & Ops",
-        "desc": "AWS, Azure, system administration"
+        "desc": "[aws], [azure], [system-administration]"
       },
       {
         "label": "Special Focus",
         "desc": [
-          "Time-sensitive synchronization (real-time, marketplaces, logistics)",
-          "Data pipelines across incompatible systems",
-          "Legacy modernization without breaking auditability",
-          "Physical vs digital system alignment (IoT, embedded, field processes)"
+          "[Time-sensitive synchronization](time-sensitive) (real-time, marketplaces, logistics)",
+          "[Data pipelines](data-pipelines) across incompatible systems",
+          "[Legacy modernization](legacy-modernization) without breaking auditability",
+          "[Physical vs digital](physical-to-digital) system alignment (IoT, embedded, field processes)"
         ]
       }
     ],
@@ -458,6 +458,7 @@
       "Languages: Hungarian (native), English (fluent), German (learning)",
       "Experience across Hungary & Germany",
       "Open to complex, cross-domain problems and system design challenges"
-    ]
+    ],
+    "cta": "Open to senior engineering roles and system design challenges where reliability matters under real-world load: [tolacika.dev](https://tolacika.dev)"
   }
 }

@@ -4,16 +4,17 @@ import MainHead from "../components/MainHead.astro";
 import type { Props as MainHeadProps } from "../components/MainHead.astro";
 
 interface Props {
-  headProps: MainHeadProps
+  headProps: MainHeadProps,
+  bodyClass?: string,
 }
 
-const { headProps } = Astro.props;
+const { headProps, bodyClass } = Astro.props;
 ---
 <html lang="en">
   <head>
     <MainHead {...headProps} />
   </head>
-  <body class="antialiased bg-primary-light">
+  <body class={`antialiased bg-primary-light${bodyClass ? " " + bodyClass : ""}`}>
     <slot />
   </body>
 </html>

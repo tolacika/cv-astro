@@ -241,6 +241,7 @@ const cvSchema = z.object({
   }),
   education: z.array(z.string()),
   additional: z.array(z.string()),
+  cta: z.string(),
 });
 
 const contentSchema = z.object({
