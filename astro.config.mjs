@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 
 import pdf from 'astro-pdf'
 import tailwindcss from '@tailwindcss/vite';
-import { llmContextIntegration } from './src/lib/llm-integration.js';
 import { pdfOptions } from './src/lib/pdf.js';
 
 // https://astro.build/config
@@ -24,7 +23,6 @@ export default defineConfig({
     host: command === "dev" ? true : "localhost",
   }),
   integrations: [
-    llmContextIntegration(),
     pdf(pdfOptions),
   ],
 });

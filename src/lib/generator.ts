@@ -207,17 +207,10 @@ ${perspectivePosts.map((entry) => formatPostForLlm(entry.data, truncateContent(e
 `;
   const tagsSection = `
 ### TAGS - label [slug]
-${tags.map(t => {
-    const tag = t.data;
-    const body = t.body || "";
-    return `
-#### ${tag.label} [${tag.slug}]
-${printReferences({ tag })}
+${tags.map(t => `#### ${t.data.label} [${t.data.slug}]
+${t.data.teaser}
 
-${tag.teaser}
-
-${body.split("\n").filter(line => !!line).join("\n")}`;
-  }).join("\n")}
+`).join("\n")}
 `;
 
   return [

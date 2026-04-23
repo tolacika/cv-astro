@@ -7,7 +7,7 @@ import TagDetailModal from "../components/TagDetailModal.astro";
 import JsonLd from "../components/JsonLd.astro";
 
 interface Props {
-  headProps: MainHeadProps
+  headProps: MainHeadProps;
 }
 
 const { headProps } = Astro.props;
@@ -26,6 +26,32 @@ const { headProps } = Astro.props;
     <LlmModal />
 
     <script>
+      function loadTextareaContent() {
+        const textareas = document.querySelectorAll("textarea[data-url]");
+
+        textareas.forEach((textarea) => {
+          if (!(textarea instanceof HTMLTextAreaElement)) return;
+          const label = document.querySelector(`label[for="${textarea.id}"] > span`)
+          console.log(label, `label[for="${textarea.id}"] > span`)
+
+          const url = textarea.dataset.url;
+          if (!url) return;
+
+          fetch(url)
+            .then((res) => res.text())
+            .then((text) => {
+              textarea.value = text;
+
+              if (label) {
+                label.textContent = `(${(text.length / 1024).toFixed(2)} KB)`;
+              }
+            })
+            .catch((err) => {
+              console.error(`Failed to load textarea content from ${url}`, err);
+            });
+        });
+      }
+
       function handleTagExplorerModal(el: Element, payload: string) {
         const elContent = el.querySelector(`#${el.id}-content`);
         if (!elContent) return;
@@ -49,7 +75,8 @@ const { headProps } = Astro.props;
           const header = document.querySelector("header > nav");
           const headerHeight = header ? header.clientHeight : 0;
           const buffer = 10;
-          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          const elementPosition =
+            el.getBoundingClientRect().top + window.scrollY;
           const offsetPosition = elementPosition - headerHeight - buffer;
 
           window.scrollTo({
@@ -70,6 +97,8 @@ const { headProps } = Astro.props;
 
         if (payload) {
           handleTagExplorerModal(el, payload);
+        } else if (target === "#llm-context") {
+          loadTextareaContent();
         }
       }
 

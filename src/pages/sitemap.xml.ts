@@ -16,8 +16,6 @@ const formatDate = (date: unknown): string => {
 const staticPages = [
   "",
   "/llm.txt",
-  "/llm-app.txt",
-  "/llm-res.txt",
   "/post.html",
   "/tag.html",
 ];

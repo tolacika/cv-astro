@@ -2,15 +2,22 @@
 interface Props {
   label: string;
   id: string;
-  content: string;
+  url: string;
 }
 
-const { label, id, content } = Astro.props;
+const { label, id, url } = Astro.props;
 ---
 
 <div>
-  <label for={id}>{label}</label>
-  <textarea id={id} class="w-full h-64 text-xs">{content}</textarea>
+  <label for={id}>
+    {label}
+    <span></span>
+  </label>
+  <textarea
+    id={id}
+    class="w-full h-64 text-xs"
+    data-url={url}
+  ></textarea>
   <button
     class="inline-flex items-center justify-center font-header font-semibold uppercase tracking-wide transition-colors duration-200 rounded cursor-pointer border-2 border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 text-base"
     type="button"
