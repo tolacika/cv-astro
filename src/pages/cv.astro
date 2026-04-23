@@ -161,19 +161,28 @@ function formatTagsLine(description: string): string {
   </div>
 
   <div class="main font-body text-sm">
-    <div class="container bg-white py-4 px-0">
+    <div class="container bg-white pb-4 px-0">
       <div class="break-inside-avoid px-4">
         <h3
-          class="text-xl font-header font-semibold mb-2 py-1 border-b border-b-primary text-primary"
+          class="text-xl font-header font-semibold mb-1 pt-2 py-0 border-b border-b-primary text-primary"
         >
           Profile
         </h3>
         {content.cv.profile.map((p) => <p class="text-justify">{p}</p>)}
       </div>
 
+      <div class="px-4 break-inside-avoid">
+        <h3
+          class="text-xl font-header font-semibold mb-1 py-0 border-b border-b-primary text-primary"
+        >
+          Personal Statement
+        </h3>
+        {content.cv.personalStatement.map((i) => <p>{i}</p>)}
+      </div>
+
       <div class="break-inside-avoid px-4">
         <h3
-          class="text-xl font-header font-semibold mb-2 mt-2 py-1 border-b border-b-primary text-primary"
+          class="text-xl font-header font-semibold mb-2 mt-0 py-0 border-b border-b-primary text-primary"
         >
           Core Strengths
         </h3>
@@ -203,7 +212,7 @@ function formatTagsLine(description: string): string {
 
       <div>
         <h3
-          class="text-xl font-header font-semibold mx-4 mb-2 mt-2 py-1 border-b border-b-primary text-primary"
+          class="text-xl font-header font-semibold mx-4 mt-2 py-0 border-b border-b-primary text-primary"
         >
           Professional Experience
         </h3>
@@ -211,7 +220,7 @@ function formatTagsLine(description: string): string {
           content.cv.experience.map((item, idx) => {
             if (typeof item !== "string") {
               return (
-                <div class={`pt-4 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}>
+                <div class={`py-2 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}>
                   <p class="text-lg font-medium font-header">
                     {item.position}
                     <a
@@ -234,7 +243,7 @@ function formatTagsLine(description: string): string {
             const job = jobCollectionCache.find((i) => i.data.slug === item);
             if (!job) return null;
             return (
-              <div class={`pt-4 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}>
+              <div class={`py-2 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}>
                 <p class="text-lg font-medium font-header">
                   {job.data.position}
                   <a
@@ -264,7 +273,7 @@ function formatTagsLine(description: string): string {
 
       <div class="px-4 break-inside-avoid">
         <h3
-          class="text-xl font-header font-semibold mb-2 mt-2 py-1 border-b border-b-primary text-primary"
+          class="text-xl font-header font-semibold mb-1 py-0 border-b border-b-primary text-primary"
         >
           {content.cv.extra.label}
         </h3>
@@ -285,7 +294,7 @@ function formatTagsLine(description: string): string {
 
       <div class="px-4 break-inside-avoid">
         <h3
-          class="text-xl font-header font-semibold mb-2 py-1 border-b border-b-primary text-primary"
+          class="text-xl font-header font-semibold mb-1 border-b border-b-primary text-primary"
         >
           Education
         </h3>
@@ -296,7 +305,7 @@ function formatTagsLine(description: string): string {
 
       <div class="px-4 break-inside-avoid">
         <h3
-          class="text-xl font-header font-semibold mb-2 py-1 border-b border-b-primary text-primary"
+          class="text-xl font-header font-semibold mb-1 border-b border-b-primary text-primary"
         >
           Additional
         </h3>

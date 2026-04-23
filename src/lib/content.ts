@@ -226,6 +226,7 @@ const cvSchema = z.object({
   githubUrl: externalLinkSchema,
   linkedinUrl: externalLinkSchema,
   profile: z.array(z.string()),
+  personalStatement: z.array(z.string()),
   strengths: z.array(strengthSchema),
   experience: z.array(z.union([
     z.string(),

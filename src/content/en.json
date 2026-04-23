@@ -378,10 +378,14 @@
       "Software engineer with 10+ years of experience designing systems that remain stable under real-world pressure. Specialized in backend-heavy platforms, distributed integrations, and systems where digital logic must align with physical processes.",
       "Focus areas include synchronization under uncertainty, data transformation across domains, and incremental modernization of long-lived systems. Particularly drawn to edge cases where abstractions break and manual work begins to appear."
     ],
+    "personalStatement": [
+      "I'm drawn to the parts of systems most teams avoid: where data breaks, assumptions fail, and manual work starts to creep in.",
+      "That's usually where the real problems are, so I like to make those edges stable enough that the system keeps working when reality doesn't cooperate."
+    ],
     "strengths": [
       {
         "label": "Backend & Architecture",
-        "desc": "[php] ([laravel], [symfony]), [api], domain modeling"
+        "desc": "[php] ([laravel], [symfony]), [api]"
       },
       {
         "label": "Data & Integrations",
