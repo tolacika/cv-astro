@@ -1,6 +1,6 @@
 ---
 public: true
-wip: true
+wip: false
 draft: true
 featured: true
 type: "project"

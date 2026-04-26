@@ -22,6 +22,7 @@ const postMetaSchema = ({ image }: SchemaContext) => z.object({
   title: z.string(),
   teaser: z.string(),
   image: image().optional(),
+  publicImage: z.url().optional(),
   cta: z.string().optional(),
   date: z.string(),
   patterns: z.array(reference("tagCollection")).optional(),

@@ -13,7 +13,7 @@ const { post } = Astro.props;
 
 <main>
   <Hero
-    bgImg={post.data.image ? post.data.image.src : ""}
+    bgImg={post.data.image ? post.data.image.src : post.data.publicImage ?? ""}
     bgAlt={`Hero image: ${post.data.title}`}
     title={post.data.title}
     subTitle={post.data.teaser}

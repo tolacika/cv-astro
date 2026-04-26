@@ -70,7 +70,7 @@ const comingSoon = props.comingSoon || posts.length == 0;
           <!-- Image -->
           <div
             class={`relative ${imageSize == "normal" ? "h-72" : "h-40"} bg-cover bg-center bg-no-repeat sm:h-84 lg:h-60 xl:h-72`}
-            style={`background-image: url(${post.data.image?.src})`}
+            style={`background-image: url(${post.data.image ? post.data.image.src : post.data.publicImage ?? ""})`}
           >
             <span class="absolute inset-0 block bg-linear-to-b from-blog-gradient-from to-blog-gradient-to opacity-10 transition-opacity group-hover:opacity-50"></span>
 

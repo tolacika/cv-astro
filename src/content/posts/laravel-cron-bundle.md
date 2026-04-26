@@ -1,6 +1,6 @@
 ---
 public: true
-wip: true
+wip: false
 draft: false
 featured: true
 type: "project"
@@ -8,7 +8,7 @@ slug: "laravel-cron-bundle"
 title: "Retrospective: Laravel Cron Bundle"
 teaser: "A 2017 open-source package that replaced Laravel's static scheduler with a database-driven, auditable cron manager + Supervisor support. Even infrastructure code must survive dynamic production reality without relying on fragile server crontabs."
 date: "2026-04-16 14:00:00"
-image: "coming-soon-placeholder.jpg"
+publicImage: "https://raw.githubusercontent.com/tolacika/laravel-cron-bundle/84fe9fb960e087604c52a06e9ba61584fb442bf3/src/Resources/Images/cron-bundle-dashboard.png"
 patterns:
   - legacy-modernization
   - external-dependencies
