@@ -4,11 +4,11 @@ A modern, open-source static portfolio engine built with Astro + Tailwind v4.
 
 ## Features
 
-- **Static HTML output** — SEO + LLM friendly
-- **Data-driven from JSON** — CMS-ready
-- **View Transitions** — SPA-like UX without SPA complexity
-- **Native page navigation** — real URLs, no interception
-- **Type-safe** — types derived from JSON schema
+- **Static HTML output** - SEO + LLM friendly
+- **Data-driven from JSON** - CMS-ready
+- **View Transitions** - SPA-like UX without SPA complexity
+- **Native page navigation** - real URLs, no interception
+- **Type-safe** - types derived from JSON schema
 
 ## Architecture
 

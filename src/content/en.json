@@ -209,7 +209,7 @@
                 "aws",
                 "azure"
               ],
-              "comment": "Infrastructure that scales—until reality interferes."
+              "comment": "Infrastructure that scales - until reality interferes."
             },
             {
               "tags": [
@@ -293,7 +293,7 @@
     "title": "Education & Path",
     "subTitle": "Self-Directed Learner since 2000",
     "content": [
-      "I began with an IT-focused high school and advanced certification, then studied electrical engineering at BME while contributing to Studio Schönherz and the electronics workshop. Over time the path bent toward software — because building and iterating in production felt more honest than theory.",
+      "I began with an IT-focused high school and advanced certification, then studied electrical engineering at BME while contributing to Studio Schönherz and the electronics workshop. Over time the path bent toward software - because building and iterating in production felt more honest than theory.",
       "The real education, however, happened in the systems I've described above. Every job, every side quest, and every perspective post has been an extension of that same question: how do we design systems that don't snap when reality pushes back?"
     ]
   },
@@ -491,6 +491,365 @@
         "where manual work starts appearing",
         "where assumptions quietly break",
         "where reality disagrees"
+      ]
+    },
+    "cards": [
+      {
+        "title": "Time-sensitive Synchronization",
+        "teaser": "Reality changes while the user is still clicking.",
+        "context": [
+          "In systems where availability, stock, or physical state changes continuously, timing becomes a critical failure point. A user, a partner, and the system itself all operate on slightly different timelines. Without proper synchronization, this gap turns into overbooking, stock conflicts, or irreversible data loss.",
+          "Across hospitality, logistics, and manufacturing, the core problem was consistent: decisions were made on stale or incomplete information, forcing manual intervention. The goal was not perfect real-time accuracy, but designing layers that could tolerate delay, absorb inconsistency, and still produce valid outcomes."
+        ],
+        "content": [
+          {
+            "topic": "Risskov - Last-minute hotel bookings",
+            "points": [
+              "Availability and pricing changed while customers were browsing offers",
+              "Manual approval by call center created a constant bottleneck",
+              "Hotels had little incentive to keep data up to date",
+              "Introduced self-managed calendars + pricing interface for partners"
+            ]
+          },
+          {
+            "topic": "Risskov - Synchronization layer",
+            "points": [
+              "Designed booking flow that tolerates stale availability",
+              "Built auto-approval logic for consistent cases",
+              "Fallback path for conflicts with alternative offers",
+              "Shifted system from reactive approval to proactive validation"
+            ]
+          },
+          {
+            "topic": "WebShippy - Warehouse fulfillment",
+            "points": [
+              "Orders, stock, and physical picking constantly drifted out of sync",
+              "Reservation of stock under real-time order pressure was fragile",
+              "Barcode labels, printers, and human flow caused unexpected delays",
+              "Aligned digital orders with physical movement using unified tooling"
+            ]
+          },
+          {
+            "topic": "WebShippy - On-floor reality",
+            "points": [
+              "Shared printers across packing stations to remove bottlenecks",
+              "Android barcode scanners introduced for real-time tracking",
+              "Iterated physical materials to prevent label loss",
+              "System allowed locating any item within ~40 cm storage precision"
+            ]
+          },
+          {
+            "topic": "Furniture manufacturing - Order lifecycle",
+            "points": [
+              "Customers could modify orders while production was about to start",
+              "Sales and factory operated on different timing assumptions",
+              "Manual database edits introduced inconsistencies",
+              "Introduced controlled delay + approval flow between sales and production"
+            ]
+          }
+        ],
+        "outcome": [
+          "80% of hotel bookings auto-approved without human intervention.",
+          "Warehouse operations became traceable in real time, with precise item location.",
+          "Manual synchronization work significantly reduced across all systems."
+        ],
+        "role": "Designed systems that remain stable even when time, data, and reality are slightly out of sync.",
+        "references": [
+          "Laravel, Vue, GraphQL, custom warehouse tooling",
+          "Multi-country booking platform, 1000+ daily orders environment"
+        ]
+      },
+      {
+        "title": "Data Transformation Pipelines",
+        "teaser": "Every system has its own version of truth. None of them fully agree.",
+        "context": [
+          "Modern systems rarely operate in isolation. Data flows between platforms with different structures, assumptions, and levels of reliability. What looks like a simple import is often a negotiation between incompatible models, partial information, and inconsistent quality.",
+          "Before proper transformation layers, this friction shows up as broken workflows, manual reconciliation, and silent corruption. The goal was not just to move data, but to reshape it into something consistent, traceable, and trustworthy enough for downstream decisions."
+        ],
+        "content": [
+          {
+            "topic": "Ordio - Workday HR integration",
+            "points": [
+              "Incoming HR data arrived inconsistent, incomplete, and sometimes incorrect",
+              "Source system was unresponsive, making validation difficult",
+              "Downstream workflows broke on edge cases and missing fields",
+              "Introduced structured transformation and validation between systems"
+            ]
+          },
+          {
+            "topic": "Ordio - Migration pressure",
+            "points": [
+              "Client onboarding depended on clean data imports",
+              "Mismatch between Workday structure and internal domain model",
+              "Handled partial data while keeping workflows usable",
+              "Resulted in smoother migrations with fewer manual fixes"
+            ]
+          },
+          {
+            "topic": "TechTeamer - Digital lending pipeline",
+            "points": [
+              "Loan decisions depended on multiple external data sources",
+              "Identity, risk scoring, and financial data arrived asynchronously",
+              "Partial or delayed data blocked or corrupted loan lifecycle",
+              "Built flow where loosely coupled services converge into a final decision"
+            ]
+          },
+          {
+            "topic": "E-commerce & logistics - Multi-platform ingestion",
+            "points": [
+              "WooCommerce, Shopify and others all structured orders differently",
+              "Needed one unified model for fulfillment and shipping",
+              "Transformed heterogeneous inputs into consistent internal format",
+              "Enabled scalable order handling across 100+ partners"
+            ]
+          },
+          {
+            "topic": "Manufacturing - From design to materials",
+            "points": [
+              "Architectural designs had to become raw material requirements",
+              "Cross-domain translation between design, production, and logistics",
+              "Required cooperation across non-technical and technical roles",
+              "Turned abstract configurations into actionable production data"
+            ]
+          }
+        ],
+        "outcome": [
+          "Reliable data flows replaced manual reconciliation across multiple domains.",
+          "Client migrations became smoother, loan decisions faster, and order processing scalable across 1000+ daily transactions."
+        ],
+        "role": "Built pipelines that turn inconsistent, multi-source data into something stable enough to act on.",
+        "references": [
+          "PHP, Laravel, Symfony, MySQL",
+          "Workday integration, fintech microservices, multi-platform e-commerce"
+        ]
+      },
+      {
+        "title": "External Dependency Orchestration",
+        "teaser": "The outside world does not respect your internal architecture.",
+        "context": [
+          "Many business-critical systems depend on APIs, partners, and external services that can change behavior without warning. One unstable dependency is manageable. Several, interacting across the same workflow, quickly become a source of cascading errors, hidden state corruption, and support overhead.",
+          "The real challenge was not simply connecting systems, but protecting the core domain from volatility outside your control. That meant isolating failures, making dependency behavior visible, and keeping the internal flow reliable even when external input was late, incomplete, or inconsistent."
+        ],
+        "content": [
+          {
+            "topic": "Ordio - Workday imports",
+            "points": [
+              "Source data arrived with inconsistencies and missing structure",
+              "Workday responses were not something you could fully trust as-is",
+              "Downstream logic broke when edge cases were not isolated",
+              "Built a boundary that contained external unpredictability"
+            ]
+          },
+          {
+            "topic": "Risskov - Hotel partner systems",
+            "points": [
+              "Availability and pricing came from many external partner sources",
+              "Partner behavior varied across countries and business rules",
+              "Manual coordination was often needed just to keep things usable",
+              "Added orchestration so partner volatility stayed outside the core"
+            ]
+          },
+          {
+            "topic": "TechTeamer - Identity verification",
+            "points": [
+              "Remote identification depended on a third-party service",
+              "Loan flow could not safely proceed on partial trust alone",
+              "External verification had to fit into a regulated decision chain",
+              "Structured the dependency so the internal state remained auditable"
+            ]
+          },
+          {
+            "topic": "Diligent - Enterprise services",
+            "points": [
+              "Large platform changes required coordination with surrounding services",
+              "Cloud and TypeScript transitions added more moving parts",
+              "Observability mattered as much as the integration itself",
+              "Kept the system stable while the dependency surface evolved"
+            ]
+          }
+        ],
+        "outcome": [
+          "Reduced the risk of cascading failures and silent corruption.",
+          "External integrations became more predictable for the business, and internal workflows stayed usable even when partner systems misbehaved."
+        ],
+        "role": "Built the buffer between unstable external systems and the core domain that had to keep working.",
+        "references": [
+          "API boundaries, validation, logging, recovery paths",
+          "Workday, hotel partners, identity verification, enterprise services"
+        ]
+      },
+      {
+        "title": "Legacy Modernization",
+        "teaser": "The hardest upgrade is the one nobody is allowed to notice.",
+        "context": [
+          "Long-lived systems do not give you a clean restart window. They carry audit trails, business rules, old assumptions, and people who still depend on them every day. Changing them is less like rewriting software and more like replacing parts of a machine while it is still running.",
+          "The work here was to modernize gradually without breaking trust, continuity, or compliance. That meant improving the structure underneath while keeping the visible behavior stable enough that users, auditors, and business operations could continue without disruption."
+        ],
+        "content": [
+          {
+            "topic": "Diligent - Legacy PHP system",
+            "points": [
+              "Core business system could not be stopped or reset",
+              "Auditability and compliance had to remain intact",
+              "Training on AWS and TypeScript made sense only in context",
+              "Modernization had to respect the existing system of record"
+            ]
+          },
+          {
+            "topic": "NextTuesday - Shrinking team, live clients",
+            "points": [
+              "Department restructuring reduced staffing and context continuity",
+              "Knowledge gap became part of the operational risk",
+              "Systems still had to support active clients and deliveries",
+              "Incremental maintenance kept the platform alive during decline"
+            ]
+          },
+          {
+            "topic": "Furniture company - Manual queue disappears",
+            "points": [
+              "Factory office once had a daily queue of workers entering data",
+              "Shared spreadsheet workflow was the bottleneck",
+              "Over time the wasteful manual step vanished",
+              "Modernized flow quietly removed friction without dramatic breakage"
+            ]
+          },
+          {
+            "topic": "TechTeamer - Early microservice transition",
+            "points": [
+              "Regulated lending required safer boundaries over time",
+              "System of record had to survive distributed changes",
+              "Partial understanding was normal during evolution",
+              "Built confidence in gradually changing a critical platform"
+            ]
+          }
+        ],
+        "outcome": [
+          "Modernization happened without breaking trust, compliance, or continuity.",
+          "The visible result was less manual work, better maintainability, and systems that could keep evolving instead of freezing in place."
+        ],
+        "role": "Modernized critical systems by changing the internals without disturbing the surface.",
+        "references": [
+          "PHP, Laravel, AWS, TypeScript, custom frameworks",
+          "Audit trails, compliance, incremental change"
+        ]
+      },
+      {
+        "title": "Constraint-aware Navigation",
+        "teaser": "Some interfaces are really maps through impossible terrain.",
+        "context": [
+          "When a product or workflow contains too many valid combinations, the challenge is no longer display. It is guidance. Users need to move through a space of rules, exceptions, and dependencies without getting trapped in invalid states or overwhelmed by the number of choices.",
+          "This pattern showed up early in furniture configuration and later in operational workflows for non-technical users. The goal was to make complex decision spaces feel manageable by introducing structure, validation, and progressive movement instead of exposing raw complexity all at once."
+        ],
+        "content": [
+          {
+            "topic": "Furniture configurator",
+            "points": [
+              "Product combinations grew to an extreme scale",
+              "Users could easily create invalid or impossible configurations",
+              "The domain felt more like a navigation problem than a form",
+              "Built logic that guided choices instead of enumerating everything"
+            ]
+          },
+          {
+            "topic": "Sales to factory handoff",
+            "points": [
+              "Order changes were allowed only within specific timing rules",
+              "After production started, changes needed factory approval",
+              "The system had to reflect operational constraints clearly",
+              "Reduced confusion by making the rules visible in the flow"
+            ]
+          },
+          {
+            "topic": "Ordio - Workforce workflows",
+            "points": [
+              "Deskless users needed safe step-by-step guidance",
+              "Backend complexity had to stay hidden from the operator",
+              "Invalid states had to be blocked before they spread",
+              "Used process-oriented UI to reduce mistakes"
+            ]
+          },
+          {
+            "topic": "Approval and onboarding flows",
+            "points": [
+              "Non-technical users were often working under time pressure",
+              "Decision paths changed depending on data and context",
+              "Hard stops needed to feel like help, not punishment",
+              "Made the system act like a guide instead of a trap"
+            ]
+          }
+        ],
+        "outcome": [
+          "Users created fewer invalid states and needed less manual intervention.",
+          "Complex products and workflows became easier to complete, approve, and maintain at scale."
+        ],
+        "role": "Turned combinatorial complexity into a path people could actually walk through.",
+        "references": [
+          "React, Vue, TypeScript, HTML, CSS",
+          "Configurators, onboarding, approvals, operational flows"
+        ]
+      },
+      {
+        "title": "Physical-to-Digital Feedback Loops",
+        "teaser": "Reality does not wait for the database to catch up.",
+        "context": [
+          "In physical systems, the source of truth is not the screen. It is the warehouse floor, the excavation site, the sensor, or the object in someone's hands. That makes timing, traceability, and immediate capture much more important than elegance.",
+          "This pattern appears wherever manual work, hardware, and formal records must stay aligned. The friction is usually visible first as lost context, delayed updates, paper shuffling, or small errors that become expensive once the physical world has moved on."
+        ],
+        "content": [
+          {
+            "topic": "WebShippy - Warehouse operations",
+            "points": [
+              "Digital orders had to match physical picking and packing",
+              "Shared printers, handheld scanners, and label flow all mattered",
+              "Friction showed up as delays, lost stickers, and stock confusion",
+              "Aligned tools with the pace of the warehouse floor"
+            ]
+          },
+          {
+            "topic": "Archbau - Archaeological documentation",
+            "points": [
+              "Once a layer is removed, context is gone forever",
+              "Documentation had to happen before construction destroyed evidence",
+              "Manual methods were still dominant on-site",
+              "Treated excavation as irreversible data capture"
+            ]
+          },
+          {
+            "topic": "Future Property Trade - Production and fulfillment",
+            "points": [
+              "Digital commerce had to become real merchandise and shipping",
+              "Demand, manufacturing, and logistics were tightly coupled",
+              "Mismatch between intent and reality created downstream strain",
+              "Helped keep the loop tight from order to delivery"
+            ]
+          },
+          {
+            "topic": "ESP32, RFID, sensors, field experiments",
+            "points": [
+              "Hardware taught immediate limits in power, noise, and timing",
+              "Some experiments failed usefully rather than cleanly",
+              "Observability became more important than perfection",
+              "Built intuition for systems where the physical world pushes back"
+            ]
+          }
+        ],
+        "outcome": [
+          "Reduced delays, errors, and lost context where physical reality could not be replayed.",
+          "Warehousing, excavation, and hardware work all became more observable, more reliable, and more actionable."
+        ],
+        "role": "Bridged the gap between physical action and digital truth before the evidence disappeared.",
+        "references": [
+          "IoT, embedded, APIs, operational tooling",
+          "Warehouse tools, excavation records, prototype hardware"
+        ]
+      }
+    ],
+    "outro": {
+      "title": "Systems under pressure.",
+      "subTitle": "Stabilized.",
+      "cta": [
+        "If you're building something like that,",
+        "I'd love to contribute."
       ]
     }
   }

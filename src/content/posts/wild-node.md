@@ -33,8 +33,8 @@ Core architecture decisions are in place:
 - SD-based local storage
 - Offline-first operation model
 
-What’s missing is not code.  
-It’s contact with reality.
+What's missing is not code.  
+It's contact with reality.
 
 The next step is physical wiring, enclosure design, and first field deployment.  
 This is where assumptions about power, stability, and behavior will either hold or collapse.

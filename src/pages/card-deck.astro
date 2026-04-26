@@ -6,6 +6,7 @@ import authorImg from "../assets/img/author-blue-hair.jpg";
 import type { Props as MainHeadProps } from "../components/MainHead.astro";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
+import cardBg from "../assets/img/card-bg.svg";
 
 const renderer = new marked.Renderer();
 
@@ -63,6 +64,9 @@ function formatTagsLine(description: string): string {
         position: relative;
         overflow: hidden;
       }
+      .page.card-item {
+        background-size: 100% 100%;
+      }
     </style>
   </Fragment>
   <div class="main font-body text-sm">
@@ -85,7 +89,11 @@ function formatTagsLine(description: string): string {
             content.cardDeck.patterns.map((item, i) => (
               <span>
                 {tagMap.get(item)}
-                {i === 2 ? <br /> : i < content.cardDeck.patterns.length - 1 && " • "}
+                {i === 2 ? (
+                  <br />
+                ) : (
+                  i < content.cardDeck.patterns.length - 1 && " • "
+                )}
               </span>
             ))
           }
@@ -94,7 +102,7 @@ function formatTagsLine(description: string): string {
           <div set:html={marked.parse(content.cardDeck.visuals.base)} />
           <div class="text-9xl font-thin">{"{"}</div>
           <div class="text-left">
-            {content.cardDeck.visuals.items.map(item => <p>... {item}</p>)}
+            {content.cardDeck.visuals.items.map((item) => <p>... {item}</p>)}
           </div>
         </div>
         <div class="mt-8 px-8 absolute bottom-8 text-left">
@@ -105,16 +113,102 @@ function formatTagsLine(description: string): string {
       </div>
     </div>
 
-    <div class="page bg-white">...</div>
+    {
+      content.cardDeck.cards.map((card) => (
+        <div
+          class="page card-item bg-white p-4"
+          style={`background-image: url(${cardBg.src})`}
+        >
+          <h2 class="text-2xl font-bold text-center">{card.title}</h2>
+          <p class="my-1 text-lg opacity-80 text-center italic">
+            {card.teaser}
+          </p>
+          {card.context.map((item) => (
+            <p class="text-xs text-center px-6 opacity-80">{item}</p>
+          ))}
+          <div class="mt-2 grid grid-cols-4 gap-2">
+            {[
+              ...card.content,
+              {
+                topic: "Outcomes:",
+                points: card.outcome,
+              },
+            ].map((con, idx, ary) => {
+              const extraClass =
+                idx === ary.length - 1
+                  ? ary.length % 2 === 1
+                    ? "col-start-2"
+                    : ""
+                  : "";
+              return (
+                <div
+                  class={`border border-primary shadow-sm shadow-gray-500 bg-grey-50 p-1 inline-block col-span-2 ${extraClass}`}
+                >
+                  <p class="text-xs font-medium font-header">{con.topic}</p>
+                  {typeof con.points == "string" ? (
+                    <div set:html={marked.parse(formatTagsLine(con.points))} />
+                  ) : (
+                    <ul>
+                      {con.points.map((line) => (
+                        <li
+                          class="text-2xs"
+                          set:html={marked.parse(formatTagsLine(line))}
+                        />
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <p class="mt-2 text-center">{card.role}</p>
+          <div class="mt-2 px-10">
+            <p class="text-2xs">References:</p>
+            <ul>
+              {card.references.map((ref) => (
+                <li
+                  class="text-2xs"
+                  set:html={marked.parse(formatTagsLine(ref))}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))
+    }
 
-    <div class="page bg-white">...</div>
-
-    <div class="page bg-white">...</div>
-
-    <div class="page bg-white">...</div>
-
-    <div class="page bg-white">...</div>
-
-    <div class="page bg-white">...</div>
+    <div
+      class="page flex items-center justify-center bg-linear-to-br from-hero-gradient-from to-hero-gradient-to text-white"
+    >
+      <div class="text-center font-header w-full">
+        <h1 class="text-5xl font-light">{content.cardDeck.outro.title}</h1>
+        <p class="mt-10 text-5xl font-light opacity-80">
+          {content.cardDeck.outro.subTitle}
+        </p>
+        <div class="mt-14 text-xl font-medium">
+          {
+            content.cardDeck.outro.cta.map((item) => (
+              <p class="opacity-80">{item}</p>
+            ))
+          }
+        </div>
+        <div>
+          {
+            [
+              content.cv.portfolioUrl,
+              content.cv.githubUrl,
+              content.cv.githubUrl,
+            ].map((item) => (
+              <div class="text-lg">
+                <i class={`bx bxl-linkedin-square text-lg align-middle`} />
+                <a href={item.href} target="_blank" class="underline italic text-white">
+                  {item.label}
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </PrintableLayout>

@@ -256,6 +256,23 @@ const cardDeckSchema = z.object({
     base: z.string(),
     items: z.array(z.string()),
   }),
+  cards: z.array(z.object({
+    title: z.string(),
+    teaser: z.string(),
+    context: z.array(z.string()),
+    content: z.array(z.object({
+      topic: z.string(),
+      points: z.array(z.string()),
+    })),
+    outcome: z.array(z.string()),
+    role: z.string(),
+    references: z.array(z.string()),
+  })),
+  outro: z.object({
+    title: z.string(),
+    subTitle: z.string(),
+    cta: z.array(z.string()),
+  })
 });
 
 const contentSchema = z.object({

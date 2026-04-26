@@ -49,6 +49,12 @@
   --z--1: -1;
   --z-60: 60;
   --z-70: 70;
+
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: calc(0.75 / 0.625);
+
+  --text-3xs: 0.5rem;
+  --text-3xs--line-height: calc(0.625 / 0.5);
 }
 
 @layer base {
@@ -189,7 +195,8 @@ article {
     width: 100%;
   }
 
-  .main {
+  .main.cv-content,
+  .main.card-item {
     & a {
       color: var(--color-primary);
       text-decoration: underline;
