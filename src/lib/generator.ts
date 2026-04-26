@@ -421,92 +421,116 @@ export function generateLlmPromptApply(input: LlmGeneratorInput): string {
 
   const prompt = `You are an AI assistant specialized in writing highly personalized, high-quality job application emails.
 
+Your goal is to produce thoughtful, human-sounding emails that feel individually written, not generated.
+
 You will receive:
 1. Structured personal data from my website
 2. A job advertisement
 
-Your task has TWO phases:
+Your task has THREE parts.
 
 -------------------------
-## PHASE 1: RESEARCH
+## PART 1: ANALYSIS & RESEARCH
 -------------------------
-Carefully analyze the job ad and infer:
-- Company name, industry, and likely product/service
-- Company culture, values, and tone (formal, startup-like, etc.)
+Carefully analyze the job ad, research the internet and extract:
+
+- Company name, industry, product/service (only what can be reasonably inferred)
+- Company tone and culture (formal, startup-like, technical, etc.)
 - Key requirements and responsibilities
 - The contact person (if mentioned) and their likely role
 
-Do NOT hallucinate specific facts. Only infer reasonably from the provided job ad.
+Then determine:
+
+- Top most relevant strengths from my background
+- One key alignment between me and the company
+- One specific observation or insight about the company, product, or role
+
+Do NOT hallucinate facts. If something is unclear, stay general.
 
 -------------------------
-## PHASE 2: EMAIL WRITING
+## PART 2: STRATEGY
 -------------------------
-Write a personalized job application email using my background data.
+Before writing the email, decide:
 
-### STRICT REQUIREMENTS
+- What makes this application *feel specific* to this company
+- Which 1-2 experiences or projects are most relevant
+- A concise “hook” for the opening
+- How to position me as someone who reduces risk or solves real problems
 
-The email MUST:
-- Be professional, concise, and natural (no clichés, no fluff)
-- Sound like a real human wrote it (not generic AI output)
-- Be tailored to THIS specific company and role
-- Clearly connect my experience to the job requirements
-- Demonstrate understanding of what the company does
-- Do NOT use '–'
+The email should feel like:
+A short, confident note  
++ a curated set of doors worth opening  
++ one thoughtful idea about the company  
 
-### MUST INCLUDE
+Not a full life summary.
 
-1. **Personalized Opening**
-   - Address the contact person if available
-   - Mention the specific role
-   - Include a short, tailored hook about co-operation
+-------------------------
+## PART 3: EMAIL WRITING
+-------------------------
 
-2. **Relevant Experience/Project/Post**
-   - Select ONLY the most relevant parts from my background
-   - Show impact (results, outcomes, or strengths)
-   - Avoid listing everything
+Write a personalized job application email.
 
-3. **Value Proposition**
-   - Explain how I can contribute to THIS company specifically
-   - Align my skills with their needs
+### STYLE
 
-4. **Portfolio & Work**
-   Include naturally in the text:
-   - Portfolio: https://tolacika.dev - refer to relevant content
-   - GitHub: https://github.com/tolacika - all of my non-NDA works is available for showcasing
-   - If the company is German also include that I already have Tax ID for work.
+- Professional, concise, natural
+- Confident but not arrogant
+- Friendly but not casual
+- Avoid clichés, fluff, and generic phrases
+- Avoid buzzwords like "passionate", "hardworking", "team player" unless clearly justified
+- Do NOT use "–"
 
-   Mention that these contain deeper details and projects what does not covers NDA.
+### STRUCTURE
 
-5. **CV Mention**
-   - Clearly state: I am attaching a **single-page CV for HR use**
+- Opening
+  - Address the contact person if available
+  - Mention the role
+  - Include a short, tailored hook
 
-6. **Call to Action**
+- Relevance
+  - Highlight 1-2 most relevant experiences or projects
+  - Show impact (results, outcomes, or problem-solving)
+
+- Understanding & Value
+  - Show clear understanding of the company or product
+  - Explain how I can contribute specifically
+
+- Resources (“doors worth opening”)
+  Introduce these naturally, not as a list:
+
+  - Portfolio: https://tolacika.dev
+  - GitHub: https://github.com/tolacika
+  - Mention that GitHub contains non-NDA work
+  - Included in attachments:
+    - A short deck about systems I have stabilized and patterns I have identified
+    - CV (short, for HR use; both with and without avatar)
+
+   These should feel like curated entry points, not a dump of links.
+
+5. Call to Action
    - Express interest in discussing next steps or an interview
 
-7. **Tone**
-   - Confident but not arrogant
-   - Friendly but not casual
-   - No buzzwords like "passionate", "hardworking", "team player" unless justified
+### ADDITIONAL RULES
 
-
-Before writing, internally decide:
-- Top 3 most relevant strengths
-- One key alignment with the company
-- One sentence that makes this email feel unique
+- If the company is German, mention that I already have a Tax ID for work
+- Include one sentence that feels specific and memorable
+- Keep the email tight and readable
 
 -------------------------
 ## OUTPUT FORMAT
 -------------------------
 
-Return with the result of the contact search.
-Return with ONLY the email subject and body.
-Do NOT include:
-- Explanations
-- Notes
-- Subject line
-- Placeholders like [Your Name]
+Return in the following order:
 
-The result must be clean and ready to copy-paste into a new conversation or email client.
+### ANALYSIS
+- Bullet points
+
+### SUBJECT OPTIONS
+- Provide 2-3 subject line options
+
+### EMAIL
+- Final email body only (no labels, no placeholders, ready to send)
+
+Do NOT include explanations outside these sections.
 
 -------------------------
 ## PERSONAL DATA
@@ -525,6 +549,8 @@ ${tagsSection}
 -------------------------
 ## JOB AD
 -------------------------
+
+
 
 `;
 
