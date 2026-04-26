@@ -416,16 +416,17 @@
       "future-property-trade",
       "risskov",
       "techteamer-microcredit",
-      "webshippy",
       {
         "position": "Early Career (Full-stack / System Admin)",
-        "period": "2014 - 2017",
+        "period": "2014 - 2018",
         "points": [
+          "Built API and warehouse tooling for e-commerce fulfillment",
+          "Connected webshop data with real-time physical operations",
           "Built internal systems for manufacturing, retail, and logistics",
           "Developed early configurators with extreme combinatorial complexity",
           "Gained operational insight across business workflows"
         ],
-        "link": "/#experience-manna"
+        "link": "/#experience-webshippy"
       }
     ],
     "extra": {
@@ -464,5 +465,33 @@
       "Open to complex, cross-domain problems and system design challenges"
     ],
     "cta": "Open to senior engineering roles and system design challenges where reliability matters under real-world load: [tolacika.dev](https://tolacika.dev)"
+  },
+  "cardDeck": {
+    "title": "Where Systems Meet Reality",
+    "subTitle": "And what happens when they don't agree",
+    "subLines": [
+      "A short case deck showing how I removed real-world friction across logistics, finance, and other systems.",
+      "Not a CV. Six real patterns, six real systems, and what changed after."
+    ],
+    "patterns": [
+      "time-sensitive",
+      "data-pipelines",
+      "external-dependencies",
+      "legacy-modernization",
+      "navigation",
+      "physical-to-digital"
+    ],
+    "role": "Designing systems that don't snap under real-world pressure",
+    "mocroTagline": "Focused on the points where data stops flowing and manual work begins.",
+    "visuals": {
+      "base": "I stabilize systems  \nunder real-world  \npressure",
+      "items": [
+        "where data stops flowing",
+        "where systems drift out of sync",
+        "where manual work starts appearing",
+        "where assumptions quietly break",
+        "where reality disagrees"
+      ]
+    }
   }
 }

@@ -1,0 +1,120 @@
+---
+import PrintableLayout from "../layouts/Printable.astro";
+import { content } from "../lib/content";
+import { getDefaultSeoProps } from "../lib/seo";
+import authorImg from "../assets/img/author-blue-hair.jpg";
+import type { Props as MainHeadProps } from "../components/MainHead.astro";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+
+const renderer = new marked.Renderer();
+
+renderer.link = ({ href, text }) => {
+  return `<a href="${href}" target="_blank">${text}</a>`;
+};
+
+marked.use({ renderer });
+
+const baseUrl = "https://tolacika.dev/tag";
+
+const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
+
+const jobCollectionCache = await getCollection("jobCollection");
+const tagCollectionCache = await getCollection("tagCollection");
+
+const tagMap = new Map(
+  tagCollectionCache.map((tag) => [tag.data.slug, tag.data.label]),
+);
+
+function createUrl(path: string): string {
+  return content.seo.cannonUrl + path;
+}
+
+function formatTagsLine(description: string): string {
+  return description.replace(
+    /\[([^\]]+)\](?:\(([^)]+)\))?/g,
+    (_, text, slug) => {
+      const finalSlug = slug ?? text;
+      const label = slug ? text : tagMap.get(finalSlug);
+      return `[${label}](${baseUrl}/${finalSlug}.html)`;
+    },
+  );
+}
+---
+
+<PrintableLayout headProps={headProps} bodyClass="cv-site">
+  <Fragment slot="head-end">
+    <style>
+      <style > @page {
+        size: 210mm 148mm; /* A5 landscape */
+        margin: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        width: 210mm;
+        height: 148mm;
+        page-break-after: always;
+        position: relative;
+        overflow: hidden;
+      }
+    </style>
+  </Fragment>
+  <div class="main font-body text-sm">
+    <div
+      class="page flex items-center justify-center bg-linear-to-br from-hero-gradient-from to-hero-gradient-to text-white"
+    >
+      <div class="text-center font-header w-full">
+        <h1 class="text-4xl font-bold">{content.cardDeck.title}</h1>
+        <p class="my-4 text-lg opacity-80">
+          {content.cardDeck.subTitle}
+        </p>
+        {
+          content.cardDeck.subLines.map((item) => (
+            <p class="opacity-80">{item}</p>
+          ))
+        }
+
+        <p class="mt-4">
+          {
+            content.cardDeck.patterns.map((item, i) => (
+              <span>
+                {tagMap.get(item)}
+                {i === 2 ? <br /> : i < content.cardDeck.patterns.length - 1 && " • "}
+              </span>
+            ))
+          }
+        </p>
+        <div class="flex flex-row justify-center items-center mb-16">
+          <div set:html={marked.parse(content.cardDeck.visuals.base)} />
+          <div class="text-9xl font-thin">{"{"}</div>
+          <div class="text-left">
+            {content.cardDeck.visuals.items.map(item => <p>... {item}</p>)}
+          </div>
+        </div>
+        <div class="mt-8 px-8 absolute bottom-8 text-left">
+          <p class="font-semibold text-lg">{content.hero.fullName}</p>
+          <p class="italic">{content.cardDeck.role}</p>
+          <p class="italic">{content.cardDeck.mocroTagline}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page bg-white">...</div>
+
+    <div class="page bg-white">...</div>
+
+    <div class="page bg-white">...</div>
+
+    <div class="page bg-white">...</div>
+
+    <div class="page bg-white">...</div>
+
+    <div class="page bg-white">...</div>
+  </div>
+</PrintableLayout>

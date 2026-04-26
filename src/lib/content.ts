@@ -245,6 +245,19 @@ const cvSchema = z.object({
   cta: z.string(),
 });
 
+const cardDeckSchema = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  subLines: z.array(z.string()),
+  patterns: z.array(z.string()),
+  role: z.string(),
+  mocroTagline: z.string(),
+  visuals: z.object({
+    base: z.string(),
+    items: z.array(z.string()),
+  }),
+});
+
 const contentSchema = z.object({
   images: imagesSchema,
   nav: navSchema,
@@ -261,6 +274,7 @@ const contentSchema = z.object({
   perspective: perspectiveSchema,
   projectFeatured: projectFeaturedSchema,
   cv: cvSchema,
+  cardDeck: cardDeckSchema,
 });
 
 const parsedContent = contentSchema.parse(en);

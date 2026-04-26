@@ -102,7 +102,9 @@ function formatTagsLine(description: string): string {
     </div>
   </div>
 
-  <div class="header header-small hidden bg-primary font-header text-white py-2">
+  <div
+    class="header header-small hidden bg-primary font-header text-white py-2"
+  >
     <div class="container">
       <div class="flex flex-row gap-4">
         <div
@@ -220,7 +222,9 @@ function formatTagsLine(description: string): string {
           content.cv.experience.map((item, idx) => {
             if (typeof item !== "string") {
               return (
-                <div class={`py-2 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}>
+                <div
+                  class={`py-2 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}
+                >
                   <p class="text-lg font-medium font-header">
                     {item.position}
                     <a
@@ -243,7 +247,9 @@ function formatTagsLine(description: string): string {
             const job = jobCollectionCache.find((i) => i.data.slug === item);
             if (!job) return null;
             return (
-              <div class={`py-2 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}>
+              <div
+                class={`py-1 px-4 break-inside-avoid ${idx % 2 ? "bg-grey-50" : "bg-white"}`}
+              >
                 <p class="text-lg font-medium font-header">
                   {job.data.position}
                   <a
@@ -257,11 +263,27 @@ function formatTagsLine(description: string): string {
                 <p>
                   <strong>{job.data.company}</strong> | {job.data.datePeriod}
                 </p>
-                {job.data.cvSentence && <p>{job.data.cvSentence}</p>}
+                <p class="text-xs">
+                  (tags:
+                  {[...job.data.patterns, ...job.data.tags]
+                    .map(({ id }) => id)
+                    .map((jtag, i, arry) => (
+                      <>
+                      <a href={createUrl(`/tag/${jtag}`)} target="_blank">
+                        {tagMap.get(jtag)}
+                      </a>
+                      {i < arry.length - 1 && " • "}
+                      </>
+                    ))}
+                  )
+                </p>
+                {job.data.cvSentence && (
+                  <p class="text-sm">{job.data.cvSentence}</p>
+                )}
                 {job.data.cvPoints && job.data.cvPoints.length > 0 && (
                   <ul class="mb-0">
                     {job.data.cvPoints.map((p) => (
-                      <li>{p}</li>
+                      <li class="text-sm">{p}</li>
                     ))}
                   </ul>
                 )}
@@ -283,7 +305,11 @@ function formatTagsLine(description: string): string {
               <li>
                 <strong>{item.label}:</strong>
                 {item.desc}
-                <a class="float-right" href={createUrl(item.link)} target="_blank">
+                <a
+                  class="float-right"
+                  href={createUrl(item.link)}
+                  target="_blank"
+                >
                   Read more...
                 </a>
               </li>
@@ -320,11 +346,13 @@ function formatTagsLine(description: string): string {
     </div>
   </div>
   <script is:inline>
-    const url = window.location.search.replace(/^\?/, '');
+    const url = window.location.search.replace(/^\?/, "");
 
     if (url.startsWith("avatar")) {
-      document.querySelectorAll(".avatar-container.hidden").forEach(item => item.classList.remove("hidden"))
+      document
+        .querySelectorAll(".avatar-container.hidden")
+        .forEach((item) => item.classList.remove("hidden"));
     }
-    console.log({url})
+    console.log({ url });
   </script>
 </PrintableLayout>

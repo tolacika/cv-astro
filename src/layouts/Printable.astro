@@ -13,6 +13,7 @@ const { headProps, bodyClass } = Astro.props;
 <html lang="en">
   <head>
     <MainHead {...headProps} />
+    <slot name="head-end" />
   </head>
   <body class={`antialiased bg-primary-light${bodyClass ? " " + bodyClass : ""}`}>
     <slot />
