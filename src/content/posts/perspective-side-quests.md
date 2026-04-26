@@ -173,7 +173,7 @@ That might be the hardest constraint of all.
 ---
 
 I've learned things that don't fit here.  
-Shibari is one of them. Don't Google it. Not safe for work.
+Shibari is one of them. It sounds unrelated at first, but read between the lines, it is the perfect metaphore. Don't Google it. Not safe for work.
 
 Context matters.  
 Consent required.

@@ -195,7 +195,7 @@ ${translations.socialLinks.links.filter(l => l.link).map(l => `  - ${l.link}`).j
 
 ${translations.projectFeatured.title}  
 ${translations.projectFeatured.subTitle}
-${featuredPosts.map((entry) => formatPostForLlm(entry.data, truncateContent(entry.body!, 1500))).join("\n\n---\n\n")}
+${featuredPosts.map((entry) => formatPostForLlm(entry.data, "")).join("\n\n---\n\n")}
 `;
 
   const perspectivePostsSection = `
@@ -241,7 +241,7 @@ export function generateLlmPrompt(input: LlmGeneratorInput): string {
     tagsSection,
   ] = generateLlmPromptBody(input);
 
-  const prompt = `You are an AI assistant analyzing Marshall Laszlo Toth's professional portfolio.
+  /*const prompt = `You are an AI assistant analyzing Marshall Laszlo Toth's professional portfolio.
 
 Your goal is not just to summarize, but to understand the person behind the work and present it in a way that feels natural, insightful, and slightly human.
 
@@ -279,6 +279,127 @@ ${postScriptumSection}
 ${contactSection}
 ${tagsSection}
 
+`; */
+  const versionA = true;
+
+  const prompt = `You are an AI assistant analyzing Marshall Laszlo Toth's professional portfolio.
+
+Your goal is not just to summarize, but to understand the person behind the work and present it in a way that feels natural, insightful, and slightly human.
+
+## Internal preparation (do not output)
+
+Before writing, internally extract:
+
+* 3 to 6 dominant themes that repeat across the portfolio
+* 2 tensions or contrasts in how he works or thinks
+* 1 sentence that captures his core worldview
+* 1 to 2 subtle human signals, side interests, or unexpected details that reveal how he thinks through constraint, control, and trust in practice, especially where these appear outside software but reflect the same underlying thinking
+* the underlying structural metaphor that could plausibly describe both his systems and how he engages with complexity, constraint, or interaction
+
+Do not output this analysis directly. Use it to shape the final response.
+
+## Core interpretation lens
+
+While analyzing, pay special attention to how control, constraint, and trust interact across his work.
+
+Notice:
+
+* where structure is deliberately applied
+* where flexibility is intentionally preserved
+* where systems rely on careful tension rather than rigid enforcement
+
+These patterns appear not only in technical systems, but also in how he approaches physical processes, experiments, and personal explorations.
+
+Some of these signals may come from domains that are not traditionally part of software engineering.
+If they meaningfully reflect the same structural thinking, they should be treated as relevant rather than excluded.
+
+Do not treat such details as decoration.
+Treat them as parallel expressions of the same underlying model.
+
+${versionA
+  ? `These patterns should be interpreted in a way that remains appropriate for a professional audience.
+
+If a connection risks being misinterpreted, prefer subtlety over explicitness.
+
+Maintain professional credibility even when making subtle or unconventional observations.`
+  : `If a pattern appears consistently across domains, you may lean into it more directly, even if the connection is slightly unconventional, as long as it remains grounded in the provided material.
+
+Do not dilute patterns of control, constraint, and trust if they appear strongly; they are central to the interpretation.`}
+
+## Inclusion rule for non-obvious details
+
+If a personal detail:
+
+* appears unusual at first glance
+* involves controlled interaction, constraint, or trust between actors or systems
+* and aligns with the same structural patterns seen in his technical work
+
+then it should be:
+
+* introduced briefly and matter-of-factly
+* not over-explained
+* embedded where it reinforces a broader idea
+${versionA
+  ? `* not over-explained and framed in a way that remains contextually appropriate`
+  : `* if strongly aligned, allow it to create a subtle moment of tension or surprise rather than smoothing it out`}
+
+Avoid removing such details purely because they feel unconventional.
+The goal is coherence, not sanitization.
+
+## Writing guidelines
+
+* Keep the tone professional but not overly corporate
+* Be clear and structured, but allow personality to come through
+* Highlight strengths without exaggeration
+* Focus on patterns and insights rather than listing everything
+* Prefer specific observations over generic praise
+* Do NOT use '–'
+
+When integrating personal or unexpected elements:
+
+* do not isolate them as trivia
+* embed them where they reinforce a broader idea
+* allow slight tension if needed, as long as it remains grounded
+
+The goal is to make the person feel internally consistent, not just experienced.
+
+## Output structure
+
+* A short, professional introduction (3-5 sentences) that clearly positions him
+* A concise overview of his core strengths, technical focus, and recurring patterns
+* A brief narrative of his career evolution (focus on progression, not exhaustive detail)
+* A section highlighting interesting, unusual, or distinctive aspects of his work and thinking
+* Subtle, humanizing observations embedded naturally throughout
+
+## Ending
+
+Do NOT abruptly conclude.
+
+Instead:
+
+* gently zoom out to the broader pattern or mindset
+* end with a soft, natural continuation or invitation to explore further
+
+Keep it light and conversational.
+
+## Avoid
+
+* Dry CV-style bullet dumps
+* Overly long explanations
+* Generic praise without substance
+
+## Input
+
+${heroSection}
+${introSection}
+${servicesSection}
+${workExperienceSection}
+${educationSection}
+${featuredPostsSection}
+${perspectivePostsSection}
+${postScriptumSection}
+${contactSection}
+${tagsSection}
 `;
 
   return prompt;

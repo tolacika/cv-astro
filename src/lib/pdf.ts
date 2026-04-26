@@ -10,7 +10,12 @@ export const pdfOptions: Options = {
     }
   },
   pages: {
-    '/cv.html': 'CV-Marshall_Laszlo_Toth.pdf'
+    '/cv.html': {
+      path: 'CV-noAvatar-Marshall_Laszlo_Toth.pdf',
+    },
+    '/cv.html?avatar': {
+      path: 'CV-Marshall_Laszlo_Toth.pdf'
+    }
   },
   launch: {
     args: ['--no-sandbox', '--disable-setuid-sandbox']

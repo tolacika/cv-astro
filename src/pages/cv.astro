@@ -47,7 +47,7 @@ function formatTagsLine(description: string): string {
     <div class="container">
       <div class="flex flex-row gap-4">
         <div
-          class="flex-none self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
+          class="flex-none avatar-container hidden self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
         >
           <img
             src={authorImg.src}
@@ -106,7 +106,7 @@ function formatTagsLine(description: string): string {
     <div class="container">
       <div class="flex flex-row gap-4">
         <div
-          class="flex-none self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
+          class="flex-none avatar-container hidden self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
         >
           <img
             src={authorImg.src}
@@ -319,4 +319,12 @@ function formatTagsLine(description: string): string {
       </div>
     </div>
   </div>
+  <script is:inline>
+    const url = window.location.search.replace(/^\?/, '');
+
+    if (url.startsWith("avatar")) {
+      document.querySelectorAll(".avatar-container.hidden").forEach(item => item.classList.remove("hidden"))
+    }
+    console.log({url})
+  </script>
 </PrintableLayout>
