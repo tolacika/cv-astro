@@ -340,11 +340,6 @@
         "head": "Email",
         "text": "laszlo@tolacika.dev",
         "link": "mailto:laszlo@tolacika.dev"
-      },
-      {
-        "icon": "bxs-map-pin",
-        "head": "Location",
-        "text": "Offenbach, Germany"
       }
     ]
   },

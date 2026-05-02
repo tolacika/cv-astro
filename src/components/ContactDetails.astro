@@ -6,7 +6,7 @@ interface Props {}
 const items = content.contactDetails.items;
 ---
 
-<section class="container py-16 md:py-20" id="contact">
+<section class="container py-6 md:py-8" id="contact">
   
   <h2 class="text-center font-header text-2xl font-semibold uppercase text-primary sm:text-3xl lg:text-4xl">
     {content.contactDetails.title}
@@ -22,7 +22,7 @@ const items = content.contactDetails.items;
     </p>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 pt-16 gap-4 whitespace-nowrap">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 pt-16 gap-4 whitespace-nowrap">
     
     {items.map((item) => (
       <div class="w-full shadow-lg p-4 sm:py-4">
