@@ -13,6 +13,9 @@ export const pdfOptions: Options = {
     '/cv.html': {
       path: 'CV-noAvatar-Marshall_Laszlo_Toth.pdf',
     },
+    '/cv-hu.html': {
+      path: 'CV-HUN-Toth_Laszlo.pdf',
+    },
     '/cv.html?avatar': {
       path: 'CV-Marshall_Laszlo_Toth.pdf',
     },

@@ -1,0 +1,403 @@
+---
+import PrintableLayout from "../layouts/Printable.astro";
+import { content } from "../lib/content";
+import { getDefaultSeoProps } from "../lib/seo";
+import authorImg from "../assets/img/author.jpg";
+import type { Props as MainHeadProps } from "../components/MainHead.astro";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+
+const renderer = new marked.Renderer();
+
+renderer.link = ({ href, text }) => {
+  return `<a href="${href}" target="_blank">${text}</a>`;
+};
+
+marked.use({ renderer });
+
+const baseUrl = "https://tolacika.dev/tag";
+
+const headProps: MainHeadProps = getDefaultSeoProps(content, authorImg.src);
+
+const jobCollectionCache = await getCollection("jobCollection");
+const tagCollectionCache = await getCollection("tagCollection");
+
+const tagMap = new Map(
+  tagCollectionCache.map((tag) => [tag.data.slug, tag.data.label]),
+);
+
+function createUrl(path: string): string {
+  return content.seo.cannonUrl + path;
+}
+
+function formatTagsLine(description: string): string {
+  return description.replace(
+    /\[([^\]]+)\](?:\(([^)]+)\))?/g,
+    (_, text, slug) => {
+      const finalSlug = slug ?? text;
+      const label = slug ? text : tagMap.get(finalSlug);
+      return `[${label}](${baseUrl}/${finalSlug}.html)`;
+    },
+  );
+}
+
+const jobDateClasses = "";
+const jobNameClasses = "";
+const jobLocationClasses = "";
+const jobXClasses = "";
+const jobDescClasses = "";
+---
+
+<PrintableLayout headProps={headProps} bodyClass="cv-site">
+  <Fragment slot="head-end">
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </Fragment>
+  <div class="header header-large bg-primary font-header text-white py-2">
+    <div class="container">
+      <div class="flex flex-row gap-4">
+        <div
+          class="flex-none avatar-container self-start rounded-full border-4 border-primary shadow-md shadow-purple-900"
+        >
+          <img
+            src={authorImg.src}
+            alt="Author's image"
+            class="rounded-full max-w-28"
+          />
+        </div>
+        <div class="flex-auto self-center">
+          <h1 class="text-4xl">Tóth László</h1>
+          <h2 class="text-2xl font-extralight italic">
+            Szoftver és Rendszer mérnök
+          </h2>
+          <div class="text-base font-light">Teljes Önéletrajz</div>
+        </div>
+        <div class="flex-auto self-center text-right text-sm">
+          <div class="">
+            2030 Érd, Pest
+            <i class={`bx bx-pin text-lg align-middle`}></i>
+          </div>
+          <div class="">
+            <a
+              href="mailto:laszlo@tolacika.dev"
+              target="_blank"
+              class="underline italic"
+            >
+              laszlo@tolacika.dev
+            </a>
+            <i class={`bx bx-envelope text-lg align-middle`}></i>
+          </div>
+          <div class="">
+            <a href="tel:+36308751419" target="_blank" class="underline italic">
+              (+36) 30 8751419
+            </a>
+            <i class={`bx bx-phone text-lg align-middle`}></i>
+          </div>
+          <div class="">
+            <a
+              href={content.cv.portfolioUrl.href}
+              target="_blank"
+              class="underline italic"
+            >
+              {content.cv.portfolioUrl.label}
+            </a>
+            <i class={`bx bx-link text-lg align-middle`}></i>
+          </div>
+          <div class="">
+            <a
+              href={content.cv.githubUrl.href}
+              target="_blank"
+              class="underline italic"
+            >
+              {content.cv.githubUrl.label}
+            </a>
+            <i class={`bx bxl-github text-lg align-middle`}></i>
+          </div>
+          <div class="">
+            <a
+              href={content.cv.linkedinUrl.href}
+              target="_blank"
+              class="underline italic"
+            >
+              {content.cv.linkedinUrl.label}
+            </a>
+            <i class={`bx bxl-linkedin-square text-lg align-middle`}></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main cv-content font-body text-base">
+    <div class="container bg-white pb-4 px-0">
+      <div class="break-inside-avoid px-4">
+        <h3
+          class="text-xl font-header font-semibold mb-1 pt-2 py-0 border-b border-b-primary text-primary"
+        >
+          Szakmai Profil
+        </h3>
+        <p class="text-justify">
+          Rugalmas, megbízható és sokoldalú szakember, aki az elmúlt évek során
+          számos különböző iparágban szerzett tapasztalatot: informatikai
+          fejlesztés, kereskedelem, vendéglátás, raktározás, logisztika,
+          biztonsági szolgálat és rendezvényszervezés területén. Erős
+          problémamegoldó készség, csapatszellem, gyors helyzetfelismerés és
+          tanulási hajlandóság jellemzi.
+        </p>
+      </div>
+
+      <div>
+        <h3
+          class="text-xl font-header font-semibold mx-4 mt-2 mb-1 border-b border-b-primary text-primary"
+        >
+          Munkatapasztalat
+        </h3>
+        <div class="grid grid-cols-[90px_1fr] gap-x-4 gap-y-1 mx-4">
+          {
+            [
+              {
+                date: "2026",
+                name: "Wolt Magyarország – E.V.",
+                pos: "Étel-házhozszállítás",
+              },
+              {
+                date: "2025-2026",
+                name: "Archbau GmbH",
+                loc: "Németország",
+                desc: "Régészeti feltárások, terepi dokumentáció és segédmunka",
+              },
+              {
+                date: "2024-2025",
+                name: "Next Tuesday GmbH",
+                loc: "Németország",
+                pos: "Informatikus",
+              },
+              {
+                date: "2024",
+                name: "Ordio GmbH",
+                loc: "Németország",
+                pos: "Informatikus",
+              },
+              {
+                date: "2023-2024",
+                name: "Tyr Hungary Kft.",
+                desc: "Ipari tisztítási, raktári, rendezvényszervezési és animátori feladatok ellátása különböző projektekben",
+              },
+              {
+                date: "2022-2023",
+                name: "Diligent Corp.",
+                loc: "USA, távmunka",
+                pos: "Informatikus",
+              },
+              {
+                date: "2021-2022",
+                name: "Future Property Trade Kft.",
+                loc: "Budapest",
+                pos: "Informatikus",
+              },
+              {
+                date: "2020-2021",
+                name: "Risskov Autoferien AG",
+                loc: "Svájc, távmunka",
+                pos: "Informatikus",
+              },
+              {
+                date: "2019-2021",
+                name: "F-Sonka Kft.",
+                loc: "Csepeli piac",
+                desc: "Hús- és halpulti értékesítés, vásárlók kiszolgálása és árukezelési feladatok",
+              },
+              {
+                date: "2018-2019",
+                name: "TechTeamer Kft. – MikroCredit Zrt.",
+                loc: "Budapest",
+                pos: "Informatikus",
+              },
+              {
+                date: "2018",
+                name: "WebShippy Hungary Kft.",
+                pos: "Informatikus",
+              },
+              {
+                date: "2017",
+                name: "Manna Kreatív Zrt.",
+                pos: "Informatikus",
+              },
+              {
+                date: "2016-2019",
+                name: "Étel-, áru- és személyszállítás",
+                desc: "Ételkiszállítás, személyszállítás és alkalmi fuvarozás (Theo Papa Konyhája, Imperia Pizzeria)",
+              },
+              {
+                date: "2015-2016",
+                name: "Cinema Rock Café",
+                desc: "Pultos, kisegítő és rendezvényszervezői feladatok ellátása",
+              },
+              {
+                date: "2014-2016",
+                name: "Érték-Rendszerház Kft. & Wore Hungary Kft.",
+                pos: "Informatikus",
+              },
+              {
+                date: "2013",
+                name: "KÖKI Terminál",
+                loc: "Üzemeltetési Osztály",
+                desc: "Rendszergazdai és szervezési feladatok, informatikai rendszerek üzemeltetésének támogatása",
+              },
+              {
+                date: "2012-2015",
+                name: "Diákmunka",
+                desc: "Pénztárosi, árufeltöltői és promóciós feladatok különböző kereskedelmi környezetekben",
+              },
+              {
+                date: "2011-2012",
+                name: "7even Online Ügynökség",
+                desc: "Informatikus gyakornokként webes és informatikai fejlesztési feladatok támogatása",
+              },
+            ].map((i) => (
+              <Fragment>
+                <div class="font-extrabold">{i.date}</div>
+                <div class="font-bold">
+                  {i.name}
+                  {i.loc && <span class="font-normal">({i.loc})</span>}
+                  {i.pos && <span class="font-normal ml-4">– {i.pos}</span>}
+                </div>
+                {i.desc && <div class="col-span-2 mb-1">{i.desc}</div>}
+              </Fragment>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3
+          class="text-xl font-header font-semibold mx-4 mb-1 border-b border-b-primary text-primary break-before-page mt-8"
+        >
+          Önkéntesség és klubtagság
+        </h3>
+        <div class="grid grid-cols-[90px_1fr] gap-x-4 gap-y-1 mx-4 mb-4">
+          {
+            [
+              {
+                date: "2024-től",
+                name: "EVVMK Vasútmodellező Klub",
+                pos: "tag, szakmai támogatás, kiállításszervezés",
+              },
+              {
+                date: "2020-2023",
+                name: "LÁVA Vasútmodell Klub",
+                pos: "tag, szakmai támogatás, kiállításszervezés",
+              },
+              {
+                date: "2011-től",
+                name: "REX Kutyaotthon Alapítvány",
+                pos: "önkéntes, napi feladatok, rendezvényszervezés",
+              },
+            ].map((i) => (
+              <Fragment>
+                <div class="font-extrabold">{i.date}</div>
+                <div class="font-bold">
+                  {i.name}
+                  {i.pos && <span class="font-normal ml-4">– {i.pos}</span>}
+                </div>
+              </Fragment>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3
+          class="text-xl font-header font-semibold mx-4 mt-2 mb-1 border-b border-b-primary text-primary"
+        >
+          Tanulmányok
+        </h3>
+        <div class="grid grid-cols-[90px_1fr] gap-x-4 gap-y-1 mx-4 mb-4">
+          {
+            [
+              {
+                date: "2013-2016",
+                name: "Budapesti Műszaki és Gazdaságtudományi Egyetem",
+                desc: "Villamosmérnöki és Informatikai Kar – Villamosmérnöki szak",
+              },
+              {
+                name: "Budavári Schönherz Stúdió",
+                pos: "operatőr, rendezvényszervezés",
+              },
+              {
+                name: "Schönherz Elektronikai Műhely",
+                pos: "eszközgyártás, mérnöki feladatok",
+              },
+              {
+                date: "2009-2013",
+                name: "Bláthy Ottó Titusz Informatikai Szakközépiskola és Gimnázium",
+                desc: "Informatikai szak – emelt szintű informatika érettségi",
+              },
+            ].map((i) => (
+              <Fragment>
+                <div class="font-extrabold">{i.date}</div>
+                <div class="font-bold">
+                  {i.name}
+                  {i.pos && <span class="font-normal ml-4">– {i.pos}</span>}
+                </div>
+                {i.desc && <div class="col-span-2 mb-2">{i.desc}</div>}
+              </Fragment>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3
+          class="text-xl font-header font-semibold mx-4 mt-2 mb-1 border-b border-b-primary text-primary"
+        >
+          Képességek
+        </h3>
+        <div class="mx-4">
+          <p class="mt-1">
+            Informatikai ismeretek: programozás, hálózattelepítés,
+            rendszergazdai feladatok (Cisco CCNA)
+          </p>
+          <p class="mt-1">Pénztárgép, Kiosk terminál, vendéglátós szoftverek ismerete</p>
+          <p class="mt-1">
+            Raktári és áruszervezési tapasztalat (átvétel, feltöltés,
+            adminisztráció)
+          </p>
+          <p class="mt-1">B kategóriás jogosítvány, szállítói tapasztalat</p>
+          <p class="mt-1">Erős problémamegoldó és helyzetfelismerő képesség</p>
+          <p class="mt-1">Jó kommunikációs készség, ügyfélközpontúság</p>
+          <p class="mt-1">Csapatmunkára való hajlam, alkalmazkodóképesség</p>
+          <p class="mt-1">Precizitás, megbízhatóság, rugalmasság</p>
+          <p class="mt-1">Angol nyelv – szakmai és kommunikációs szint</p>
+        </div>
+      </div>
+
+      <div class="h-80">&nbsp;</div>
+
+      <div class="px-4 break-inside-avoid">
+
+        <h4
+          class="text-lg text-center font-header font-medium mt-4 pt-4 pt2 border-t border-t-primary"
+        >
+        További információ a szakmai pályafutásomról a következő oldalon található:<br />
+        <a href={content.seo.cannonUrl} target="_blank">{content.seo.cannonUrl}</a>
+        </h4>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    const url = window.location.search.replace(/^\?/, "");
+
+    if (url.startsWith("avatar")) {
+      document
+        .querySelectorAll(".avatar-container.hidden")
+        .forEach((item) => item.classList.remove("hidden"));
+    }
+    console.log({ url });
+  </script>
+</PrintableLayout>
